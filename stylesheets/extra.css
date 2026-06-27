@@ -1,3 +1,7 @@
+/* ============================================================
+   1. DESIGN MINIMALISTE (masquer navbar & sidebar, centrer)
+   ============================================================ */
+
 /* 1. Masquer l'en-tête (navbar) complètement */
 .navbar {
   display: none !important;
@@ -8,35 +12,139 @@
   display: none !important;
 }
 
-/* 3. Faire prendre toute la largeur à la colonne de contenu principal */
-/* Option 2 : Centrer le contenu dans une largeur fixe (type livre) */
+/* 3. Centrer le contenu principal avec une largeur confortable */
 .col-md-9 {
-  max-width: 900px;        /* Largeur de lecture confortable */
+  max-width: 900px;
   margin-left: auto !important;
   margin-right: auto !important;
-  float: none !important;   /* Annule le comportement de flottement Bootstrap */
+  float: none !important;
   padding-left: 20px;
   padding-right: 20px;
 }
 
-/* 4. Optionnel : ajuster les marges du body pour compenser */
+/* 4. Ajuster la marge du body */
 body {
   padding-top: 0 !important;
   margin-top: 40px;
 }
 
-/* Centrer tous les titres principaux (h1) */
+/* 5. Centrer tous les titres principaux */
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
-/* Amélioration du rendu des notebooks */
-.cell {
-  font-size: 0.9rem;
+/* ============================================================
+   2. RENDU DES NOTEBOOKS COMME DANS JUPYTER
+   (Code coloré comme dans un IDE, prompts, polices)
+   ============================================================ */
+
+/* Importer une police de caractères moderne type IDE */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
+
+/* Appliquer la police à tout le code et aux cellules */
+body, .cell, .highlight, pre, code, .rendered_html pre, .input_area pre {
+  font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace !important;
+  font-size: 14px;
+  line-height: 1.6;
 }
-.rendered_html pre, .input_area pre {
-  font-family: 'Consolas', monospace;
-  background-color: #f5f5f5;
+
+/* Fond sombre pour les cellules de code (style IDE) */
+.cell, .input_area, .output_area pre {
+  background-color: #1e1e1e !important;
+  border-radius: 6px;
   padding: 10px;
-  border-radius: 5px;
 }
+
+/* Couleurs pour la coloration syntaxique (thème Monokai-like) */
+.highlight .k { color: #c678dd; }  /* mot-clé */
+.highlight .s { color: #98c379; }  /* chaîne de caractères */
+.highlight .c { color: #5c6370; font-style: italic; } /* commentaire */
+.highlight .cp { color: #e5c07b; } /* préprocesseur (#include) */
+.highlight .nf { color: #61afef; } /* nom de fonction */
+.highlight .nb { color: #e5c07b; } /* mot-clé intégré (built-in) */
+.highlight .mi { color: #d19a66; } /* nombre */
+.highlight .o { color: #abb2bf; }  /* opérateur */
+.highlight .p { color: #abb2bf; }  /* ponctuation */
+.highlight .nt { color: #e06c75; } /* tag HTML */
+.highlight .na { color: #98c379; } /* attribut HTML */
+.highlight .nv { color: #e06c75; } /* variable */
+.highlight .vc { color: #e06c75; } /* variable de classe */
+.highlight .vg { color: #e06c75; } /* variable globale */
+.highlight .vi { color: #e06c75; } /* variable d'instance */
+.highlight .bp { color: #d19a66; } /* built-in Python */
+.highlight .kc { color: #c678dd; } /* constante */
+.highlight .kd { color: #c678dd; } /* déclaration */
+.highlight .kn { color: #c678dd; } /* mot-clé de namespace */
+.highlight .kp { color: #c678dd; } /* mot-clé spécial */
+.highlight .kr { color: #c678dd; } /* mot-clé réservé */
+.highlight .kt { color: #c678dd; } /* type */
+.highlight .m { color: #d19a66; }  /* nombre */
+.highlight .mf { color: #d19a66; } /* nombre flottant */
+.highlight .mh { color: #d19a66; } /* nombre hexadécimal */
+.highlight .mi { color: #d19a66; } /* nombre entier */
+.highlight .mo { color: #d19a66; } /* nombre octal */
+.highlight .s { color: #98c379; }  /* chaînes de caractères */
+.highlight .se { color: #e5c07b; } /* séquence d'échappement */
+.highlight .sh { color: #98c379; } /* chaîne heredoc */
+.highlight .si { color: #e5c07b; } /* interpolation */
+.highlight .sr { color: #e5c07b; } /* regex */
+.highlight .ss { color: #e5c07b; } /* symbole */
+.highlight .dl { color: #98c379; } /* délimiteur de chaîne */
+
+/* Amélioration des prompts (In[#], Out[#]) */
+.prompt {
+  color: #7f848e !important;
+  font-size: 0.85rem;
+  background-color: #2c2c2c;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Sorties des cellules */
+.output_area pre {
+  background-color: #1e1e1e !important;
+  color: #abb2bf;
+  border: none;
+}
+
+/* Ajustement des bordures et espaces */
+.input_area {
+  border: none !important;
+}
+.rendered_html {
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  color: #333;
+}
+.rendered_html h1, .rendered_html h2, .rendered_html h3 {
+  color: #111;
+}
+
+/* ============================================================
+   3. SUPPORT DES ÉQUATIONS LATEX (MathJax)
+   ============================================================ */
+/* Les équations s'affichent déjà grâce à MathJax, 
+   mais on peut ajuster la taille */
+.MathJax {
+  font-size: 1.1em;
+}
+
+/* Forcer le rendu des équations LaTeX */
+.rendered_html .MathJax {
+  display: inline-block;
+}
+.rendered_html .MathJax_Display {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+/* Police pour tout le texte (hors code) */
+body, .rendered_html, p, li {
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;           /* Taille de base */
+  line-height: 1.7;          /* Interligne confortable */
+  color: #222;               /* Couleur du texte */
+}
+
+

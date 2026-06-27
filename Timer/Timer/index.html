@@ -532,8 +532,36 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </style>
 <!-- End of mermaid configuration --><div class="jupyter-wrapper">
 <div class="jp-Notebook" data-jp-theme-light="false" data-jp-theme-name="JupyterLab Dark">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=97bfee86-7e4f-4834-ac33-ee2acbe86e87">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=97bfee86-7e4f-4834-ac33-ee2acbe86e87">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b8a1fe11">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js" type="text/javascript">
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.MathJax && MathJax.typesetPromise) {
+      MathJax.typesetPromise();
+    }
+  });
+</script>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=b1d48a2e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -604,10 +632,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Un Timer est un compteur matériel indépendant du processeur qui compte les impulsions de l'horloge système interne $(F_{tim})$, préalablement divisée par un Prescaler (diviseur de fréquence). Il est configuré pour générer un signal (drapeau : <em>flag</em>) ou déclencher une interruption lorsqu'il atteint sa valeur maximale de basculement (débordement ou <em>Overflow</em>) indiquée dans le registre de période (<code>Auto-Reload</code>), ou une valeur de comparaison spécifique.</p>
+<p>Un Timer est un compteur matériel indépendant du processeur qui compte les impulsions de l'horloge système interne (F_{tim}), préalablement divisée par un Prescaler (diviseur de fréquence). Il est configuré pour générer un signal (drapeau : <em>flag</em>) ou déclencher une interruption lorsqu'il atteint sa valeur maximale de basculement (débordement ou <em>Overflow</em>) indiquée dans le registre de période (<code>Auto-Reload</code>), ou une valeur de comparaison spécifique.</p>
 <p>Le temps écoulé entre son activation et le moment où le drapeau est levé peut être calculé. Ce mécanisme est plus précis temporellement et est non-bloquant pour le processeur. Il dépend de l'horloge interne (souvent stabilisée par un quartz) et non de la vitesse d'exécution du code.</p>
 <p>Pour calculer le temps désiré exact, il faut calculer la durée d'un unique incrément (le Tick) ainsi que le nombre de pas nécessaires pour atteindre le délai souhaité. On utilise la formule :</p>
-$$T_{tick}=\frac{\text{Prescaler}+1}{F_{tim}}$$<p>Sur STM32F401, le Prescaler possède une subtilité matérielle, la valeur réelle par laquelle l'horloge est divisée est égale à $(\text{Registre Prescaler} + 1)$. Pour un Timer 16 bits (comme TIM2, TIM3, TIM4 ou TIM5 qui est lui sur 32 bits), le temps maximal avant débordement $(T_{max})$ ou la période de mise à jour s'ajuste précisément grâce au registre <code>ARR</code> (<em>Auto-Reload Register</em>) qui définit le plafond du compteur :</p>
+$$T_{tick}=\frac{\text{Prescaler}+1}{F_{tim}}$$<p>Sur STM32F401, le Prescaler possède une subtilité matérielle, la valeur réelle par laquelle l'horloge est divisée est égale à ((\text{Registre Prescaler} + 1)). Pour un Timer 16 bits (comme TIM2, TIM3, TIM4 ou TIM5 qui est lui sur 32 bits), le temps maximal avant débordement ((T_{max})) ou la période de mise à jour s'ajuste précisément grâce au registre <code>ARR</code> (<em>Auto-Reload Register</em>) qui définit le plafond du compteur :</p>
 $$T_{periode}=\frac{(\text{Prescaler}+1)\times (\text{ARR}+1)}{F_{tim}}$$<p>Ce mécanisme est configuré via plusieurs registres de 32 bits :</p>
 <ul>
 <li><code>TIMx-&gt;PSC</code> : Le registre de <em>Prescaler</em> (diviseur d'horloge d'entrée pour ralentir le compteur).</li>
@@ -667,8 +695,8 @@ $$T_{periode}=\frac{(\text{Prescaler}+1)\times (\text{ARR}+1)}{F_{tim}}$$<p>Ce m
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="creation-de-delais-avec-debordement-clignotement-precis-avec-delay-timer">Création de délais avec débordement : Clignotement précis avec delay-Timer<a class="anchor-link" href="#creation-de-delais-avec-debordement-clignotement-precis-avec-delay-timer">¶</a></h2><p>Ici, nous configurons le Timer 2 qui est de 32 bits avec une horloge par défaut à 16 MHz issue de l'oscillateur interne (HSI). Pour simplifier le calcul et éviter d'avoir à compter des dizaines de débordements successifs, nous ajustons directement les registres PSC et ARR pour obtenir un débordement unique toutes les 1 seconde (1000 ms).</p>
 <p>Pour cela, nous configurons le Prescaler à 1599. Le Timer s'incrémente à une fréquence de :</p>
-$$\frac{16\,000\,000\text{\ Hz}}{1599+1}=10\,000\text{\ ticks/seconde}$$<p>Le registre de période ARR étant configuré à 9999, un débordement unique (<code>UIF</code>) survient exactement après 10 000 ticks, soit toutes les :</p>
-$$\frac{9999+1}{10\,000\text{\ Hz}}=1,000000\text{\ seconde}$$<div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
+$$\frac{16\,000\,000\ \mathrm{Hz}}{1599+1}=10\,000\ \mathrm{ticks/seconde}$$<p>Le registre de période ARR étant configuré à 9999, un débordement unique (<code>UIF</code>) survient exactement après 10 000 ticks, soit toutes les :</p>
+$$\frac{9999+1}{10\,000\text{ Hz}}=1,000000\text{ seconde}$$<div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
 
 <span class="cp">#define LED_PIN 13</span>
 
@@ -842,7 +870,7 @@ YouTubeVideo('XBCwYPPZzio', width=800, height=450)
 <li>L'interruption du Timer 3 se déclenche après 20 ms. Elle vérifie si le bouton est toujours enfoncé. Si oui, l'appui est validé. Elle réactive enfin l'interruption du bouton.</li>
 </ul>
 <p>Détail du calcul pour 20 ms (Timer 3 - 16 bits). Pour une fréquence d'horloge système de 16 MHz (HSI) et un Prescaler configuré à 1599 (division réelle par 1600) :</p>
-$$F_{tim}=\frac{16\,000\,000\text{\ Hz}}{1599+1}=10\,000\text{\ Hz}$$$$\text{Période\ d}^{\prime }\text{un\ tick}=\frac{1}{10\,000\text{\ Hz}}=0,0001\text{\ s}\ (100\ \mu \text{s})$$$$\text{Nombre\ de\ ticks\ pour\ 20\ ms}=\frac{0,020\text{\ s}}{0,0001\text{\ s}}=200\text{\ ticks}$$<p>On configure donc le registre de période ARR du Timer 3 à 199 (199 + 1 = 200 pas).</p>
+$$F_{tim}=\frac{16\,000\,000\ \mathrm{Hz}}{1599+1}=10\,000\ \mathrm{Hz}$$$$\text{Période d'un tick}=\frac{1}{10\,000\ \mathrm{Hz}}=0,0001\ \text{s}\ (100\ \mu\text{s})$$$$\text{Nombre de ticks pour 20 ms}=\frac{0,020\ \text{s}}{0,0001\ \text{s}}=200\ \text{ticks}$$<p>On configure donc le registre de période ARR du Timer 3 à 199 (199 + 1 = 200 pas).</p>
 </div>
 </div>
 </div>
@@ -1324,7 +1352,7 @@ YouTubeVideo('l6ko95VhIbU', width=800, height=450)</div>
 <h3 id="exemple-1-chronometre-7-segments">Exemple 1 : Chronometre 7 segments<a class="anchor-link" href="#exemple-1-chronometre-7-segments">¶</a></h3><p>Le Timer 2 gère la base de temps précise de 1 ms en arrière-plan, sans blocage du processeur. Nous disposons d'un tableau constant qui contient le motif d'allumage des LED pour un afficheur 7 segments à cathode commune.</p>
 <p><strong>Détail du calcul pour 1 ms (Timer 2 - 32 bits)</strong></p>
 <p>Pour une fréquence d'horloge interne par défaut à 16 MHz (HSI) et un Prescaler configuré à 15 (division réelle par 16) :</p>
-$$F_{tim}=\frac{16\,000\,000\text{\ Hz}}{15+1}=1\,000\,000\text{\ Hz}\ (1\text{\ MHz})$$$$\text{Période\ d}^{\prime }\text{un\ tick}=\frac{1}{1\,000\,000\text{\ Hz}}=0,000001\text{\ s}\ (1\ \mu \text{s})$$$$\text{Nombre\ de\ ticks\ pour\ 1\ ms}=\frac{0,001\text{\ s}}{0,000001\text{\ s}}=1000\text{\ ticks}$$<p>On configure donc le registre de période ARR du Timer 2 à 999 (999 + 1 = 1000 pas).</p>
+$$F_{tim}=\frac{16\,000\,000\ \mathrm{Hz}}{15+1}=1\,000\,000\ \mathrm{Hz}\ (1\ \mathrm{MHz})$$$$\text{Période d'un tick}=\frac{1}{1\,000\,000\ \mathrm{Hz}}=0,000001\ \text{s}\ (1\ \mu\text{s})$$$$\text{Nombre de ticks pour 1 ms}=\frac{0,001\ \text{s}}{0,000001\ \text{s}}=1000\ \text{ticks}$$<p>On configure donc le registre de période ARR du Timer 2 à 999 (999 + 1 = 1000 pas).</p>
 <div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
 
 <span class="c1">// Motifs d'allumage pour afficheur 7 segments (Cathode commune)</span>
