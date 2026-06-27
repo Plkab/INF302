@@ -1,0 +1,32 @@
+site_name: INF302 – Programmation des processeurs temps réel
+site_description: Cours de Licence en Génie Informatique
+site_author: Ir Paul S. Kabidu
+site_url: https://Plkab.github.io/INF302
+
+theme: mkdocs
+
+markdown_extensions:
+  - tables
+  - attr_list
+
+nav:
+  - Accueil: index.md
+  - Systèmes temps réel: Systemes temps reel/Systemes temps reel.ipynb
+  - Architecture stm32f401: Architecture stm32f401/Architecture STM32F401.ipynb
+  - GPIO: GPIO/GPIO.ipynb
+  - Interruptions: Interruptions/Interruptions.ipynb
+  - Timer: Timer/Timer.ipynb
+  - Machine d'états finis: Machine d'etats finis/fsm.ipynb
+  
+  - LABO:
+    - Démarrer Kiel: LABO/demarrerKiel.md
+    - Langage C: LABO/langageC.md
+    - TP1 Chronomètre et Horloge: LABO/TP1 Chronometre et Horloge.ipynb
+  
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search
+  - mkdocs-jupyter
