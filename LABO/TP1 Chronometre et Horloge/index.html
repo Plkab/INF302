@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="author" content="Ir Paul S. Kabidu">
-        <link rel="canonical" href="https://Plkab.github.io/INF302/Systemes%20temps%20reel/Systemes%20temps%20reel/">
+        <link rel="canonical" href="https://Plkab.github.io/INF302/LABO/TP1%20Chronometre%20et%20Horloge/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Systèmes embarqués temps réel - INF302 – Programmation des processeurs temps réel</title>
+        <title>TP : Chronomètre et horloge programmable sur STM32F4 – Construction par étapes - INF302 – Programmation des processeurs temps réel</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@
                                 <a href="../.." class="nav-link">Accueil</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">Systèmes embarqués temps réel</a>
+                                <a href="../../Systemes%20temps%20reel/Systemes%20temps%20reel/" class="nav-link">Systèmes embarqués temps réel</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Architecture%20stm32f401/Architecture%20STM32F401/" class="nav-link">Architecture du processeur ARM STM32F401</a>
@@ -75,19 +75,19 @@
                                 <a href="../../SPI/SPI.ipynb" class="nav-link">Interfaçage avec SPI</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Laboratoires</a>
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Laboratoires</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../LABO/demarrerKiel/" class="dropdown-item">Démarrer Kiel</a>
+    <a href="../demarrerKiel/" class="dropdown-item">Démarrer Kiel</a>
 </li>
                                     
 <li>
-    <a href="../../LABO/langageC/" class="dropdown-item">Langage C</a>
+    <a href="../langageC/" class="dropdown-item">Langage C</a>
 </li>
                                     
 <li>
-    <a href="../../LABO/TP1%20Chronometre%20et%20Horloge/" class="dropdown-item">TP : Chronomètre et horloge programmable sur STM32F4 – Construction par étapes</a>
+    <a href="./" class="dropdown-item active" aria-current="page">TP : Chronomètre et horloge programmable sur STM32F4 – Construction par étapes</a>
 </li>
                                 </ul>
                             </li>
@@ -100,12 +100,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../.." class="nav-link">
+                                <a rel="prev" href="../langageC/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../Architecture%20stm32f401/Architecture%20STM32F401/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -127,17 +127,29 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#systemes-embarques-temps-reel" class="nav-link">Systèmes embarqués temps réel</a>
+            <li class="nav-item" data-bs-level="1"><a href="#tp-chronometre-et-horloge-programmable-sur-stm32f4-construction-par-etapes" class="nav-link">TP : Chronomètre et horloge programmable sur STM32F4 – Construction par étapes</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#quest-ce-quun-systeme-embarque" class="nav-link">Qu'est-ce qu'un Système embarqué ?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#quest-ce-quun-systeme-embarque-temps-reel" class="nav-link">Qu'est-ce qu'un Système embarqué temps réel ?</a>
+            <li class="nav-item" data-bs-level="2"><a href="#demo-du-resultat" class="nav-link">DEMO DU RESULTAT :</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#conception-des-systemes-embarque-temps-reel" class="nav-link">Conception des systèmes embarqué temps réel</a>
+            <li class="nav-item" data-bs-level="2"><a href="#objectif-general" class="nav-link">Objectif général</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#prerequis" class="nav-link">Prérequis</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#description-du-tp-les-7-etapes-de-construction" class="nav-link">Description du TP : les 7 étapes de construction</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#pistes-de-reflexion-et-aide" class="nav-link">Pistes de réflexion et aide</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#livrables-attendus" class="nav-link">Livrables attendus</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -583,210 +595,503 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </style>
 <!-- End of mermaid configuration --><div class="jupyter-wrapper">
 <div class="jp-Notebook" data-jp-theme-light="false" data-jp-theme-name="JupyterLab Dark">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=81640700-6dc1-4e03-87cb-cd1f5011d4ec">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8c930f53-ab7a-4a42-9e7e-7429e4b29f31">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-1"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=551b5d78-cb66-40ae-81c2-7454aeac15b1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="systemes-embarques-temps-reel">Systèmes embarqués temps réel<a class="anchor-link" href="#systemes-embarques-temps-reel">¶</a></h1>
+<h1 id="tp-chronometre-et-horloge-programmable-sur-stm32f4-construction-par-etapes">TP : Chronomètre et horloge programmable sur STM32F4 – Construction par étapes<a class="anchor-link" href="#tp-chronometre-et-horloge-programmable-sur-stm32f4-construction-par-etapes">¶</a></h1>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=346ca524-324f-4a00-9c49-c6f715944d41">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-2"></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=51c6cad1-9b57-4e1c-9de8-50a3592d3313">
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=50b4cc98-abc4-4d00-b31d-acf6cad9eedb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="quest-ce-quun-systeme-embarque">Qu'est-ce qu'un Système embarqué ?<a class="anchor-link" href="#quest-ce-quun-systeme-embarque">¶</a></h2>
+<h2 id="demo-du-resultat">DEMO DU RESULTAT :<a class="anchor-link" href="#demo-du-resultat">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=79a55f4e-cb56-43a1-ba8b-08c5daef28d6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
+
+<span class="c1"># Remplacez l'identifiant ci-dessous par celui de votre vidéo</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">'dOiNZpPDeAE'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-3">from IPython.display import YouTubeVideo
+
+# Remplacez l'identifiant ci-dessous par celui de votre vidéo
+YouTubeVideo('dOiNZpPDeAE', width=800, height=450)
+
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f7aee9fd-91e2-4ccc-8f15-ee1b8aaf81c6">
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<iframe allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/dOiNZpPDeAE" width="800"></iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=94220ffe-7f7c-4a4c-99e2-98ace42372a0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-4"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=fd8b84c7-2931-498f-94b0-2698fb1226dc">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-5"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3573c5e0-c334-45f7-8222-bdd476145e05">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Un système embarqué est un dispositif électronique intégrant un processeur sur lequel s'exécute un logiciel spécifique appelé <em>firmware</em>. Ce dispositif est conçu pour répondre à un objectif précis et défini, mission dédiée à remplir. Il n'est pas d'usage général, ni polyvalent comme un ordinateur personnel PC qui peut exécuter une multitude de programmes différents en meme temps.</p>
-<p>La plupart de ces systèmes sont conçus sur la base des microcontrôleurs, SoC (System On Chip). Et dans ce cours, nous allons utiliser un microcontrôleur, le Pico RP2350 fabriqué par la societé Raspberry Pi. Les microcontrôleurs sont omniprésents dans notre quotidien, ils sont cachés dans des objets et ils représentent environ 98 % des microprocesseurs fabriqués dans le monde. Aujourd'hui nous pouvons affirmer que la quasi-totalité (plus de 90-95 %) des appareils électriques modernes intègrent désormais un système embarqué.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=087e4524-d004-4ead-bd8d-bf5c6d68f361">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="quest-ce-quun-systeme-embarque-temps-reel">Qu'est-ce qu'un Système embarqué temps réel ?<a class="anchor-link" href="#quest-ce-quun-systeme-embarque-temps-reel">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d38cc7bd-4e98-485c-b0a1-282d853b7892">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Un système embarqué est dit <em>temps réel</em> lorsqu'il exécute des tâches ou réagit à des événements extérieurs dans un délai garanti. Les résultats produits ne sont pas seulement corrects, mais ils sont fournis dans un délai requis. C'est-à-dire que le moment de la livraison des résultats est capital. C'est là l'objet du cours : nous allons apprendre comment construire des systèmes qui répondent à cette contrainte, les résultats doivent être <strong>prévisibles dans le temps</strong>. Tous les systèmes construits doivent garantir qu'une tâche se terminera toujours en moins de X microsecondes, maximale non négociable, c'est le <strong>déterminisme temporel</strong>.</p>
-<p>Prenons l'exemple du déclenchement d'un airbag lors du choc d'un véhicule : si le signal arrive ne serait-ce que 50 millisecondes après l'impact, le système est inutile et les conséquences pour le conducteur peuvent être graves. D'une autre façon, on peut dire que si les résultats du système produits sont corrects mais arrivent en retard, le système a échoué, ce qui est équivalent à une défaillance.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e66965ef-d726-4d15-b1f4-3ec4131c4215">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Il existe 3 types de systèmes temps réel :</p>
+<h2 id="objectif-general">Objectif général<a class="anchor-link" href="#objectif-general">¶</a></h2><p>Réaliser un système embarqué sur STM32F401CCU (Blackpill) qui propose un menu à deux pages sur un afficheur LCD 16×2 :</p>
 <ul>
-<li><p><strong>Systèmes temps réel stricts (Hard Real-Time)</strong> : Le non-respect du délais entraîne une catastophe ou une défaillance totale du système. Ici, WCET doit toujours inférieur à le deadline (l’échéance) dans toute les conditions.<br/>
-  Exemple : comme précédement cité, le déclenchement d'un airbag ou le système de freinage d'un train, commande de vol d'un avion. Si le signal arrive avec centaines de millisecondes de retard, le système est inutile et les conséquences peuvent être fatales.</p>
-<p>Les systèmes de traitement numérique du signal (DSP) sont généralement des systèmes temps réel stricts. Prenons l'exemple d'un signal analogique échantillonné à 8 kHz (pour préserver des fréquences jusqu'à 4 kHz). La période d'échantillonnage est de 125 µs. Cela signifie que le système dispose de 125 µs pour effectuer tout le traitement nécessaire avant l'arrivée de l'échantillon suivant. Si le système ne peut pas suivre ce rythme, il échoue. C'est une caractéristique typique d'un système temps réel strict.</p>
+<li><strong>Page 0</strong> : un chronomètre affichant <code>hh:mm:ss:tt</code> (heures, minutes, secondes et tierces – 1/60ᵉ de seconde).</li>
+<li><strong>Page 1</strong> : une horloge réglable affichant <code>hh:mm:ss</code>.</li>
+</ul>
+<p>Le contrôle s’effectue à l’aide de trois boutons poussoirs sur <strong>PA0</strong>, <strong>PA1</strong> et <strong>PA2</strong>. Leurs fonctions dépendent de la page active :</p>
+<table>
+<thead>
+<tr>
+<th>Bouton</th>
+<th>Page 0 (Chronomètre)</th>
+<th>Page 1 (Horloge)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PA0</strong></td>
+<td>RUN / STOP</td>
+<td>+1 minute</td>
+</tr>
+<tr>
+<td><strong>PA1</strong></td>
+<td>RESET (remet à zéro et arrête)</td>
+<td>+1 heure</td>
+</tr>
+<tr>
+<td><strong>PA2</strong></td>
+<td>Changement de page</td>
+<td>Changement de page</td>
+</tr>
+</tbody>
+</table>
+<p>Le cœur du programme est un <strong>Timer3</strong> configuré pour générer une interruption toutes les <strong>1 ms</strong>. Cette interruption sera le moteur de toutes les mises à jour : comptage du chronomètre, incrémentation de l’horloge, lecture et filtrage des boutons, et rafraîchissement de l’écran avec un délai adaptatif (10 ms quand le chronomètre tourne, 500 ms sinon).</p>
+<h2 id="prerequis">Prérequis<a class="anchor-link" href="#prerequis">¶</a></h2><p>Avant de commencer, vous devez maîtriser les notions suivantes (vues en cours) :</p>
+<ul>
+<li>Configuration des GPIO en entrée/sortie.</li>
+<li>Utilisation des interruptions externes (EXTI) – mais ici nous utiliserons les interruptions de timer.</li>
+<li>Mise en œuvre des Timers et de leurs interruptions.</li>
+<li>Affichage de texte sur un LCD 16×2 via le driver fourni (<code>lcd.h</code> / <code>lcd.c</code>).</li>
+<li>Notions de base du langage C : variables, fonctions, tableaux, structures de contrôle.</li>
+</ul>
+<p>Le projet utilisera nos bibliothèques <code>delay.h</code> (pour <code>Delay_Init</code>, <code>Delay_Us</code>, <code>Delay_Ms</code>) et <code>lcd.h</code>. Vérifiez que <code>Delay_Init()</code> est correctement paramétrée pour une fréquence système de 16 MHz (HSI).</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f3d6b5f7-483d-42b4-a250-2c180de9a7c5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-6"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=533445fc-cb9d-408c-b1d6-6d8a6f61dc2a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-7"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a42eee6d-d383-46ed-9146-e1c956bcef8b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="description-du-tp-les-7-etapes-de-construction">Description du TP : les 7 étapes de construction<a class="anchor-link" href="#description-du-tp-les-7-etapes-de-construction">¶</a></h2><p>Vous allez construire le programme <strong>brique par brique</strong>. Chaque étape est une fonctionnalité indépendante que vous devez implémenter, tester et valider avant de passer à la suivante. À la fin, toutes les briques s’assemblent pour former le programme final.</p>
+<h3 id="etape-1-mise-en-place-du-timer3-interruption-1-ms">Étape 1 – Mise en place du Timer3 (interruption 1 ms)<a class="anchor-link" href="#etape-1-mise-en-place-du-timer3-interruption-1-ms">¶</a></h3><p><strong>Objectif</strong> : Configurer le Timer3 pour qu’il génère une interruption toutes les 1 ms. Dans le gestionnaire d’interruption, vous incrémenterez un compteur global <code>tick_ms</code>. Vous afficherez sa valeur sur le LCD (par exemple toutes les 100 ms) pour vérifier la périodicité.</p>
+<p><strong>Consignes</strong> :</p>
+<ul>
+<li>Activer l’horloge du Timer3 (bus APB1).</li>
+<li>Calculer <code>PSC</code> et <code>ARR</code> pour obtenir une fréquence de 1 kHz avec une horloge de 16 MHz.</li>
+<li>Activer l’interruption sur l’événement Update (<code>DIER</code>).</li>
+<li>Démarrer le compteur (<code>CR1</code>).</li>
+<li>Activer l’IRQ dans le NVIC.</li>
+<li>Écrire le gestionnaire <code>TIM3_IRQHandler</code> : vérifier le flag UIF, l’effacer, incrémenter <code>tick_ms</code>.</li>
+</ul>
+<p><strong>Validation</strong> : le compteur s’incrémente d’environ 1000 en une seconde.</p>
+<h3 id="etape-2-lecture-des-boutons-avec-antirebond">Étape 2 – Lecture des boutons avec anti‑rebond<a class="anchor-link" href="#etape-2-lecture-des-boutons-avec-antirebond">¶</a></h3><p><strong>Objectif</strong> : Lire les trois boutons (PA0, PA1, PA2) dans l’interruption 1 ms et implémenter un filtre anti‑rebond de 5 ms. Vous devez détecter un appui <strong>unique</strong> (front descendant) et exécuter une action (pour l’instant, allumer une LED ou afficher un message sur le LCD).</p>
+<p><strong>Consignes</strong> :</p>
+<ul>
+<li>Configurer PA0, PA1, PA2 en entrée avec pull‑up interne (<code>MODER</code> et <code>PUPDR</code>).</li>
+<li>Dans l’interruption, lire chaque broche (inverser la lecture car appui = 0).</li>
+<li>Pour chaque bouton, maintenir trois variables : <code>prev</code> (niveau précédent), <code>debounce</code> (compteur initialisé à 5 ms lorsque le niveau change), <code>stable</code> (niveau validé).</li>
+<li>Lorsque <code>debounce</code> atteint 0 et que <code>stable</code> vaut <code>true</code>, appeler une fonction d’action (par exemple <code>action_bouton0()</code>).</li>
+</ul>
+<p><strong>Validation</strong> : chaque appui ne déclenche qu’une seule action, sans rebonds.</p>
+<h3 id="etape-3-affichage-du-temps-formate-sans-boutons">Étape 3 – Affichage du temps formaté (sans boutons)<a class="anchor-link" href="#etape-3-affichage-du-temps-formate-sans-boutons">¶</a></h3><p><strong>Objectif</strong> : Créer une fonction <code>afficher_ecran()</code> qui affiche sur la ligne 1 du LCD un temps (en millisecondes) sous la forme <code>hh:mm:ss:tt</code>, avec un titre sur la ligne 0.</p>
+<p><strong>Consignes</strong> :</p>
+<ul>
+<li>Déclarer une variable <code>volatile uint32_t chrono_ms</code> et l’incrémenter dans l’interruption (pour l’instant, toujours).</li>
+<li>Écrire une fonction d’aide <code>int_to_2digits</code> qui convertit un nombre 0-99 en deux caractères.</li>
+<li>Dans <code>afficher_ecran()</code>, calculer heures, minutes, secondes et tierces :<ul>
+<li>Tierce = 1/60 seconde → <code>tt = ( (chrono_ms % 1000) * 60 ) / 1000</code>.</li>
+</ul>
 </li>
-<li><p><strong>Systèmes temps réel mous (Soft Real-Time)</strong> : Un léger retard est tolérable sans conséquences graves, même si l'on cherche toujours à respecter les délais.</p>
+<li>Construire la chaîne <code>"12:34:56:45"</code> et l’afficher en ligne 1.</li>
+<li>Afficher un titre fixe (ex: <code>"Chrono"</code>) en ligne 0.</li>
+</ul>
+<p><strong>Validation</strong> : le temps s’affiche et évolue correctement.</p>
+<h3 id="etape-4-actions-runstop-et-reset">Étape 4 – Actions RUN/STOP et RESET<a class="anchor-link" href="#etape-4-actions-runstop-et-reset">¶</a></h3><p><strong>Objectif</strong> : Lier les boutons PA0 et PA1 aux commandes du chronomètre.</p>
+<p><strong>Consignes</strong> :</p>
+<ul>
+<li>Ajouter une variable <code>volatile bool chrono_running</code>.</li>
+<li>Dans l’interruption, incrémenter <code>chrono_ms</code> uniquement si <code>chrono_running</code> est <code>true</code>.</li>
+<li>Implémenter <code>action_bouton0()</code> : bascule <code>chrono_running</code>.</li>
+<li>Implémenter <code>action_bouton1()</code> : remet <code>chrono_ms = 0</code> et <code>chrono_running = false</code>.</li>
+<li>Dans le gestionnaire d’interruption, lorsque l’anti‑rebond valide un appui sur PA0, appeler <code>action_bouton0()</code> ; sur PA1, <code>action_bouton1()</code>.</li>
+<li>Après chaque action, forcer un rafraîchissement immédiat de l’écran (en modifiant le compteur de ticks).</li>
+</ul>
+<p><strong>Validation</strong> : le chronomètre se lance, s’arrête et se réinitialise.</p>
+<h3 id="etape-5-rafraichissement-adaptatif">Étape 5 – Rafraîchissement adaptatif<a class="anchor-link" href="#etape-5-rafraichissement-adaptatif">¶</a></h3><p><strong>Objectif</strong> : Optimiser l’affichage : 10 ms lorsque le chronomètre tourne (pour voir les tierces défiler), 500 ms lorsqu’il est arrêté.</p>
+<p><strong>Consignes</strong> :</p>
+<ul>
+<li>Définir <code>REFRESH_RUN = 10</code> et <code>REFRESH_STOP = 500</code>.</li>
+<li>Utiliser un compteur <code>display_tick</code> et une variable <code>display_delay</code>.</li>
+<li>Dans l’interruption, incrémenter <code>display_tick</code> ; lorsqu’il atteint <code>display_delay</code>, le remettre à 0 et appeler <code>afficher_ecran()</code>.</li>
+<li>Mettre à jour <code>display_delay</code> en fonction de <code>chrono_running</code> (et plus tard, de la page).</li>
+</ul>
+<p><strong>Validation</strong> : en mode RUN, l’affichage est fluide ; en STOP, il est plus lent.</p>
+<h3 id="etape-6-deuxieme-page-horloge-reglable">Étape 6 – Deuxième page : horloge réglable<a class="anchor-link" href="#etape-6-deuxieme-page-horloge-reglable">¶</a></h3><p><strong>Objectif</strong> : Ajouter une seconde page (horloge temps réel) avec ses propres actions.</p>
+<p><strong>Consignes</strong> :</p>
+<ul>
+<li>Ajouter <code>volatile uint8_t page</code> (0 = Chrono, 1 = Horloge).</li>
+<li>Ajouter <code>volatile uint32_t clock_seconds</code> (secondes depuis minuit).</li>
+<li>Écrire <code>mettre_a_jour_heure()</code> pour extraire <code>hh</code>, <code>mm</code>, <code>ss</code> de <code>clock_seconds</code>.</li>
+<li>Dans l’interruption, compter les secondes (toutes les 1000 ms) et appeler <code>mettre_a_jour_heure()</code>.</li>
+<li>Modifier <code>afficher_ecran()</code> : si <code>page == 0</code>, afficher le chrono ; sinon, afficher <code>"Horloge"</code> et <code>hh:mm:ss</code>.</li>
+<li>Modifier les actions des boutons :<ul>
+<li>PA0 : si page 0 → RUN/STOP ; si page 1 → +1 minute (avec mise à jour de <code>clock_seconds</code>).</li>
+<li>PA1 : si page 0 → RESET ; si page 1 → +1 heure.</li>
+<li>PA2 : basculer <code>page</code> (0↔1).</li>
+</ul>
 </li>
+<li>Adapter <code>display_delay</code> : si page 0 et chrono_running → REFRESH_RUN, sinon REFRESH_STOP.</li>
 </ul>
-<p>Exemple : Un distributeur automatique de billets (ATM). Si l'affichage met deux secondes de plus, l'utilisateur attend, mais le service est finalement rendu.</p>
+<p><strong>Validation</strong> : l’horloge avance en arrière‑plan, même sur la page chrono. Les réglages fonctionnent.</p>
+<h3 id="etape-7-finalisation-et-tests-complets">Étape 7 – Finalisation et tests complets<a class="anchor-link" href="#etape-7-finalisation-et-tests-complets">¶</a></h3><p><strong>Objectif</strong> : Vérifier toutes les interactions, gérer les débordements (chrono limité à 100h, horloge à 24h), nettoyer le code et le commenter.</p>
+<p><strong>Consignes</strong> :</p>
 <ul>
-<li><p><strong>Systèmes temps réel fermes (Firm Real-Time)</strong> : Le non-respect du délais rend le résultat inutile et rejeté, cependant cela ne détruit pas le système et ne provoque pas de défaillance catastrophique.</p>
-<p>Exemple : Un flux vidéo en direct, un système de contrôle qualité sur une ligne de production. Si une image est traitée trop tard, on l'ignore et on passe à la suivante, mais la qualité globale diminue. Ceci affecte directement la qualité du service du système.</p>
-</li>
+<li>Vérifier que le chronomètre repasse à 0 après 100 heures.</li>
+<li>Vérifier que l’horloge repasse à 00:00:00 après 24h.</li>
+<li>Tester toutes les combinaisons : démarrer/arrêter le chrono, réinitialiser, changer de page, régler l’heure.</li>
+<li>Ajouter des commentaires en français expliquant chaque section.</li>
 </ul>
-<p>Remarque : les frontières entre ces types peuvent être floues, mais elles guident le choix des mécanismes de conception.</p>
+<p><strong>Validation</strong> : le système est robuste et répond correctement à toutes les sollicitations.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=ffdfc970-bf7a-4978-b02b-59c4106a1e4b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-8"></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c76e58cd-2377-47c7-9765-802f2eb6aa11">
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3469e4b0-ab10-4752-b1cc-67b6e5e0d57d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="pourquoi-les-contraintes-temporelles-existent">Pourquoi les contraintes temporelles existent ?<a class="anchor-link" href="#pourquoi-les-contraintes-temporelles-existent">¶</a></h3><p>Le système doit impérativement suivre la vitesse du monde réel, car l'environnement physique est par nature réactif et dynamique.</p>
-<ul>
-<li><strong>Le temps ne s'arrête pas</strong> : Le monde extérieur évolue en permanence, même pendant que le processeur effectue ses calculs.</li>
-<li><strong>La physique est continue</strong> : Pendant que le processeur "réfléchit", le moteur continue de tourner, le drone subit la gravité, le signal audio défile et la voiture avance.</li>
-<li><strong>Maîtrise du contrôle</strong> : Si le temps de réponse du système est trop lent par rapport à la dynamique du phénomène physique, le contrôle est perdu, ce qui peut mener à une instabilité ou à un accident.</li>
+<h2 id="pistes-de-reflexion-et-aide">Pistes de réflexion et aide<a class="anchor-link" href="#pistes-de-reflexion-et-aide">¶</a></h2><ul>
+<li><strong>Calcul du Timer3</strong> : pour 16 MHz, on peut choisir <code>PSC = 1599</code> (division par 1600) et <code>ARR = 9</code> (division par 10) → 1 kHz.</li>
+<li><strong>Anti‑rebond</strong> : utilisez une variable <code>debounce</code> initialisée à 5 lorsque le niveau change ; décrémentez‑la tant que le niveau reste stable. Quand elle atteint 0, le niveau est validé.</li>
+<li><strong>Conversion des nombres</strong> : utilisez une fonction <code>mettre_nombre_en_2_chiffres</code> avec division entière pour éviter <code>sprintf</code> (trop lourd).</li>
+<li><strong>Tierces</strong> : 1 seconde = 60 tierces ; le calcul est <code>tierces = ( (chrono_ms % 1000) * 60 ) / 1000</code>.</li>
+<li><strong>Forcer le rafraîchissement</strong> : après une action, positionnez <code>display_tick</code> à une valeur ≥ <code>display_delay</code> pour que l’écran se mette à jour à la prochaine milliseconde.</li>
 </ul>
-<p>Prenons le cas d'un robot auto-équilibré : son contrôleur doit lire les données du capteur IMU, estimer l'angle via un filtre de Kalman, calculer la correction PID, puis commander les moteurs. Ce cycle doit s'exécuter avec précision plusieurs centaines de fois par seconde ; au moindre retard, le robot perd l'équilibre et chute.</p>
-<p><em>Un système temps réel n'est pas un système rapide, ni celui qui fonctionne correctement, mais c'est un système qui est capable de réagir correctement au bon moment.</em>
-Dans le système classique qui n'est pas temps réel, le résultat seul est important ; par contre, dans le système temps réel, le résultat <strong>ET</strong> le temps de réponse sont critiques. Cette définition est au cœur de tout ce cours.</p>
+<p>Exemple :</p>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Convertit un nombre (0 à 99) en deux caractères.</span>
+<span class="cm"> * Exemple : 5 -&gt; '0','5' ; 42 -&gt; '4','2'</span>
+<span class="cm"> * On remplit le tableau buf[2] avec les caractères.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">mettre_nombre_en_2_chiffres</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">valeur</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// La dizaine : division entière par 10</span>
+<span class="w">    </span><span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'0'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">valeur</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// L'unité : reste de la division par 10</span>
+<span class="w">    </span><span class="n">buf</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'0'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">valeur</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=152efb3c-5221-41d4-9f53-30955ecce817">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-9"></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0c23bac1-0cfc-4030-9e6d-8699225900e3">
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7c00c1e6-357c-4cfd-bf59-b598a8b2d719">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="conception-des-systemes-embarque-temps-reel">Conception des systèmes embarqué temps réel<a class="anchor-link" href="#conception-des-systemes-embarque-temps-reel">¶</a></h2><p>Ils sont sujets à des contraintes et des ressources :</p>
-<ul>
-<li>Dans ces systèmes temps réel, il n'y a pas de surprise, tout est déterministe.</li>
-<li>La taille de la mémoire est petite, de quelques kilo-octets à quelques méga-octets. Le choix des variables et la gestion de la mémoire font partie de l'ingénierie. Le code doit être extrêmement optimisé.</li>
-<li>Ils doivent consommer moins d'énergie électrique pour la plupart de ceux qui sont autonomes et qui doivent fonctionner sur des batteries.</li>
+<h2 id="livrables-attendus">Livrables attendus<a class="anchor-link" href="#livrables-attendus">¶</a></h2><ul>
+<li>Code source complet et commenté dans un fichier compressee 20%.</li>
+<li>Schéma de câblage sous Prroteus Isis 10%.</li>
+<li>Une démonstration fonctionnelle (vidéo de présentation et d'explication du code et fonctionnement) 50%.</li>
+<li>Un rapport expliquant chaque étape, les difficultés rencontrées et les solutions apportées 20%.</li>
 </ul>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a470e7ce-8eff-4989-a2a5-dc508bf0045b">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9d54b1a0-8723-4ed8-933d-ec497d03e060">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Afin de parvenir à rendre un système "temps réel", nous allons mettre en œuvre les stratégies suivantes :</p>
-<ol>
-<li><strong>Gestion des interruptions et Machines d'États (FSM)</strong> : Utilisation conjointe d'interruptions et de machines d'états pour répondre aux tâches urgentes et prioritaires de manière structurée.</li>
-<li><strong>ISR (Interrupt Service Routines) minimalistes</strong> : Seules les actions critiques (capture d'un signal, arrêt d'urgence d'un moteur) seront traitées dans l'ISR. Tout traitement lourd est proscrit : l'ISR doit être la plus courte possible, se limitant généralement à lever un drapeau (flag) ou lire un registre.</li>
-<li><strong>Traitement asynchrone</strong> : Le gros des calculs est déporté dans la boucle principale (main), qui s'exécutera après la détection d'un flag levé par une interruption.</li>
-<li><strong>Bannissement des fonctions bloquantes</strong> : Évitement total des fonctions de type delay(). À la place, nous utiliserons des timers matériels cadencés qui lèvent des drapeaux à intervalles réguliers pour déclencher des actions ou simuler des délais sans figer le processeur.</li>
-<li><strong>Exécution non-bloquante</strong> : Chaque fonction doit s'exécuter très rapidement afin de "rendre la main" immédiatement au système et ne pas retarder les autres tâches.</li>
-<li><strong>Utilisation du DMA (Direct Memory Access)</strong> : Transfert de gros volumes de données entre la mémoire et les périphériques (ex: de l'ADC vers la RAM) sans solliciter le processeur. Ce dernier se contente d'ordonner le transfert et reçoit une notification une fois l'opération terminée.</li>
-<li><strong>Analyse du WCET (Worst Case Execution Time)</strong> : Calcul manuel du "Pire Cas" pour chaque chemin d'exécution du code. Si la somme des temps d'exécution dépasse l'échéance impartie, le système perd sa garantie temps réel.</li>
-</ol>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-10"></div>
 </div>
 </div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cf133a8e-e7df-4d35-9067-6f69499e4e2b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Exemple concret : Un contrôleur de vitesse de moteur</p>
-<ol>
-<li>Timer Interruption (chaque 500µs) : Lecture du capteur de position et calcul de la nouvelle commande (priorité absolue).</li>
-<li>Boucle Main (Background) : Envoi des données vers un écran ou une console. Si l'envoi prend du temps, ce n'est pas grave, car l'interruption du Timer viendra "couper" ce travail pour assurer la régulation du moteur à temps.</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=276f06cb-0c0e-4745-8f46-7c9d979ba7b6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Lorsque le système devient complexe, intégrant plusieurs tâches simultanées, des priorités variées, des interfaces de communication et des contraintes temporelles strictes; l’usage d’un <strong>RTOS (Real-Time Operating System)</strong> devient indispensable.</p>
-<p>Le RTOS est une couche logicielle supérieure (framework) qui permet d'organiser le code afin de :</p>
-<ul>
-<li>Garantir le respect des échéances (deadlines) du temps réel.</li>
-<li>Assurer la synchronisation entre les tâches.</li>
-<li>Gérer le partage du temps processeur (ordonnancement).</li>
-</ul>
-<p>On retrouve parmi les plus célèbres : FreeRTOS, VxWorks, Zephyr, QNX ou encore RTLinux.</p>
-<p><strong>Exemple concret d'un robot auto-équilibré</strong><br/>
-Supposons un système gérant trois tâches aux périodicités différentes : Lecture IMU toutes les 1 ms (Critique), la mise à jour Wi-Fi toutes les 50 ms (Lourde). Et l'affichage toutes les 20 ms (Secondaire).</p>
-<ul>
-<li><p>Sans RTOS (Bare Metal), si la tâche Wi-Fi mobilise le processeur pendant 50 ms pour traiter des données, elle bloque l'exécution des autres fonctions. La lecture de l'IMU devra attendre la fin du traitement Wi-Fi. Pour un robot équilibré, ce retard est fatal, il ne peut plus corriger sa position et chute.</p>
-</li>
-<li><p>Avec RTOS, grâce à l'ordonnancement préemptif, le RTOS va suspendre immédiatement la tâche Wi-Fi dès que l'échéance de 1 ms de l'IMU arrive. L'IMU est traitée en priorité absolue, puis le processeur reprend le Wi-Fi là où il s'était arrêté.</p>
-</li>
-</ul>
-<p>Un RTOS n'est pas conçu pour rendre un système plus rapide, mais pour rendre son comportement temporel déterministe et prévisible.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d77db9e2-b062-4978-81b3-01a4eaa94243">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="quelques-concepts-de-temps-reel">Quelques concepts de temps reel<a class="anchor-link" href="#quelques-concepts-de-temps-reel">¶</a></h3><ul>
-<li><strong>Deadline (Échéance)</strong>: C'est le temps maximal (ou échéance maximale) autorisé pour terminer une tâche.</li>
-</ul>
-<p>Si un capteur finit sa lecture apres le temps predefini, il y a erreur temps reel.</p>
-<ul>
-<li><strong>Latence (délais d’attente)</strong>: C'est le temps entre l’apparition d’un événement externe déclencheur et moment de la réaction du système (le début de son traitement).</li>
-</ul>
-<p>Exemple : Un appui sur le bouton poussoir allume la LED. Si le délai trop grand, le système est peu réactif. Si on a 1ms c'est excellent, mais si on a 500 ms, c'est désagréable a l'utilisateur.</p>
-<ul>
-<li><strong>Temps de réponse</strong> : est bien égal a la latence plus le temps d’exécution (le traitement). Plus il est faible, plus le système est réactif.</li>
-<li><strong>Jitter (gigue)</strong> : est la variation imprévisible du temps d’exécution (latence).</li>
-</ul>
-<p>Exemple : Un traitement audio doit durer : 22 µs - 22 µs - 22 µs et pas : 10 µs - 50 µs - 5 µs<br/>
-Le jitter crée de l’instabilité. Une forte gigue dégrade la précision temporelle. Le jitter est souvent plus dangereux que la latence moyenne.</p>
-<ul>
-<li><strong>Temps d'exécution WCET (Worst Case Execution Time)</strong>: c’est la durée maximale que la tâche peut mettre pour terminer un travail, en considérant le pire chemin d’exécution (branchements, boucles, accès mémoire) et en l’absence d’interférences (interruptions, préemptions).</li>
-</ul>
-<p>C'est ce temps qui intéresse l'ingénieur temps réel et pas le temps moyen.</p>
 </div>
 </div>
 </div>

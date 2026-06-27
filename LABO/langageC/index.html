@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Ir Paul S. Kabidu">
+        <link rel="canonical" href="https://Plkab.github.io/INF302/LABO/langageC/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Langage C - INF302 – Programmation des processeurs temps réel</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../stylesheets/extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">INF302 – Programmation des processeurs temps réel</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../Systemes%20temps%20reel/Systemes%20temps%20reel/" class="nav-link">Systèmes embarqués temps réel</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../Architecture%20stm32f401/Architecture%20STM32F401/" class="nav-link">Architecture du processeur ARM STM32F401</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../GPIO/GPIO/" class="nav-link">Interface d'entrée/sortie numérique</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../Interruptions/Interruptions/" class="nav-link">Réactivité rapide avec les interruptions matérielles</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../Timer/Timer/" class="nav-link">Les Timers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../Machine d'etats finis/fsm.ipynb" class="nav-link">Machine d'états finis</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../Protothreads/Protothreads.ipynb" class="nav-link">Introduction aux Protothreads</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../UART/UART.ipynb" class="nav-link">Communication série via UART</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../ADC/ADC.ipynb" class="nav-link">Acquisition analogique avec ADC</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../PWM/PWM.ipynb" class="nav-link">Génération des signaux avec PWM</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../I2C/I2C.ipynb" class="nav-link">Interfaçage avec I2C</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../SPI/SPI.ipynb" class="nav-link">Interfaçage avec SPI</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Laboratoires</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../demarrerKiel/" class="dropdown-item">Démarrer Kiel</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Langage C</a>
+</li>
+                                    
+<li>
+    <a href="../TP1%20Chronometre%20et%20Horloge/" class="dropdown-item">TP : Chronomètre et horloge programmable sur STM32F4 – Construction par étapes</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../demarrerKiel/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../TP1%20Chronometre%20et%20Horloge/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#introduction-au-langage-c-embarque" class="nav-link">Introduction au Langage C embarqué</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="introduction-au-langage-c-embarque">Introduction au Langage C embarqué</h1>
+<p style="text-align: center;"><em>Ir Paul S. Kabidu, M.Eng. <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#112;&#97;&#117;&#108;&#107;&#97;&#98;&#105;&#100;&#117;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#115;&#112;&#97;&#117;&#108;&#107;&#97;&#98;&#105;&#100;&#117;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></em></p>
+<hr />
+<p><a href="../../#Accueil">Accueil</a></p>
+<p><br>
+<br></p>
+<p>Le langage C embarqué est une extension du langage C adaptée aux contraintes des microcontrôleurs (ressources limitées, accès direct au matériel). Il reste aujourd'hui le langage de référence pour les systèmes embarqués et les noyaux de systèmes d'exploitation. Avec ce langage, on peut directement manipuler des adresses mémoire dans le but de configurer le matériel (GPIO, Timer, ADC, USART…).</p>
+<hr />
+<p><br></p>
+<h3 id="les-variables-et-types-de-donnees"><strong>Les Variables et Types de données</strong></h3>
+<p>Dans la programmation embarquée, la taille des variables est critique en raison des contraintes de mémoire. Voici les types de base :</p>
+<ul>
+<li><strong>int (entier)</strong> : souvent 32 bits sur STM32 (ex: 10, -5).</li>
+<li><strong>char (caractère)</strong> : 8 bits (ex: 'A').</li>
+<li><strong>float / double</strong> : nombres à virgule (attention à l'utilisation de la FPU).</li>
+</ul>
+<p>Les types standards (<code>int</code>, <code>short</code>, <code>long</code>) changent de taille selon le processeur (16 bits sur Arduino, 32 bits sur STM32). Pour éviter les bugs, on utilise les types à taille fixe (C99), définis dans la bibliothèque <code>&lt;stdint.h&gt;</code>. Cela garantit la portabilité dans l'embarqué :</p>
+<ul>
+<li><strong><code>uint8_t</code></strong> : 8 bits non signé (0 à 255). Pratique pour les registres 8 bits, les drapeaux (flags).</li>
+<li><strong><code>uint16_t</code></strong> : 16 bits non signé (0 à 65535). Utilisé pour les valeurs brutes d'un ADC 12 bits ou des timers.</li>
+<li><strong><code>uint32_t</code></strong> : 32 bits non signé (0 à 4,2 milliards). C'est la taille native des registres du STM32F4. C'est le type utilisé pour toutes les adresses de registres.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Taille (bits)</th>
+<th>Plage</th>
+<th>Usage typique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uint8_t</code></td>
+<td>8</td>
+<td>0 à 255</td>
+<td>Registre 8 bits, état de LED</td>
+</tr>
+<tr>
+<td><code>int8_t</code></td>
+<td>8</td>
+<td>-128 à 127</td>
+<td>Température basse</td>
+</tr>
+<tr>
+<td><code>uint16_t</code></td>
+<td>16</td>
+<td>0 à 65 535</td>
+<td>Valeur ADC (12 bits)</td>
+</tr>
+<tr>
+<td><code>int16_t</code></td>
+<td>16</td>
+<td>-32 768 à 32 767</td>
+<td>Valeur ADC (12 bits)</td>
+</tr>
+<tr>
+<td><code>uint32_t</code></td>
+<td>32</td>
+<td>0 à 4,2 milliards</td>
+<td>Adresse registre STM32</td>
+</tr>
+<tr>
+<td><code>int32_t</code></td>
+<td>32</td>
+<td>-2 147 483 648 à 2 147 483 647</td>
+<td>Adresse registre STM32</td>
+</tr>
+</tbody>
+</table>
+<p>Dans la déclaration des variables, on peut utiliser certains mots-clés :</p>
+<ul>
+<li><strong><code>volatile</code></strong> : Indispensable. Empêche le compilateur d'optimiser une variable qui peut changer hors du flux normal du programme (ex: un drapeau d'interruption ou un registre matériel, l'état d'un bouton). Sans <code>volatile</code>, le compilateur pourrait croire que la valeur n'a pas changé et ignorer l'appui sur le bouton.</li>
+<li><strong><code>static</code></strong> : Limite la portée d'une variable à un fichier ou conserve sa valeur entre deux appels de fonction. La variable n'est visible que dans le fichier actuel (encapsulation).</li>
+<li><strong><code>const</code></strong> : Indique que la variable ne changera jamais et la place en mémoire Flash (lecture seule) pour économiser la RAM. C'est vital pour économiser la précieuse RAM du STM32F4.</li>
+</ul>
+<p>Quand on déclare une variable, on <strong>réserve</strong> un espace mémoire, un emplacement physique dans la RAM ou la Flash. Pour notre cas, la RAM est de 64 Ko, comparativement à plusieurs Go pour les PC.</p>
+<p>On peut donner un surnom à un type existant pour rendre le code plus lisible en utilisant le mot-clé <strong><code>typedef</code></strong> :</p>
+<pre><code class="language-c">typedef uint32_t registre_t; // &quot;registre_t&quot; est maintenant un synonyme de uint32_t
+registre_t monGPIO;
+</code></pre>
+<p>Cela rend le code plus lisible et portable.</p>
+<hr />
+<p><br></p>
+<h3 id="la-structure"><strong>La structure</strong></h3>
+<p>Une <strong>structure</strong> permet de regrouper des variables de types différents sous un seul nom. C'est l'outil idéal pour représenter un objet complexe (un capteur, un moteur).</p>
+<pre><code class="language-c">struct Capteur {
+    uint16_t valeur;      // 2 octets pour l'ADC
+    uint8_t  id;          // 1 octet pour le numéro
+    uint8_t  estActif;    // 1 octet (booléen)
+}; // Taille totale = 4 octets
+
+struct Capteur monCapteur;
+monCapteur.valeur = 2048;
+</code></pre>
+<p>On peut créer des types personnalisés pour les états ou les configurations avec <strong><code>typedef</code></strong>.</p>
+<pre><code class="language-c">typedef uint32_t registre_t; // &quot;registre_t&quot; est maintenant un synonyme de uint32_t
+registre_t monGPIO;
+
+// Très souvent utilisé avec les structures :
+typedef struct {
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
+} Couleur_t;
+
+Couleur_t maLED = {255, 0, 0}; // Plus besoin d'écrire &quot;struct&quot; devant
+</code></pre>
+<p>Les structures sont très utiles pour mapper les registres matériels du STM32 tels que décrit dans la datasheet.</p>
+<pre><code class="language-c">typedef struct {
+    volatile uint32_t MODER;    // Adresse 0x00
+    volatile uint32_t OTYPER;   // Adresse 0x04
+    volatile uint32_t OSPEEDR;  // Adresse 0x08
+    // ...
+} GPIO_Regs_t;
+
+// On pointe directement sur l'adresse réelle du matériel
+#define GPIOA ((GPIO_Regs_t *) 0x40020000)
+
+GPIOA-&gt;MODER |= (1 &lt;&lt; 0); // Manipulation élégante et lisible !
+</code></pre>
+<hr />
+<p><br></p>
+<h3 id="lunion"><strong>L'Union</strong></h3>
+<p>Une <strong>union</strong> permet de stocker des variables de types différents au <strong>même emplacement mémoire</strong>. La taille de l'union est celle de son plus grand élément.</p>
+<pre><code class="language-c">union Paquet {
+    uint32_t motComplet;    // Accès aux 32 bits d'un coup
+    uint8_t  octets[4];     // Accès octet par octet pour l'envoi
+};
+
+union Paquet monRegistre;
+monRegistre.motComplet = 0x12345678;
+// monRegistre.octets[0] vaudra 0x78 (sur STM32 Little Endian)
+</code></pre>
+<p>Les unions sont pratiques pour décomposer une donnée en octets, par exemple pour l'envoi série.</p>
+<hr />
+<p><br></p>
+<h3 id="les-operateurs-arithmetiques-de-comparaison-et-logiques"><strong>Les Opérateurs Arithmétiques, de Comparaison et Logiques</strong></h3>
+<p><strong>Opérateurs Arithmétiques</strong></p>
+<table>
+<thead>
+<tr>
+<th>Opérateur</th>
+<th>Nom    Usage sur STM32</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>Addition</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Soustraction</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Multiplication</td>
+</tr>
+<tr>
+<td>/</td>
+<td>Division</td>
+</tr>
+<tr>
+<td>%</td>
+<td>Modulo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Opérateurs de Comparaison</strong></p>
+<table>
+<thead>
+<tr>
+<th>Opérateur</th>
+<th>Nom    Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>==</td>
+<td>Égal à</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>Différent de</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>Supérieur à</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>Inférieur à</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>Supérieur ou égal</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>Inférieur ou égal</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Opérateurs bitwise</strong></p>
+<table>
+<thead>
+<tr>
+<th>Symbole</th>
+<th>Opération  Exemple (A=0x35, B=0x0F)</th>
+<th>Résultat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;</td>
+<td>ET</td>
+<td>0x35 &amp; 0x0F</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>OU</td>
+</tr>
+<tr>
+<td>^</td>
+<td>OU exclusif</td>
+<td>0x54 ^ 0x78</td>
+</tr>
+<tr>
+<td>~</td>
+<td>NON (complément)</td>
+<td>~0x55</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>décalage droite</td>
+<td>0x10 &gt;&gt; 3</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>décalage gauche</td>
+<td>0x10 &lt;&lt; 3</td>
+</tr>
+</tbody>
+</table>
+<p>Exemple simple :</p>
+<pre><code class="language-c">unsigned char temp;
+temp = 0x35 &amp; 0x0F;   // AND → 0x05
+temp = 0x04 | 0x68;   // OR  → 0x6C
+temp = 0x54 ^ 0x78;   // XOR → 0x2C
+temp = ~0x55;         // NOT → 0xAA
+
+// Mettre le bit 4 à 1
+var1 |= 0x10;            // masque 0x10 = (1 &lt;&lt; 4)
+
+// Mettre le bit 4 à 0
+var1 &amp;= ~0x10;           // 0x10 = 0001 0000, ~0x10 = 1110 1111
+
+// Tester le bit 5 (6e bit)
+if (var1 &amp; 0x20) {       // 0x20 = (1 &lt;&lt; 5)
+    // bit 5 = 1
+} else {
+    // bit 5 = 0
+}
+</code></pre>
+<p>Plutôt que d’écrire des constantes hexadécimales, on peut utiliser l’opérateur &lt;&lt; pour construire un masque lisible :</p>
+<pre><code class="language-c">#define MASK_BIT3   (1 &lt;&lt; 3)    // 0x08
+#define MASK_BIT61  (1 &lt;&lt; 6) | (1 &lt;&lt; 1)  // 0x42
+
+register |= MASK_BIT3;          // met le bit 3 à 1
+register &amp;= ~MASK_BIT61;        // efface les bits 6 et 1
+register ^= (1 &lt;&lt; 5);           // bascule le bit 5
+</code></pre>
+<p>Imaginons un registre où les bits 28 à 30 forment un champ de 3 bits. Pour lui affecter la valeur 5 :</p>
+<pre><code class="language-c">// Efface d'abord le champ (bits 30-28)
+register &amp;= ~(7 &lt;&lt; 28);
+
+// Puis écrit la nouvelle valeur
+register |= (5 &lt;&lt; 28);
+</code></pre>
+<p>On peut combiner les deux en une seule ligne :</p>
+<pre><code class="language-c">register = (register &amp; ~(7 &lt;&lt; 28)) | (5 &lt;&lt; 28);
+</code></pre>
+<p><strong>Opérateurs Logiques</strong></p>
+<p>En langage C, les <strong>opérateurs logiques</strong> servent à combiner plusieurs conditions entre elles (généralement dans un if, while ou for). Ils renvoient toujours un résultat booléen (Vrai ou Faux).
+On a 3 opérateurs logiques &amp;&amp; (ET), || (OU), ! (NON) :</p>
+<table>
+<thead>
+<tr>
+<th>Opérateur</th>
+<th>Nom</th>
+<th>Description</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;&amp;</code></td>
+<td>ET (AND)</td>
+<td>Vrai si toutes les conditions sont vraies.</td>
+<td><code>if (temp &gt; 25 &amp;&amp; ventilateur == OFF)</code></td>
+</tr>
+<tr>
+<td><code>||</code></td>
+<td>OU (OR)</td>
+<td>Vrai si au moins une condition est vraie.</td>
+<td><code>if (bouton == PRESSED || urgence == 1)</code></td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>NON (NOT)</td>
+<td>Inverse l'état de la condition (Vrai devient Faux).</td>
+<td><code>if (!systeme_pret)</code> (si le système n'est PAS prêt)</td>
+</tr>
+</tbody>
+</table>
+<p>En langage C, <strong>0</strong> est considéré comme <strong>Faux (FALSE)</strong>. Et tout ce qui n'est pas 0 (1, -5, 100...) est considéré comme <strong>Vrai (TRUE)</strong>.</p>
+<hr />
+<p><br></p>
+<h3 id="les-structures-de-controle-le-flux"><strong>Les Structures de Contrôle (Le Flux)</strong></h3>
+<p><strong>Exemple Conditions : Sécurité "ET" (&amp;&amp;)</strong></p>
+<p>On ne lance l'action que si toutes les conditions de sécurité sont réunies.</p>
+<pre><code class="language-c">// Sécurité : Le moteur ne tourne que si la porte est fermée ET le bouton pressé
+if (Porte_Est_Fermee() &amp;&amp; Bouton_Start_Presse()) {
+    Moteur_On();
+} else {
+    Moteur_Off(); // Sécurité par défaut
+}
+</code></pre>
+<p>Avec &amp;&amp;, si la première condition est fausse, le C n'évalue même pas la deuxième (le résultat sera forcément faux).</p>
+<p><strong>Exemple Conditions : Alerte "OU" (||)</strong></p>
+<p>On déclenche l'arrêt d'urgence si au moins un défaut est détecté.</p>
+<pre><code class="language-c">// Arrêt si la température est trop haute OU si le courant est excessif
+if (Temperature &gt; 80 || Courant &gt; 10) {
+    Arret_Urgence();
+    Allumer_LED_Rouge();
+}
+</code></pre>
+<p>Avec ||, si la première est vraie, la deuxième n'est pas testée (le résultat sera forcément vrai).</p>
+<p><strong>Exemple Conditions : Inversion "NON" (!)</strong></p>
+<p>On vérifie l'absence d'un signal ou un état inverse.</p>
+<pre><code class="language-c">// Si le système n'est PAS en erreur, on continue le traitement
+if (!Systeme_En_Erreur()) {
+    Continuer_Acquisition();
+}
+</code></pre>
+<p>On peut combiner les trois pour des logiques plus fines :</p>
+<pre><code class="language-c">// Autorisation de charge batterie : 
+// (Tension OK ET Température OK) ET (PAS de mode maintenance actif)
+if ((Tension &lt; 4.2 &amp;&amp; Temp &lt; 45) &amp;&amp; !Mode_Maintenance) {
+    Demarrer_Charge();
+}
+</code></pre>
+<p><strong>Le Choix Multiple : switch...case</strong></p>
+<p>Le switch est l'outil idéal pour gérer des machines à états ou des menus. Il est plus lisible et souvent plus performant qu'une longue série de if...else if lorsqu'on teste plusieurs valeurs pour une même variable.</p>
+<pre><code class="language-c">typedef enum { IDLE, RUNNING, ERROR } State_t;
+State_t systemeStatut = IDLE;
+
+switch (systemeStatut) {
+    case IDLE:
+        Attendre_Commande();
+        break; // Quitte le switch. Obligatoire pour ne pas exécuter la suite.
+    case RUNNING:
+        Executer_Tache();
+        break;
+    case ERROR:
+        Declencher_Alarme();
+        break;
+    default: // Sécurité : exécuté si aucune valeur ne correspond
+        Reset_Systeme();
+        break;
+}
+</code></pre>
+<p>N'oubliez jamais le break, sinon le programme exécute aussi le code du case suivant (phénomène de fall-through).</p>
+<hr />
+<p><br></p>
+<h3 id="les-boucles-repetitions"><strong>Les Boucles (Répétitions)</strong></h3>
+<p>Dans l'embarqué, le processeur ne doit jamais s'arrêter. Les boucles permettent de gérer cette continuité.</p>
+<p><strong>Boucle : for</strong></p>
+<p>Idéale quand le nombre de répétitions est connu à l'avance. Sa structure est : <code>for (initialisation ; condition ; incrémentation)</code></p>
+<p>Exemple : Parcourir un tableau de données capteurs ou moyenner 10 mesures ADC.</p>
+<pre><code class="language-c">uint32_t somme = 0;
+
+for (int i = 0; i &lt; 10; i++) {
+    somme += Lire_ADC(); // Somme 10 échantillons
+}
+
+uint32_t moyenne = somme / 10;
+</code></pre>
+<p><strong>Boucle : do...while</strong></p>
+<p>Contrairement au <code>while</code>, cette boucle exécute le code au moins une fois avant de tester la condition.</p>
+<pre><code class="language-c">uint8_t tentative = 0;
+
+do {
+    Tenter_Connexion_Capteur();
+    tentative++;
+} while (!Capteur_Pret &amp;&amp; tentative &lt; 3);
+</code></pre>
+<p>Cette boucle est très utilisée pour les séquences d'initialisation matérielle où l'on doit tenter une action avant de vérifier si elle a réussi.</p>
+<p><strong>Boucle : while</strong></p>
+<p>Idéale quand on attend un événement extérieur dont on ne connaît pas la durée. On peut l'utilise pour attendre qu'un bit de registre change d'état.</p>
+<p>Exemple : Parcourir un tableau de données capteurs ou moyenner 10 mesures ADC.</p>
+<pre><code class="language-c">// Attendre que l'horloge système soit stable
+while ((RCC-&gt;CR &amp; RCC_CR_HSERDY) == 0); 
+</code></pre>
+<p>Un while sur un registre matériel (ex: attendre un signal UART) peut bloquer tout le programme si le périphérique tombe en panne. Pour des raisons de sécurité on ajoute souvent un timeout à un while.</p>
+<pre><code class="language-c">uint32_t timeout = 10000;
+
+while (!Signal_Recu &amp;&amp; timeout &gt; 0) {
+    timeout--; // On évite de rester bloqué à l'infini
+}
+</code></pre>
+<p><strong>Boucle infinie : while(1)</strong></p>
+<p>Pour le flux en embarqué sur STM32, le processeur ne doit jamais s'arrêter, on utilise la boucle infinie <code>while(1)</code>. Si le main se termine, le comportement devient imprévisible. On verrouille donc toujours la fin du programme :</p>
+<pre><code class="language-c">int main(void) {
+
+    Init_Hardware();
+
+    while(1) {
+        // Le coeur du système bat ici indéfiniment
+        Lire_Capteurs();
+        Traiter_Donnees();
+    }
+}
+</code></pre>
+<hr />
+<p><br></p>
+<h3 id="manipulation-de-bits-operateurs-bitwise"><strong>Manipulation de bits (Opérateurs Bitwise)</strong></h3>
+<p>Dans la programmation <em>baremetal C</em>, on utilise largement la manipulation des bits Ce sont les outils les plus utilisés pour configurer les registres du microcontrôleur. Contrairement aux opérateurs logiques (&amp;&amp;, ||, !), ceux-ci agissent sur chaque bit individuellement.</p>
+<ul>
+<li>L'operateur <strong>&lt;&lt; (décalage gauche)</strong> permet de positionner un bit à un emplacement précis.</li>
+<li>L'operateur <strong>&gt;&gt; (décalage droite)</strong> permet de lire la valeur d'un bit spécifique.</li>
+<li><strong>SET (Mise un bit à 1)</strong> : REG |= (1 &lt;&lt; 5); (Met le bit 5 à 1).
+Le  OU (OR) permet de mettre un ou plusieurs bits à 1 sans modifier les autres.</li>
+</ul>
+<pre><code class="language-c">    // Mettre le bit 13 à 1 (Activer PC13 en sortie)
+    GPIOC-&gt;MODER |= (1 &lt;&lt; 26); 
+</code></pre>
+<ul>
+<li><strong>CLEAR (Mise un bit à 0)</strong> : REG &amp;= ~(1 &lt;&lt; 5); (Met le bit 5 à 0).
+Le  ET (AND) permet de vérifier l'état d'un bit ou le mettre à 0. Et le NON (NOT) souvent utilisé avec &amp; inverse tous les bits.</li>
+</ul>
+<pre><code class="language-c">    // Mettre le bit 13 à 0
+    GPIOC-&gt;ODR &amp;= ~(1 &lt;&lt; 13); 
+</code></pre>
+<ul>
+<li><strong>TOGGLE (Basculer un bit)</strong> : REG ^= (1 &lt;&lt; 5); (Inverse l'état du bit 5).
+Le OU Exclusif (XOR) permet d'inverser (TOGGLE) l'état d'un bit (ex: faire clignoter une LED).</li>
+</ul>
+<pre><code class="language-c">    // Change l'état de la LED à chaque passage
+    GPIOC-&gt;ODR ^= (1 &lt;&lt; 13); 
+</code></pre>
+<ul>
+<li><strong>CHECK (Tester un bit)</strong> : if (REG &amp; (1 &lt;&lt; 5)) (Vérifie si le bit 5 est à 1).</li>
+</ul>
+<pre><code class="language-c">    // Vérifier si le bouton sur PA0 est pressé (bit 0)
+    if (GPIOA-&gt;IDR &amp; (1 &lt;&lt; 0)) {
+        // Action...
+    }
+</code></pre>
+<hr />
+<p><br></p>
+<h3 id="les-pointeurs"><strong>Les Pointeurs</strong></h3>
+<p><strong>Un pointeur</strong> est une variable qui contient l'<strong>adresse mémoire</strong> d'une autre variable. C'est l'outil le plus puissant du C pour manipuler directement le matériel.</p>
+<ul>
+<li><strong>&amp; (Adresse de)</strong> : Récupère l'emplacement mémoire d'une variable.</li>
+<li><strong>(Contenu de)</strong> : Accède à la valeur située à l'adresse stockée par le pointeur.</li>
+</ul>
+<pre><code class="language-c">uint32_t variable = 100;
+uint32_t *monPointeur = &amp;variable; // monPointeur contient l'adresse de variable
+
+*monPointeur = 200; // La &quot;variable&quot; vaut maintenant 200
+</code></pre>
+<p>Sur STM32, les structures de registres (ex: <code>GPIOA-&gt;MODER</code>) sont des pointeurs pointant vers des adresses physiques fixes du processeur.
+Toutes fonctions du matériel est mappé en mémoire. Pour configurer le STM32, on crée des pointeurs vers des adresses fixes définies dans la datasheet.</p>
+<pre><code class="language-c">// L'adresse du registre MODER du GPIOA est 0x40020000
+#define GPIOA_MODER *((volatile uint32_t *) 0x40020000)
+
+GPIOA_MODER |= (1 &lt;&lt; 0); // On écrit directement dans le matériel
+</code></pre>
+<p>On utilise l'opérateur Flèche <code>-&gt;</code> comme un raccourci partout en embarqué (ex: GPIOA-&gt;ODR). Il simplifie l'accès aux membres d'une structure pointée :
+- <code>structure.membre</code> : Accès direct si vous avez la variable.
+- <code>pointeur-&gt;membre</code> : Accès si vous avez l'adresse de la structure.</p>
+<pre><code class="language-c">GPIO_Regs_t *gpio = (GPIO_Regs_t *) 0x40020000;
+gpio-&gt;MODER |= (1 &lt;&lt; 0);
+</code></pre>
+<hr />
+<p><br></p>
+<h3 id="les-fonctions"><strong>Les Fonctions</strong></h3>
+<p>Elles permettent de modulariser le code. Une fonction peut retrourner une valeur, par exemple : <code>void</code> (rien), <code>int</code>, <code>uint8_t</code>, etc, et peut recevoir des paramètres. </p>
+<pre><code class="language-c">int addition(int a, int b) {
+    return a + b;
+}
+</code></pre>
+<p>En embarqué, on utilise souvent des fonctions pour encapsuler l'accès au matériel.</p>
+<hr />
+<p><br></p>
+<h3 id="organisation-en-bibliotheques-header-source"><strong>Organisation en bibliothèques (header + source)</strong></h3>
+<p>Lorsqu'on a plusieurs fonctions pour un objet (périphérique) quelconque, on les regroupe dans deux fichiers : le header (<code>.h</code>) et la source (<code>.c</code>).</p>
+<p><strong>Le fichier Header : <code>led.h</code> (L'interface publique)</strong></p>
+<p>C'est le "menu" de la bibliothèque. Il contient les prototypes des fonctions et les définitions.</p>
+<pre><code class="language-c">#ifndef LED_H    // Garde d'inclusion : évite les erreurs si le fichier est inclus 2 fois
+#define LED_H
+
+#include &quot;stm32f4xx.h&quot; // Pour les types et registres
+
+// Définition de la pin (PC13 sur Black Pill)
+#define LED_PIN  13
+#define LED_PORT GPIOC
+
+// Prototypes des fonctions
+void LED_Init(void);
+void LED_On(void);
+void LED_Off(void);
+void LED_Toggle(void);
+
+#endif
+</code></pre>
+<p><strong>Le fichier Source : <code>led.c</code> (L'implémentation)</strong></p>
+<p>C'est ici que l'on écrit la "recette" réelle des fonctions en manipulant les registres.</p>
+<pre><code class="language-c">#include &quot;led.h&quot;
+
+void LED_Init(void) {
+    // Activer horloge GPIOC
+    RCC-&gt;AHB1ENR |= RCC_AHB1ENR_GPIOCEN;
+    // Configurer PC13 en sortie
+    LED_PORT-&gt;MODER &amp;= ~(3U &lt;&lt; (LED_PIN * 2));
+    LED_PORT-&gt;MODER |=  (1U &lt;&lt; (LED_PIN * 2));
+}
+
+void LED_On(void) {
+    LED_PORT-&gt;BSRR = (1U &lt;&lt; (LED_PIN + 16)); // Reset bit (0V -&gt; Allumé)
+}
+
+void LED_Off(void) {
+    LED_PORT-&gt;BSRR = (1U &lt;&lt; LED_PIN);        // Set bit (3.3V -&gt; Éteint)
+}
+
+void LED_Toggle(void) {
+    LED_PORT-&gt;ODR ^= (1U &lt;&lt; LED_PIN);        // Inversion du bit
+}
+</code></pre>
+<p><strong>Utilisation dans : main.c</strong></p>
+<p>Votre programme principal devient alors très propre et lisible.</p>
+<pre><code class="language-c">#include &quot;led.h&quot;
+
+int main(void) {
+    LED_Init(); // Initialisation via notre driver
+
+    while(1) {
+        LED_Toggle();
+        for(int i=0; i&lt;500000; i++); // Délai rudimentaire
+    }
+}
+</code></pre>
+<p>Les avantages de cette méthode est que l'on a un code réutilisable, on peut copier ces fichiers dans n'importe quel projet. Le code est facilement maintenable si on change de pin (ex: de PC13 à PA5), on ne modifie que le fichier led.h. On a aussi une clarté, le main.c ne contient que la logique applicative, pas les détails techniques des registres.</p>
+<hr />
+<p><br></p>
+<h3 id="lien-connexe">Lien connexe</h3>
+<p><a href="../stm32f4/gpio/index.md">GPIO et Interruptions</a></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
