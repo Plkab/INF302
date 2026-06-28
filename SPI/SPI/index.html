@@ -1,0 +1,2107 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Ir Paul S. Kabidu">
+        <link rel="canonical" href="https://Plkab.github.io/INF302/SPI/SPI/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Interfaçage avec SPI - INF302 – Programmation des processeurs et Systèmestemps réel</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../stylesheets/extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">INF302 – Programmation des processeurs et Systèmestemps réel</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../Systemes%20temps%20reel/Systemes%20temps%20reel/" class="nav-link">Systèmes embarqués temps réel</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../Architecture%20stm32f401/Architecture%20STM32F401/" class="nav-link">Architecture du processeur ARM STM32F401</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../GPIO/GPIO/" class="nav-link">Interface d'entrée/sortie numérique</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../Interruptions/Interruptions/" class="nav-link">Réactivité rapide avec les interruptions matérielles</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../Timer/Timer/" class="nav-link">Les Timers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../Machine%20d%27etats%20finis/fsm/" class="nav-link">La machine d'état fini finis :</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../Protothreads/Protothreads/" class="nav-link">Introduction aux Protothreads</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../SemProto/SemProto/" class="nav-link">Synchronisation avec les Sémaphores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../UART/UART/" class="nav-link">Communication avec d'autres dispositifs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../ADC/ADC/" class="nav-link">Acquisition de signaux analogiques via ADC</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../PWM/PWM/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../I2C/I2C.ipynb" class="nav-link">Interfaçage avec I2C</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Interfaçage avec SPI</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Laboratoires</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../LABO/demarrerKiel/" class="dropdown-item">Démarrer Kiel</a>
+</li>
+                                    
+<li>
+    <a href="../../LABO/langageC/" class="dropdown-item">Langage C</a>
+</li>
+                                    
+<li>
+    <a href="../../LABO/TP1%20Chronometre%20et%20Horloge/" class="dropdown-item">TP : Chronomètre et horloge programmable sur STM32F4 – Construction par étapes</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../PWM/PWM/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../LABO/demarrerKiel/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#communication-via-spi" class="nav-link">Communication via SPI</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#protocole" class="nav-link">Protocole</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#configuration-du-spi" class="nav-link">Configuration du SPI</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#interface-spi-entre-stm32f401-et-dac-mcp4921" class="nav-link">Interface SPI entre STM32F401 et DAC MCP4921</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#generateur-de-sinusoide-non-bloquant" class="nav-link">Générateur de Sinusoïde Non-Bloquant</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#generation-des-signaux-usage-des-protothreads" class="nav-link">Génération des signaux : Usage des Protothreads</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#generateur-de-signaux-avec-dds-direct-digital-synthesis" class="nav-link">Générateur de Signaux avec DDS (Direct Digital Synthesis)</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#principe-du-dds" class="nav-link">Principe du DDS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#formules-mathematiques" class="nav-link">Formules Mathématiques</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#generateur-de-signaux-par-dds-avec-stm32f401-mcp4921" class="nav-link">Générateur de signaux par DDS avec STM32F401 + MCP4921</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#vue-densemble-une-architecture-a-deux-niveaux" class="nav-link">Vue d’ensemble : Une Architecture à Deux Niveaux</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="communication-via-spi">Communication via SPI</h1>
+<h2 id="protocole">Protocole</h2>
+<p>Le bus SPI (<em>Serial Peripheral Interface</em>) est un bus synchrone qui utilise seulement 4 fils pour la communication :</p>
+<ul>
+<li><code>SCLK</code> (<em>Serial Clock</em>) : horloge générée par le maître.</li>
+<li><code>MOSI</code> (<em>Master Out Slave In</em>) : données du maître vers l'esclave.</li>
+<li><code>MISO</code> (<em>Master In Slave Out</em>) : données de l'esclave vers le maître.</li>
+<li><code>CE</code> ou <code>SS</code> (<em>Chip Enable / Slave Select</em>) : permet de sélectionner l'esclave actif à l'état bas en général.</li>
+</ul>
+<p>Le maître et l'esclave possèdent chacun un registre à décalage de 8 bits. Lorsque le maître génère 8 impulsions d'horloge, les octets sont échangés simultanément entre les deux registres. La communication est full-duplex (émission et réception simultanées).</p>
+<p>Le maître et l’esclave doivent s’accorder sur la polarité (CPOL) et la phase (CPHA) de l’horloge.</p>
+<ul>
+<li><code>CPOL</code> (<em>Clock Polarity</em>) : définit le niveau au repos de l'horloge (0 = bas, 1 = haut).</li>
+<li><code>CPHA</code> (<em>Clock Phase</em>) : définit sur quel front l'échantillonnage des données a lieu (0 = premier front, 1 = second front).
+  Les combinaisons donnent 4 modes (0, 1, 2, 3). Par exemple, le mode 0 (CPOL=0, CPHA=0) lit les données sur le front montant et les change sur le front descendant.</li>
+</ul>
+<h2 id="configuration-du-spi">Configuration du SPI</h2>
+<p>Nous allons configurer le STM32F401 comme maitre. Il integre 3 modules SPI (SPI1, SPI2, SPI3).</p>
+<p>Nous utiliserons SPI1 avec les broches suivantes :</p>
+<ul>
+<li>PA5 → SCK</li>
+<li>PA7 → MOSI</li>
+<li>PA4 → CS (géré par logiciel, en sortie GPIO)</li>
+</ul>
+<p>Les registres importants pour la programmation SPI sont :</p>
+<ul>
+<li><code>SPI_CR1</code> : contrôle principal (<em>baud rate</em>, <em>CPOL</em>, <em>CPHA</em>, <em>maître/esclave</em>, <em>taille des données</em>, <em>activation</em>).</li>
+<li><code>SPI_CR2</code> : configuration supplémentaire (interruptions, format trame).</li>
+<li><code>SPI_SR</code> : registre d’état (<code>TXE</code>, <code>RXNE</code>, <code>BSY</code>).</li>
+<li><code>SPI_DR</code> : registre de données (écriture pour émettre, lecture pour recevoir).</li>
+</ul>
+<p>Config typique : </p>
+<ul>
+<li>Activer l'horloge du périphérique SPI1 via <code>RCC_AHB1ENR</code>.</li>
+<li>Activer l’horloge du port <code>GPIOA</code> via <code>RCC_AHB1ENR</code>.</li>
+<li>Configurer <code>PA5 = SCK</code>, <code>PA7 = MOSI</code> en mode alternate function (AF5 pour SPI1)</li>
+<li>Configurer la broche GPIO PA4 en sortiepush-pull pour gérer le <code>CS</code>. </li>
+<li>Configurer le registre <code>SPI_CR1</code></li>
+<li><code>MSTR = 1</code> (mode maître).</li>
+<li><code>BR[2:0]</code> : diviseur de l'horloge (ex. 011 pour diviser par 16 → fPCLK/16, si APB2 = 84 MHz → 5,25 MHz).</li>
+<li><code>CPOL</code> et <code>CPHA</code> selon l'esclave utilisé.</li>
+<li><code>DFF = 0</code> pour des trames de 8 bits ou <code>DFF = 1</code> pour une trame de 16 bits (le MCP4921 attend 16 bits)</li>
+<li><code>LSBFIRST = 0</code> (evoie le MSB en premier)</li>
+<li><code>SPE = 1</code> pour activer le module.</li>
+<li>Pour faire une transmission, il faut attendre que le flag <code>TXE</code> (<em>Transmit Buffer Empty</em>) soit à 1 dans <code>SPI_SR</code>, puis abaisser le <code>SS</code> (actif à 0). Ensuite écrire l'octet dans <code>SPI_DR</code>, puis attende que le flag <code>BSY</code> (<em>Busy</em>) soit à 0 dans <code>SPI_SR</code>. Et enfin remontez le <code>SS</code>.</li>
+</ul>
+<pre><code class="language-c">void SPI1_Init(void)
+{
+    RCC-&gt;AHB1ENR |= (1 &lt;&lt; 0);      // GPIOA
+    RCC-&gt;APB2ENR |= (1 &lt;&lt; 12);     // SPI1
+
+    // PA5 (SCK) et PA7 (MOSI) en Alternate Function
+    GPIOA-&gt;MODER &amp;= ~((3 &lt;&lt; 10) | (3 &lt;&lt; 14));
+    GPIOA-&gt;MODER |=  ((2 &lt;&lt; 10) | (2 &lt;&lt; 14));
+    GPIOA-&gt;AFR[0] &amp;= ~((0xF &lt;&lt; 20) | (0xF &lt;&lt; 28));
+    GPIOA-&gt;AFR[0] |=  ((5 &lt;&lt; 20)  | (5 &lt;&lt; 28));
+
+    // PA4 en sortie pour CS
+    GPIOA-&gt;MODER &amp;= ~(3 &lt;&lt; 8);
+    GPIOA-&gt;MODER |=  (1 &lt;&lt; 8);
+    GPIOA-&gt;BSRR = (1 &lt;&lt; 4);        // CS inactif
+
+    // Configuration SPI
+    SPI1-&gt;CR1 = 0;
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 2);         // MSTR
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 8) | (1 &lt;&lt; 9); // SSM + SSI
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 11);        // DFF (trame 16 bits)
+    SPI1-&gt;CR1 |= (3 &lt;&lt; 3);         // BR = 011 (5.25 MHz si APB2=84MHz)
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 6);         // SPE
+}
+</code></pre>
+<h2 id="interface-spi-entre-stm32f401-et-dac-mcp4921">Interface SPI entre STM32F401 et DAC MCP4921</h2>
+<p>Le MCP4921 est un convertisseur numérique-analogique (DAC) de 12 bits. Il permet de transformer une valeur numérique envoyée par un microcontrôleur en une tension analogique. Il est très utilisé dans les systèmes embarqués pour :</p>
+<ul>
+<li>Génération de signaux sinusoïdaux, triangulaires ou carrés</li>
+<li>Synthèse sonore (DDS, FM, modulation)</li>
+<li>Commande analogique de variateurs et moteurs</li>
+<li>Génération de tensions de référence</li>
+<li>Commande analogique de moteurs</li>
+<li>Instrumentation et systèmes de mesure</li>
+</ul>
+<p>Le MCP4921 communique exclusivement par le protocole SPI, ce qui le rend particulièrement adapté aux microcontrôleurs STM32. Il reçoit un mot de 16 bits organisé comme suit :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Bit</th>
+<th style="text-align: left;">Nom</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">A/B</td>
+<td style="text-align: left;">0 = DAC A (unique)</td>
+</tr>
+<tr>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">BUF</td>
+<td style="text-align: left;">1 = tampon activé (sortie à faible impédance)</td>
+</tr>
+<tr>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">GA</td>
+<td style="text-align: left;">0 = gain 1x (Vref), 1 = gain 2x</td>
+</tr>
+<tr>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">SHDN</td>
+<td style="text-align: left;">1 = sortie active, 0 = mode veille</td>
+</tr>
+<tr>
+<td style="text-align: left;">11-0</td>
+<td style="text-align: left;">D[11:0]</td>
+<td style="text-align: left;">Valeur numérique 12 bits</td>
+</tr>
+</tbody>
+</table>
+<p>Le MCP4921 fonctionne avec les modes suivants (voir sa datasheet) :</p>
+<ul>
+<li><strong>Mode 0, 0</strong> (<code>CPOL = 0</code>, <code>CPHA = 0</code>) : l’horloge est à 0 au repos, les données sont lues sur le front montant (premier front).</li>
+<li><strong>Mode 1, 1</strong> (<code>CPOL = 1</code>, <code>CPHA = 1</code>) : l’horloge est à 1 au repos, les données sont lues sur le front descendant.</li>
+</ul>
+<p>Nous choisirons le mode 0,0 (le plus courant) :</p>
+<ul>
+<li>A/B = 0</li>
+<li>BUF = 1</li>
+<li>GA = 0 (gain 1x)</li>
+<li>SHDN = 1</li>
+</ul>
+<p>Le mot de commande devient alors : <code>0b0100 1xxx xxxx xxxx</code> soit en hexadécimal <code>0x3000</code> pour une valeur de sortie nulle, et on ajoute les 12 bits de données dans les bits 11..0.</p>
+<p>Exemple : pour une valeur 12 bits <code>val</code> (0 à 4095), le mot 16 bits = <code>0x3000 | val</code>.</p>
+<h3 id="procedure-demission-vers-le-mcp4921">Procédure d’émission vers le MCP4921</h3>
+<ul>
+<li>Mettre la broche <code>CS</code> à l’état bas.Attendre que le tampon d’émission soit vide (<code>TXE = 1</code> dans <code>SPI_SR</code>).</li>
+<li>Écrire le mot de 16 bits dans <code>SPI_DR</code>.</li>
+<li>Attendre la fin de la transmission (<code>BSY = 0</code> dans <code>SPI_SR</code>).</li>
+<li>Remettre <code>CS</code> à l’état haut.</li>
+</ul>
+<p>Le MCP4921 met à jour sa sortie analogique sur le front montant de CS. Il est donc impératif de respecter cette séquence.</p>
+<h3 id="calcul-de-la-tension">Calcul de la tension</h3>
+<p>La formule est :
+<strong>V_OUT = V_REF × (Valeur_DAC / 4096)</strong></p>
+<p><strong>Exemple :</strong>
+* V_REF = 3.3V
+* Valeur DAC = 2048</p>
+<p><strong>Résultat :</strong>
+V_OUT = 3.3 × (2048 / 4096) = 1.65V</p>
+<h3 id="connexion-avec-un-stm32">Connexion avec un STM32</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">STM32</th>
+<th style="text-align: left;">MCP4921</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">PA5 (SCK)</td>
+<td style="text-align: left;">SCK</td>
+</tr>
+<tr>
+<td style="text-align: left;">PA7 (MOSI)</td>
+<td style="text-align: left;">SDI</td>
+</tr>
+<tr>
+<td style="text-align: left;">PA4 (GPIO)</td>
+<td style="text-align: left;">CS</td>
+</tr>
+<tr>
+<td style="text-align: left;">GND</td>
+<td style="text-align: left;">VSS</td>
+</tr>
+<tr>
+<td style="text-align: left;">3.3V</td>
+<td style="text-align: left;">VDD</td>
+</tr>
+<tr>
+<td style="text-align: left;">3.3V</td>
+<td style="text-align: left;">VREF</td>
+</tr>
+<tr>
+<td style="text-align: left;">Sortie analogique</td>
+<td style="text-align: left;">VOUT</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exemple-generateur-de-sinusoide-avec-le-dac-mcp4921">Exemple : Générateur de sinusoïde avec le DAC MCP4921</h3>
+<p>Nous utilisons une table pré-calculée de 256 valeurs représentant une période de sinus. La boucle principale parcourt cette table séquentiellement et envoie chaque valeur au DAC via SPI. La fréquence de la sinusoïde est déterminée par le délai entre deux envois.</p>
+<pre><code class="language-c">/******************************************************************************
+ *  Exemple : Générateur de sinusoïde avec STM32F401 + MCP4921
+ *
+ *  Fonctionnement : table de sinus (256 points), boucle séquentielle.
+ *  Fréquence ˜ 3.9 Hz (avec delay_ms(1) et 256 points).
+ *
+ *  Broches : PA5 -&gt; SCK, PA7 -&gt; MOSI, PA4 -&gt; CS (logiciel)
+ ******************************************************************************/
+
+#include &quot;stm32f401xe.h&quot;
+
+/*==============================================================
+    Prototypes
+==============================================================*/
+void SPI1_Init(void);
+void DAC_Write(uint16_t value);
+void delay_ms(uint32_t ms);
+
+/*==============================================================
+    Table de sinus (256 points, valeurs 12 bits)
+    Centrée sur 2048, amplitude 2047
+==============================================================*/
+const uint16_t sine_table[256] = {
+    2048, 2098, 2148, 2198, 2248, 2298, 2348, 2398,
+    2447, 2496, 2545, 2594, 2642, 2690, 2737, 2784,
+    2831, 2877, 2923, 2968, 3012, 3056, 3099, 3142,
+    3185, 3226, 3267, 3307, 3347, 3386, 3424, 3461,
+    3495, 3529, 3562, 3595, 3626, 3656, 3685, 3713,
+    3750, 3777, 3803, 3828, 3852, 3875, 3897, 3918,
+    3939, 3958, 3976, 3993, 4009, 4024, 4038, 4051,
+    4056, 4060, 4064, 4067, 4070, 4072, 4074, 4076,
+    4095, 4076, 4074, 4072, 4070, 4067, 4064, 4060,
+    4056, 4051, 4038, 4024, 4009, 3993, 3976, 3958,
+    3939, 3918, 3897, 3875, 3852, 3828, 3803, 3777,
+    3750, 3713, 3685, 3656, 3626, 3595, 3562, 3529,
+    3495, 3461, 3424, 3386, 3347, 3307, 3267, 3226,
+    3185, 3142, 3099, 3056, 3012, 2968, 2923, 2877,
+    2831, 2784, 2737, 2690, 2642, 2594, 2545, 2496,
+    2447, 2398, 2348, 2298, 2248, 2198, 2148, 2098,
+    2048, 1998, 1948, 1898, 1848, 1798, 1748, 1698,
+    1649, 1600, 1551, 1502, 1454, 1406, 1359, 1312,
+    1265, 1219, 1173, 1128, 1084, 1040, 997, 954,
+    911, 870, 829, 789, 749, 710, 672, 635,
+    601, 567, 534, 501, 470, 440, 411, 383,
+    346, 319, 293, 268, 244, 221, 199, 178,
+    157, 138, 120, 103, 87, 72, 58, 45,
+    40, 36, 32, 29, 26, 24, 22, 20,
+    1, 20, 22, 24, 26, 29, 32, 36,
+    40, 45, 58, 72, 87, 103, 120, 138,
+    157, 178, 199, 221, 244, 268, 293, 319,
+    346, 383, 411, 440, 470, 501, 534, 567,
+    601, 635, 672, 710, 749, 789, 829, 870,
+    911, 954, 997, 1040, 1084, 1128, 1173, 1219,
+    1265, 1312, 1359, 1406, 1454, 1502, 1551, 1600,
+    1649, 1698, 1748, 1798, 1848, 1898, 1948, 1998
+};
+
+/*==============================================================
+    Programme principal
+==============================================================*/
+int main(void)
+{
+    uint8_t index = 0;   // index dans la table (0 à 255)
+
+    SPI1_Init();
+
+    while (1)
+    {
+        // Envoyer la valeur courante au DAC
+        DAC_Write(sine_table[index]);
+
+        // Incrémenter l'index (boucle sur 256)
+        index++;
+        if (index &gt;= 256) index = 0;
+
+        // Délai pour contrôler la fréquence
+        // Avec 256 points et delay_ms(1), période = 256 ms =&gt; ~3.9 Hz
+        // Modifier la valeur pour changer la fréquence
+        delay_ms(1);
+    }
+}
+
+/*==============================================================
+    Initialisation SPI1
+==============================================================*/
+void SPI1_Init(void)
+{
+    RCC-&gt;AHB1ENR |= (1 &lt;&lt; 0);      // GPIOA
+    RCC-&gt;APB2ENR |= (1 &lt;&lt; 12);     // SPI1
+
+    // PA5 (SCK) et PA7 (MOSI) en Alternate Function
+    GPIOA-&gt;MODER &amp;= ~((3 &lt;&lt; 10) | (3 &lt;&lt; 14));
+    GPIOA-&gt;MODER |=  ((2 &lt;&lt; 10) | (2 &lt;&lt; 14));
+    GPIOA-&gt;AFR[0] &amp;= ~((0xF &lt;&lt; 20) | (0xF &lt;&lt; 28));
+    GPIOA-&gt;AFR[0] |=  ((5 &lt;&lt; 20)  | (5 &lt;&lt; 28));
+
+    // PA4 en sortie pour CS
+    GPIOA-&gt;MODER &amp;= ~(3 &lt;&lt; 8);
+    GPIOA-&gt;MODER |=  (1 &lt;&lt; 8);
+    GPIOA-&gt;BSRR = (1 &lt;&lt; 4);        // CS inactif
+
+    // Configuration SPI
+    SPI1-&gt;CR1 = 0;
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 2);         // MSTR
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 8) | (1 &lt;&lt; 9); // SSM + SSI
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 11);        // DFF (trame 16 bits)
+    SPI1-&gt;CR1 |= (3 &lt;&lt; 3);         // BR = 011 (5.25 MHz si APB2=84MHz)
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 6);         // SPE
+}
+
+/*==============================================================
+    Envoi d'une valeur au DAC MCP4921
+==============================================================*/
+void DAC_Write(uint16_t value)
+{
+    uint16_t commande = 0x3000 | (value &amp; 0x0FFF);
+
+    // Attendre que le buffer d'émission soit vide
+    while (!(SPI1-&gt;SR &amp; (1 &lt;&lt; 1)));
+
+    // CS = 0 (sélection du DAC)
+    GPIOA-&gt;BSRR = (1 &lt;&lt; 20);
+
+    // Envoi des 16 bits
+    SPI1-&gt;DR = commande;
+
+    // Attendre la fin de la transmission
+    while (!(SPI1-&gt;SR &amp; (1 &lt;&lt; 1)));
+    while (SPI1-&gt;SR &amp; (1 &lt;&lt; 7));
+
+    // CS = 1 (désélection)
+    GPIOA-&gt;BSRR = (1 &lt;&lt; 4);
+}
+
+/*==============================================================
+    Temporisation logicielle (approximative)
+    Ajuster la constante pour 1 ms selon la fréquence CPU
+==============================================================*/
+void delay_ms(uint32_t ms)
+{
+    volatile uint32_t i;
+    while (ms--)
+    {
+        for (i = 0; i &lt; 21000; i++); // ~1 ms à 84 MHz
+    }
+}
+</code></pre>
+<p>Le code qu'on a fait precedement est strictement bloquant (polling).
+Regardez ces deux lignes :</p>
+<pre><code class="language-c">while (!(SPI1-&gt;SR &amp; SPI_SR_TXE)) {}  // Attend que le buffer d'émission soit vide 
+while (SPI1-&gt;SR &amp; SPI_SR_BSY) {}      // Attend la fin de la transmission SPI 
+</code></pre>
+<p>Tant que la condition n’est pas remplie, le processeur reste verrouillé sur cette ligne (il tourne à vide). Il ne peut ni traiter une autre tâche, ni répondre à une interruption, ni passer en mode basse consommation. C’est ce qu’on appelle du <em>polling</em> actif ou <em>busy-waiting</em>.</p>
+<p>Il faut noter que dans un système embarqué "produit", on évite le busy-waiting dès qu’on a plus de 2 ou 3 périphériques à gérer.</p>
+<h2 id="generateur-de-sinusoide-non-bloquant">Générateur de Sinusoïde Non-Bloquant</h2>
+<p>L’approche précédente utilisait des boucles d’attente (<code>while</code>) qui bloquent le CPU. Pour un système embarqué réel, il est impératif de libérer le processeur afin qu’il puisse traiter d’autres tâches (affichage, lecture de capteurs, communication, etc.). </p>
+<p>La solution consiste à utiliser un <strong>timer matériel</strong> pour générer une interruption à la fréquence d’échantillonnage souhaitée, et à placer l’envoi des données au DAC dans cette interruption. Ainsi, le CPU n’est sollicité que très brièvement à chaque échantillon, et le reste du temps, il peut exécuter la boucle principale ou d’autres tâches.</p>
+<h3 id="principe">Principe</h3>
+<ul>
+<li><strong>Table de sinus :</strong> Une table de <strong>256 points</strong> est stockée en mémoire Flash.</li>
+<li><strong>Déclenchement périodique :</strong> Un timer (par exemple <code>TIM2</code>) est configuré pour générer une interruption périodique.</li>
+<li><strong>Routine d'interruption (ISR) :</strong> Dans l’interruption du timer, on effectue les actions suivantes :</li>
+<li>Lecture de la valeur correspondant à l’index courant dans la table de sinus.</li>
+<li>Envoi de la valeur au DAC via SPI (avec un <em>polling</em> court mais acceptable car le temps de transmission est inférieur à 5 µs).</li>
+<li>Incrémentation de l’index.</li>
+<li><strong>Contrôle de la fréquence :</strong> La fréquence de la sinusoïde est déterminée par la période du timer. Pour modifier la fréquence, on ajuste le registre <code>ARR</code> (<em>Auto-Reload Register</em>) du timer en cours de fonctionnement (par exemple, grâce à un potentiomètre lu par l’ADC).</li>
+<li><strong>Gestion de l'ADC :</strong> L’ADC est lu dans la boucle principale (<em>polling</em> non bloquant via un délai basé sur le tick système) ou par interruption pour une lecture périodique.</li>
+</ul>
+<pre><code class="language-c">/******************************************************************************
+ *  Générateur de sinusoïde non-bloquant
+ *  STM32F401 + DAC MCP4921 (SPI)
+ *  TIM2 génère l'interruption d'échantillonnage.
+ *  La fréquence est réglable via le potentiomètre sur PA0 (ADC).
+ ******************************************************************************/
+
+#include &quot;stm32f401xe.h&quot;
+#include &lt;stdint.h&gt;
+
+/*==============================================================
+   Constantes et macros
+==============================================================*/
+#define TABLE_SIZE     256      // Nombre de points de la table de sinus
+#define SAMPLE_FREQ    1000     // Fréquence d'échantillonnage (Hz) – ici 1 kHz
+#define ARR_VALUE      (16000000UL / SAMPLE_FREQ - 1)  // Timer ARR pour 1 kHz à 16 MHz
+
+/*==============================================================
+   Variables globales
+==============================================================*/
+volatile uint16_t sinus_index = 0;    // Index courant dans la table (incrémenté dans l'ISR)
+volatile uint16_t freq_setting = 10;  // Valeur du potentiomètre (0..4095) pour régler la fréquence
+
+/* Table de sinus (256 points, valeurs 12 bits) */
+const uint16_t sine_table[TABLE_SIZE] = {
+    2048, 2098, 2148, 2198, 2248, 2298, 2348, 2398,
+    2447, 2496, 2545, 2594, 2642, 2690, 2737, 2784,
+    2831, 2877, 2923, 2968, 3012, 3056, 3099, 3142,
+    3185, 3226, 3267, 3307, 3347, 3386, 3424, 3461,
+    3495, 3529, 3562, 3595, 3626, 3656, 3685, 3713,
+    3750, 3777, 3803, 3828, 3852, 3875, 3897, 3918,
+    3939, 3958, 3976, 3993, 4009, 4024, 4038, 4051,
+    4056, 4060, 4064, 4067, 4070, 4072, 4074, 4076,
+    4095, 4076, 4074, 4072, 4070, 4067, 4064, 4060,
+    4056, 4051, 4038, 4024, 4009, 3993, 3976, 3958,
+    3939, 3918, 3897, 3875, 3852, 3828, 3803, 3777,
+    3750, 3713, 3685, 3656, 3626, 3595, 3562, 3529,
+    3495, 3461, 3424, 3386, 3347, 3307, 3267, 3226,
+    3185, 3142, 3099, 3056, 3012, 2968, 2923, 2877,
+    2831, 2784, 2737, 2690, 2642, 2594, 2545, 2496,
+    2447, 2398, 2348, 2298, 2248, 2198, 2148, 2098,
+    2048, 1998, 1948, 1898, 1848, 1798, 1748, 1698,
+    1649, 1600, 1551, 1502, 1454, 1406, 1359, 1312,
+    1265, 1219, 1173, 1128, 1084, 1040, 997, 954,
+    911, 870, 829, 789, 749, 710, 672, 635,
+    601, 567, 534, 501, 470, 440, 411, 383,
+    346, 319, 293, 268, 244, 221, 199, 178,
+    157, 138, 120, 103, 87, 72, 58, 45,
+    40, 36, 32, 29, 26, 24, 22, 20,
+    1, 20, 22, 24, 26, 29, 32, 36,
+    40, 45, 58, 72, 87, 103, 120, 138,
+    157, 178, 199, 221, 244, 268, 293, 319,
+    346, 383, 411, 440, 470, 501, 534, 567,
+    601, 635, 672, 710, 749, 789, 829, 870,
+    911, 954, 997, 1040, 1084, 1128, 1173, 1219,
+    1265, 1312, 1359, 1406, 1454, 1502, 1551, 1600,
+    1649, 1698, 1748, 1798, 1848, 1898, 1948, 1998
+};
+
+/*==============================================================
+   Prototypes des fonctions
+==============================================================*/
+void SPI1_Init(void);
+void DAC_Write(uint16_t value);
+void TIM2_Init(void);
+void ADC_Init(void);
+uint16_t ADC_Read(void);
+void SystemClock_Config(void);
+
+/*==============================================================
+   Fonction principale
+==============================================================*/
+int main(void)
+{
+    SystemClock_Config();     // Horloge HSI 16 MHz (ou PLL selon votre carte)
+    SPI1_Init();
+    TIM2_Init();
+    ADC_Init();
+
+    while (1)
+    {
+        // Lecture du potentiomètre pour régler la fréquence (polling non bloquant)
+        // On lit l'ADC toutes les 50 ms environ (compteur basé sur un tick logiciel)
+        // Pour rester simple, on lit ici en continu (mais c'est rapide).
+        uint16_t adc_val = ADC_Read();
+
+        // Conversion de la valeur ADC (0..4095) en période de timer (ARR)
+        // On souhaite une fréquence de sortie variant de 1 Hz à 50 Hz.
+        // Avec TABLE_SIZE = 256 et SAMPLE_FREQ = 1000 Hz, la fréquence de sortie
+        // est f_out = SAMPLE_FREQ / TABLE_SIZE = 1000/256 ˜ 3.9 Hz si on envoie
+        // un point par interruption. Pour faire varier la fréquence, on peut
+        // soit modifier la période du timer (ARR), soit sauter des points.
+        // Ici, on modifie ARR pour changer SAMPLE_FREQ, donc f_out variera.
+        // On veut que f_out aille de 1 à 50 Hz, donc SAMPLE_FREQ = f_out * TABLE_SIZE
+        // SAMPLE_FREQ = 256 * f_out ? de 256 à 12800 Hz.
+        // On limite SAMPLE_FREQ entre 200 et 5000 Hz pour rester raisonnable.
+        uint32_t desired_freq = 1 + (adc_val * 49) / 4095; // 1..50 Hz
+        uint32_t sample_freq = desired_freq * TABLE_SIZE;
+        if (sample_freq &lt; 200) sample_freq = 200;
+        if (sample_freq &gt; 5000) sample_freq = 5000;
+
+        // Mise à jour du registre ARR du timer (pour changer la fréquence d'échantillonnage)
+        TIM2-&gt;ARR = (16000000UL / sample_freq) - 1;
+
+        // On peut ajouter un petit délai pour éviter de surcharger l'ADC (optionnel)
+        // mais ce n'est pas critique car l'ADC est rapide.
+
+        // Ici, on pourrait aussi gérer un afficheur LCD, des boutons, etc.
+    }
+}
+
+/*==============================================================
+   Initialisation du SPI1 (identique à avant)
+==============================================================*/
+void SPI1_Init(void)
+{
+    RCC-&gt;AHB1ENR |= (1 &lt;&lt; 0);      // GPIOA
+    RCC-&gt;APB2ENR |= (1 &lt;&lt; 12);     // SPI1
+
+    GPIOA-&gt;MODER &amp;= ~((3 &lt;&lt; 10) | (3 &lt;&lt; 14));
+    GPIOA-&gt;MODER |=  ((2 &lt;&lt; 10) | (2 &lt;&lt; 14));
+    GPIOA-&gt;AFR[0] &amp;= ~((0xF &lt;&lt; 20) | (0xF &lt;&lt; 28));
+    GPIOA-&gt;AFR[0] |=  ((5 &lt;&lt; 20)  | (5 &lt;&lt; 28));
+
+    GPIOA-&gt;MODER &amp;= ~(3 &lt;&lt; 8);
+    GPIOA-&gt;MODER |=  (1 &lt;&lt; 8);
+    GPIOA-&gt;BSRR = (1 &lt;&lt; 4);        // CS inactif
+
+    SPI1-&gt;CR1 = 0;
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 2);         // MSTR
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 8) | (1 &lt;&lt; 9); // SSM + SSI
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 11);        // DFF
+    SPI1-&gt;CR1 |= (3 &lt;&lt; 3);         // BR = 011 (5.25 MHz)
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 6);         // SPE
+}
+
+/*==============================================================
+   Envoi d'une valeur au DAC (polling court)
+   Appelé depuis l'interruption TIM2
+==============================================================*/
+void DAC_Write(uint16_t value)
+{
+    uint16_t commande = 0x3000 | (value &amp; 0x0FFF);
+
+    while (!(SPI1-&gt;SR &amp; (1 &lt;&lt; 1)));   // Attente TXE (courte)
+    GPIOA-&gt;BSRR = (1 &lt;&lt; 20);          // CS = 0
+    SPI1-&gt;DR = commande;
+    while (!(SPI1-&gt;SR &amp; (1 &lt;&lt; 1)));   // Attente TXE (courte)
+    while (SPI1-&gt;SR &amp; (1 &lt;&lt; 7));      // Attente BSY (courte)
+    GPIOA-&gt;BSRR = (1 &lt;&lt; 4);           // CS = 1
+}
+
+/*==============================================================
+   Initialisation du Timer2 (interruption périodique)
+==============================================================*/
+void TIM2_Init(void)
+{
+    RCC-&gt;APB1ENR |= (1 &lt;&lt; 0);        // Activer TIM2
+
+    TIM2-&gt;PSC = 0;                   // Pas de prescaler (16 MHz)
+    TIM2-&gt;ARR = ARR_VALUE;           // Valeur initiale (1 kHz)
+    TIM2-&gt;DIER |= (1 &lt;&lt; 0);          // Activer l'interruption sur Update
+    TIM2-&gt;CR1 |= (1 &lt;&lt; 0);           // Démarrer le timer
+
+    NVIC_EnableIRQ(TIM2_IRQn);
+    NVIC_SetPriority(TIM2_IRQn, 0);  // Priorité haute
+}
+
+/*==============================================================
+   Interruption TIM2 – cœur du générateur
+==============================================================*/
+void TIM2_IRQHandler(void)
+{
+    if (TIM2-&gt;SR &amp; (1 &lt;&lt; 0))         // Vérifier le flag Update
+    {
+        TIM2-&gt;SR &amp;= ~(1 &lt;&lt; 0);       // Effacer le flag
+
+        // Envoyer l'échantillon courant
+        DAC_Write(sine_table[sinus_index]);
+
+        // Incrémenter l'index (boucle modulo 256)
+        sinus_index++;
+        if (sinus_index &gt;= TABLE_SIZE)
+            sinus_index = 0;
+    }
+}
+
+/*==============================================================
+   Initialisation de l'ADC pour lire le potentiomètre
+==============================================================*/
+void ADC_Init(void)
+{
+    RCC-&gt;APB2ENR |= (1 &lt;&lt; 8);        // Activer ADC1
+    RCC-&gt;AHB1ENR |= (1 &lt;&lt; 0);        // GPIOA déjà activé
+
+    GPIOA-&gt;MODER |= (3 &lt;&lt; (0 * 2));  // PA0 en mode analogique
+
+    ADC1-&gt;CR2 = 0;
+    ADC1-&gt;CR1 = 0;
+    ADC1-&gt;CR2 |= (1 &lt;&lt; 0);           // ADON
+    ADC1-&gt;SQR1 = 0;                  // 1 conversion
+    ADC1-&gt;SQR3 = 0;                  // Canal 0
+    ADC1-&gt;SMPR2 |= (7 &lt;&lt; (0 * 3));   // 84 cycles
+}
+
+/*==============================================================
+   Lecture de l'ADC (polling court)
+==============================================================*/
+uint16_t ADC_Read(void)
+{
+    ADC1-&gt;CR2 |= (1 &lt;&lt; 30);          // SWSTART (démarrage logiciel)
+    while (!(ADC1-&gt;SR &amp; (1 &lt;&lt; 1)));  // Attendre EOC
+    return ADC1-&gt;DR;                 // Lecture efface le flag
+}
+
+/*==============================================================
+   Configuration de l'horloge (HSI 16 MHz)
+==============================================================*/
+void SystemClock_Config(void)
+{
+    // Activer HSI
+    RCC-&gt;CR |= (1 &lt;&lt; 0);
+    while (!(RCC-&gt;CR &amp; (1 &lt;&lt; 1)));
+    // Sélectionner HSI comme source système
+    RCC-&gt;CFGR &amp;= ~(3 &lt;&lt; 0);
+    RCC-&gt;CFGR |= (0 &lt;&lt; 0);  // HSI
+    while ((RCC-&gt;CFGR &amp; (3 &lt;&lt; 2)) != (0 &lt;&lt; 2));
+}
+</code></pre>
+<h3 id="gestion-du-timer-tim2-frequence-de-sortie">Gestion du Timer TIM2 &amp; Fréquence de Sortie</h3>
+<ul>
+<li><strong>Fréquence d'échantillonnage :</strong> Le <code>TIM2</code> est configuré pour générer une interruption périodique (initialement à <strong>1 kHz</strong>).</li>
+<li><strong>Routine d'interruption (ISR) :</strong> À chaque appel de l'interruption, le système exécute deux actions :</li>
+<li>Envoi de la valeur courante de la table de sinus au DAC.</li>
+<li>Incrémentation de l'index de la table.</li>
+<li><strong>Calcul de la fréquence (<span class="arithmatex">\(f_{out}\)</span>) :</strong> Avec une table de 256 points, la fréquence de la sinusoïde générée est définie par la formule :
+  $<span class="arithmatex">\(f_{out} = \frac{f_{ech}}{256}\)</span>$</li>
+<li><strong>Contrôle dynamique :</strong> En modifiant le registre <code>ARR</code> (<em>Auto-Reload Register</em>) du timer depuis la boucle principale, on fait varier la fréquence d'échantillonnage (<span class="arithmatex">\(f_{ech}\)</span>), ajustant ainsi directement la fréquence de sortie (<span class="arithmatex">\(f_{out}\)</span>).</li>
+</ul>
+<h3 id="interface-potentiometre-polling-spi">Interface Potentiomètre &amp; Polling SPI</h3>
+<ul>
+<li><strong>Réglage par potentiomètre :</strong> L’ADC est lu en mode <em>polling</em> rapide dans la boucle principale. La valeur brute acquise (<strong>0 à 4095</strong>) est convertie en une fréquence cible (<strong>1 à 50 Hz</strong>) pour recalculer et mettre à jour le registre <code>ARR</code> en temps réel, sans aucun blocage CPU.</li>
+<li><strong>Polling SPI dans l'ISR :</strong> L'interruption <code>TIM2</code> utilise des boucles <code>while</code> courtes pour attendre les drapeaux <code>TXE</code> (<em>Transmit Buffer Empty</em>) et <code>BSY</code> (<em>Busy</em>).</li>
+<li><strong>Impact temporel :</strong> Cette attente reste acceptable car la transmission d'une trame de 16 bits à <strong>5,25 MHz</strong> ne dure qu’environ <strong>3 µs</strong>. Bien que les interruptions de priorité inférieure soient masquées pendant ce court instant, l'impact sur le système reste négligeable.</li>
+</ul>
+<h3 id="organisation-de-la-boucle-principale">Organisation de la Boucle Principale</h3>
+<ul>
+<li><strong>Libération du processeur :</strong> La boucle principale (<code>while(1)</code>) est totalement déchargée et libre d'exécuter d'autres tâches (calculs complexes, affichage LCD, communication UART).</li>
+<li><strong>Exécution fluide :</strong> Elle ne contient aucune fonction d'attente bloquante. La lecture périodique de l'ADC est cadencée sans jamais ralentir le reste des traitements applicatifs.</li>
+</ul>
+<h2 id="generation-des-signaux-usage-des-protothreads">Génération des signaux : Usage des Protothreads</h2>
+<p>Nous allons utiliser toujours les fonctions de polling SPI (<code>while (!(SPI1-&gt;SR &amp; SPI_SR_TXE))</code>) dans le code mais avec des protothreads. Au lieu de bloquer le CPU, le protothread "<strong>attend</strong>" la condition via <code>PT_WAIT_UNTIL()</code>. Pendant ce temps le CPU reste libre d'exécuter d'autres tâches entre deux appels à ce protothread.</p>
+<p>Ce code utilise la bibliothèque protothreads (pt.h) pour gérer les tâches non critiques (lecture ADC, affichage LCD) tout en conservant une interruption TIM2 pour la génération du signal (précision temps réel).
+Deux signaux sont disponibles : sinus et carré, commutables par un bouton. La fréquence est réglable par un potentiomètre (ADC).</p>
+<p>Architecture matérielle utilisée : </p>
+<ul>
+<li>PA4 → CS (MCP4921)</li>
+<li>PA5 → SCK</li>
+<li>PA7 → MOSI</li>
+<li>Potentiomètre : sortie sur PA0 (tension entre 0 et 3,3 V).</li>
+<li>Bouton : entre PC0 et GND (pull‑up interne activé).</li>
+<li>LCD : selon notre fichier lcd.h, utilise PORTB avec les broches PB9, PB10, PB12–PB15.</li>
+</ul>
+<pre><code class="language-c">/******************************************************************************
+ *  Générateur de sinusoïde avec protothreads
+ *  STM32F401CCU6 + DAC MCP4921 (SPI) + LCD
+ *  TIM2 pour l'échantillonnage, protothreads pour ADC et LCD
+ *  Horloge HSI 16 MHz
+ ******************************************************************************/
+
+#include &quot;stm32f4xx.h&quot;
+#include &quot;pt.h&quot;
+#include &quot;lcd.h&quot;
+#include &quot;delay.h&quot;          // &lt;--- AJOUT : pour les délais précis (TIM9)
+#include &lt;stdint.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+
+/*==============================================================
+   Constantes
+==============================================================*/
+#define TABLE_SIZE     256
+#define SAMPLE_FREQ_INIT 1000       // 1 kHz initial
+
+/*==============================================================
+   Variables globales
+==============================================================*/
+volatile uint16_t sinus_index = 0;
+volatile uint16_t freq_hz = 10;
+volatile uint16_t adc_raw = 0;
+volatile uint8_t  lcd_update = 1;
+
+/* Table de sinus (256 points, valeurs 12 bits) */
+const uint16_t sine_table[TABLE_SIZE] = {
+    2048, 2098, 2148, 2198, 2248, 2298, 2348, 2398,
+    2447, 2496, 2545, 2594, 2642, 2690, 2737, 2784,
+    2831, 2877, 2923, 2968, 3012, 3056, 3099, 3142,
+    3185, 3226, 3267, 3307, 3347, 3386, 3424, 3461,
+    3495, 3529, 3562, 3595, 3626, 3656, 3685, 3713,
+    3750, 3777, 3803, 3828, 3852, 3875, 3897, 3918,
+    3939, 3958, 3976, 3993, 4009, 4024, 4038, 4051,
+    4056, 4060, 4064, 4067, 4070, 4072, 4074, 4076,
+    4095, 4076, 4074, 4072, 4070, 4067, 4064, 4060,
+    4056, 4051, 4038, 4024, 4009, 3993, 3976, 3958,
+    3939, 3918, 3897, 3875, 3852, 3828, 3803, 3777,
+    3750, 3713, 3685, 3656, 3626, 3595, 3562, 3529,
+    3495, 3461, 3424, 3386, 3347, 3307, 3267, 3226,
+    3185, 3142, 3099, 3056, 3012, 2968, 2923, 2877,
+    2831, 2784, 2737, 2690, 2642, 2594, 2545, 2496,
+    2447, 2398, 2348, 2298, 2248, 2198, 2148, 2098,
+    2048, 1998, 1948, 1898, 1848, 1798, 1748, 1698,
+    1649, 1600, 1551, 1502, 1454, 1406, 1359, 1312,
+    1265, 1219, 1173, 1128, 1084, 1040, 997, 954,
+    911, 870, 829, 789, 749, 710, 672, 635,
+    601, 567, 534, 501, 470, 440, 411, 383,
+    346, 319, 293, 268, 244, 221, 199, 178,
+    157, 138, 120, 103, 87, 72, 58, 45,
+    40, 36, 32, 29, 26, 24, 22, 20,
+    1, 20, 22, 24, 26, 29, 32, 36,
+    40, 45, 58, 72, 87, 103, 120, 138,
+    157, 178, 199, 221, 244, 268, 293, 319,
+    346, 383, 411, 440, 470, 501, 534, 567,
+    601, 635, 672, 710, 749, 789, 829, 870,
+    911, 954, 997, 1040, 1084, 1128, 1173, 1219,
+    1265, 1312, 1359, 1406, 1454, 1502, 1551, 1600,
+    1649, 1698, 1748, 1798, 1848, 1898, 1948, 1998
+};
+
+/*==============================================================
+   Prototypes des fonctions matérielles
+==============================================================*/
+void SystemClock_Config(void);
+void SPI1_Init(void);
+void DAC_Write(uint16_t value);
+void TIM2_Init(uint32_t sample_freq);
+void ADC_Init(void);
+uint16_t ADC_Read(void);
+
+/*==============================================================
+   Prototypes des protothreads
+==============================================================*/
+static struct pt pt_adc, pt_lcd;
+static PT_THREAD(task_adc(struct pt *pt));
+static PT_THREAD(task_lcd(struct pt *pt));
+
+/*==============================================================
+   Compteur SysTick (1 ms) pour les protothreads
+==============================================================*/
+volatile uint32_t systick_ms = 0;
+
+void SysTick_Handler(void)
+{
+    systick_ms++;
+}
+
+/*==============================================================
+   Fonction principale
+==============================================================*/
+int main(void)
+{
+    // 1. Configuration de l'horloge (HSI 16 MHz)
+    //SystemClock_Config();
+
+    // 2. Initialisation des délais matériels (TIM9) pour le LCD
+    Delay_Init();    // &lt;--- ESSENTIEL pour la bibliothèque LCD
+
+    // 3. Initialisation des périphériques
+    SPI1_Init();
+    ADC_Init();
+    TIM2_Init(SAMPLE_FREQ_INIT);
+
+    // 4. Configuration du SysTick pour les protothreads (10 kHz)
+    SysTick_Config(16000000 / 10000);
+    NVIC_SetPriority(SysTick_IRQn, 3);
+
+    // 5. Initialisation du LCD
+    LCD_Init();
+    LCD_Clear();
+    LCD_PrintText(0, 0, &quot;LCD OK&quot;);    // Test : afficher un message fixe
+    LCD_PrintText(0, 1, &quot;Demarrage&quot;);
+    Delay_Ms(1000);                  // Pause pour visualiser
+    LCD_Clear();
+
+    // 6. Initialisation des protothreads
+    PT_INIT(&amp;pt_adc);
+    PT_INIT(&amp;pt_lcd);
+
+    // 7. Boucle principale
+    while (1)
+    {
+        PT_SCHEDULE(task_adc(&amp;pt_adc));
+        PT_SCHEDULE(task_lcd(&amp;pt_lcd));
+    }
+}
+
+/*===========================================================
+   PROTOTHREAD : LECTURE DU POTENTIOMÈTRE (ADC)
+============================================================*/
+static PT_THREAD(task_adc(struct pt *pt))
+{
+    static uint32_t last_tick = 0;
+    static uint16_t filtered = 0;
+
+    PT_BEGIN(pt);
+
+    while (1)
+    {
+        PT_WAIT_UNTIL(pt, (systick_ms - last_tick) &gt;= 50); // 50 ms
+        last_tick = systick_ms;
+
+        uint16_t raw = ADC_Read();
+        filtered = (filtered * 7 + raw) &gt;&gt; 3;
+        adc_raw = filtered;
+
+        uint16_t new_freq = 1 + (filtered * 49) / 4095;
+        if (new_freq &lt; 1) new_freq = 1;
+        if (new_freq &gt; 50) new_freq = 50;
+
+        if (new_freq != freq_hz)
+        {
+            freq_hz = new_freq;
+            uint32_t sample_freq = (uint32_t)freq_hz * TABLE_SIZE;
+            if (sample_freq &lt; 200) sample_freq = 200;
+            if (sample_freq &gt; 5000) sample_freq = 5000;
+            TIM2-&gt;ARR = (16000000UL / sample_freq) - 1;
+            lcd_update = 1;
+        }
+    }
+
+    PT_END(pt);
+}
+
+/*===========================================================
+   PROTOTHREAD : AFFICHAGE LCD
+============================================================*/
+static PT_THREAD(task_lcd(struct pt *pt))
+{
+    static uint32_t last_tick = 0;
+    static char buffer[16];
+
+    PT_BEGIN(pt);
+
+    while (1)
+    {
+        PT_WAIT_UNTIL(pt, (systick_ms - last_tick) &gt;= 200 || lcd_update == 1);
+        last_tick = systick_ms;
+        lcd_update = 0;
+
+        sprintf(buffer, &quot;Freq:%3d Hz&quot;, freq_hz);
+        LCD_PrintText(0, 0, buffer);
+        sprintf(buffer, &quot;ADC:%4d&quot;, adc_raw);
+        LCD_PrintText(0, 1, buffer);
+    }
+
+    PT_END(pt);
+}
+
+/*===========================================================
+   FONCTIONS MATÉRIELLES
+============================================================*/
+
+void SystemClock_Config(void)
+{
+    RCC-&gt;CR |= (1 &lt;&lt; 0);          // HSI ON
+    while (!(RCC-&gt;CR &amp; (1 &lt;&lt; 1))); // Attendre HSI Ready
+    RCC-&gt;CFGR = 0;                // HSI comme source système
+    while ((RCC-&gt;CFGR &amp; (3 &lt;&lt; 2)) != 0);
+}
+
+void SPI1_Init(void)
+{
+    RCC-&gt;AHB1ENR |= (1 &lt;&lt; 0);      // GPIOA
+    RCC-&gt;APB2ENR |= (1 &lt;&lt; 12);     // SPI1
+
+    GPIOA-&gt;MODER &amp;= ~((3 &lt;&lt; 10) | (3 &lt;&lt; 14));
+    GPIOA-&gt;MODER |=  ((2 &lt;&lt; 10) | (2 &lt;&lt; 14));
+    GPIOA-&gt;AFR[0] &amp;= ~((0xF &lt;&lt; 20) | (0xF &lt;&lt; 28));
+    GPIOA-&gt;AFR[0] |=  ((5 &lt;&lt; 20)  | (5 &lt;&lt; 28));
+
+    GPIOA-&gt;MODER &amp;= ~(3 &lt;&lt; 8);
+    GPIOA-&gt;MODER |=  (1 &lt;&lt; 8);
+    GPIOA-&gt;BSRR = (1 &lt;&lt; 4);
+
+    SPI1-&gt;CR1 = 0;
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 2);         // MSTR
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 8) | (1 &lt;&lt; 9);
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 11);        // DFF
+    SPI1-&gt;CR1 |= (3 &lt;&lt; 3);         // BR = 011
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 6);         // SPE
+}
+
+void DAC_Write(uint16_t value)
+{
+    uint16_t commande = 0x3000 | (value &amp; 0x0FFF);
+
+    while (!(SPI1-&gt;SR &amp; (1 &lt;&lt; 1)));
+    GPIOA-&gt;BSRR = (1 &lt;&lt; 20);
+    SPI1-&gt;DR = commande;
+    while (!(SPI1-&gt;SR &amp; (1 &lt;&lt; 1)));
+    while (SPI1-&gt;SR &amp; (1 &lt;&lt; 7));
+    GPIOA-&gt;BSRR = (1 &lt;&lt; 4);
+}
+
+void TIM2_Init(uint32_t sample_freq)
+{
+    RCC-&gt;APB1ENR |= (1 &lt;&lt; 0);        // TIM2 ON
+    TIM2-&gt;PSC = 0;
+    TIM2-&gt;ARR = (16000000UL / sample_freq) - 1;
+    TIM2-&gt;DIER |= (1 &lt;&lt; 0);
+    TIM2-&gt;CR1 |= (1 &lt;&lt; 0);
+
+    NVIC_EnableIRQ(TIM2_IRQn);
+    NVIC_SetPriority(TIM2_IRQn, 0);
+}
+
+void TIM2_IRQHandler(void)
+{
+    if (TIM2-&gt;SR &amp; (1 &lt;&lt; 0))
+    {
+        TIM2-&gt;SR &amp;= ~(1 &lt;&lt; 0);
+        DAC_Write(sine_table[sinus_index]);
+        sinus_index++;
+        if (sinus_index &gt;= TABLE_SIZE) sinus_index = 0;
+    }
+}
+
+void ADC_Init(void)
+{
+    RCC-&gt;APB2ENR |= (1 &lt;&lt; 8);        // ADC1 ON
+    GPIOA-&gt;MODER |= (3 &lt;&lt; (0 * 2));  // PA0 analogique
+    ADC1-&gt;CR2 = 0;
+    ADC1-&gt;CR1 = 0;
+    ADC1-&gt;CR2 |= (1 &lt;&lt; 0);           // ADON
+    ADC1-&gt;SQR1 = 0;
+    ADC1-&gt;SQR3 = 0;
+    ADC1-&gt;SMPR2 |= (7 &lt;&lt; (0 * 3));
+}
+
+uint16_t ADC_Read(void)
+{
+    ADC1-&gt;CR2 |= (1 &lt;&lt; 30);          // SWSTART
+    while (!(ADC1-&gt;SR &amp; (1 &lt;&lt; 1)));
+    return ADC1-&gt;DR;
+}
+</code></pre>
+<h1 id="generateur-de-signaux-avec-dds-direct-digital-synthesis">Générateur de Signaux avec DDS (Direct Digital Synthesis)</h1>
+<p>Nous allons adapter notre générateur de sinusoïde pour utiliser la technique <strong>DDS</strong> (<em>Direct Digital Synthesis</em>). Cela nous permettra de contrôler la fréquence avec une très grande précision et de générer des formes d'onde complexes (sinus, carré, dent de scie, etc.) en modifiant simplement la table ou l’algorithme de génération.</p>
+<h2 id="principe-du-dds">Principe du DDS</h2>
+<ul>
+<li><strong>Accumulateur de phase :</strong> Un registre de phase (<code>phase_acc</code>) est incrémenté à chaque échantillon d’une valeur fixe appelée le pas (<code>phase_step</code>).</li>
+<li><strong>Résolution de l'accumulateur :</strong> Le système utilise ici un accumulateur codé sur <span class="arithmatex">\(N = 32\)</span> bits.</li>
+<li><strong>Extraction de l'index :</strong> L’index permettant de lire la table d'onde est extrait des bits de poids fort de <code>phase_acc</code>. Avec une table de <strong>256 points</strong> (<span class="arithmatex">\(2^8\)</span>), on utilise les <strong>8 bits de poids fort</strong> (obtenus par un décalage binaire de 24 bits : <code>phase_acc &gt;&gt; 24</code>).</li>
+</ul>
+<h2 id="formules-mathematiques">Formules Mathématiques</h2>
+<h3 id="1-frequence-de-sortie-f_out">1. Fréquence de sortie (<span class="arithmatex">\(f_{out}\)</span>)</h3>
+<p>La fréquence du signal généré dépend du pas d'incrémentation, de la fréquence d'échantillonnage (<span class="arithmatex">\(f_{ech}\)</span>) et de la taille de l'accumulateur (<span class="arithmatex">\(2^N\)</span>) :</p>
+<div class="arithmatex">\[f_{out} = \frac{\text{phase\_step} \times f_{ech}}{2^N}\]</div>
+<h3 id="2-calcul-du-pas-textphase_step">2. Calcul du pas (<span class="arithmatex">\(\text{phase\_step}\)</span>)</h3>
+<p>Pour configurer le générateur sur une fréquence cible (<span class="arithmatex">\(f_{desiree}\)</span>), la boucle principale doit calculer le pas requis selon la formule suivante :</p>
+<div class="arithmatex">\[\text{phase\_step} = \frac{f_{desiree} \times 2^N}{f_{ech}}\]</div>
+<blockquote>
+<p>[!TIP]
+<strong>Avantage majeur du DDS :</strong> Le changement de fréquence est instantané et sans rupture de phase. Il suffit de modifier la variable <code>phase_step</code> dans le code, sans jamais toucher à la configuration matérielle du timer (<span class="arithmatex">\(f_{ech}\)</span> reste fixe).</p>
+</blockquote>
+<pre><code class="language-c">/******************************************************************************
+ *  Générateur de sinusoïde avec DDS (Direct Digital Synthesis)
+ *  STM32F401CCU6 + DAC MCP4921 (SPI) + LCD
+ *  TIM2 pour l'échantillonnage (10 kHz), protothreads pour ADC et LCD
+ *  Horloge HSI 16 MHz
+ ******************************************************************************/
+
+#include &quot;stm32f4xx.h&quot;
+#include &quot;pt.h&quot;
+#include &quot;lcd.h&quot;
+#include &quot;delay.h&quot;
+#include &lt;stdint.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+
+/*==============================================================
+   CONSTANTES
+==============================================================*/
+#define TABLE_SIZE     256          // Taille de la table de sinus (puissance de 2)
+#define PHASE_BITS     32           // Taille de l'accumulateur (32 bits)
+#define INDEX_BITS     8            // log2(TABLE_SIZE) = 8
+
+#define SAMPLE_FREQ    10000UL      // Fréquence d'échantillonnage (10 kHz)
+#define FREQ_MIN       1            // Fréquence minimale (Hz)
+#define FREQ_MAX       50           // Fréquence maximale (Hz)
+
+/*==============================================================
+   VARIABLES GLOBALES
+==============================================================*/
+volatile uint32_t phase_acc = 0;        // Accumulateur de phase (32 bits)
+volatile uint32_t phase_step = 0;       // Pas de phase (calculé à partir de freq_hz)
+
+volatile uint16_t freq_hz = 10;         // Fréquence actuelle (Hz)
+volatile uint16_t adc_raw = 0;          // Dernière valeur ADC (brute)
+volatile uint8_t  lcd_update = 1;       // Drapeau pour rafraîchir le LCD
+
+/* Table de sinus (256 points, valeurs 12 bits) – symétrique */
+const uint16_t sine_table[TABLE_SIZE] = {
+    2048, 2098, 2148, 2198, 2248, 2298, 2348, 2398,
+    2447, 2496, 2545, 2594, 2642, 2690, 2737, 2784,
+    2831, 2877, 2923, 2968, 3012, 3056, 3099, 3142,
+    3185, 3226, 3267, 3307, 3347, 3386, 3424, 3461,
+    3495, 3529, 3562, 3595, 3626, 3656, 3685, 3713,
+    3750, 3777, 3803, 3828, 3852, 3875, 3897, 3918,
+    3939, 3958, 3976, 3993, 4009, 4024, 4038, 4051,
+    4056, 4060, 4064, 4067, 4070, 4072, 4074, 4076,
+    4095, 4076, 4074, 4072, 4070, 4067, 4064, 4060,
+    4056, 4051, 4038, 4024, 4009, 3993, 3976, 3958,
+    3939, 3918, 3897, 3875, 3852, 3828, 3803, 3777,
+    3750, 3713, 3685, 3656, 3626, 3595, 3562, 3529,
+    3495, 3461, 3424, 3386, 3347, 3307, 3267, 3226,
+    3185, 3142, 3099, 3056, 3012, 2968, 2923, 2877,
+    2831, 2784, 2737, 2690, 2642, 2594, 2545, 2496,
+    2447, 2398, 2348, 2298, 2248, 2198, 2148, 2098,
+    2048, 1998, 1948, 1898, 1848, 1798, 1748, 1698,
+    1649, 1600, 1551, 1502, 1454, 1406, 1359, 1312,
+    1265, 1219, 1173, 1128, 1084, 1040, 997, 954,
+    911, 870, 829, 789, 749, 710, 672, 635,
+    601, 567, 534, 501, 470, 440, 411, 383,
+    346, 319, 293, 268, 244, 221, 199, 178,
+    157, 138, 120, 103, 87, 72, 58, 45,
+    40, 36, 32, 29, 26, 24, 22, 20,
+    1, 20, 22, 24, 26, 29, 32, 36,
+    40, 45, 58, 72, 87, 103, 120, 138,
+    157, 178, 199, 221, 244, 268, 293, 319,
+    346, 383, 411, 440, 470, 501, 534, 567,
+    601, 635, 672, 710, 749, 789, 829, 870,
+    911, 954, 997, 1040, 1084, 1128, 1173, 1219,
+    1265, 1312, 1359, 1406, 1454, 1502, 1551, 1600,
+    1649, 1698, 1748, 1798, 1848, 1898, 1948, 1998
+};
+
+/*==============================================================
+   PROTOTYPES DES FONCTIONS MATÉRIELLES
+==============================================================*/
+void SystemClock_Config(void);
+void SPI1_Init(void);
+void DAC_Write(uint16_t value);
+void TIM2_Init(void);
+void ADC_Init(void);
+uint16_t ADC_Read(void);
+
+/*==============================================================
+   PROTOTYPES DES PROTOTHREADS
+==============================================================*/
+static struct pt pt_adc, pt_lcd;
+static PT_THREAD(task_adc(struct pt *pt));
+static PT_THREAD(task_lcd(struct pt *pt));
+
+/*==============================================================
+   COMPTEUR SYSTICK (1 ms)
+==============================================================*/
+volatile uint32_t systick_ms = 0;
+
+void SysTick_Handler(void)
+{
+    systick_ms++;
+}
+
+/*==============================================================
+   INTERRUPTION TIM2 (10 kHz) – CŒUR DDS
+==============================================================*/
+void TIM2_IRQHandler(void)
+{
+    if (TIM2-&gt;SR &amp; (1 &lt;&lt; 0))
+    {
+        TIM2-&gt;SR &amp;= ~(1 &lt;&lt; 0);
+
+        // Extraire les 8 bits de poids fort de l'accumulateur
+        uint16_t idx = (phase_acc &gt;&gt; (PHASE_BITS - INDEX_BITS)) &amp; (TABLE_SIZE - 1);
+
+        // Envoyer l'échantillon
+        DAC_Write(sine_table[idx]);
+
+        // Mettre à jour l'accumulateur
+        phase_acc += phase_step;
+    }
+}
+
+/*==============================================================
+   FONCTION PRINCIPALE
+==============================================================*/
+int main(void)
+{
+    // Configuration de l'horloge
+    //SystemClock_Config();
+
+    // Initialisation des délais (pour le LCD)
+    Delay_Init();
+
+    // Initialisation des périphériques
+    SPI1_Init();
+    ADC_Init();
+    TIM2_Init();          // TIM2 à 10 kHz
+
+    // Configuration du SysTick pour les protothreads
+    SysTick_Config(16000000 / 10000);
+    NVIC_SetPriority(SysTick_IRQn, 3);
+
+    // Initialisation du LCD
+    LCD_Init();
+    LCD_Clear();
+    LCD_PrintText(0, 0, &quot;DDS Generator&quot;);
+    LCD_PrintText(0, 1, &quot;Freq: 10 Hz&quot;);
+    Delay_Ms(1000);
+    LCD_Clear();
+
+    // Initialisation du pas de phase pour 10 Hz
+    phase_step = (uint32_t)((uint64_t)FREQ_MIN * 4294967296ULL / SAMPLE_FREQ);
+    freq_hz = FREQ_MIN;
+
+    // Initialisation des protothreads
+    PT_INIT(&amp;pt_adc);
+    PT_INIT(&amp;pt_lcd);
+
+    // Boucle principale
+    while (1)
+    {
+        PT_SCHEDULE(task_adc(&amp;pt_adc));
+        PT_SCHEDULE(task_lcd(&amp;pt_lcd));
+    }
+}
+
+/*===========================================================
+   PROTOTHREAD : LECTURE DU POTENTIOMÈTRE (ADC)
+   Lit l'ADC toutes les 50 ms, filtre, calcule la fréquence
+   et met à jour phase_step.
+============================================================*/
+static PT_THREAD(task_adc(struct pt *pt))
+{
+    static uint32_t last_tick = 0;
+    static uint16_t filtered = 0;
+
+    PT_BEGIN(pt);
+
+    while (1)
+    {
+        PT_WAIT_UNTIL(pt, (systick_ms - last_tick) &gt;= 50);
+        last_tick = systick_ms;
+
+        uint16_t raw = ADC_Read();
+        filtered = (filtered * 7 + raw) &gt;&gt; 3;  // Filtre exponentiel
+        adc_raw = filtered;
+
+        // Convertir ADC (0..4095) en fréquence (FREQ_MIN..FREQ_MAX)
+        uint16_t new_freq = FREQ_MIN + (filtered * (FREQ_MAX - FREQ_MIN)) / 4095;
+        if (new_freq &lt; FREQ_MIN) new_freq = FREQ_MIN;
+        if (new_freq &gt; FREQ_MAX) new_freq = FREQ_MAX;
+
+        if (new_freq != freq_hz)
+        {
+            freq_hz = new_freq;
+            // Calcul du pas de phase : phase_step = (freq * 2^32) / SAMPLE_FREQ
+            phase_step = (uint32_t)((uint64_t)freq_hz * 4294967296ULL / SAMPLE_FREQ);
+            lcd_update = 1;
+        }
+    }
+
+    PT_END(pt);
+}
+
+/*===========================================================
+   PROTOTHREAD : AFFICHAGE LCD
+   Rafraîchit l'affichage toutes les 200 ms ou sur demande.
+============================================================*/
+static PT_THREAD(task_lcd(struct pt *pt))
+{
+    static uint32_t last_tick = 0;
+    static char buffer[16];
+
+    PT_BEGIN(pt);
+
+    while (1)
+    {
+        PT_WAIT_UNTIL(pt, (systick_ms - last_tick) &gt;= 200 || lcd_update == 1);
+        last_tick = systick_ms;
+        lcd_update = 0;
+
+        sprintf(buffer, &quot;Freq:%3d Hz&quot;, freq_hz);
+        LCD_PrintText(0, 0, buffer);
+        sprintf(buffer, &quot;ADC:%4d&quot;, adc_raw);
+        LCD_PrintText(0, 1, buffer);
+    }
+
+    PT_END(pt);
+}
+
+/*===========================================================
+   FONCTIONS MATÉRIELLES
+============================================================*/
+
+void SystemClock_Config(void)
+{
+    RCC-&gt;CR |= (1 &lt;&lt; 0);          // HSI ON
+    while (!(RCC-&gt;CR &amp; (1 &lt;&lt; 1))); // Attendre HSI Ready
+    RCC-&gt;CFGR = 0;                // HSI comme source système
+    while ((RCC-&gt;CFGR &amp; (3 &lt;&lt; 2)) != 0);
+}
+
+void SPI1_Init(void)
+{
+    RCC-&gt;AHB1ENR |= (1 &lt;&lt; 0);      // GPIOA
+    RCC-&gt;APB2ENR |= (1 &lt;&lt; 12);     // SPI1
+
+    // PA5 (SCK), PA7 (MOSI) en mode Alternate Function AF5
+    GPIOA-&gt;MODER &amp;= ~((3 &lt;&lt; 10) | (3 &lt;&lt; 14));
+    GPIOA-&gt;MODER |=  ((2 &lt;&lt; 10) | (2 &lt;&lt; 14));
+    GPIOA-&gt;AFR[0] &amp;= ~((0xF &lt;&lt; 20) | (0xF &lt;&lt; 28));
+    GPIOA-&gt;AFR[0] |=  ((5 &lt;&lt; 20)  | (5 &lt;&lt; 28));
+
+    // PA4 en sortie pour CS
+    GPIOA-&gt;MODER &amp;= ~(3 &lt;&lt; 8);
+    GPIOA-&gt;MODER |=  (1 &lt;&lt; 8);
+    GPIOA-&gt;BSRR = (1 &lt;&lt; 4);
+
+    // Configuration SPI : maître, 16 bits, 5.25 MHz
+    SPI1-&gt;CR1 = 0;
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 2);         // MSTR
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 8) | (1 &lt;&lt; 9); // SSM+SSI
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 11);        // DFF (16 bits)
+    SPI1-&gt;CR1 |= (3 &lt;&lt; 3);         // BR = 011
+    SPI1-&gt;CR1 |= (1 &lt;&lt; 6);         // SPE
+}
+
+void DAC_Write(uint16_t value)
+{
+    uint16_t commande = 0x3000 | (value &amp; 0x0FFF);
+
+    while (!(SPI1-&gt;SR &amp; (1 &lt;&lt; 1)));   // Attendre TXE
+    GPIOA-&gt;BSRR = (1 &lt;&lt; 20);          // CS = 0
+    SPI1-&gt;DR = commande;
+    while (!(SPI1-&gt;SR &amp; (1 &lt;&lt; 1)));   // Attendre TXE
+    while (SPI1-&gt;SR &amp; (1 &lt;&lt; 7));      // Attendre BSY
+    GPIOA-&gt;BSRR = (1 &lt;&lt; 4);           // CS = 1
+}
+
+void TIM2_Init(void)
+{
+    RCC-&gt;APB1ENR |= (1 &lt;&lt; 0);        // TIM2 ON
+    TIM2-&gt;PSC = 0;                   // Pas de prescaler (16 MHz)
+    TIM2-&gt;ARR = (16000000UL / SAMPLE_FREQ) - 1; // 1599
+    TIM2-&gt;DIER |= (1 &lt;&lt; 0);          // Interruption sur Update
+    TIM2-&gt;CR1 |= (1 &lt;&lt; 0);           // Démarrage
+
+    NVIC_EnableIRQ(TIM2_IRQn);
+    NVIC_SetPriority(TIM2_IRQn, 0);  // Priorité haute
+}
+
+void ADC_Init(void)
+{
+    RCC-&gt;APB2ENR |= (1 &lt;&lt; 8);        // ADC1 ON
+    GPIOA-&gt;MODER |= (3 &lt;&lt; (0 * 2));  // PA0 analogique
+    ADC1-&gt;CR2 = 0;
+    ADC1-&gt;CR1 = 0;
+    ADC1-&gt;CR2 |= (1 &lt;&lt; 0);           // ADON
+    ADC1-&gt;SQR1 = 0;
+    ADC1-&gt;SQR3 = 0;
+    ADC1-&gt;SMPR2 |= (7 &lt;&lt; (0 * 3));   // 84 cycles
+}
+
+uint16_t ADC_Read(void)
+{
+    ADC1-&gt;CR2 |= (1 &lt;&lt; 30);          // SWSTART
+    while (!(ADC1-&gt;SR &amp; (1 &lt;&lt; 1)));  // Attendre EOC
+    return ADC1-&gt;DR;
+}
+</code></pre>
+<ul>
+<li><strong>Accumulateur de phase :</strong> La variable <code>phase_acc</code> (codée sur 32 bits) est incrémentée de la valeur <code>phase_step</code> à chaque déclenchement de l'interruption du <code>TIM2</code>.</li>
+<li><strong>Calcul de l'index :</strong> Les <strong>8 bits de poids fort</strong> de l'accumulateur (obtenus par l'opération <code>phase_acc &gt;&gt; 24</code>) fournissent un index compris entre <strong>0 et 255</strong> pour pointer dans la table de sinus.</li>
+<li><strong>Calcul du pas (<span class="arithmatex">\(\text{phase\_step}\)</span>) :</strong> Le pas est recalculé dynamiquement lors de chaque changement de fréquence cible via la formule suivante :
+  $<span class="arithmatex">\(\text{phase\_step} = \frac{\text{freq} \times 2^{32}}{\text{SAMPLE\_FREQ}}\)</span>$</li>
+</ul>
+<h3 id="avantages-de-cette-methode">Avantages de cette méthode</h3>
+<ul>
+<li><strong>Précision extrême :</strong> La fréquence de sortie possède une résolution fine définie par :
+  $<span class="arithmatex">\(\Delta f = \frac{\text{SAMPLE\_FREQ}}{2^{32}} \approx 0.0023 \text{ Hz}\)</span>$</li>
+<li><strong>Grande flexibilité :</strong> La modification ou le remplacement de la table de conversion (sinus, carré, triangle, etc.) suffit pour générer instantanément n'importe quelle forme d'onde.</li>
+<li><strong>Excellente stabilité :</strong> Le pas d'incrémentation demeure rigoureusement identique entre deux requêtes de changement de fréquence. Le signal généré est donc parfaitement stable et constant.</li>
+</ul>
+<h2 id="generateur-de-signaux-par-dds-avec-stm32f401-mcp4921">Générateur de signaux par DDS avec STM32F401 + MCP4921</h2>
+<p>Ce code implémente un générateur de signaux (sinus, carré, dent de scie, triangle, rampe) avec une synthèse numérique directe (DDS) temps réel, utilisant une interruption TIM2 pour un échantillonnage stable à 10 kHz, une table de sinus de 1024 points, et des protothreads pour les tâches non critiques (ADC, LCD, bouton).</p>
+<h2 id="vue-densemble-une-architecture-a-deux-niveaux">Vue d’ensemble : Une Architecture à Deux Niveaux</h2>
+<p>Votre système est divisé en deux mondes qui cohabitent harmonieusement :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Niveau</th>
+<th style="text-align: left;">Composants</th>
+<th style="text-align: left;">Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Temps réel strict</strong></td>
+<td style="text-align: left;"><code>TIM2</code> (DDS) + <code>TIM3</code> (déclenchement ADC)</td>
+<td style="text-align: left;">Gère la génération du signal et l’acquisition du potentiomètre de manière déterministe. Les interruptions y sont prioritaires.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Applicatif / Interface</strong></td>
+<td style="text-align: left;">Protothreads (LCD, mise à jour fréquence)</td>
+<td style="text-align: left;">Gère l’affichage et les calculs de mise à jour sans jamais bloquer le cœur temps réel.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Cette séparation garantit que la sortie du DAC n’est jamais perturbée par des opérations lentes (comme écrire sur le LCD).</p>
+</blockquote>
+<h3 id="2-adc-en-interruption-declenche-par-tim3-100-hz">2. ADC en Interruption Déclenché par TIM3 (100 Hz)</h3>
+<h4 id="ce-qui-est-fait">Ce qui est fait</h4>
+<ul>
+<li>Le <strong>Timer3</strong> est configuré pour compter jusqu’à une valeur donnée, puis générer un signal <code>TRGO</code> (<em>Trigger Output</em>).</li>
+<li>Ce signal est câblé en dur à l’entrée de déclenchement externe de l'<strong>ADC1</strong>.</li>
+<li>À chaque impulsion (<strong>100 Hz</strong>), l’ADC démarre automatiquement une conversion sur la broche <code>PA0</code> (potentiomètre).</li>
+<li>Quand la conversion est terminée, l’interruption <code>ADC_IRQHandler</code> est appelée. Elle lit la donnée (<code>adc_raw</code>) et lève un sémaphore (<code>adc_ready = 1</code>).</li>
+</ul>
+<h4 id="pourquoi-cest-bien">Pourquoi c’est bien</h4>
+<ul>
+<li><strong>Pas de polling :</strong> Le microcontrôleur ne perd pas de temps à scruter un registre en boucle. C’est le matériel qui le prévient.</li>
+<li><strong>Régulier :</strong> La lecture se fait à 100 Hz (toutes les 10 ms). La fréquence de sortie est mise à jour à cette cadence, évitant les variations trop brusques.</li>
+<li><strong>Découplage :</strong> L’interruption ne fait que stocker la valeur brute. C’est un protothread (<code>task_update_frequency</code>) qui fera le traitement (filtrage, calcul), ce qui rend l’interruption très rapide.</li>
+</ul>
+<h3 id="3-dds-dans-tim2-priorite-0">3. DDS dans TIM2 (Priorité 0)</h3>
+<h4 id="ce-qui-est-fait_1">Ce qui est fait</h4>
+<ul>
+<li>Le <strong>Timer2</strong> est configuré pour générer une interruption 10 000 fois par seconde (<strong>10 kHz</strong>).</li>
+<li>Cette interruption est prioritaire (<strong>niveau 0</strong> dans le NVIC) : elle ne peut pas être retardée par d’autres interruptions.</li>
+<li><strong>Dans cette interruption :</strong></li>
+<li>Extraction des 10 bits de poids fort de l’accumulateur <code>phase_acc</code> pour obtenir un index dans la table de sinus de 1024 points.</li>
+<li>Lecture de la valeur dans la table (ou calcul selon le mode : carré, dent de scie, etc.).</li>
+<li>Envoi de la valeur au DAC via SPI (<code>DAC_Write</code>).</li>
+<li>Ajout de <code>phase_step</code> à <code>phase_acc</code>.</li>
+</ul>
+<h4 id="pourquoi-cest-bien-dds">Pourquoi c’est bien (DDS)</h4>
+<ul>
+<li>Le <strong>DDS</strong> (<em>Direct Digital Synthesis</em>) permet de changer la fréquence instantanément en modifiant un seul paramètre : <code>phase_step</code>. Aucun changement de timer requis.</li>
+<li>La table de <strong>1024 points</strong> offre une résolution de phase de <strong>0,35°</strong> (<span class="arithmatex">\(360^\circ / 1024\)</span>), garantissant une sinusoïde très propre.</li>
+<li>La <strong>priorité 0</strong> garantit un <em>jitter</em> temporel inférieur à 1 µs. L'intervalle fixe de 100 µs élimine les micro‑variations de fréquence (<em>phase noise</em>).</li>
+</ul>
+<h3 id="4-protothreads-taches-ui-non-bloquantes">4. Protothreads (Tâches UI Non-Bloquantes)</h3>
+<h4 id="ce-qui-est-fait_2">Ce qui est fait</h4>
+<p>Deux protothreads sont utilisés :
+* <code>task_update_frequency</code> : Attend le sémaphore <code>adc_ready</code>, filtre la valeur ADC, calcule la fréquence et le nouveau <code>phase_step</code>.
+* <code>task_lcd</code> : Rafraîchit l’écran LCD toutes les 200 ms ou quand <code>lcd_update</code> est à 1.</p>
+<p><em>Ils utilisent <code>PT_WAIT_UNTIL()</code> pour « dormir » jusqu’à ce qu’un événement se produise.</em></p>
+<h4 id="pourquoi-cest-bien_1">Pourquoi c’est bien</h4>
+<ul>
+<li>Les protothreads transforment une logique séquentielle en machines à états implicites sans pile de contexte (<strong>2 octets de RAM chacun</strong>).</li>
+<li>Le CPU n'est jamais bloqué dans une boucle <code>while</code> vide. Si une interruption <code>TIM2</code> arrive pendant le rafraîchissement du LCD, elle préempte le code et le signal reste intact.</li>
+<li>Cela permet d’ajouter facilement d’autres tâches (UART, LED) sans refondre l’architecture.</li>
+</ul>
+<h3 id="5-filtrage-exponentiel-moyenne-lissee">5. Filtrage Exponentiel (Moyenne Lissée)</h3>
+<h4 id="ce-qui-est-fait_3">Ce qui est fait</h4>
+<p>Dans <code>task_update_frequency</code>, on applique un filtre numérique :</p>
+<pre><code class="language-c">filtered = (filtered * 7 + adc_raw) &gt;&gt; 3;
+</code></pre>
+<p>C’est une moyenne exponentielle : la nouvelle valeur filtrée est composée de <strong>7/8</strong> de l’ancienne et de <strong>1/8</strong> de la nouvelle valeur brute.</p>
+<h4 id="pourquoi-cest-bien_2">Pourquoi c’est bien</h4>
+<ul>
+<li>Les potentiomètres analogiques sont souvent bruités. Sans filtre, la fréquence « vibrerait » autour de la valeur souhaitée.</li>
+<li>Ce filtre est extrêmement léger en calcul (un simple <strong>décalage binaire <code>&gt;&gt; 3</code></strong> au lieu d'une division).</li>
+<li>Il suit les variations lentes (mouvement du doigt) tout en éliminant les fluctuations rapides.</li>
+</ul>
+<pre><code class="language-c">/**
+ * @file main.c
+ * @brief Générateur de signaux (sinus, carré, dent de scie, triangle, rampe) 
+ *        avec STM32F401, DAC MCP4921 et afficheur LCD.
+ * 
+ * Fonctionnalités :
+ *   - 5 formes d'onde sélectionnables par bouton.
+ *   - Fréquence réglable de 1 à 100 Hz via potentiomètre (ADC).
+ *   - Sortie analogique via DAC MCP4921 (SPI).
+ *   - Affichage LCD : mode et fréquence.
+ *   - Utilisation du DDS (Direct Digital Synthesis) avec TIM2 à 10 kHz.
+ *   - ADC en interruption (déclenché par TIM3) pour lire le potentiomètre.
+ *   - Protothreads pour les tâches non critiques (mise à jour fréquence, LCD).
+ *   - Horloge HSI 16 MHz (pas de PLL) pour simplicité.
+ * 
+ * Auteur : [Votre nom]
+ * Date   : [Date]
+ * 
+ * Brochage :
+ *   - PA4 : CS du MCP4921
+ *   - PA5 : SCK du MCP4921
+ *   - PA7 : MOSI du MCP4921
+ *   - PA0 : entrée analogique du potentiomètre
+ *   - PC13 : bouton (actif à 0, pull-up interne)
+ *   - LCD sur PORTB (broches définies dans lcd.h)
+ */
+
+#include &quot;stm32f4xx.h&quot;
+#include &quot;pt.h&quot;          // Bibliothèque des protothreads (multitâche coopératif)
+#include &quot;lcd.h&quot;         // Driver pour LCD HD44780
+#include &quot;delay.h&quot;       // Délais bloquants pour l'initialisation du LCD
+#include &lt;stdio.h&gt;       // Pour sprintf()
+#include &lt;math.h&gt;        // Pour générer la table de sinus
+#include &lt;stdint.h&gt;
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
+/* ============================================================
+ * 1. CONSTANTES ET DÉFINITIONS
+ * ============================================================ */
+
+#define SAMPLE_RATE_HZ  10000UL          // Fréquence d'échantillonnage du DDS (10 kHz)
+#define LUT_SIZE        1024             // Taille de la table de sinus (puissance de 2 pour accès rapide)
+#define PHASE_BITS      32               // Taille de l'accumulateur de phase (32 bits)
+#define INDEX_BITS      10               // log2(LUT_SIZE) : 10 bits pour adresser 1024 points
+
+#define FREQ_MIN        1                // Fréquence minimale (Hz)
+#define FREQ_MAX        100              // Fréquence maximale (Hz)
+
+// Identifiants des formes d'onde
+#define MODE_SINE       0
+#define MODE_SQUARE     1
+#define MODE_SAWTOOTH   2
+#define MODE_TRIANGLE   3
+#define MODE_RAMP       4
+#define NB_MODES        5
+
+// Broches
+#define CS_PIN          4                // PA4
+#define CS_PORT         GPIOA
+#define BUTTON_PIN      13               // PC13
+#define BUTTON_PORT     GPIOC
+#define ADC_PIN         0                // PA0
+
+/* ============================================================
+ * 2. VARIABLES GLOBALES
+ * ============================================================ */
+
+// --- Temporisation système ---
+volatile uint32_t sys_tick = 0;          // Incrémenté par SysTick à 1 kHz, utilisé par les protothreads
+
+// --- État du générateur ---
+volatile uint8_t  mode = MODE_SINE;      // Mode actuel (0..4)
+volatile uint16_t freq_hz = 10;          // Fréquence effective en Hz (affichée sur LCD)
+volatile uint8_t  lcd_update = 1;        // Drapeau pour forcer le rafraîchissement du LCD
+
+// --- Variables DDS (partagées entre TIM2 et task_update_frequency) ---
+volatile uint32_t phase_acc = 0;         // Accumulateur de phase (mis à jour à chaque échantillon)
+volatile uint32_t phase_step = 0;        // Pas de phase (calculé à partir de freq_hz)
+
+// --- ADC (interruption) ---
+volatile uint16_t adc_raw = 0;           // Dernière valeur brute lue par l'ADC (0..4095)
+volatile uint8_t  adc_ready = 0;         // Sémaphore : 1 quand une nouvelle donnée ADC est disponible
+
+// --- Table de sinus (1024 points, valeurs 12 bits) ---
+uint16_t sine_lut[LUT_SIZE];
+
+// --- Noms des modes pour l'affichage LCD ---
+const char *mode_names[] = {&quot;Sinus&quot;, &quot;Carre&quot;, &quot;Dents&quot;, &quot;Triang&quot;, &quot;Ramp&quot;};
+
+/* ============================================================
+ * 3. PROTOTYPES DES PROTOTHREADS
+ * ============================================================ */
+
+PT_THREAD(task_update_frequency(struct pt *pt));   // Met à jour freq_hz et phase_step
+PT_THREAD(task_lcd(struct pt *pt));                // Rafraîchit l'affichage LCD
+
+/* ============================================================
+ * 4. INITIALISATIONS MATÉRIELLES
+ * ============================================================ */
+
+/**
+ * @brief Configure l'horloge système sur HSI 16 MHz (sans PLL).
+ * 
+ * Cela simplifie l'initialisation et évite les réglages complexes.
+ * Tous les bus (AHB, APB1, APB2) fonctionnent à 16 MHz.
+ */
+void clock_init(void) {
+    // Activer l'oscillateur interne HSI (High-Speed Internal)
+    RCC-&gt;CR |= RCC_CR_HSION;
+    // Attendre que l'oscillateur soit stable
+    while (!(RCC-&gt;CR &amp; RCC_CR_HSIRDY));
+    // Effacer le registre CFGR (configurations par défaut)
+    RCC-&gt;CFGR = 0;
+    // Sélectionner HSI comme source d'horloge système
+    RCC-&gt;CFGR |= RCC_CFGR_SW_HSI;
+    // Attendre que le basculement soit effectif
+    while ((RCC-&gt;CFGR &amp; RCC_CFGR_SWS) != RCC_CFGR_SWS_HSI);
+}
+
+/**
+ * @brief Configure les broches GPIO nécessaires :
+ *   - PA4 : CS du DAC (sortie)
+ *   - PA5 : SCK (SPI) en mode alternatif AF5
+ *   - PA7 : MOSI (SPI) en mode alternatif AF5
+ *   - PA0 : entrée analogique pour le potentiomètre
+ *   - PC13 : bouton (entrée avec pull-up)
+ */
+void gpio_init(void) {
+    // Activer les horloges des ports GPIOA et GPIOC
+    RCC-&gt;AHB1ENR |= RCC_AHB1ENR_GPIOAEN | RCC_AHB1ENR_GPIOCEN;
+
+    /* ---- PA4 : CS du DAC (sortie) ---- */
+    GPIOA-&gt;MODER &amp;= ~GPIO_MODER_MODER4_Msk; // Effacer les bits de configuration
+    GPIOA-&gt;MODER |= GPIO_MODER_MODER4_0;    // Mode sortie (0b01)
+    GPIOA-&gt;BSRR = GPIO_BSRR_BS4;            // Mettre CS à 1 (inactif)
+
+    /* ---- PA5 (SCK) et PA7 (MOSI) : fonction alternative AF5 pour SPI1 ---- */
+    // Effacer les bits MODER pour ces broches
+    GPIOA-&gt;MODER &amp;= ~(GPIO_MODER_MODER5_Msk | GPIO_MODER_MODER7_Msk);
+    // Mettre en mode alternatif (0b10)
+    GPIOA-&gt;MODER |= (GPIO_MODER_MODER5_1 | GPIO_MODER_MODER7_1);
+    // Effacer les bits de sélection de fonction alternative (AFRL[5] et AFRL[7])
+    GPIOA-&gt;AFR[0] &amp;= ~(GPIO_AFRL_AFSEL5_Msk | GPIO_AFRL_AFSEL7_Msk);
+    // Affecter la fonction AF5 (valeur 5) pour SPI1
+    GPIOA-&gt;AFR[0] |= (5 &lt;&lt; GPIO_AFRL_AFSEL5_Pos) | (5 &lt;&lt; GPIO_AFRL_AFSEL7_Pos);
+
+    /* ---- PA0 : entrée analogique pour l'ADC ---- */
+    // Le mode analogique correspond aux deux bits à 1 (0b11)
+    GPIOA-&gt;MODER |= GPIO_MODER_MODER0;      // Bits 0-1 mis à 1
+
+    /* ---- PC13 : bouton (entrée avec pull-up) ---- */
+    GPIOC-&gt;MODER &amp;= ~GPIO_MODER_MODER13_Msk; // Entrée (0b00)
+    GPIOC-&gt;PUPDR |= GPIO_PUPDR_PUPDR13_0;    // Pull-up activé
+}
+
+/**
+ * @brief Initialise le module SPI1 pour communiquer avec le DAC MCP4921.
+ * 
+ * Paramètres : maître, trame 16 bits, vitesse 4 MHz, mode 0 (CPOL=0, CPHA=0).
+ */
+void spi_init(void) {
+    // Activer l'horloge du SPI1 (sur APB2)
+    RCC-&gt;APB2ENR |= RCC_APB2ENR_SPI1EN;
+
+    SPI1-&gt;CR1 = 0;                           // Reset complet
+    SPI1-&gt;CR1 |= SPI_CR1_MSTR;               // Mode maître
+    SPI1-&gt;CR1 |= SPI_CR1_SSM | SPI_CR1_SSI;  // Gestion du NSS par logiciel (pas de hardware)
+    SPI1-&gt;CR1 |= SPI_CR1_DFF;                // Trame de 16 bits (MCP4921 attend 16 bits)
+    SPI1-&gt;CR1 |= SPI_CR1_BR_0;               // BR=001 =&gt; fPCLK/4 = 16/4 = 4 MHz
+    // CPOL=0 et CPHA=0 par défaut =&gt; mode 0
+    SPI1-&gt;CR1 |= SPI_CR1_SPE;                // Activer le périphérique SPI
+}
+
+/**
+ * @brief Initialise l'ADC et le Timer3 pour un déclenchement périodique.
+ * 
+ * Le Timer3 génère un signal TRGO à 100 Hz qui déclenche une conversion ADC.
+ * L'interruption de fin de conversion (EOC) stocke la valeur et lève un sémaphore.
+ * 
+ * Cette méthode est inspirée de l'exemple fonctionnel fourni par l'étudiant.
+ */
+void adc_timer_init(void) {
+    // 1. Activer les horloges de l'ADC1 (APB2) et du Timer3 (APB1)
+    RCC-&gt;APB2ENR |= RCC_APB2ENR_ADC1EN;
+    RCC-&gt;APB1ENR |= RCC_APB1ENR_TIM3EN;
+
+    // 2. Configurer PA0 en mode analogique (déjà fait dans gpio_init, mais redondance)
+    GPIOA-&gt;MODER |= (3 &lt;&lt; (0 * 2));        // PA0 analogique
+
+    // 3. Prédiviseur de l'horloge ADC : 16 MHz / 4 = 4 MHz (max 30 MHz)
+    ADC-&gt;CCR &amp;= ~ADC_CCR_ADCPRE;           // Effacer le champ ADCPRE
+    ADC-&gt;CCR |= (1 &lt;&lt; ADC_CCR_ADCPRE_Pos); // 1 = division par 4
+
+    // 4. Séquenceur : une seule conversion sur le canal 0
+    ADC1-&gt;SQR3 = 0;                        // Canal 0 (PA0)
+    ADC1-&gt;SQR1 &amp;= ~ADC_SQR1_L;             // Longueur de séquence = 1
+
+    // 5. Temps d'échantillonnage : 84 cycles d'horloge ADC (précision)
+    ADC1-&gt;SMPR2 |= (7 &lt;&lt; (0 * 3));         // 7 = 84 cycles pour le canal 0
+
+    // 6. Déclenchement externe par le signal TRGO du Timer3
+    ADC1-&gt;CR2 &amp;= ~ADC_CR2_EXTSEL;          // Effacer le champ EXTSEL
+    ADC1-&gt;CR2 |= (8 &lt;&lt; ADC_CR2_EXTSEL_Pos); // 8 correspond à TIM3 TRGO (voir RM)
+    ADC1-&gt;CR2 |= (1 &lt;&lt; ADC_CR2_EXTEN_Pos); // Front montant sur le déclenchement
+
+    // 7. Activer l'interruption de fin de conversion (EOCIE)
+    ADC1-&gt;CR1 |= ADC_CR1_EOCIE;
+
+    // 8. Mettre sous tension l'ADC (ADON = 1)
+    ADC1-&gt;CR2 |= ADC_CR2_ADON;
+
+    // 9. Configurer la priorité et activer l'IRQ ADC dans le NVIC
+    NVIC_SetPriority(ADC_IRQn, 1);         // Priorité 1 (0 = plus haute)
+    NVIC_EnableIRQ(ADC_IRQn);
+
+    // 10. Configurer le Timer3 pour générer une interruption / TRGO à 100 Hz
+    // Horloge TIM3 = 16 MHz (APB1 = 16 MHz car HSI sans prescaler)
+    TIM3-&gt;PSC = 1600 - 1;                  // Prescaler : division par 1600
+    TIM3-&gt;ARR = 100 - 1;                   // Auto-reload : 100 ticks =&gt; 100 Hz
+    TIM3-&gt;CR2 |= (2 &lt;&lt; TIM_CR2_MMS_Pos);   // Mettre l'événement &quot;Update&quot; sur TRGO (MMS=010)
+    TIM3-&gt;CR1 |= TIM_CR1_CEN;              // Démarrer le timer
+}
+
+/**
+ * @brief Initialise le Timer2 pour le cœur DDS (10 kHz).
+ * 
+ * TIM2 génère une interruption toutes les 100 µs (10 kHz). Dans cette interruption,
+ * on calcule l'échantillon suivant et on l'envoie au DAC via SPI.
+ * 
+ * La priorité de cette interruption est la plus haute (0) pour minimiser le jitter.
+ */
+void tim2_init(void) {
+    // Activer l'horloge du Timer2 (sur APB1)
+    RCC-&gt;APB1ENR |= RCC_APB1ENR_TIM2EN;
+    TIM2-&gt;PSC = 0;                         // Pas de prescaler (comptage à 16 MHz)
+    TIM2-&gt;ARR = 16000000UL / SAMPLE_RATE_HZ - 1; // 1599 (16e6/10000 - 1)
+    TIM2-&gt;DIER |= TIM_DIER_UIE;            // Activer l'interruption sur mise à jour (update)
+    TIM2-&gt;CR1 |= TIM_CR1_CEN;              // Démarrer le compteur
+    NVIC_EnableIRQ(TIM2_IRQn);
+    NVIC_SetPriority(TIM2_IRQn, 0);        // Priorité maximale
+}
+
+/**
+ * @brief Initialise l'interruption EXTI pour le bouton PC13.
+ * 
+ * Le bouton est connecté à PC13, actif à 0. On configure un front descendant.
+ */
+void exti_init(void) {
+    // Activer l'horloge du SYSCFG (nécessaire pour la configuration EXTI)
+    RCC-&gt;APB2ENR |= RCC_APB2ENR_SYSCFGEN;
+    // Connecter EXTI13 à PC13
+    SYSCFG-&gt;EXTICR[3] |= SYSCFG_EXTICR4_EXTI13_PC;
+    // Activer l'interruption sur la ligne 13
+    EXTI-&gt;IMR |= EXTI_IMR_IM13;
+    // Sélectionner le front descendant comme déclencheur
+    EXTI-&gt;FTSR |= EXTI_FTSR_TR13;
+    // Désactiver le front montant (pas de double déclenchement)
+    EXTI-&gt;RTSR &amp;= ~EXTI_RTSR_TR13;
+    NVIC_EnableIRQ(EXTI15_10_IRQn);
+    NVIC_SetPriority(EXTI15_10_IRQn, 2);   // Priorité moyenne
+}
+
+/**
+ * @brief Génère la table de sinus (1024 points) avec des valeurs 12 bits.
+ * 
+ * Chaque valeur est calculée par : 2048 + 2047 * sin(2π*i/1024).
+ * Les valeurs sont arrondies à l'entier le plus proche et saturées à [0,4095].
+ */
+void generate_sine_table(void) {
+    for (int i = 0; i &lt; LUT_SIZE; i++) {
+        double val = 2048.0 + 2047.0 * sin(2.0 * M_PI * i / LUT_SIZE);
+        sine_lut[i] = (uint16_t)(val + 0.5);  // Arrondi
+        // Sécurité : saturer si besoin (normalement inutile)
+        if (sine_lut[i] &gt; 4095) sine_lut[i] = 4095;
+        if (sine_lut[i] &lt; 0)    sine_lut[i] = 0;
+    }
+}
+
+/* ============================================================
+ * 5. FONCTION DAC (appelée depuis l'interruption TIM2)
+ * ============================================================ */
+
+/**
+ * @brief Écrit une valeur 12 bits dans le DAC MCP4921 via SPI.
+ * 
+ * La trame envoyée est : 0x3000 | (value &amp; 0x0FFF).
+ * Les bits de commande : A/B=0, BUF=1, GA=0, SHDN=1.
+ * La fonction est courte et utilise le polling (attente BSY) car le temps
+ * d'émission est très faible (≈ 4 µs à 4 MHz).
+ */
+void DAC_Write(uint16_t value) {
+    if (value &gt; 4095) value = 4095;            // Saturation
+    uint16_t command = 0x3000 | (value &amp; 0x0FFF);
+
+    GPIOA-&gt;BSRR = GPIO_BSRR_BR4;              // CS = 0 (actif)
+    SPI1-&gt;DR = command;                       // Envoi des 16 bits
+    while (SPI1-&gt;SR &amp; SPI_SR_BSY);            // Attendre la fin de la transmission
+    GPIOA-&gt;BSRR = GPIO_BSRR_BS4;              // CS = 1 (inactif)
+}
+
+/* ============================================================
+ * 6. INTERRUPTIONS
+ * ============================================================ */
+
+/**
+ * @brief Interruption TIM2 (10 kHz) – cœur du DDS.
+ * 
+ * Cette interruption est prioritaire (niveau 0). Elle calcule l'échantillon
+ * suivant à partir de l'accumulateur de phase et le mode sélectionné,
+ * puis l'envoie au DAC.
+ * 
+ * Le switch sur le mode est court ; le temps d'exécution est constant
+ * (quelques microsecondes) pour minimiser le jitter.
+ */
+void TIM2_IRQHandler(void) {
+    if (TIM2-&gt;SR &amp; TIM_SR_UIF) {
+        TIM2-&gt;SR &amp;= ~TIM_SR_UIF;               // Effacer le flag
+
+        // Extraction de l'index de la phase (10 bits de poids fort)
+        uint16_t idx = (phase_acc &gt;&gt; (PHASE_BITS - INDEX_BITS)) &amp; (LUT_SIZE - 1);
+
+        uint16_t sample;
+
+        // Génération selon le mode actuel
+        switch (mode) {
+            case MODE_SINE:
+                sample = sine_lut[idx];
+                break;
+            case MODE_SQUARE:
+                sample = (idx &lt; (LUT_SIZE/2)) ? 4095 : 0;
+                break;
+            case MODE_SAWTOOTH:
+                sample = (idx * 4095) / (LUT_SIZE - 1);
+                break;
+            case MODE_TRIANGLE:
+                if (idx &lt; LUT_SIZE/2)
+                    sample = (idx * 4095) / (LUT_SIZE/2 - 1);
+                else
+                    sample = ((LUT_SIZE - 1 - idx) * 4095) / (LUT_SIZE/2 - 1);
+                break;
+            case MODE_RAMP:
+                sample = (idx * 4095) / (LUT_SIZE - 1);
+                break;
+            default:
+                sample = 2048;
+                break;
+        }
+
+        DAC_Write(sample);
+
+        // Mise à jour de l'accumulateur de phase
+        phase_acc += phase_step;
+    }
+}
+
+/**
+ * @brief Interruption ADC – déclenchée par TIM3 à 100 Hz.
+ * 
+ * Lit la valeur convertie, stocke la donnée brute et lève le sémaphore adc_ready.
+ * Cette interruption est de priorité 1 (juste derrière TIM2).
+ */
+void ADC_IRQHandler(void) {
+    if (ADC1-&gt;SR &amp; ADC_SR_EOC) {
+        adc_raw = ADC1-&gt;DR;                    // La lecture de DR efface le flag EOC
+        adc_ready = 1;                         // Signal à la tâche de mise à jour
+    }
+}
+
+/**
+ * @brief Interruption EXTI du bouton (PC13) – priorité 2.
+ * 
+ * Détecte un front descendant (appui) et change le mode de signal.
+ * Le LCD sera mis à jour via le drapeau lcd_update.
+ */
+void EXTI15_10_IRQHandler(void) {
+    if (EXTI-&gt;PR &amp; EXTI_PR_PR13) {
+        mode++;
+        if (mode &gt;= NB_MODES) mode = 0;
+        lcd_update = 1;                        // Demander un rafraîchissement
+        EXTI-&gt;PR = EXTI_PR_PR13;               // Effacer le flag
+    }
+}
+
+/**
+ * @brief Interruption SysTick (1 kHz) – priorité basse (3).
+ * 
+ * Incrémente un compteur utilisé par les protothreads pour les temporisations.
+ */
+void SysTick_Handler(void) {
+    sys_tick++;
+}
+
+/* ============================================================
+ * 7. PROTOTHREADS (TÂCHES NON CRITIQUES)
+ * ============================================================ */
+
+/**
+ * @brief Protothread de mise à jour de la fréquence.
+ * 
+ * Attend le sémaphore adc_ready (posé par l'interruption ADC).
+ * Lorsqu'une nouvelle valeur est disponible, elle est filtrée par moyenne
+ * exponentielle (poids 7/8), puis convertie en fréquence entre FREQ_MIN et FREQ_MAX.
+ * Enfin, le pas de phase phase_step est recalculé et le LCD est mis à jour.
+ * 
+ * Ce protothread s'exécute en arrière-plan sans bloquer le système.
+ */
+PT_THREAD(task_update_frequency(struct pt *pt)) {
+    static uint32_t filtered = 0;              // Valeur filtrée (persistante)
+
+    PT_BEGIN(pt);
+
+    while (1) {
+        // Attendre qu'une nouvelle donnée ADC soit disponible (non-bloquant)
+        PT_WAIT_UNTIL(pt, adc_ready == 1);
+        adc_ready = 0;                         // Consommer le sémaphore
+
+        // Filtrage exponentiel : on conserve 7/8 de l'ancienne valeur
+        filtered = (filtered * 7 + adc_raw) &gt;&gt; 3;
+        uint16_t adc_filt = filtered;
+
+        // Conversion de la valeur ADC (0..4095) en fréquence (FREQ_MIN..FREQ_MAX)
+        uint32_t freq = FREQ_MIN + (adc_filt * (FREQ_MAX - FREQ_MIN)) / 4095;
+        if (freq &lt; FREQ_MIN) freq = FREQ_MIN;
+        if (freq &gt; FREQ_MAX) freq = FREQ_MAX;
+        freq_hz = (uint16_t)freq;
+
+        // Calcul du pas de phase DDS : phase_step = (freq * 2^32) / SAMPLE_RATE
+        // On utilise 4294967296ULL = 2^32 pour éviter les flottants
+        phase_step = (uint32_t)((uint64_t)freq * 4294967296ULL / SAMPLE_RATE_HZ);
+
+        // Demander la mise à jour du LCD
+        lcd_update = 1;
+    }
+
+    PT_END(pt);
+}
+
+/**
+ * @brief Protothread d'affichage LCD.
+ * 
+ * Rafraîchit l'écran périodiquement (toutes les 200 ms) ou sur demande (lcd_update).
+ * Affiche le nom du mode, la fréquence et la valeur ADC brute.
+ * 
+ * Utilise la bibliothèque LCD fournie (LCD_PrintText) qui est bloquante, mais
+ * comme elle n'est appelée qu'à faible fréquence, cela n'impacte pas le système.
+ */
+PT_THREAD(task_lcd(struct pt *pt)) {
+    static uint32_t last_tick = 0;
+    static char buffer[24];
+
+    PT_BEGIN(pt);
+
+    LCD_Clear();
+    LCD_PrintText(0, 0, &quot;Signal: Sinus&quot;);
+    LCD_PrintText(0, 1, &quot;Freq: 10 Hz&quot;);
+
+    while (1) {
+        // Attendre 200 ms (200 ticks à 1 kHz) ou une demande de mise à jour
+        PT_WAIT_UNTIL(pt, (sys_tick - last_tick) &gt;= 200 || lcd_update == 1);
+        last_tick = sys_tick;
+        lcd_update = 0;
+
+        // Ligne 0 : nom du signal
+        LCD_PrintText(0, 0, &quot;Signal:&quot;);
+        LCD_PrintText(8, 0, (char*)mode_names[mode]);
+
+        // Ligne 1 : fréquence et valeur ADC
+        sprintf(buffer, &quot;Freq:%3dHz ADC:%4d&quot;, freq_hz, adc_raw);
+        LCD_PrintText(0, 1, buffer);
+    }
+
+    PT_END(pt);
+}
+
+/* ============================================================
+ * 8. FONCTION PRINCIPALE (main)
+ * ============================================================ */
+
+int main(void) {
+    // 1. Initialisation du matériel
+    clock_init();                            // Horloge HSI 16 MHz
+    Delay_Init();                            // Initialisation des délais pour le LCD
+    gpio_init();                             // GPIO (SPI, ADC, bouton)
+    spi_init();                              // SPI pour le DAC MCP4921
+    adc_timer_init();                        // ADC déclenché par TIM3 (100 Hz)
+    tim2_init();                             // TIM2 pour le DDS (10 kHz)
+    exti_init();                             // Bouton (PC13) en interruption
+
+    // 2. Génération de la table de sinus
+    generate_sine_table();
+
+    // 3. Initialisation du LCD (bloquant mais une seule fois)
+    LCD_Init();
+    LCD_Clear();
+
+    // 4. Valeur initiale de la fréquence (10 Hz)
+    freq_hz = 10;
+    phase_step = (uint32_t)((uint64_t)10 * 4294967296ULL / SAMPLE_RATE_HZ);
+    phase_acc = 0;
+
+    // 5. Configuration de SysTick pour les temporisations (1 kHz)
+    SysTick_Config(16000000 / 1000);
+    NVIC_SetPriority(SysTick_IRQn, 3);       // Priorité basse
+
+    // 6. Initialisation des protothreads
+    static struct pt pt_freq, pt_lcd;
+    PT_INIT(&amp;pt_freq);
+    PT_INIT(&amp;pt_lcd);
+
+    // 7. Boucle principale : scheduler des protothreads
+    while (1) {
+        // Exécution coopérative des tâches
+        PT_SCHEDULE(task_update_frequency(&amp;pt_freq));
+        PT_SCHEDULE(task_lcd(&amp;pt_lcd));
+        // D'autres protothreads pourraient être ajoutés ici
+    }
+}
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
