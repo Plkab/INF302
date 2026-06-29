@@ -1,150 +1,166 @@
 /* ============================================================
-   1. DESIGN MINIMALISTE (masquer navbar & sidebar, centrer)
+   1. STRUCTURE STANDARD DE PAGE ACADÉMIQUE (FOND BLANC PUR)
    ============================================================ */
 
-/* 1. Masquer l'en-tête (navbar) complètement */
+/* Masquage des éléments de navigation de MkDocs pour le minimalisme */
 .navbar {
   display: none !important;
 }
-
-/* 2. Masquer la barre latérale gauche (colonne de navigation) */
 .col-md-3 {
   display: none !important;
 }
 
-/* 3. Centrer le contenu principal avec une largeur confortable */
+/* Fond global blanc pur, style page blanche unie */
+body {
+  background-color: #ffffff !important; 
+  margin: 0;
+  padding: 0;
+}
+
+/* Zone du cours étendue, centrée et sans ombres */
 .col-md-9 {
   max-width: 900px;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin: 0 auto !important;
   float: none !important;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-/* 4. Ajuster la marge du body */
-body {
-  padding-top: 0 !important;
-  margin-top: 40px;
-}
-
-/* 5. Centrer tous les titres principaux */
-h1 {
-  text-align: center;
+  background-color: #ffffff !important; 
+  padding: 40px 30px !important;
+  box-shadow: none !important; 
 }
 
 /* ============================================================
-   2. RENDU DES NOTEBOOKS COMME DANS JUPYTER
-   (Code coloré comme dans un IDE, prompts, polices)
+   2. TYPOGRAPHIE ET POLICES STANDARDS EN INGÉNIERIE
    ============================================================ */
 
-/* Importer une police de caractères moderne type IDE */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
 
-/* Appliquer la police à tout le code et aux cellules */
-body, .cell, .highlight, pre, code, .rendered_html pre, .input_area pre {
-  font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace !important;
-  font-size: 14px;
-  line-height: 1.6;
+/* Corps du texte : Style manuel technique standard (Arial / Helvetica) */
+body, .rendered_html, p, li {
+  font-family: "Helvetica Neue", Arial, "Segoe UI", sans-serif !important;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #222222 !important; /* Noir standard, reposant pour la lecture */
 }
 
-/* Fond sombre pour les cellules de code (style IDE) */
-.cell, .input_area, .output_area pre {
-  background-color: #1e1e1e !important;
-  border-radius: 6px;
-  padding: 10px;
+/* Titres académiques standardisés */
+h1 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e1e4e6;
 }
 
-/* Couleurs pour la coloration syntaxique (thème Monokai-like) */
-.highlight .k { color: #c678dd; }  /* mot-clé */
-.highlight .s { color: #98c379; }  /* chaîne de caractères */
-.highlight .c { color: #5c6370; font-style: italic; } /* commentaire */
-.highlight .cp { color: #e5c07b; } /* préprocesseur (#include) */
-.highlight .nf { color: #61afef; } /* nom de fonction */
-.highlight .nb { color: #e5c07b; } /* mot-clé intégré (built-in) */
-.highlight .mi { color: #d19a66; } /* nombre */
-.highlight .o { color: #abb2bf; }  /* opérateur */
-.highlight .p { color: #abb2bf; }  /* ponctuation */
-.highlight .nt { color: #e06c75; } /* tag HTML */
-.highlight .na { color: #98c379; } /* attribut HTML */
-.highlight .nv { color: #e06c75; } /* variable */
-.highlight .vc { color: #e06c75; } /* variable de classe */
-.highlight .vg { color: #e06c75; } /* variable globale */
-.highlight .vi { color: #e06c75; } /* variable d'instance */
-.highlight .bp { color: #d19a66; } /* built-in Python */
-.highlight .kc { color: #c678dd; } /* constante */
-.highlight .kd { color: #c678dd; } /* déclaration */
-.highlight .kn { color: #c678dd; } /* mot-clé de namespace */
-.highlight .kp { color: #c678dd; } /* mot-clé spécial */
-.highlight .kr { color: #c678dd; } /* mot-clé réservé */
-.highlight .kt { color: #c678dd; } /* type */
-.highlight .m { color: #d19a66; }  /* nombre */
-.highlight .mf { color: #d19a66; } /* nombre flottant */
-.highlight .mh { color: #d19a66; } /* nombre hexadécimal */
-.highlight .mi { color: #d19a66; } /* nombre entier */
-.highlight .mo { color: #d19a66; } /* nombre octal */
-.highlight .s { color: #98c379; }  /* chaînes de caractères */
-.highlight .se { color: #e5c07b; } /* séquence d'échappement */
-.highlight .sh { color: #98c379; } /* chaîne heredoc */
-.highlight .si { color: #e5c07b; } /* interpolation */
-.highlight .sr { color: #e5c07b; } /* regex */
-.highlight .ss { color: #e5c07b; } /* symbole */
-.highlight .dl { color: #98c379; } /* délimiteur de chaîne */
-
-/* Amélioration des prompts (In[#], Out[#]) */
-.prompt {
-  color: #7f848e !important;
-  font-size: 0.85rem;
-  background-color: #2c2c2c;
-  padding: 2px 8px;
-  border-radius: 4px;
-  display: inline-block;
+.rendered_html h2 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #003366; /* Bleu marine universitaire */
+  margin-top: 35px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  border-left: 4px solid #003366;
+  padding-left: 10px;
 }
 
-/* Sorties des cellules */
-.output_area pre {
-  background-color: #1e1e1e !important;
-  color: #abb2bf;
-  border: none;
-}
-
-/* Ajustement des bordures et espaces */
-.input_area {
-  border: none !important;
-}
-.rendered_html {
-  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-  color: #333;
-}
-.rendered_html h1, .rendered_html h2, .rendered_html h3 {
-  color: #111;
+.rendered_html h3 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #333333;
+  margin-top: 25px;
+  font-weight: 600;
 }
 
 /* ============================================================
-   3. SUPPORT DES ÉQUATIONS LATEX (MathJax)
+   3. BLOCS DE CODE ET NOTEBOOKS (STYLE FORMAT IDE DARK)
    ============================================================ */
-/* Les équations s'affichent déjà grâce à MathJax, 
-   mais on peut ajuster la taille */
-.MathJax {
-  font-size: 1.1em;
+
+/* Code en ligne au milieu du texte (ex: `uint32_t`, `I2C_HandleTypeDef`) */
+.rendered_html code, p code {
+  font-family: 'JetBrains Mono', 'Consolas', monospace !important;
+  background-color: #f0f2f5 !important;
+  color: #b31d28 !important; /* Rouge brique standard du code inline */
+  padding: 2px 5px !important;
+  border-radius: 3px !important;
+  font-size: 0.9em !important;
 }
 
-/* Forcer le rendu des équations LaTeX */
-.rendered_html .MathJax {
-  display: inline-block;
+/* Cellules de code Jupyter complètes */
+.cell, .input_area, .output_area pre {
+  font-family: 'JetBrains Mono', 'Consolas', monospace !important;
+  background-color: #1e1e1e !important; /* Fond sombre standard d'éditeur type Keil/VS Code */
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 16px;
 }
-.rendered_html .MathJax_Display {
+
+/* Coloration syntaxique standard (C / Assembly / Python) */
+.highlight .k { color: #569cd6; font-weight: bold; }  /* Mots-clés: if, volatile, void */
+.highlight .s, .highlight .sc { color: #ce9178; }     /* Chaînes de caractères: "UART" */
+.highlight .c, .highlight .cm { color: #6a9955; font-style: italic; } /* Commentaires en vert */
+.highlight .cp { color: #9cdcfe; }                     /* Directives: #define, #include */
+.highlight .nf { color: #dcdcaa; }                     /* Fonctions: main, HAL_GPIO_WritePin */
+.highlight .mi, .highlight .mh { color: #b5cea8; }     /* Nombres et adresses hexadécimales: 0x40020000 */
+.highlight .kt { color: #4fc1ff; }                     /* Types de données: uint32_t, int */
+
+/* Indicateurs d'exécution In[ ] / Out[ ] */
+.prompt {
+  font-family: 'JetBrains Mono', monospace;
+  color: #888888 !important;
+  font-size: 0.8rem;
+  background-color: #2d2d2d;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.output_area pre {
+  background-color: #151515 !important;
+  color: #d4d4d4;
+  border-left: 3px solid #666666;
+}
+
+/* ============================================================
+   4. COMPOSANTS DE COURS TECHNIQUE (TABLES, IMAGES & NOTES)
+   ============================================================ */
+
+/* Tableaux de structures de registres, broches ou tables de vérité */
+.rendered_html table {
+  width: 100%;
+  margin: 25px 0;
+  border-collapse: collapse;
+}
+.rendered_html th {
+  background-color: #f1f3f5 !important;
+  color: #111111 !important;
+  font-weight: 600;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+}
+.rendered_html td {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+}
+.rendered_html tr:nth-child(even) {
+  background-color: #fafbfc; /* Légère alternance pour les grands tableaux de registres */
+}
+
+/* Schémas d'architecture matérielle et Chronogrammes */
+.rendered_html img {
   display: block;
-  text-align: center;
-  margin: 1em 0;
+  max-width: 95%;
+  height: auto;
+  margin: 30px auto;
+  border: 1px solid #e1e4e6;
+  padding: 5px;
+  background-color: #ffffff;
 }
 
-/* Police pour tout le texte (hors code) */
-body, .rendered_html, p, li {
-  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;           /* Taille de base */
-  line-height: 1.7;          /* Interligne confortable */
-  color: #222;               /* Couleur du texte */
+/* Notes importantes et Remarques Temps Réel (générées via > en Markdown) */
+.rendered_html blockquote {
+  background-color: #f8f9fa;
+  border-left: 4px solid #003366;
+  color: #333333;
+  padding: 15px;
+  margin: 20px 0;
 }
-
-
+.rendered_html blockquote p {
+  margin-bottom: 0;
+}

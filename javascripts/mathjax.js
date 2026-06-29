@@ -6,12 +6,13 @@ window.MathJax = {
     processEnvironments: true
   },
   options: {
-    ignoreHtmlClass: '.*|',
-    processHtmlClass: '.*'
+    // Configuration de ciblage pour le plugin mkdocs-jupyter
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process|rendered_html'
   }
 };
 
-// Forcer le rendu après le chargement de la page
+// Force le moteur de rendu graphique à s'exécuter une fois le DOM chargé
 document.addEventListener('DOMContentLoaded', function() {
   if (window.MathJax && MathJax.typesetPromise) {
     MathJax.typesetPromise();
