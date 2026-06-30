@@ -362,6 +362,7 @@ V_OUT = 3.3 × (2048 / 4096) = 1.65V</p>
 </table>
 <h3 id="exemple-generateur-de-sinusoide-avec-le-dac-mcp4921">Exemple : Générateur de sinusoïde avec le DAC MCP4921</h3>
 <p>Nous utilisons une table pré-calculée de 256 valeurs représentant une période de sinus. La boucle principale parcourt cette table séquentiellement et envoie chaque valeur au DAC via SPI. La fréquence de la sinusoïde est déterminée par le délai entre deux envois.</p>
+<p>La table de sinus pré-calculée est appelee LUT (Lookup Table).</p>
 <pre><code class="language-c">/******************************************************************************
  *  Exemple : Générateur de sinusoïde avec STM32F401 + MCP4921
  *
@@ -1078,18 +1079,30 @@ uint16_t ADC_Read(void)
 <h1 id="generateur-de-signaux-avec-dds-direct-digital-synthesis">Générateur de Signaux avec DDS (Direct Digital Synthesis)</h1>
 <p>Nous allons adapter notre générateur de sinusoïde pour utiliser la technique <strong>DDS</strong> (<em>Direct Digital Synthesis</em>). Cela nous permettra de contrôler la fréquence avec une très grande précision et de générer des formes d'onde complexes (sinus, carré, dent de scie, etc.) en modifiant simplement la table ou l’algorithme de génération.</p>
 <h2 id="principe-du-dds">Principe du DDS</h2>
+<p>Au lieu de modifier la vitesse d'un timer pour changer la frequence, la DDS appelle une fonction à un rythme fixe (par exemple, à la fréquence d'échantillonnage de 44,1 kHz) et utilise un accumulateur de phase pour sauter plus ou moins vite dans la table de sinus precalculee.</p>
 <ul>
-<li><strong>Accumulateur de phase :</strong> Un registre de phase (<code>phase_acc</code>) est incrémenté à chaque échantillon d’une valeur fixe appelée le pas (<code>phase_step</code>).</li>
+<li><strong>La table de recherche (Lookup Table / LUT)</strong> : Un tableau en mémoire (comme notre <code>sine_table[256]</code>) qui contient les points précalculés d'une seule période de l'onde (360°).</li>
+<li><strong>L'accumulateur de phase :</strong> Un registre de phase (<code>phase_acc</code>) est incrémenté à chaque échantillon d’une valeur fixe appelée le pas (<code>phase_step</code>). En d'autre terme c'est un compteur (souvent un entier de 32 bits) qui garde en mémoire la position angulaire actuelle sur l'onde. Il augmente à chaque pas d'échantillonnage.</li>
 <li><strong>Résolution de l'accumulateur :</strong> Le système utilise ici un accumulateur codé sur <span class="arithmatex">\(N = 32\)</span> bits.</li>
 <li><strong>Extraction de l'index :</strong> L’index permettant de lire la table d'onde est extrait des bits de poids fort de <code>phase_acc</code>. Avec une table de <strong>256 points</strong> (<span class="arithmatex">\(2^8\)</span>), on utilise les <strong>8 bits de poids fort</strong> (obtenus par un décalage binaire de 24 bits : <code>phase_acc &gt;&gt; 24</code>).</li>
+<li><strong>Pas de phase</strong> : La valeur numérique fixe que l'on ajoute à l'accumulateur à chaque cycle. Plus ce pas est grand, plus on parcourt la table de sinus rapidement, et plus la frequence générée est aiguë.</li>
+</ul>
+<p><strong>Comment ça fonctionne (L'analogie du cercle)</strong></p>
+<p>Imaginons notre table de 256 points disposée sur un cadran d'horloge (360°) :</p>
+<ul>
+<li>Pour avoir une basse fréquence : Vous avancez doucement, par exemple de point en point (+1 à chaque cycle). L'accumulateur mettra 256 cycles à faire le tour complet.</li>
+<li>Pour avoir haute fréquence : Vous avancez par grands bonds, par exemple en sautant de 10 en 10 (+10 à chaque cycle). L'accumulateur fera le tour de la table beaucoup plus vite, augmentant la fréquence du signal de sortie.</li>
 </ul>
 <h2 id="formules-mathematiques">Formules Mathématiques</h2>
 <h3 id="1-frequence-de-sortie-f_out">1. Fréquence de sortie (<span class="arithmatex">\(f_{out}\)</span>)</h3>
 <p>La fréquence du signal généré dépend du pas d'incrémentation, de la fréquence d'échantillonnage (<span class="arithmatex">\(f_{ech}\)</span>) et de la taille de l'accumulateur (<span class="arithmatex">\(2^N\)</span>) :</p>
 <div class="arithmatex">\[f_{out} = \frac{\text{phase\_step} \times f_{ech}}{2^N}\]</div>
 <h3 id="2-calcul-du-pas-textphase_step">2. Calcul du pas (<span class="arithmatex">\(\text{phase\_step}\)</span>)</h3>
-<p>Pour configurer le générateur sur une fréquence cible (<span class="arithmatex">\(f_{desiree}\)</span>), la boucle principale doit calculer le pas requis selon la formule suivante :</p>
+<p>Pour configurer le générateur sur une fréquence cible (<span class="arithmatex">\(f_{desiree}\)</span>), la boucle principale doit calculer le pas d'incrément à ajouter à l'accumulateur à chaque interruption requis selon la formule suivante :</p>
 <div class="arithmatex">\[\text{phase\_step} = \frac{f_{desiree} \times 2^N}{f_{ech}}\]</div>
+<p>Exemple concret : Si vous utilisez un accumulateur calé sur l'index direct de votre table (taille de 256) avec une fréquence d'échantillonnage standard de 44 100 Hz, et que vous voulez jouer la note La4 (440 Hz) :</p>
+<div class="arithmatex">\[ \text{Pas d'incrément} = \frac{440 \times 256}{44\ 100} \approx \mathbf{2{,}554} \]</div>
+<p>Comme l'index d'un tableau ne peut pas être un nombre à virgule (<span class="arithmatex">\(2{,}554\)</span>), l'accumulateur de phase utilise des astuces (comme les entiers à virgule fixe ou des compteurs 32 bits) pour accumuler précisément la virgule, et utilise uniquement la partie entière pour lire la table de sinus.</p>
 <blockquote>
 <p>[!TIP]
 <strong>Avantage majeur du DDS :</strong> Le changement de fréquence est instantané et sans rupture de phase. Il suffit de modifier la variable <code>phase_step</code> dans le code, sans jamais toucher à la configuration matérielle du timer (<span class="arithmatex">\(f_{ech}\)</span> reste fixe).</p>
