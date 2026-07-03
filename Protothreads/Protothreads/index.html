@@ -8,7 +8,7 @@
         <meta name="author" content="Ir Paul S. Kabidu">
         <link rel="canonical" href="https://Plkab.github.io/INF302/Protothreads/Protothreads/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Introduction aux Protothreads - INF302 – Programmation des processeurs et Systèmestemps réel</title>
+        <title>Introduction au multitâche coopératif avec les Protothreads - INF302 – Programmation des processeurs et Systèmestemps réel</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -57,7 +57,7 @@
                                 <a href="../../Machine%20d%27etats%20finis/fsm/" class="nav-link">La machine d'état fini finis :</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">Introduction aux Protothreads</a>
+                                <a href="./" class="nav-link active" aria-current="page">Introduction au multitâche coopératif avec les Protothreads</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../SemProto/SemProto/" class="nav-link">Synchronisation avec les Sémaphores</a>
@@ -136,13 +136,17 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#introduction-aux-protothreads" class="nav-link">Introduction aux Protothreads</a>
+            <li class="nav-item" data-bs-level="1"><a href="#introduction-au-multitache-cooperatif-avec-les-protothreads" class="nav-link">Introduction au multitâche coopératif avec les Protothreads</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#le-multitache-cooperatif-ultra-leger-avec-les-protothreads" class="nav-link">Le Multitâche coopératif Ultra-Léger avec les Protothreads</a>
+            <li class="nav-item" data-bs-level="2"><a href="#le-multitache-cooperatif-avec-les-protothreads" class="nav-link">Le Multitâche coopératif avec les Protothreads</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             <li class="nav-item" data-bs-level="2"><a href="#la-structure-type-dun-code-protothread" class="nav-link">La Structure Type d'un Code Protothread</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#conclusion-quand-utiliser-les-protothreads" class="nav-link">Conclusion : Quand utiliser les Protothreads ?</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -594,7 +598,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="introduction-aux-protothreads">Introduction aux Protothreads<a class="anchor-link" href="#introduction-aux-protothreads">¶</a></h1>
+<h1 id="introduction-au-multitache-cooperatif-avec-les-protothreads">Introduction au multitâche coopératif avec les Protothreads<a class="anchor-link" href="#introduction-au-multitache-cooperatif-avec-les-protothreads">¶</a></h1>
 </div>
 </div>
 </div>
@@ -605,8 +609,27 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Les RTOS consomment un peu plus de RAM (quelques dizaines de kilo-octets). Pour un microcontrôleur possédant moins d'une centaine de kilo-octets, c'est déjà un souci : le RTOS occupe presque la moitié et le reste de la mémoire est laissé aux tâches. Et pourtant, on a besoin d'un RTOS quand on a plusieurs tâches concurrentes à organiser, quand la machine à états (FSM) devient complexe et illisible, quand le comportement doit être déterministe. Dans la plupart des cas, on n'a pas besoin d'un RTOS complet.</p>
-<p>On distingue deux types d'OS : celui qui est préemptif et celui qui est coopératif. Le RTOS préemptif, on l'utilise quand on a besoin d'un délai très précis et de prioriser absolument certaines tâches. Certaines tâches de priorité supérieure peuvent préempter une tâche en cours de priorité inférieure. Par contre, pour le coopératif, chaque tâche s'exécute durant son temps prédéfini et par après elle cède à une autre tâche. Les RTOS préemptifs sont très utilisés dans les systèmes critiques comme dans les systèmes médicaux, l'avionique, l'automobile...</p>
+<p>Dans le développement de systèmes embarqués sur microcontrôleurs, la gestion du temps et du parallélisme est le défi central. Souvent nous sommes souvent confrontés à un dilemme : la logique du programme devient de plus en plus complexe, nécessitant de gérer simultanément plusieurs tâches (lecture de capteurs, mise à jour d'afficheurs, génération de signaux, gestion de boutons), mais les ressources matérielles (RAM, ROM) sont extrêmement limitées.</p>
+<p>Traditionnellement, trois approches s'opposent :</p>
+<ul>
+<li><p><strong>la Super Loop</strong> : Toutes les tâches sont exécutées séquentiellement dans une grande boucle. C'est simple et intuitif, mais le couplage temporel entre les tâches est fort : le retard d'une tâche pénalise toutes les autres.</p>
+</li>
+<li><p><strong>la programmation événementielle par machines à états</strong> (vite complexe et illisible). Chaque tâche est décomposée en une machine à états finis. Théoriquement élégant, mais lorsque le nombre d'états augmente, le code devient éparpillé, difficile à maintenir et à lire.</p>
+</li>
+<li><p><strong>les systèmes d'exploitation temps réel ou RTOS</strong> (puissants, mais gourmands en mémoire et introduisant un overhead de changement de contexte).</p>
+</li>
+</ul>
+<p>Les RTOS consomment un peu plus de RAM (quelques dizaines de kilo-octets). Pour un microcontrôleur possédant moins d'une centaine de kilo-octets, c'est déjà un souci : le RTOS occupe presque la moitié et le reste de la mémoire est laissé aux tâches. Et pourtant, on a besoin d'un RTOS quand on a plusieurs tâches concurrentes à organiser, quand la machine à états (FSM) devient complexe et illisible, quand on a une nécessité d'avoir un comportement déterministe. Dans la plupart des cas, on n'a pas besoin d'un RTOS complet.</p>
+<p>On distingue deux types d'OS : celui qui est préemptif et celui qui est coopératif.</p>
+<ul>
+<li><p>Le RTOS préemptif, on l'utilise quand on a besoin d'un délai très précis, strict et de prioriser absolument certaines tâches. Certaines tâches de priorité supérieure peuvent préempter (interrompre) une tâche en cours de priorité inférieure.</p>
+</li>
+<li><p>Par contre, pour le coopératif, chaque tâche s'exécute durant son temps prédéfini et par après elle cède à une autre tâche. Les RTOS préemptifs sont très utilisés dans les systèmes critiques comme dans les systèmes médicaux, l'avionique, l'automobile...</p>
+</li>
+</ul>
+<p>Les <a href="https://dunkels.com/adam/pt/"><strong>Protothreads</strong></a> sont une solution élégante pour faire du multitâche coopératif sans consommer trop de mémoire. Elles permetent de faire une gestion des threads très légère et sans pile. Ils ont été conçus particulièrement pour les systèmes à mémoire très limitée, tels que les petits systèmes embarqués ou les nœuds de réseaux de capteurs sans fil (IoT). Ils ont été développés par Adam Dunkels en 2005. Ils se reposent entièrement sur une structure <code>switch-case</code> masquée par des macros C astucieuses basées sur une spécificité du langage C appelée l'appareil de Duff (Duff's Device).</p>
+<p>Un protothread n'a pas de pile dédiée (stackless) et l'empreinte mémoire est très faible, 2 octets par protothread. Ce modèle est coopératif, chaque tâche s'exécute en continu jusqu'à ce qu'elle rencontre une macro d'attente et dise d'elle-même : "Je passe mon tour".</p>
+<p>Le fichier de la documentation est téléchargeable à ce lien : <a href="https://dunkels.com/adam/pt/download.html">https://dunkels.com/adam/pt/download.html</a></p>
 </div>
 </div>
 </div>
@@ -617,7 +640,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="le-multitache-cooperatif-ultra-leger-avec-les-protothreads">Le Multitâche coopératif Ultra-Léger avec les Protothreads<a class="anchor-link" href="#le-multitache-cooperatif-ultra-leger-avec-les-protothreads">¶</a></h2>
+<h2 id="le-multitache-cooperatif-avec-les-protothreads">Le Multitâche coopératif avec les Protothreads<a class="anchor-link" href="#le-multitache-cooperatif-avec-les-protothreads">¶</a></h2>
 </div>
 </div>
 </div>
@@ -628,29 +651,101 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Les Protothreads sont une solution élégante pour faire du multitâche coopératif sans consommer trop de mémoire. Ils ont été développées par Adam Dunkels en 2005. Ils se reposent entièrement sur une structure <code>switch-case</code> masquée par des macros C astucieuses basées sur une spécificité du langage C appelée l'appareil de Duff (Duff's Device). Un protothread n'a pas de pile dédiée (stackless). Ce modele est cooperatif, chaque tâche s'exécute en continu jusqu'à ce qu'elle rencontre une macro d'attente et dise d'elle-même : "Je passe mon tour".</p>
-<p>Le fichier est téléchargeable à ce lien : <a href="https://dunkels.com/adam/pt/download.html">https://dunkels.com/adam/pt/download.html</a></p>
-<h3 id="le-type-de-donnee-struct-pt">Le type de donnée <code>struct pt</code><a class="anchor-link" href="#le-type-de-donnee-struct-pt">¶</a></h3><p>C'est le seul coût en mémoire RAM de la tâche pour les protothreads, elle est généralement un <code>unsigned short</code> (2 octets). Cette structure contient une unique variable appelée le contrôle de continuation locale (<code>lc</code>).</p>
-<h3 id="les-macros-fondamentales">Les macros fondamentales<a class="anchor-link" href="#les-macros-fondamentales">¶</a></h3><ul>
-<li><p><code>PT_INIT(&amp;pt_ma_tache);</code> : Déclaration/Initialisation. Il réinitialise le protothread à son état initial (<code>pt-&gt;lc = 0</code>). À appeler impérativement une fois au démarrage du microcontrôleur.</p>
+<p>Un protothread est un thread coopératif et sans pile (stackless).</p>
+<ul>
+<li><p><strong>Coopératif</strong> : Contrairement à un RTOS qui peut interrompre une tâche à tout moment (préemption), un protothread s'exécute jusqu'à ce qu'il choisisse explicitement de rendre la main à l'ordonnanceur via une instruction de rendement (<code>PT_YIELD</code> ou <code>PT_WAIT</code>).</p>
 </li>
-<li><p><code>PT_THREAD(ma_fonction(struct pt *pt))</code> : Déclare la fonction du protothread. Il retourne un type <code>char</code> (qui indique l'état du thread : en attente, fini, etc.).</p>
-</li>
-<li><p><code>PT_BEGIN(pt)</code> : Délimiteur de Début, ouvrant le bloc de saut caché. À placer obligatoirement au début de la fonction. Il marque le début physique du code du protothread. C'est ici que se place le switch caché.</p>
-</li>
-<li><p><code>PT_END(pt)</code> : Délimiteur de Fin, fermant le bloc de saut et marque la fin définitive de la tâche. Il marque la fin du protothread. À placer obligatoirement à la fin. Si le code atteint cette macro, le thread est marqué comme "terminé définitivement" (<code>PT_ENDED</code>).</p>
-</li>
-<li><p><code>PT_WAIT_UNTIL(pt, condition)</code> : Bloque l'exécution de la tâche tant que la condition est fausse. Il evalue la condition, si FAUX, le protothread s'arrête, mémorise sa position, et fait un <code>return</code> pour libérer le CPU. Si VRAI, l'exécution continue.</p>
-</li>
-<li><p><code>PT_WAIT_WHILE(pt, condition)</code> : L'exact inverse de la précédente. Bloque la tâche tant que la condition est vraie. Libère le CPU.</p>
-</li>
-<li><p><code>PT_YIELD(pt)</code> : Relâche volontairement le CPU pour un tour complet de boucle, même si aucune condition n'est attendue. La tâche reprendra immédiatement au prochain tour.</p>
-</li>
-<li><p><code>PT_SPAWN(pt, &amp;pt_enfant, fonction_enfant(&amp;pt_enfant))</code> : Permet à un protothread parent de lancer un protothread enfant (sous-tâche) et d'attendre que l'enfant ait terminé son exécution avant de continuer.</p>
-</li>
-<li><p><code>PT_SCHEDULE(ma_fonction(struct pt *pt)</code> : lancer les fonction d'activation des fonctio</p>
+<li><p><strong>Sans pile (Stackless)</strong> : Un thread classique alloue une zone mémoire (pile) pour sauvegarder ses variables locales et ses adresses de retour. Un protothread n'a pas de pile dédiée. Il s'exécute sur la pile principale du programme.</p>
+<p>Par conséquent, un protothread ne peut pas maintenir de variables locales automatiques entre deux points de blocage. Toutes les variables persistantes doivent être déclarées comme <code>static</code> ou globales.</p>
 </li>
 </ul>
+<h3 id="le-type-de-donnee-struct-pt">Le type de donnée <code>struct pt</code><a class="anchor-link" href="#le-type-de-donnee-struct-pt">¶</a></h3><p>C'est le seul coût en mémoire RAM de la tâche pour les protothreads, elle est généralement un <code>unsigned short</code> (2 octets). Cette structure contient une unique variable appelée le contrôle de continuation locale (<code>lc</code>). Cette variable permet de sauvergader son état.</p>
+<div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">lc_t</span><span class="w"> </span><span class="n">lc</span><span class="p">;</span><span class="w"> </span><span class="c1">// Type entier (généralement un uint16_t ou un void*) stockant la ligne de reprise</span>
+<span class="p">};</span>
+</pre></div>
+<h3 id="les-macros-fondamentales">Les macros fondamentales<a class="anchor-link" href="#les-macros-fondamentales">¶</a></h3><p>Normalement, un Protothread est <strong>une machine à états cachée derrière des macros</strong>. Le préprocesseur C transforme le code linéaire en une machine à états. Mais pour le programmeur, le code ressemble à <strong>un thread ordinaire</strong>, capable de se "bloquer" à n'importe quel endroit en attendant qu'une condition soit remplie, puis de continuer son exécution.</p>
+<ul>
+<li><code>PT_INIT(&amp;pt_ma_tache);</code> : Déclaration/Initialisation. Il réinitialise le protothread à son état initial (<code>pt-&gt;lc = 0</code>). À appeler impérativement une fois au démarrage du microcontrôleur.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="n">mon_thread</span><span class="p">;</span>
+<span class="n">PT_INIT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mon_thread</span><span class="p">);</span>
+</pre></div>
+<ul>
+<li><code>PT_THREAD(ma_fonction(struct pt *pt))</code> : Déclare la fonction du protothread. Il retourne un type <code>char</code> (qui indique l'état du thread : en attente, fini, etc.).</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// Déclare une fonction Protothread.</span>
+<span class="n">PT_THREAD</span><span class="p">(</span><span class="n">ma_tache</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="o">*</span><span class="n">pt</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Corps du thread</span>
+<span class="p">}</span>
+</pre></div>
+<ul>
+<li><code>PT_BEGIN(pt)</code> : Délimiteur de début, ouvrant le bloc de saut caché. À placer obligatoirement au début de la fonction. Il marque le début physique du code du protothread. C'est ici que se place le <code>switch</code> caché, basé sur la variable de contexte <code>pt-&gt;lc</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="cp">#define PT_BEGIN(pt)    switch((pt)-&gt;lc) { case 0:</span>
+</pre></div>
+<ul>
+<li><code>PT_END(pt)</code> : Délimiteur de Fin, fermant le bloc de saut et marque la fin définitive de la tâche. Il marque la fin du protothread. À placer obligatoirement à la fin. Si le code atteint cette macro, le thread est marqué comme "terminé définitivement" (<code>PT_ENDED</code>).</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="cp">#define PT_END(pt)     } (pt)-&gt;lc = 0; return;</span>
+</pre></div>
+<ul>
+<li><code>PT_WAIT_UNTIL(pt, condition)</code> : C'est le cœur du système. Il bloque l'exécution de la tâche tant que la condition est fausse. Il evalue la condition, si FAUX, le protothread s'arrête, mémorise sa position actuelle dans <code>pt-&gt;lc</code>, et quitte la fonction en returnant un statut, en faisant un <code>return</code> pour libérer le CPU. Si VRAI, l'exécution continue.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="cp">#define PT_BEGIN(pt)    switch((pt)-&gt;lc) { case 0:</span>
+<span class="cp">#define PT_WAIT_UNTIL(pt, c)    \</span>
+<span class="cp">    do {                        \</span>
+<span class="cp">        (pt)-&gt;lc = __LINE__;    \</span>
+<span class="cp">        case __LINE__:          \</span>
+<span class="cp">        if(!(c)) return;        \</span>
+<span class="cp">    } while(0)</span>
+<span class="cp">#define PT_END(pt)      }</span>
+</pre></div>
+<p>La macro utilise la macro spéciale C <code>__LINE__</code> qui renvoie le numéro de la ligne courante du fichier source.</p>
+<p>Exemple de traduction conceptuelle par le préprocesseur :</p>
+<div class="highlight"><pre><span></span><span class="c1">// Ce que vous écrivez :</span>
+<span class="n">PT_THREAD</span><span class="p">(</span><span class="n">ma_tache</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="o">*</span><span class="n">pt</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">PT_BEGIN</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
+<span class="w">    </span><span class="n">PT_WAIT_UNTIL</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="n">bouton_appuye</span><span class="p">());</span>
+<span class="w">    </span><span class="n">action</span><span class="p">();</span>
+<span class="w">    </span><span class="n">PT_END</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Ce que le compilateur voit réellement :</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">ma_tache</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="o">*</span><span class="n">pt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="p">(</span><span class="n">pt</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="c1">// Début du protothread</span>
+<span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">pt</span><span class="o">-&gt;</span><span class="n">lc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">;</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="no">__LINE__</span><span class="p">:</span><span class="w"> </span><span class="c1">// Enregistre la ligne actuelle</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">bouton_appuye</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">PT_WAITING</span><span class="p">;</span><span class="w"> </span><span class="c1">// Rend la main à l'ordonnanceur</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">action</span><span class="p">();</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">pt</span><span class="o">-&gt;</span><span class="n">lc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">PT_ENDED</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<ul>
+<li><code>PT_WAIT_WHILE(pt, condition)</code> : L'exact inverse de la précédente : <code>PT_WAIT_UNTIL(pt, condition)</code>. Bloque la tâche tant que la condition est vraie. Libère le CPU.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">PT_WAIT_WHILE</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="n">tampon_plein</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// Attend que le tampon ne soit plus plein</span>
+</pre></div>
+<ul>
+<li><code>PT_YIELD(pt)</code> : Relâche volontairement, inconditionnellement le CPU pour un tour complet de boucle, même si aucune condition n'est attendue. Lors du prochain appel, l'exécution reprendra juste après le <code>PT_YIELD</code>.</li>
+</ul>
+<p><code>PT_YIELD</code> enregistre le numéro de la ligne actuelle dans <code>pt-&gt;lc</code> et exécute un return immédiat pour quitter la fonction et libérer le CPU. La fonction se termine, mais l'état est sauvegardé.</p>
+<div class="highlight"><pre><span></span><span class="cp">#define PT_YIELD(pt)   (pt)-&gt;lc = __LINE__; return; case __LINE__:</span>
+</pre></div>
+<ul>
+<li><p><code>PT_SPAWN(pt, &amp;pt_enfant, fonction_enfant(&amp;pt_enfant))</code> : Permet à un protothread parent de lancer un protothread enfant (sous-tâche) et d'attendre que l'enfant ait terminé son exécution avant de continuer.</p>
+</li>
+<li><p><code>PT_SCHEDULE(ma_fonction(struct pt *pt)</code> : Appelle le protothread pour lui donner du temps d'exécution et retourne <code>0</code> si le protothread est terminé <code>PT_END</code>, ou <code>1</code> s'il est encore en attente (<code>PT_WAITING</code>). Elle est à la base de la boucle d'ordonnancement.</p>
+</li>
+</ul>
+<p>Notez que vous n'aurez probablement jamais besoin de cette macro.</p>
 </div>
 </div>
 </div>
@@ -672,6 +767,28 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Cycle de vie d'un Protothread :</p>
+<div class="highlight"><pre><span></span>┌─────────────┐
+         │   PT_INIT   │  ← Initialisation de l'état (lc = 0)
+         └──────┬──────┘
+                ↓
+         ┌─────────────┐
+         │  PT_BEGIN   │  ← Entrée du thread (saut via switch)
+         └──────┬──────┘
+                ↓
+         ┌─────────────┐
+         │ PT_WAIT_UNTIL│  ← Condition fausse → sauvegarde position → return
+         └──────┬──────┘
+                ↓ (condition vraie)
+         ┌─────────────┐
+         │ Code de la  │
+         │   tâche     │
+         └──────┬──────┘
+                ↓
+         ┌─────────────┐
+         │   PT_END    │  ← Fin du thread, réinitialisation de l'état
+         └─────────────┘
+</pre></div>
 <p>Voici l'architecture standard d'un programme en C propre.</p>
 <div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">"pt.h"</span><span class="c1"> // Inclusions de la bibliothèque d'Adam Dunkels</span>
@@ -790,9 +907,14 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </pre></div>
 <p><strong>A savoir</strong> :</p>
 <ul>
-<li>Toutes les variables locales doivent obligatoirement etre <code>static</code>. Si une variable locale est standard (<code>auto</code>), sa pile est détruite. Au prochain appel, elle reprendra une valeur indéterminée. En la déclarant <code>static</code>, sa valeur est préservée en mémoire globale d'un appel à l'autre.</li>
-<li>Pas de <code>switch/case</code> interne dans les fonctions tâches, les macros cachent déjà un <code>switch</code>. Comme les macros cachent un <code>switch/case</code>, il est strictement interdit de faire un <code>PT_WAIT_UNTIL</code> à l'intérieur d'une structure conditionnelle complexe sans accolades. Insérer un <code>switch</code> utilisateur à l'intérieur du protothread va entrer en conflit direct avec le <code>switch(pt-&gt;lc)</code> externe généré par <code>PT_BEGIN</code>, les <code>case</code> de votre propre <code>switch</code> risquent de se mélanger. Le <code>case __LINE__</code> d'un <code>PT_WAIT</code> se retrouverait rattaché au votre switch et non à celui du protothread, brisant complètement le saut d'état.</li>
-<li>L'ordonnancement est coopératif, donc si vous écrivez une boucle bloquante (<code>while(délais);</code>), tout le système se fige.</li>
+<li><p>Toutes les variables locales doivent obligatoirement etre <code>static</code>. Si une variable locale est standard (<code>auto</code>), sa pile est détruite. Au prochain appel, elle reprendra une valeur indéterminée. En la déclarant <code>static</code>, sa valeur est préservée en mémoire globale d'un appel à l'autre.</p>
+</li>
+<li><p>Pas de <code>switch/case</code> interne dans les fonctions tâches, les macros cachent déjà un <code>switch</code>. Comme les macros cachent un <code>switch/case</code>, il est strictement interdit de faire un <code>PT_WAIT_UNTIL</code> à l'intérieur d'une structure conditionnelle complexe. Insérer un <code>switch</code> utilisateur à l'intérieur du protothread va entrer en conflit direct avec le <code>switch(pt-&gt;lc)</code> externe généré par <code>PT_BEGIN</code>, les <code>case</code> de votre propre <code>switch</code> risquent de se mélanger. Le <code>case __LINE__</code> d'un <code>PT_WAIT</code> se retrouverait rattaché au votre switch et non à celui du protothread, brisant complètement le saut d'état.</p>
+</li>
+<li><p>Ne jamais insérer de fonction purement bloquante (ex: <code>while(!ADC_Ready)</code>; ou <code>delay_ms(10)</code>) dans un protothread. Si une attente est nécessaire, utilisez toujours <code>PT_WAIT_UNTIL</code> ou <code>PT_YIELD</code> pour laisser les autres tâches s'exécuter.</p>
+</li>
+<li><p>L'ordonnancement est coopératif, donc si vous écrivez une boucle bloquante (<code>while(délais);</code>), tout le système se fige.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -965,7 +1087,7 @@ YouTubeVideo('XLZDCTv7__c', width=800, height=450)</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="exemple-2-3-led-clignotent-a-des-frequences-differentes">Exemple 2 : 3 LED clignotent à des fréquences différentes<a class="anchor-link" href="#exemple-2-3-led-clignotent-a-des-frequences-differentes">¶</a></h3><p>Chaque LED possède son propre Protothread indépendant, caractérisé par sa propre structure de contrôle (<code>struct pt</code>). Dans la boucle principale <code>while(1)</code>, le processeur appelle ces trois threads les uns après les autres à chaque cycle.</p>
+<h3 id="exemple-2-trois-led-clignotent-a-des-frequences-differentes">Exemple 2 : Trois LED clignotent à des fréquences différentes<a class="anchor-link" href="#exemple-2-trois-led-clignotent-a-des-frequences-differentes">¶</a></h3><p>Chaque LED possède son propre Protothread indépendant, caractérisé par sa propre structure de contrôle (<code>struct pt</code>). Dans la boucle principale <code>while(1)</code>, le processeur appelle ces trois threads les uns après les autres à chaque cycle.</p>
 <p>Puisque les macros de pt.h n'utilisent aucune attente active (pas de boucle bloquante), chaque fonction s'exécute en quelques nanosecondes : elle vérifie si son délai est expiré, agit sur sa LED si nécessaire, puis rend immédiatement la main à la boucle principale pour que le thread suivant puisse s'exécuter.</p>
 <p>Pour cet exemple, nous configurons trois broches du Port C en sorties (par exemple PC13, PC14, et PC15).</p>
 <ul>
@@ -1671,8 +1793,62 @@ YouTubeVideo('s9MK3P3TJyI', width=800, height=450)</div>
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6e4dccdc-d08e-4b05-b642-dee0ace67200">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="conclusion-quand-utiliser-les-protothreads">Conclusion : Quand utiliser les Protothreads ?<a class="anchor-link" href="#conclusion-quand-utiliser-les-protothreads">¶</a></h2><p>Les protothreads ne remplacent pas un RTOS dans tous les cas, mais ils excellent là où la mémoire est une ressource critique.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Caractéristique</th>
+<th style="text-align:left">Machine à États (FSM) standard</th>
+<th style="text-align:left">Protothreads (<code>pt.h</code>)</th>
+<th style="text-align:left">RTOS Classique (ex: FreeRTOS)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Style d'écriture</strong></td>
+<td style="text-align:left">Éclaté / Événementiel (Difficile à lire)</td>
+<td style="text-align:left"><strong>Séquentiel (Trés lisible)</strong></td>
+<td style="text-align:left">Séquentiel (Très lisible)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Consommation RAM</strong></td>
+<td style="text-align:left">Très faible (Variables d'états)</td>
+<td style="text-align:left"><strong>Ultra-faible (~2 octets par tâche)</strong></td>
+<td style="text-align:left">Élevée (Une pile dédiée de plusieurs centaines d'octets par tâche)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Changement de contexte</strong></td>
+<td style="text-align:left">Aucun (Appels de fonctions simples)</td>
+<td style="text-align:left"><strong>Aucun (Saut C via switch/case)</strong></td>
+<td style="text-align:left">Matériel (Sauvegarde/Restauration des registres CPU)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Gestion des variables</strong></td>
+<td style="text-align:left">Variables globales ou structures d'états</td>
+<td style="text-align:left"><strong>Variables obligatoirement <code>static</code></strong></td>
+<td style="text-align:left">Variables locales automatiques sur la pile</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Type de Parallélisme</strong></td>
+<td style="text-align:left">Coopératif</td>
+<td style="text-align:left"><strong>Coopératif</strong></td>
+<td style="text-align:left">Préemptif (Gestion fine des priorités temporelles)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>En résumé :</strong> Si vous n'avez pas de contraintes de priorités absolues (temps réel dur) et que votre microcontrôleur est limité en RAM (ex: petits MSP430, Arduino ATmega, ou STM32 d'entrée de gamme), les <strong>Protothreads</strong> sont le choix parfait pour garder un code propre, séquentiel et performant.</p>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e4bc67e8-1448-47e7-8a3d-a5ec1f387003">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=013a1e1f-e157-49b4-b0f1-862b3241320b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -1693,33 +1869,6 @@ YouTubeVideo('s9MK3P3TJyI', width=800, height=450)</div>
 <div class="highlight-ipynb hl-python"><pre><span></span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-6"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=013a1e1f-e157-49b4-b0f1-862b3241320b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-7"></div>
 </div>
 </div>
 </div>

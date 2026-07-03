@@ -57,7 +57,7 @@
                                 <a href="../../Machine%20d%27etats%20finis/fsm/" class="nav-link">La machine d'état fini finis :</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Protothreads/Protothreads/" class="nav-link">Introduction aux Protothreads</a>
+                                <a href="../../Protothreads/Protothreads/" class="nav-link">Introduction au multitâche coopératif avec les Protothreads</a>
                             </li>
                             <li class="nav-item">
                                 <a href="./" class="nav-link active" aria-current="page">Synchronisation avec les Sémaphores</a>
@@ -601,7 +601,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Un Sémaphore sert à ordonnancer le temps (signalisation, passage de témoin), il orchestre la chronologie des tâches. Dans notre architecture, le sémaphore ne sert pas à bloquer l'accès à une variable, mais <em>à réveiller une tâche dès qu'un événement matériel se produit</em>.</p>
+<p>Un Sémaphore sert à ordonnancer le temps (signalisation, passage de témoin), il orchestre la chronologie des tâches. Dans notre architecture, le sémaphore ne sert pas à bloquer l'accès à une variable, mais <em>à réveiller une tâche dès qu'un événement matériel se produit</em>. Par exemple, un thread producteur lit un capteur et un thread consommateur affiche les données uniquement quand elles sont prêtes.</p>
 </div>
 </div>
 </div>
@@ -613,10 +613,50 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="les-semaphores-leger-dans-protothreads-pt-semh">Les Sémaphores léger dans Protothreads (<code>pt-sem.h</code>)<a class="anchor-link" href="#les-semaphores-leger-dans-protothreads-pt-semh">¶</a></h2><ul>
-<li>La structure <code>struct pt_sem</code> est juste un simple compteur atomique entier non signé géré par le noyau coopératif.</li>
-<li>Fonctionnement non-bloquant pour le CPU : la macro <code>PT_SEM_WAIT(pt, s)</code> évalue le compteur interne du sémaphore. Si le compteur est à 0, la macro effectue un <code>return</code> immédiat vers l’ordonnanceur (<code>scheduler</code>), c'est a dire le protothread suspend instantanément son exécution et cède le temps CPU aux autres tâches de l'application. Le processeur ne gâche aucun cycle à attendre activement et l’exécution de l'application globale n'est jamais figée.</li>
-<li>Le réveil asynchrone : <code>PT_SEM_SIGNAL(pt, s)</code> incrémente le compteur depuis l'arrière-plan (l'interruption matérielle ou un autre thread concurrent) et réveille le thread en attente au prochain tour du planificateur. C'est juste une simple incrémentation du compteur. Cette simple opération lève l'obstacle sur la macro de scrutation. Au prochain tour du planificateur, le thread suspendu valide sa condition, décrémente automatiquement le compteur et poursuit son exécution.</li>
+<li><p>La structure <code>struct pt_sem</code> est juste un simple compteur atomique entier non signé géré par le noyau coopératif.</p>
+</li>
+<li><p><code>PT_SEM_INIT(pt, c)</code> : Cette macro initialise un sémaphore avec une valeur pour le compteur. En interne, les sémaphores utilisent un entier non signé (<code>unsigned int</code>) pour représenter le compteur ; par conséquent, l’argument « count » doit être un entier non signé. <code>pt</code> : un pointeur vers la structure <code>pt_sem</code> représentant le sémaphore. Utilisez ces sémaphores uniquement pour les signaux entre threads.</p>
+</li>
+<li><p>Fonctionnement non-bloquant pour le CPU : la macro <code>PT_SEM_WAIT(pt, s)</code> évalue le compteur interne du sémaphore. Si le compteur est à 0, la macro effectue un <code>return</code> immédiat vers l’ordonnanceur (<code>scheduler</code>), c'est a dire le protothread suspend instantanément son exécution et cède le temps CPU aux autres tâches de l'application. Le processeur ne gâche aucun cycle à attendre activement et l’exécution de l'application globale n'est jamais figée.</p>
+</li>
+<li><p>Le réveil asynchrone : <code>PT_SEM_SIGNAL(pt, s)</code> incrémente le compteur depuis l'arrière-plan (l'interruption matérielle ou un autre thread concurrent) et réveille le thread en attente au prochain tour du planificateur. C'est juste une simple incrémentation du compteur. Cette simple opération lève l'obstacle sur la macro de scrutation. Au prochain tour du planificateur, le thread suspendu valide sa condition, décrémente automatiquement le compteur et poursuit son exécution. Cette macro effectue l'opération de « signalisation » sur le sémaphore.</p>
+</li>
 </ul>
+<p>Communication entre threads avec sémaphores:</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"pt-sem.h"</span>
+
+<span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">pt_sem</span><span class="w"> </span><span class="n">sem_donnees</span><span class="p">;</span><span class="w">   </span><span class="c1">// sémaphore binaire (initialisé à 0)</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">derniere_valeur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// Thread producteur : lit l'ADC toutes les 100 ms</span>
+<span class="n">PT_THREAD</span><span class="p">(</span><span class="n">producteur</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="o">*</span><span class="n">pt</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">timestamp</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PT_BEGIN</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ticks_ms</span><span class="p">;</span>
+<span class="w">        </span><span class="n">PT_WAIT_UNTIL</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">ticks_ms</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">timestamp</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Lancer la conversion ADC...</span>
+<span class="w">        </span><span class="n">PT_WAIT_UNTIL</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">SR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ADC_SR_EOC</span><span class="p">));</span>
+<span class="w">        </span><span class="n">derniere_valeur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">DR</span><span class="p">;</span>
+<span class="w">        </span><span class="n">PT_SEM_SIGNAL</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sem_donnees</span><span class="p">);</span><span class="w">   </span><span class="c1">// signale qu'une donnée est disponible</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">PT_END</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Thread consommateur : affiche la donnée quand elle arrive</span>
+<span class="n">PT_THREAD</span><span class="p">(</span><span class="n">consommateur</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="o">*</span><span class="n">pt</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">PT_BEGIN</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">PT_SEM_WAIT</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sem_donnees</span><span class="p">);</span><span class="w">    </span><span class="c1">// attend la donnée</span>
+<span class="w">        </span><span class="c1">// Afficher derniere_valeur sur le LCD ou la transmettre</span>
+<span class="w">        </span><span class="n">afficher_valeur</span><span class="p">(</span><span class="n">derniere_valeur</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">PT_END</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Dans main :</span>
+<span class="n">PT_SEM_INIT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sem_donnees</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">   </span><span class="c1">// initialement aucun signal</span>
+</pre></div>
 <h3 id="exemple-de-la-signalisation-par-bouton-isr-semaphore-tache">Exemple de la Signalisation par Bouton (ISR ➡️ Sémaphore ➡️ Tâche)<a class="anchor-link" href="#exemple-de-la-signalisation-par-bouton-isr-semaphore-tache">¶</a></h3><p>Pour mieux visualiser le comportement non-bloquant et le réveil depuis l'arrière-plan, nous simulons l'interruption à l'aide d'un bouton-poussoir sur la broche PA0 (qui génère une interruption matérielle EXTI0).</p>
 <div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span>
@@ -713,9 +753,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </pre></div>
 <p>Observation dans cet exemple :</p>
 <ol>
-<li>Au repos (Aucun appui) : <code>sem_bouton.count</code> vaut <code>0</code>. La fonction <code>task_clignotement</code> est appelée des millions de fois par seconde. Elle entre, bute sur le <code>PT_SEM_WAIT</code>, voit que le compteur est nul, et fait immédiatement un <code>return [INDEX]</code>. La ligne <code>GPIOC-&gt;ODR ^= ...</code> est totalement sautée. Le processeur passe tout son temps en bas de la boucle <code>while(1)</code> du <code>main</code>.</li>
-<li>Lors de l'appui (L'asynchronisme) : L'utilisateur appuie sur le bouton. Le matériel suspend le main, saute dans <code>EXTI0_IRQHandler</code>, exécute <code>sem_bouton.count++</code> (le compteur passe à <code>1</code>), et repart.</li>
-<li>Le traitement découplé : Au tour de boucle suivant dans le <code>main</code>, la tâche est appelée. La macro <code>PT_SEM_WAIT</code> voit que count vaut <code>1</code>. Le test est validé : le compteur est décrémenté (il repasse à <code>0</code>) et le code descend enfin pour inverser la LED.</li>
+<li><p>Au repos (Aucun appui) : <code>sem_bouton.count</code> vaut <code>0</code>. La fonction <code>task_clignotement</code> est appelée des millions de fois par seconde. Elle entre, bute sur le <code>PT_SEM_WAIT</code>, voit que le compteur est nul, et fait immédiatement un <code>return [INDEX]</code>. La ligne <code>GPIOC-&gt;ODR ^= ...</code> est totalement sautée. Le processeur passe tout son temps en bas de la boucle <code>while(1)</code> du <code>main</code>.</p>
+</li>
+<li><p>Lors de l'appui (L'asynchronisme) : L'utilisateur appuie sur le bouton. Le matériel suspend le main, saute dans <code>EXTI0_IRQHandler</code>, exécute <code>sem_bouton.count++</code> (le compteur passe à <code>1</code>), et repart.</p>
+</li>
+<li><p>Le traitement découplé : Au tour de boucle suivant dans le <code>main</code>, la tâche est appelée. La macro <code>PT_SEM_WAIT</code> voit que count vaut <code>1</code>. Le test est validé : le compteur est décrémenté (il repasse à <code>0</code>) et le code descend enfin pour inverser la LED.</p>
+</li>
 </ol>
 </div>
 </div>

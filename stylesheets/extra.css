@@ -1,166 +1,271 @@
 /* ============================================================
-   1. STRUCTURE STANDARD DE PAGE ACADÉMIQUE (FOND BLANC PUR)
+   1. STRUCTURE – PAGE BLANCHE, CENTRÉE, SANS ÉLÉMENTS SUPERFLUS
    ============================================================ */
 
-/* Masquage des éléments de navigation de MkDocs pour le minimalisme */
-.navbar {
-  display: none !important;
-}
-.col-md-3 {
+/* Masquage des barres de navigation et des menus Jupyter */
+.navbar,
+#header,
+#menubar,
+#maintoolbar,
+.celltoolbar,
+.toolbar,
+#header-container,
+#ipython_notebook,
+#login_widget,
+#kernel_logo_widget,
+#notification_area,
+#modal_indicator,
+#kernel_indicator,
+#readonly-indicator,
+.nav-wrapper {
   display: none !important;
 }
 
-/* Fond global blanc pur, style page blanche unie */
+/* Fond global blanc pur */
 body {
-  background-color: #ffffff !important; 
+  background-color: #ffffff !important;
   margin: 0;
   padding: 0;
 }
 
-/* Zone du cours étendue, centrée et sans ombres */
-.col-md-9 {
-  max-width: 900px;
+/* Conteneur principal du notebook : centré, largeur limitée, fond blanc */
+#notebook-container {
+  max-width: 900px !important;
   margin: 0 auto !important;
-  float: none !important;
-  background-color: #ffffff !important; 
+  background-color: #ffffff !important;
   padding: 40px 30px !important;
-  box-shadow: none !important; 
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Suppression des ombres et des fonds gris superflus */
+.notebook_app {
+  background-color: #ffffff !important;
+}
+#notebook {
+  background-color: #ffffff !important;
+  padding-top: 0 !important;
 }
 
 /* ============================================================
-   2. TYPOGRAPHIE ET POLICES STANDARDS EN INGÉNIERIE
+   2. TYPOGRAPHIE – STYLE MANUEL TECHNIQUE (Arial / Helvetica)
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
 
-/* Corps du texte : Style manuel technique standard (Arial / Helvetica) */
-body, .rendered_html, p, li {
+/* Corps du texte */
+body,
+.rendered_html,
+.text_cell_render,
+p,
+li,
+div.text_cell_render {
   font-family: "Helvetica Neue", Arial, "Segoe UI", sans-serif !important;
-  font-size: 16px;
-  line-height: 1.65;
-  color: #222222 !important; /* Noir standard, reposant pour la lecture */
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+  color: #222222 !important;
 }
 
-/* Titres académiques standardisés */
-h1 {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  text-align: center;
-  font-weight: 700;
-  color: #111111;
-  margin-bottom: 30px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid #e1e4e6;
+/* Titres académiques */
+h1,
+.rendered_html h1 {
+  font-family: "Helvetica Neue", Arial, sans-serif !important;
+  text-align: center !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+  margin-bottom: 30px !important;
+  padding-bottom: 15px !important;
+  border-bottom: 2px solid #e1e4e6 !important;
 }
 
 .rendered_html h2 {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  color: #003366; /* Bleu marine universitaire */
-  margin-top: 35px;
-  margin-bottom: 15px;
-  font-weight: 600;
-  border-left: 4px solid #003366;
-  padding-left: 10px;
+  font-family: "Helvetica Neue", Arial, sans-serif !important;
+  color: #003366 !important;
+  margin-top: 35px !important;
+  margin-bottom: 15px !important;
+  font-weight: 600 !important;
+  border-left: 4px solid #003366 !important;
+  padding-left: 10px !important;
 }
 
 .rendered_html h3 {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  color: #333333;
-  margin-top: 25px;
-  font-weight: 600;
+  font-family: "Helvetica Neue", Arial, sans-serif !important;
+  color: #333333 !important;
+  margin-top: 25px !important;
+  font-weight: 600 !important;
+}
+
+.rendered_html h4,
+.rendered_html h5,
+.rendered_html h6 {
+  font-family: "Helvetica Neue", Arial, sans-serif !important;
+  color: #333333 !important;
+  margin-top: 20px !important;
+  font-weight: 600 !important;
+}
+
+/* Liens */
+.rendered_html a,
+a {
+  color: #003366 !important;
+  text-decoration: none !important;
+}
+.rendered_html a:hover,
+a:hover {
+  text-decoration: underline !important;
 }
 
 /* ============================================================
-   3. BLOCS DE CODE ET NOTEBOOKS (STYLE FORMAT IDE DARK)
+   3. CODE – INLINE + BLOCS (STYLE DARK IDE)
    ============================================================ */
 
-/* Code en ligne au milieu du texte (ex: `uint32_t`, `I2C_HandleTypeDef`) */
-.rendered_html code, p code {
+/* Code en ligne */
+.rendered_html code,
+.text_cell_render code,
+p code,
+li code {
   font-family: 'JetBrains Mono', 'Consolas', monospace !important;
   background-color: #f0f2f5 !important;
-  color: #b31d28 !important; /* Rouge brique standard du code inline */
+  color: #b31d28 !important;
   padding: 2px 5px !important;
   border-radius: 3px !important;
   font-size: 0.9em !important;
 }
 
-/* Cellules de code Jupyter complètes */
-.cell, .input_area, .output_area pre {
-  font-family: 'JetBrains Mono', 'Consolas', monospace !important;
-  background-color: #1e1e1e !important; /* Fond sombre standard d'éditeur type Keil/VS Code */
-  border-radius: 4px;
-  padding: 12px;
-  margin-bottom: 16px;
+/* Cellules de code Jupyter – fond sombre */
+.input_area,
+.highlight,
+.cell .input_area {
+  background-color: #1e1e1e !important;
+  border-radius: 4px !important;
+  padding: 12px !important;
+  border: none !important;
 }
 
-/* Coloration syntaxique standard (C / Assembly / Python) */
-.highlight .k { color: #569cd6; font-weight: bold; }  /* Mots-clés: if, volatile, void */
-.highlight .s, .highlight .sc { color: #ce9178; }     /* Chaînes de caractères: "UART" */
-.highlight .c, .highlight .cm { color: #6a9955; font-style: italic; } /* Commentaires en vert */
-.highlight .cp { color: #9cdcfe; }                     /* Directives: #define, #include */
-.highlight .nf { color: #dcdcaa; }                     /* Fonctions: main, HAL_GPIO_WritePin */
-.highlight .mi, .highlight .mh { color: #b5cea8; }     /* Nombres et adresses hexadécimales: 0x40020000 */
-.highlight .kt { color: #4fc1ff; }                     /* Types de données: uint32_t, int */
-
-/* Indicateurs d'exécution In[ ] / Out[ ] */
-.prompt {
-  font-family: 'JetBrains Mono', monospace;
-  color: #888888 !important;
-  font-size: 0.8rem;
-  background-color: #2d2d2d;
-  padding: 2px 6px;
-  border-radius: 3px;
-}
-
-.output_area pre {
+/* Texte des cellules de sortie */
+.output_area pre,
+.output_text {
   background-color: #151515 !important;
-  color: #d4d4d4;
-  border-left: 3px solid #666666;
+  color: #d4d4d4 !important;
+  border-left: 3px solid #666666 !important;
+  padding: 8px 12px !important;
+  border-radius: 0 4px 4px 0 !important;
 }
+
+/* Style pour les prompts In[ ] / Out[ ] */
+.prompt {
+  font-family: 'JetBrains Mono', monospace !important;
+  color: #888888 !important;
+  font-size: 0.8rem !important;
+  background-color: #2d2d2d !important;
+  padding: 2px 6px !important;
+  border-radius: 3px !important;
+}
+
+/* Coloration syntaxique (C / Python / Assembly) */
+.highlight .k {
+  color: #569cd6 !important;
+  font-weight: bold !important;
+} /* mots‑clés */
+.highlight .s,
+.highlight .sc {
+  color: #ce9178 !important;
+} /* chaînes */
+.highlight .c,
+.highlight .cm {
+  color: #6a9955 !important;
+  font-style: italic !important;
+} /* commentaires */
+.highlight .cp {
+  color: #9cdcfe !important;
+} /* directives */
+.highlight .nf {
+  color: #dcdcaa !important;
+} /* fonctions */
+.highlight .mi,
+.highlight .mh {
+  color: #b5cea8 !important;
+} /* nombres / hex */
+.highlight .kt {
+  color: #4fc1ff !important;
+} /* types de données */
 
 /* ============================================================
-   4. COMPOSANTS DE COURS TECHNIQUE (TABLES, IMAGES & NOTES)
+   4. TABLEAUX, IMAGES, CITATIONS
    ============================================================ */
 
-/* Tableaux de structures de registres, broches ou tables de vérité */
+/* Tableaux */
 .rendered_html table {
-  width: 100%;
-  margin: 25px 0;
-  border-collapse: collapse;
+  width: 100% !important;
+  margin: 25px 0 !important;
+  border-collapse: collapse !important;
 }
 .rendered_html th {
   background-color: #f1f3f5 !important;
   color: #111111 !important;
-  font-weight: 600;
-  padding: 8px 12px;
-  border: 1px solid #d1d5db;
+  font-weight: 600 !important;
+  padding: 8px 12px !important;
+  border: 1px solid #d1d5db !important;
 }
 .rendered_html td {
-  padding: 8px 12px;
-  border: 1px solid #e5e7eb;
+  padding: 8px 12px !important;
+  border: 1px solid #e5e7eb !important;
 }
 .rendered_html tr:nth-child(even) {
-  background-color: #fafbfc; /* Légère alternance pour les grands tableaux de registres */
+  background-color: #fafbfc !important;
 }
 
-/* Schémas d'architecture matérielle et Chronogrammes */
+/* Images */
 .rendered_html img {
-  display: block;
-  max-width: 95%;
-  height: auto;
-  margin: 30px auto;
-  border: 1px solid #e1e4e6;
-  padding: 5px;
-  background-color: #ffffff;
+  display: block !important;
+  max-width: 95% !important;
+  height: auto !important;
+  margin: 30px auto !important;
+  border: 1px solid #e1e4e6 !important;
+  padding: 5px !important;
+  background-color: #ffffff !important;
 }
 
-/* Notes importantes et Remarques Temps Réel (générées via > en Markdown) */
+/* Citations / blockquotes (Markdown >) */
 .rendered_html blockquote {
-  background-color: #f8f9fa;
-  border-left: 4px solid #003366;
-  color: #333333;
-  padding: 15px;
-  margin: 20px 0;
+  background-color: #f8f9fa !important;
+  border-left: 4px solid #003366 !important;
+  color: #333333 !important;
+  padding: 15px !important;
+  margin: 20px 0 !important;
 }
 .rendered_html blockquote p {
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
+}
+
+/* ============================================================
+   5. AJUSTEMENTS DIVERS
+   ============================================================ */
+
+/* Espacement des paragraphes */
+.rendered_html p {
+  margin: 0 0 1em 0 !important;
+}
+
+/* Listes */
+.rendered_html ul,
+.rendered_html ol {
+  padding-left: 2em !important;
+  margin: 0.5em 0 1em 0 !important;
+}
+
+/* Suppression du fond gris des cellules de texte */
+.text_cell {
+  background-color: transparent !important;
+}
+.text_cell_render {
+  background-color: transparent !important;
+  padding: 0.5em 0 !important;
+}
+
+/* Lignes horizontales */
+.rendered_html hr {
+  border: none !important;
+  border-top: 2px solid #e1e4e6 !important;
+  margin: 40px 0 !important;
 }
