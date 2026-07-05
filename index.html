@@ -48,7 +48,7 @@
                                 <a href="GPIO/GPIO/" class="nav-link">Interface d'entrée/sortie numérique</a>
                             </li>
                             <li class="nav-item">
-                                <a href="Interruptions/Interruptions/" class="nav-link">Réactivité rapide avec les interruptions matérielles</a>
+                                <a href="Interruptions/Interruptions/" class="nav-link">Réactivité rapide avec les interruptions matérielles et déterminisme temporel</a>
                             </li>
                             <li class="nav-item">
                                 <a href="Timer/Timer/" class="nav-link">Les Timers</a>
@@ -72,13 +72,22 @@
                                 <a href="ADC/ADC/" class="nav-link">Acquisition de signaux analogiques via ADC</a>
                             </li>
                             <li class="nav-item">
+                                <a href="fft/fft/" class="nav-link">Analyse spectrale par FFT : Détection de fréquence</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="PWM/PWM/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pid/pid/" class="nav-link">Régulation et suivi de vitesse d’un moteur DC par correcteur PID</a>
                             </li>
                             <li class="nav-item">
                                 <a href="I2C/I2C/" class="nav-link">Interfaçage avec I2C</a>
                             </li>
                             <li class="nav-item">
-                                <a href="estimation/filtreComplementaire/" class="nav-link">Fusion des capteurs avec le Filtre de complementaire</a>
+                                <a href="estimation/filtreComplementaire/" class="nav-link">Estimation de l'angle d'inclinaison par Filtre Complémentaire</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="estimation/ekf/" class="nav-link">Estimation d'attitude par Filtre de Kalman Étendu (EKF)</a>
                             </li>
                             <li class="nav-item">
                                 <a href="graphisme/oled/" class="nav-link">Synthèse graphique sur écran OLED</a>
@@ -172,7 +181,7 @@ Contact : <a href="mailto:spaulkabidu@gmail.com">spaulkabidu@gmail.com</a><br />
 <li><a href="Systemes%20temps%20reel/Systemes%20temps%20reel/">Introduction aux systèmes temps réel</a></li>
 <li><a href="Architecture%20stm32f401/Architecture%20STM32F401/">Architecture du processeur STM32F401</a></li>
 <li><a href="GPIO/GPIO/">Gestion des E/S GPIO</a></li>
-<li><a href="Interruptions/Interruptions/">Interruptions matérielles</a>   </li>
+<li><a href="Interruptions/Interruptions/">Interruptions matérielles et déterminisme temporel</a>   </li>
 <li><a href="Timer/Timer/">Gestion des temporisations avec les Timers</a></li>
 </ol>
 <hr />
@@ -193,7 +202,7 @@ Contact : <a href="mailto:spaulkabidu@gmail.com">spaulkabidu@gmail.com</a><br />
 <li><a href="SPI/spi/">Interfaçage avec SPI</a></li>
 </ol>
 <hr />
-<h5 id="conversion-de-signaux-et-controle-materiel">Conversion de Signaux et Contrôle Matériel</h5>
+<h5 id="conversion-de-signaux">Conversion de Signaux</h5>
 <p><br></p>
 <ol>
 <li><a href="ADC/ADC/">Acquisition analogique avec ADC</a></li>
@@ -203,10 +212,13 @@ Contact : <a href="mailto:spaulkabidu@gmail.com">spaulkabidu@gmail.com</a><br />
 <h5 id="techniques-et-algorithmes-dapplications">Techniques et Algorithmes d'applications</h5>
 <p><br></p>
 <ol>
-<li><a href="estimation/filtreComplementaire/">Fusion des capteurs avec le Filtre de complementaire</a></li>
+<li><a href="estimation/filtreComplementaire/">Estimation de l'angle d'inclinaison par Filtre Complémentaire</a></li>
+<li><a href="estimation/ekf/">Estimation d'attitude par Filtre de Kalman Étendu (EKF)</a></li>
 <li><a href="graphisme/oled/">Synthèse graphique sur écran OLED</a></li>
 <li><a href="Jeu/Jeu/">Jeux interractifs</a></li>
 <li><a href="DDS/dds/">Synthèse sonore avec DDS</a></li>
+<li><a href="fft/fft/">Analyse spectrale par FFT</a></li>
+<li><a href="pid/pid/">Régulation avec PID</a></li>
 </ol>
 <hr />
 <h5 id="projets-et-applications-pratiques">Projets et Applications Pratiques</h5>
@@ -314,5 +326,5 @@ Contact : <a href="mailto:spaulkabidu@gmail.com">spaulkabidu@gmail.com</a><br />
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-07-03 21:33:58.920416+00:00
+Build Date UTC : 2026-07-05 19:03:14.240938+00:00
 -->

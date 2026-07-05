@@ -8,7 +8,7 @@
         <meta name="author" content="Ir Paul S. Kabidu">
         <link rel="canonical" href="https://Plkab.github.io/INF302/Interruptions/Interruptions/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Réactivité rapide avec les interruptions matérielles - INF302 – Programmation des processeurs et Systèmestemps réel</title>
+        <title>Réactivité rapide avec les interruptions matérielles et déterminisme temporel - INF302 – Programmation des processeurs et Systèmestemps réel</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -48,7 +48,7 @@
                                 <a href="../../GPIO/GPIO/" class="nav-link">Interface d'entrée/sortie numérique</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">Réactivité rapide avec les interruptions matérielles</a>
+                                <a href="./" class="nav-link active" aria-current="page">Réactivité rapide avec les interruptions matérielles et déterminisme temporel</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Timer/Timer/" class="nav-link">Les Timers</a>
@@ -72,13 +72,22 @@
                                 <a href="../../ADC/ADC/" class="nav-link">Acquisition de signaux analogiques via ADC</a>
                             </li>
                             <li class="nav-item">
+                                <a href="../../fft/fft/" class="nav-link">Analyse spectrale par FFT : Détection de fréquence</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="../../PWM/PWM/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../pid/pid/" class="nav-link">Régulation et suivi de vitesse d’un moteur DC par correcteur PID</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../I2C/I2C/" class="nav-link">Interfaçage avec I2C</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../estimation/filtreComplementaire/" class="nav-link">Fusion des capteurs avec le Filtre de complementaire</a>
+                                <a href="../../estimation/filtreComplementaire/" class="nav-link">Estimation de l'angle d'inclinaison par Filtre Complémentaire</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../estimation/ekf/" class="nav-link">Estimation d'attitude par Filtre de Kalman Étendu (EKF)</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../graphisme/oled/" class="nav-link">Synthèse graphique sur écran OLED</a>
@@ -145,7 +154,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#reactivite-rapide-avec-les-interruptions-materielles" class="nav-link">Réactivité rapide avec les interruptions matérielles</a>
+            <li class="nav-item" data-bs-level="1"><a href="#reactivite-rapide-avec-les-interruptions-materielles-et-determinisme-temporel" class="nav-link">Réactivité rapide avec les interruptions matérielles et déterminisme temporel</a>
               <ul class="nav flex-column">
             <li class="nav-item" data-bs-level="2"><a href="#principe-des-interruptions" class="nav-link">Principe des interruptions</a>
               <ul class="nav flex-column">
@@ -603,7 +612,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="reactivite-rapide-avec-les-interruptions-materielles">Réactivité rapide avec les interruptions matérielles<a class="anchor-link" href="#reactivite-rapide-avec-les-interruptions-materielles">¶</a></h1>
+<h1 id="reactivite-rapide-avec-les-interruptions-materielles-et-determinisme-temporel">Réactivité rapide avec les interruptions matérielles et déterminisme temporel<a class="anchor-link" href="#reactivite-rapide-avec-les-interruptions-materielles-et-determinisme-temporel">¶</a></h1>
 </div>
 </div>
 </div>

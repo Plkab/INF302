@@ -48,7 +48,7 @@
                                 <a href="../../GPIO/GPIO/" class="nav-link">Interface d'entrée/sortie numérique</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Interruptions/Interruptions/" class="nav-link">Réactivité rapide avec les interruptions matérielles</a>
+                                <a href="../../Interruptions/Interruptions/" class="nav-link">Réactivité rapide avec les interruptions matérielles et déterminisme temporel</a>
                             </li>
                             <li class="nav-item">
                                 <a href="./" class="nav-link active" aria-current="page">Les Timers</a>
@@ -72,13 +72,22 @@
                                 <a href="../../ADC/ADC/" class="nav-link">Acquisition de signaux analogiques via ADC</a>
                             </li>
                             <li class="nav-item">
+                                <a href="../../fft/fft/" class="nav-link">Analyse spectrale par FFT : Détection de fréquence</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="../../PWM/PWM/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../pid/pid/" class="nav-link">Régulation et suivi de vitesse d’un moteur DC par correcteur PID</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../I2C/I2C/" class="nav-link">Interfaçage avec I2C</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../estimation/filtreComplementaire/" class="nav-link">Fusion des capteurs avec le Filtre de complementaire</a>
+                                <a href="../../estimation/filtreComplementaire/" class="nav-link">Estimation de l'angle d'inclinaison par Filtre Complémentaire</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../estimation/ekf/" class="nav-link">Estimation d'attitude par Filtre de Kalman Étendu (EKF)</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../graphisme/oled/" class="nav-link">Synthèse graphique sur écran OLED</a>
@@ -1412,7 +1421,6 @@ YouTubeVideo('kRCQ1h7pWOQ', width=800, height=450)
 
 <span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// Cette condition crée un rythme d'environ 500ms sans figer le microcontrôleur.</span>
-<span class="w">        </span><span class="c1">// Le STM32 étant très rapide, la valeur cible est augmentée par rapport à l'AVR.</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">temporisation_boucle</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">40000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
 <span class="w">            </span><span class="n">compteur_affichage</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// Incrémentation du compteur</span>
 
