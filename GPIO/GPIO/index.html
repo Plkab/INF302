@@ -8,7 +8,7 @@
         <meta name="author" content="Ir Paul S. Kabidu">
         <link rel="canonical" href="https://Plkab.github.io/INF302/GPIO/GPIO/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Interface d'entrée/sortie numérique - INF302 – Programmation des processeurs et Systèmestemps réel</title>
+        <title>Comment interfacer, commander et lire des dispositifs électroniques grâce aux GPIO numériques ? - INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../..">INF302 – Programmation des processeurs et Systèmestemps réel</a>
+                <a class="navbar-brand" href="../..">INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -39,22 +39,25 @@
                                 <a href="../.." class="nav-link">Accueil</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Systemes%20temps%20reel/Systemes%20temps%20reel/" class="nav-link">Systèmes Embarqués et Systèmes Temps Réel</a>
+                                <a href="../../Systemes%20temps%20reel/Systemes%20temps%20reel/" class="nav-link">Systèmes embarqués et Systèmes temps réel</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Architecture%20stm32f401/Architecture%20STM32F401/" class="nav-link">Architecture du processeur ARM STM32F401</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">Interface d'entrée/sortie numérique</a>
+                                <a href="./" class="nav-link active" aria-current="page">Comment interfacer, commander et lire des dispositifs électroniques grâce aux GPIO numériques ?</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Interruptions/Interruptions/" class="nav-link">Réactivité rapide avec les interruptions matérielles et déterminisme temporel</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Timer/Timer/" class="nav-link">Les Timers</a>
+                                <a href="../../Timer/Timer/" class="nav-link">Comment mesurer et générer précisément des périodes et fréquences grâce aux Timers ?</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Machine%20d%27etats%20finis/fsm/" class="nav-link">La machine d'état fini finis :</a>
+                                <a href="../../Machine%20d%27etats%20finis/fsm/" class="nav-link">Comment organiser le comportement d’un système réactif grâce aux Machines à États Finis (FSM) ?</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../projetClavier/projetClavier.ipynb" class="nav-link">Minuterie avec Mot de Passe et Affichage LCD</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Protothreads/Protothreads/" class="nav-link">Introduction au multitâche coopératif avec les Protothreads</a>
@@ -69,13 +72,16 @@
                                 <a href="../../UART/UART/" class="nav-link">Communication avec d'autres dispositifs</a>
                             </li>
                             <li class="nav-item">
+                                <a href="../../systemeDistribue/systemeDistribue/" class="nav-link">Système Distribué avec RS-485</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="../../ADC/ADC/" class="nav-link">Acquisition de signaux analogiques via ADC</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../fft/fft/" class="nav-link">Analyse spectrale par FFT : Détection de fréquence</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../PWM/PWM/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
+                                <a href="../../pwm/pwm/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../pid/pid/" class="nav-link">Régulation et suivi de vitesse d’un moteur DC par correcteur PID</a>
@@ -90,16 +96,19 @@
                                 <a href="../../estimation/ekf/" class="nav-link">Estimation d'attitude par Filtre de Kalman Étendu (EKF)</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../graphisme/oled/" class="nav-link">Synthèse graphique sur écran OLED</a>
+                                <a href="../../graphisme/oled/" class="nav-link">Synthèse graphique embarqué</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Jeu/Jeu/" class="nav-link">PONG sur OLED SSD1306 — Théorie &amp; Implémentation</a>
+                                <a href="../../Jeu/jeu/" class="nav-link">PONG sur OLED SSD1306 — Théorie &amp; Implémentation</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../SPI/spi/" class="nav-link">Communication via SPI</a>
+                                <a href="../../spi/spi/" class="nav-link">Communication via SPI</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../DDS/dds/" class="nav-link">Synthèse sonore avec DDS (Direct Digital Synthesis)</a>
+                                <a href="../../dds/dds/" class="nav-link">Synthèse sonore par DDS (Direct Digital Synthesis)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../syntheseVocale/syntheseVocale/" class="nav-link">Synthèse Vocale par Numérisation Directe avec DDS</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../powerElo/pwmComplemetaire/" class="nav-link">Génération d'un signal PWM complémentaire avec temps mort réglable</a>
@@ -108,14 +117,23 @@
                                 <a href="../../powerElo/zcd/" class="nav-link">Détection de passage par zéro avec interruption externe pour commande de puissance (50 Hz)</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../powerElo/controlAC/" class="nav-link">Commande de puissance CA par thyristor : contrôle de l’angle de phase par triac</a>
+                                <a href="../../powerElo/controlAC/" class="nav-link">Commande de puissance CA par Triac : contrôle de l’angle de phase</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../mppt/mppt/" class="nav-link">Mise en œuvre du MPPT pour charger une batterie</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../buckConv/buck/" class="nav-link">Réguler la tension de sortie d'un convertisseur Buck</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../iotEsp8266/esp8266/" class="nav-link">Connectivité réseau et protocoles IoT avec ESP8266</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Laboratoires</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../LABO/demarrerKiel/" class="dropdown-item">Démarrer Kiel</a>
+    <a href="../../LABO/demarrerKiel/" class="dropdown-item">Démarrer Keil</a>
 </li>
                                     
 <li>
@@ -163,7 +181,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#interface-dentreesortie-numerique" class="nav-link">Interface d'entrée/sortie numérique</a>
+            <li class="nav-item" data-bs-level="1"><a href="#comment-interfacer-commander-et-lire-des-dispositifs-electroniques-grace-aux-gpio-numeriques" class="nav-link">Comment interfacer, commander et lire des dispositifs électroniques grâce aux GPIO numériques ?</a>
               <ul class="nav flex-column">
             <li class="nav-item" data-bs-level="2"><a href="#structure-dun-port-gpio" class="nav-link">Structure d'un port GPIO</a>
               <ul class="nav flex-column">
@@ -629,7 +647,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="interface-dentreesortie-numerique">Interface d'entrée/sortie numérique<a class="anchor-link" href="#interface-dentreesortie-numerique">¶</a></h1>
+<h1 id="comment-interfacer-commander-et-lire-des-dispositifs-electroniques-grace-aux-gpio-numeriques">Comment interfacer, commander et lire des dispositifs électroniques grâce aux GPIO numériques ?<a class="anchor-link" href="#comment-interfacer-commander-et-lire-des-dispositifs-electroniques-grace-aux-gpio-numeriques">¶</a></h1>
 </div>
 </div>
 </div>
@@ -708,7 +726,7 @@ Image(filename='blackpill.jpg') # Afficher l'image</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Voir chapitre 8 - 7 du datasheet RM0383 Reference manual STM32F411xC/E advanced Arm®-based 32-bit MCUs</p>
+<p>Voir chapitre 8 - 7 du <a href="Ressources/rm0368-stm32f401xbc-and-stm32f401xde-advanced-armbased-32bit-mcus-stmicroelectronics.pdf">datasheet RM0383 Reference manual STM32F411xC/E advanced Arm®-based 32-bit MCUs</a></p>
 </div>
 </div>
 </div>
@@ -915,7 +933,7 @@ display(styler_bloc2)</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>C:\Users\Pc\AppData\Local\Temp\ipykernel_15212\34736874.py:46: FutureWarning: Styler.applymap has been deprecated. Use Styler.map instead.
+<pre>C:\Users\Pc\AppData\Local\Temp\ipykernel_5064\34736874.py:46: FutureWarning: Styler.applymap has been deprecated. Use Styler.map instead.
   styler.applymap(colorer_cellules)
 </pre>
 </div>
@@ -924,13 +942,13 @@ display(styler_bloc2)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <style type="text/css">
-#T_c39c9 table {
+#T_1b66e table {
   border-collapse: collapse;
   width: 100%;
   font-family: monospace;
   margin-bottom: 30px;
 }
-#T_c39c9 th {
+#T_1b66e th {
   background-color: #2c3e50;
   color: white;
   text-align: center;
@@ -938,13 +956,13 @@ display(styler_bloc2)</div>
   font-size: 10px;
   border: 1px solid #34495e;
 }
-#T_c39c9 td {
+#T_1b66e td {
   text-align: center;
   padding: 6px;
   font-size: 11px;
   border: 1px solid #bdc3c7;
 }
-#T_c39c9 th.row_heading {
+#T_1b66e th.row_heading {
   background-color: #34495e;
   color: white;
   font-weight: bold;
@@ -952,134 +970,134 @@ display(styler_bloc2)</div>
   font-size: 12px;
   min-width: 120px;
 }
-#T_c39c9_row0_col0, #T_c39c9_row0_col2, #T_c39c9_row0_col4, #T_c39c9_row0_col6, #T_c39c9_row0_col8, #T_c39c9_row0_col10, #T_c39c9_row0_col12, #T_c39c9_row0_col14, #T_c39c9_row0_col16, #T_c39c9_row0_col18, #T_c39c9_row0_col20, #T_c39c9_row0_col22, #T_c39c9_row0_col24, #T_c39c9_row0_col26, #T_c39c9_row0_col28, #T_c39c9_row0_col30 {
+#T_1b66e_row0_col0, #T_1b66e_row0_col2, #T_1b66e_row0_col4, #T_1b66e_row0_col6, #T_1b66e_row0_col8, #T_1b66e_row0_col10, #T_1b66e_row0_col12, #T_1b66e_row0_col14, #T_1b66e_row0_col16, #T_1b66e_row0_col18, #T_1b66e_row0_col20, #T_1b66e_row0_col22, #T_1b66e_row0_col24, #T_1b66e_row0_col26, #T_1b66e_row0_col28, #T_1b66e_row0_col30 {
   background-color: #e8f4f8;
   color: #1f4e78;
 }
-#T_c39c9_row0_col1, #T_c39c9_row0_col3, #T_c39c9_row0_col5, #T_c39c9_row0_col7, #T_c39c9_row0_col9, #T_c39c9_row0_col11, #T_c39c9_row0_col13, #T_c39c9_row0_col15, #T_c39c9_row0_col17, #T_c39c9_row0_col19, #T_c39c9_row0_col21, #T_c39c9_row0_col23, #T_c39c9_row0_col25, #T_c39c9_row0_col27, #T_c39c9_row0_col29, #T_c39c9_row0_col31 {
+#T_1b66e_row0_col1, #T_1b66e_row0_col3, #T_1b66e_row0_col5, #T_1b66e_row0_col7, #T_1b66e_row0_col9, #T_1b66e_row0_col11, #T_1b66e_row0_col13, #T_1b66e_row0_col15, #T_1b66e_row0_col17, #T_1b66e_row0_col19, #T_1b66e_row0_col21, #T_1b66e_row0_col23, #T_1b66e_row0_col25, #T_1b66e_row0_col27, #T_1b66e_row0_col29, #T_1b66e_row0_col31 {
   background-color: #ebf5fb;
   color: #2e75b6;
 }
-#T_c39c9_row1_col0, #T_c39c9_row1_col1, #T_c39c9_row1_col2, #T_c39c9_row1_col3, #T_c39c9_row1_col4, #T_c39c9_row1_col5, #T_c39c9_row1_col6, #T_c39c9_row1_col7, #T_c39c9_row1_col8, #T_c39c9_row1_col9, #T_c39c9_row1_col10, #T_c39c9_row1_col11, #T_c39c9_row1_col12, #T_c39c9_row1_col13, #T_c39c9_row1_col14, #T_c39c9_row1_col15 {
+#T_1b66e_row1_col0, #T_1b66e_row1_col1, #T_1b66e_row1_col2, #T_1b66e_row1_col3, #T_1b66e_row1_col4, #T_1b66e_row1_col5, #T_1b66e_row1_col6, #T_1b66e_row1_col7, #T_1b66e_row1_col8, #T_1b66e_row1_col9, #T_1b66e_row1_col10, #T_1b66e_row1_col11, #T_1b66e_row1_col12, #T_1b66e_row1_col13, #T_1b66e_row1_col14, #T_1b66e_row1_col15 {
   background-color: #fce4d6;
   color: #c65911;
   font-weight: bold;
 }
-#T_c39c9_row1_col16, #T_c39c9_row1_col17, #T_c39c9_row1_col18, #T_c39c9_row1_col19, #T_c39c9_row1_col20, #T_c39c9_row1_col21, #T_c39c9_row1_col22, #T_c39c9_row1_col23, #T_c39c9_row1_col24, #T_c39c9_row1_col25, #T_c39c9_row1_col26, #T_c39c9_row1_col27, #T_c39c9_row1_col28, #T_c39c9_row1_col29, #T_c39c9_row1_col30, #T_c39c9_row1_col31 {
+#T_1b66e_row1_col16, #T_1b66e_row1_col17, #T_1b66e_row1_col18, #T_1b66e_row1_col19, #T_1b66e_row1_col20, #T_1b66e_row1_col21, #T_1b66e_row1_col22, #T_1b66e_row1_col23, #T_1b66e_row1_col24, #T_1b66e_row1_col25, #T_1b66e_row1_col26, #T_1b66e_row1_col27, #T_1b66e_row1_col28, #T_1b66e_row1_col29, #T_1b66e_row1_col30, #T_1b66e_row1_col31 {
   background-color: #e2efda;
   color: #375623;
   font-weight: bold;
 }
 </style>
-<table id="T_c39c9">
+<table id="T_1b66e">
 <caption><h3 style="color: #2c3e50; text-align: left; margin-top: 20px;">BLOC 1 : Configuration (MODER) &amp; Modification Atomique (BSRR)</h3></caption>
 <thead>
 <tr>
 <th class="blank level0"> </th>
-<th class="col_heading level0 col0" id="T_c39c9_level0_col0">Bit 31</th>
-<th class="col_heading level0 col1" id="T_c39c9_level0_col1">Bit 30</th>
-<th class="col_heading level0 col2" id="T_c39c9_level0_col2">Bit 29</th>
-<th class="col_heading level0 col3" id="T_c39c9_level0_col3">Bit 28</th>
-<th class="col_heading level0 col4" id="T_c39c9_level0_col4">Bit 27</th>
-<th class="col_heading level0 col5" id="T_c39c9_level0_col5">Bit 26</th>
-<th class="col_heading level0 col6" id="T_c39c9_level0_col6">Bit 25</th>
-<th class="col_heading level0 col7" id="T_c39c9_level0_col7">Bit 24</th>
-<th class="col_heading level0 col8" id="T_c39c9_level0_col8">Bit 23</th>
-<th class="col_heading level0 col9" id="T_c39c9_level0_col9">Bit 22</th>
-<th class="col_heading level0 col10" id="T_c39c9_level0_col10">Bit 21</th>
-<th class="col_heading level0 col11" id="T_c39c9_level0_col11">Bit 20</th>
-<th class="col_heading level0 col12" id="T_c39c9_level0_col12">Bit 19</th>
-<th class="col_heading level0 col13" id="T_c39c9_level0_col13">Bit 18</th>
-<th class="col_heading level0 col14" id="T_c39c9_level0_col14">Bit 17</th>
-<th class="col_heading level0 col15" id="T_c39c9_level0_col15">Bit 16</th>
-<th class="col_heading level0 col16" id="T_c39c9_level0_col16">Bit 15</th>
-<th class="col_heading level0 col17" id="T_c39c9_level0_col17">Bit 14</th>
-<th class="col_heading level0 col18" id="T_c39c9_level0_col18">Bit 13</th>
-<th class="col_heading level0 col19" id="T_c39c9_level0_col19">Bit 12</th>
-<th class="col_heading level0 col20" id="T_c39c9_level0_col20">Bit 11</th>
-<th class="col_heading level0 col21" id="T_c39c9_level0_col21">Bit 10</th>
-<th class="col_heading level0 col22" id="T_c39c9_level0_col22">Bit 9</th>
-<th class="col_heading level0 col23" id="T_c39c9_level0_col23">Bit 8</th>
-<th class="col_heading level0 col24" id="T_c39c9_level0_col24">Bit 7</th>
-<th class="col_heading level0 col25" id="T_c39c9_level0_col25">Bit 6</th>
-<th class="col_heading level0 col26" id="T_c39c9_level0_col26">Bit 5</th>
-<th class="col_heading level0 col27" id="T_c39c9_level0_col27">Bit 4</th>
-<th class="col_heading level0 col28" id="T_c39c9_level0_col28">Bit 3</th>
-<th class="col_heading level0 col29" id="T_c39c9_level0_col29">Bit 2</th>
-<th class="col_heading level0 col30" id="T_c39c9_level0_col30">Bit 1</th>
-<th class="col_heading level0 col31" id="T_c39c9_level0_col31">Bit 0</th>
+<th class="col_heading level0 col0" id="T_1b66e_level0_col0">Bit 31</th>
+<th class="col_heading level0 col1" id="T_1b66e_level0_col1">Bit 30</th>
+<th class="col_heading level0 col2" id="T_1b66e_level0_col2">Bit 29</th>
+<th class="col_heading level0 col3" id="T_1b66e_level0_col3">Bit 28</th>
+<th class="col_heading level0 col4" id="T_1b66e_level0_col4">Bit 27</th>
+<th class="col_heading level0 col5" id="T_1b66e_level0_col5">Bit 26</th>
+<th class="col_heading level0 col6" id="T_1b66e_level0_col6">Bit 25</th>
+<th class="col_heading level0 col7" id="T_1b66e_level0_col7">Bit 24</th>
+<th class="col_heading level0 col8" id="T_1b66e_level0_col8">Bit 23</th>
+<th class="col_heading level0 col9" id="T_1b66e_level0_col9">Bit 22</th>
+<th class="col_heading level0 col10" id="T_1b66e_level0_col10">Bit 21</th>
+<th class="col_heading level0 col11" id="T_1b66e_level0_col11">Bit 20</th>
+<th class="col_heading level0 col12" id="T_1b66e_level0_col12">Bit 19</th>
+<th class="col_heading level0 col13" id="T_1b66e_level0_col13">Bit 18</th>
+<th class="col_heading level0 col14" id="T_1b66e_level0_col14">Bit 17</th>
+<th class="col_heading level0 col15" id="T_1b66e_level0_col15">Bit 16</th>
+<th class="col_heading level0 col16" id="T_1b66e_level0_col16">Bit 15</th>
+<th class="col_heading level0 col17" id="T_1b66e_level0_col17">Bit 14</th>
+<th class="col_heading level0 col18" id="T_1b66e_level0_col18">Bit 13</th>
+<th class="col_heading level0 col19" id="T_1b66e_level0_col19">Bit 12</th>
+<th class="col_heading level0 col20" id="T_1b66e_level0_col20">Bit 11</th>
+<th class="col_heading level0 col21" id="T_1b66e_level0_col21">Bit 10</th>
+<th class="col_heading level0 col22" id="T_1b66e_level0_col22">Bit 9</th>
+<th class="col_heading level0 col23" id="T_1b66e_level0_col23">Bit 8</th>
+<th class="col_heading level0 col24" id="T_1b66e_level0_col24">Bit 7</th>
+<th class="col_heading level0 col25" id="T_1b66e_level0_col25">Bit 6</th>
+<th class="col_heading level0 col26" id="T_1b66e_level0_col26">Bit 5</th>
+<th class="col_heading level0 col27" id="T_1b66e_level0_col27">Bit 4</th>
+<th class="col_heading level0 col28" id="T_1b66e_level0_col28">Bit 3</th>
+<th class="col_heading level0 col29" id="T_1b66e_level0_col29">Bit 2</th>
+<th class="col_heading level0 col30" id="T_1b66e_level0_col30">Bit 1</th>
+<th class="col_heading level0 col31" id="T_1b66e_level0_col31">Bit 0</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th class="row_heading level0 row0" id="T_c39c9_level0_row0">GPIOx_MODER</th>
-<td class="data row0 col0" id="T_c39c9_row0_col0">P15[H]</td>
-<td class="data row0 col1" id="T_c39c9_row0_col1">P15[L]</td>
-<td class="data row0 col2" id="T_c39c9_row0_col2">P14[H]</td>
-<td class="data row0 col3" id="T_c39c9_row0_col3">P14[L]</td>
-<td class="data row0 col4" id="T_c39c9_row0_col4">P13[H]</td>
-<td class="data row0 col5" id="T_c39c9_row0_col5">P13[L]</td>
-<td class="data row0 col6" id="T_c39c9_row0_col6">P12[H]</td>
-<td class="data row0 col7" id="T_c39c9_row0_col7">P12[L]</td>
-<td class="data row0 col8" id="T_c39c9_row0_col8">P11[H]</td>
-<td class="data row0 col9" id="T_c39c9_row0_col9">P11[L]</td>
-<td class="data row0 col10" id="T_c39c9_row0_col10">P10[H]</td>
-<td class="data row0 col11" id="T_c39c9_row0_col11">P10[L]</td>
-<td class="data row0 col12" id="T_c39c9_row0_col12">P9[H]</td>
-<td class="data row0 col13" id="T_c39c9_row0_col13">P9[L]</td>
-<td class="data row0 col14" id="T_c39c9_row0_col14">P8[H]</td>
-<td class="data row0 col15" id="T_c39c9_row0_col15">P8[L]</td>
-<td class="data row0 col16" id="T_c39c9_row0_col16">P7[H]</td>
-<td class="data row0 col17" id="T_c39c9_row0_col17">P7[L]</td>
-<td class="data row0 col18" id="T_c39c9_row0_col18">P6[H]</td>
-<td class="data row0 col19" id="T_c39c9_row0_col19">P6[L]</td>
-<td class="data row0 col20" id="T_c39c9_row0_col20">P5[H]</td>
-<td class="data row0 col21" id="T_c39c9_row0_col21">P5[L]</td>
-<td class="data row0 col22" id="T_c39c9_row0_col22">P4[H]</td>
-<td class="data row0 col23" id="T_c39c9_row0_col23">P4[L]</td>
-<td class="data row0 col24" id="T_c39c9_row0_col24">P3[H]</td>
-<td class="data row0 col25" id="T_c39c9_row0_col25">P3[L]</td>
-<td class="data row0 col26" id="T_c39c9_row0_col26">P2[H]</td>
-<td class="data row0 col27" id="T_c39c9_row0_col27">P2[L]</td>
-<td class="data row0 col28" id="T_c39c9_row0_col28">P1[H]</td>
-<td class="data row0 col29" id="T_c39c9_row0_col29">P1[L]</td>
-<td class="data row0 col30" id="T_c39c9_row0_col30">P0[H]</td>
-<td class="data row0 col31" id="T_c39c9_row0_col31">P0[L]</td>
+<th class="row_heading level0 row0" id="T_1b66e_level0_row0">GPIOx_MODER</th>
+<td class="data row0 col0" id="T_1b66e_row0_col0">P15[H]</td>
+<td class="data row0 col1" id="T_1b66e_row0_col1">P15[L]</td>
+<td class="data row0 col2" id="T_1b66e_row0_col2">P14[H]</td>
+<td class="data row0 col3" id="T_1b66e_row0_col3">P14[L]</td>
+<td class="data row0 col4" id="T_1b66e_row0_col4">P13[H]</td>
+<td class="data row0 col5" id="T_1b66e_row0_col5">P13[L]</td>
+<td class="data row0 col6" id="T_1b66e_row0_col6">P12[H]</td>
+<td class="data row0 col7" id="T_1b66e_row0_col7">P12[L]</td>
+<td class="data row0 col8" id="T_1b66e_row0_col8">P11[H]</td>
+<td class="data row0 col9" id="T_1b66e_row0_col9">P11[L]</td>
+<td class="data row0 col10" id="T_1b66e_row0_col10">P10[H]</td>
+<td class="data row0 col11" id="T_1b66e_row0_col11">P10[L]</td>
+<td class="data row0 col12" id="T_1b66e_row0_col12">P9[H]</td>
+<td class="data row0 col13" id="T_1b66e_row0_col13">P9[L]</td>
+<td class="data row0 col14" id="T_1b66e_row0_col14">P8[H]</td>
+<td class="data row0 col15" id="T_1b66e_row0_col15">P8[L]</td>
+<td class="data row0 col16" id="T_1b66e_row0_col16">P7[H]</td>
+<td class="data row0 col17" id="T_1b66e_row0_col17">P7[L]</td>
+<td class="data row0 col18" id="T_1b66e_row0_col18">P6[H]</td>
+<td class="data row0 col19" id="T_1b66e_row0_col19">P6[L]</td>
+<td class="data row0 col20" id="T_1b66e_row0_col20">P5[H]</td>
+<td class="data row0 col21" id="T_1b66e_row0_col21">P5[L]</td>
+<td class="data row0 col22" id="T_1b66e_row0_col22">P4[H]</td>
+<td class="data row0 col23" id="T_1b66e_row0_col23">P4[L]</td>
+<td class="data row0 col24" id="T_1b66e_row0_col24">P3[H]</td>
+<td class="data row0 col25" id="T_1b66e_row0_col25">P3[L]</td>
+<td class="data row0 col26" id="T_1b66e_row0_col26">P2[H]</td>
+<td class="data row0 col27" id="T_1b66e_row0_col27">P2[L]</td>
+<td class="data row0 col28" id="T_1b66e_row0_col28">P1[H]</td>
+<td class="data row0 col29" id="T_1b66e_row0_col29">P1[L]</td>
+<td class="data row0 col30" id="T_1b66e_row0_col30">P0[H]</td>
+<td class="data row0 col31" id="T_1b66e_row0_col31">P0[L]</td>
 </tr>
 <tr>
-<th class="row_heading level0 row1" id="T_c39c9_level0_row1">GPIOx_BSRR</th>
-<td class="data row1 col0" id="T_c39c9_row1_col0">BR15</td>
-<td class="data row1 col1" id="T_c39c9_row1_col1">BR14</td>
-<td class="data row1 col2" id="T_c39c9_row1_col2">BR13</td>
-<td class="data row1 col3" id="T_c39c9_row1_col3">BR12</td>
-<td class="data row1 col4" id="T_c39c9_row1_col4">BR11</td>
-<td class="data row1 col5" id="T_c39c9_row1_col5">BR10</td>
-<td class="data row1 col6" id="T_c39c9_row1_col6">BR9</td>
-<td class="data row1 col7" id="T_c39c9_row1_col7">BR8</td>
-<td class="data row1 col8" id="T_c39c9_row1_col8">BR7</td>
-<td class="data row1 col9" id="T_c39c9_row1_col9">BR6</td>
-<td class="data row1 col10" id="T_c39c9_row1_col10">BR5</td>
-<td class="data row1 col11" id="T_c39c9_row1_col11">BR4</td>
-<td class="data row1 col12" id="T_c39c9_row1_col12">BR3</td>
-<td class="data row1 col13" id="T_c39c9_row1_col13">BR2</td>
-<td class="data row1 col14" id="T_c39c9_row1_col14">BR1</td>
-<td class="data row1 col15" id="T_c39c9_row1_col15">BR0</td>
-<td class="data row1 col16" id="T_c39c9_row1_col16">BS15</td>
-<td class="data row1 col17" id="T_c39c9_row1_col17">BS14</td>
-<td class="data row1 col18" id="T_c39c9_row1_col18">BS13</td>
-<td class="data row1 col19" id="T_c39c9_row1_col19">BS12</td>
-<td class="data row1 col20" id="T_c39c9_row1_col20">BS11</td>
-<td class="data row1 col21" id="T_c39c9_row1_col21">BS10</td>
-<td class="data row1 col22" id="T_c39c9_row1_col22">BS9</td>
-<td class="data row1 col23" id="T_c39c9_row1_col23">BS8</td>
-<td class="data row1 col24" id="T_c39c9_row1_col24">BS7</td>
-<td class="data row1 col25" id="T_c39c9_row1_col25">BS6</td>
-<td class="data row1 col26" id="T_c39c9_row1_col26">BS5</td>
-<td class="data row1 col27" id="T_c39c9_row1_col27">BS4</td>
-<td class="data row1 col28" id="T_c39c9_row1_col28">BS3</td>
-<td class="data row1 col29" id="T_c39c9_row1_col29">BS2</td>
-<td class="data row1 col30" id="T_c39c9_row1_col30">BS1</td>
-<td class="data row1 col31" id="T_c39c9_row1_col31">BS0</td>
+<th class="row_heading level0 row1" id="T_1b66e_level0_row1">GPIOx_BSRR</th>
+<td class="data row1 col0" id="T_1b66e_row1_col0">BR15</td>
+<td class="data row1 col1" id="T_1b66e_row1_col1">BR14</td>
+<td class="data row1 col2" id="T_1b66e_row1_col2">BR13</td>
+<td class="data row1 col3" id="T_1b66e_row1_col3">BR12</td>
+<td class="data row1 col4" id="T_1b66e_row1_col4">BR11</td>
+<td class="data row1 col5" id="T_1b66e_row1_col5">BR10</td>
+<td class="data row1 col6" id="T_1b66e_row1_col6">BR9</td>
+<td class="data row1 col7" id="T_1b66e_row1_col7">BR8</td>
+<td class="data row1 col8" id="T_1b66e_row1_col8">BR7</td>
+<td class="data row1 col9" id="T_1b66e_row1_col9">BR6</td>
+<td class="data row1 col10" id="T_1b66e_row1_col10">BR5</td>
+<td class="data row1 col11" id="T_1b66e_row1_col11">BR4</td>
+<td class="data row1 col12" id="T_1b66e_row1_col12">BR3</td>
+<td class="data row1 col13" id="T_1b66e_row1_col13">BR2</td>
+<td class="data row1 col14" id="T_1b66e_row1_col14">BR1</td>
+<td class="data row1 col15" id="T_1b66e_row1_col15">BR0</td>
+<td class="data row1 col16" id="T_1b66e_row1_col16">BS15</td>
+<td class="data row1 col17" id="T_1b66e_row1_col17">BS14</td>
+<td class="data row1 col18" id="T_1b66e_row1_col18">BS13</td>
+<td class="data row1 col19" id="T_1b66e_row1_col19">BS12</td>
+<td class="data row1 col20" id="T_1b66e_row1_col20">BS11</td>
+<td class="data row1 col21" id="T_1b66e_row1_col21">BS10</td>
+<td class="data row1 col22" id="T_1b66e_row1_col22">BS9</td>
+<td class="data row1 col23" id="T_1b66e_row1_col23">BS8</td>
+<td class="data row1 col24" id="T_1b66e_row1_col24">BS7</td>
+<td class="data row1 col25" id="T_1b66e_row1_col25">BS6</td>
+<td class="data row1 col26" id="T_1b66e_row1_col26">BS5</td>
+<td class="data row1 col27" id="T_1b66e_row1_col27">BS4</td>
+<td class="data row1 col28" id="T_1b66e_row1_col28">BS3</td>
+<td class="data row1 col29" id="T_1b66e_row1_col29">BS2</td>
+<td class="data row1 col30" id="T_1b66e_row1_col30">BS1</td>
+<td class="data row1 col31" id="T_1b66e_row1_col31">BS0</td>
 </tr>
 </tbody>
 </table>
@@ -1089,13 +1107,13 @@ display(styler_bloc2)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <style type="text/css">
-#T_c5c5e table {
+#T_7b95a table {
   border-collapse: collapse;
   width: 100%;
   font-family: monospace;
   margin-bottom: 30px;
 }
-#T_c5c5e th {
+#T_7b95a th {
   background-color: #2c3e50;
   color: white;
   text-align: center;
@@ -1103,13 +1121,13 @@ display(styler_bloc2)</div>
   font-size: 10px;
   border: 1px solid #34495e;
 }
-#T_c5c5e td {
+#T_7b95a td {
   text-align: center;
   padding: 6px;
   font-size: 11px;
   border: 1px solid #bdc3c7;
 }
-#T_c5c5e th.row_heading {
+#T_7b95a th.row_heading {
   background-color: #34495e;
   color: white;
   font-weight: bold;
@@ -1117,129 +1135,129 @@ display(styler_bloc2)</div>
   font-size: 12px;
   min-width: 120px;
 }
-#T_c5c5e_row0_col0, #T_c5c5e_row0_col1, #T_c5c5e_row0_col2, #T_c5c5e_row0_col3, #T_c5c5e_row0_col4, #T_c5c5e_row0_col5, #T_c5c5e_row0_col6, #T_c5c5e_row0_col7, #T_c5c5e_row0_col8, #T_c5c5e_row0_col9, #T_c5c5e_row0_col10, #T_c5c5e_row0_col11, #T_c5c5e_row0_col12, #T_c5c5e_row0_col13, #T_c5c5e_row0_col14, #T_c5c5e_row0_col15, #T_c5c5e_row1_col0, #T_c5c5e_row1_col1, #T_c5c5e_row1_col2, #T_c5c5e_row1_col3, #T_c5c5e_row1_col4, #T_c5c5e_row1_col5, #T_c5c5e_row1_col6, #T_c5c5e_row1_col7, #T_c5c5e_row1_col8, #T_c5c5e_row1_col9, #T_c5c5e_row1_col10, #T_c5c5e_row1_col11, #T_c5c5e_row1_col12, #T_c5c5e_row1_col13, #T_c5c5e_row1_col14, #T_c5c5e_row1_col15 {
+#T_7b95a_row0_col0, #T_7b95a_row0_col1, #T_7b95a_row0_col2, #T_7b95a_row0_col3, #T_7b95a_row0_col4, #T_7b95a_row0_col5, #T_7b95a_row0_col6, #T_7b95a_row0_col7, #T_7b95a_row0_col8, #T_7b95a_row0_col9, #T_7b95a_row0_col10, #T_7b95a_row0_col11, #T_7b95a_row0_col12, #T_7b95a_row0_col13, #T_7b95a_row0_col14, #T_7b95a_row0_col15, #T_7b95a_row1_col0, #T_7b95a_row1_col1, #T_7b95a_row1_col2, #T_7b95a_row1_col3, #T_7b95a_row1_col4, #T_7b95a_row1_col5, #T_7b95a_row1_col6, #T_7b95a_row1_col7, #T_7b95a_row1_col8, #T_7b95a_row1_col9, #T_7b95a_row1_col10, #T_7b95a_row1_col11, #T_7b95a_row1_col12, #T_7b95a_row1_col13, #T_7b95a_row1_col14, #T_7b95a_row1_col15 {
   background-color: #f8f9fa;
   color: #95a5a6;
   font-style: italic;
 }
-#T_c5c5e_row0_col16, #T_c5c5e_row0_col17, #T_c5c5e_row0_col18, #T_c5c5e_row0_col19, #T_c5c5e_row0_col20, #T_c5c5e_row0_col21, #T_c5c5e_row0_col22, #T_c5c5e_row0_col23, #T_c5c5e_row0_col24, #T_c5c5e_row0_col25, #T_c5c5e_row0_col26, #T_c5c5e_row0_col27, #T_c5c5e_row0_col28, #T_c5c5e_row0_col29, #T_c5c5e_row0_col30, #T_c5c5e_row0_col31 {
+#T_7b95a_row0_col16, #T_7b95a_row0_col17, #T_7b95a_row0_col18, #T_7b95a_row0_col19, #T_7b95a_row0_col20, #T_7b95a_row0_col21, #T_7b95a_row0_col22, #T_7b95a_row0_col23, #T_7b95a_row0_col24, #T_7b95a_row0_col25, #T_7b95a_row0_col26, #T_7b95a_row0_col27, #T_7b95a_row0_col28, #T_7b95a_row0_col29, #T_7b95a_row0_col30, #T_7b95a_row0_col31 {
   background-color: #fff2cc;
   color: #7f6000;
 }
-#T_c5c5e_row1_col16, #T_c5c5e_row1_col17, #T_c5c5e_row1_col18, #T_c5c5e_row1_col19, #T_c5c5e_row1_col20, #T_c5c5e_row1_col21, #T_c5c5e_row1_col22, #T_c5c5e_row1_col23, #T_c5c5e_row1_col24, #T_c5c5e_row1_col25, #T_c5c5e_row1_col26, #T_c5c5e_row1_col27, #T_c5c5e_row1_col28, #T_c5c5e_row1_col29, #T_c5c5e_row1_col30, #T_c5c5e_row1_col31 {
+#T_7b95a_row1_col16, #T_7b95a_row1_col17, #T_7b95a_row1_col18, #T_7b95a_row1_col19, #T_7b95a_row1_col20, #T_7b95a_row1_col21, #T_7b95a_row1_col22, #T_7b95a_row1_col23, #T_7b95a_row1_col24, #T_7b95a_row1_col25, #T_7b95a_row1_col26, #T_7b95a_row1_col27, #T_7b95a_row1_col28, #T_7b95a_row1_col29, #T_7b95a_row1_col30, #T_7b95a_row1_col31 {
   background-color: #fce4d6;
   color: #a51d24;
 }
 </style>
-<table id="T_c5c5e">
+<table id="T_7b95a">
 <caption><h3 style="color: #2c3e50; text-align: left; margin-top: 20px;">BLOC 2 : Lecture entrée (IDR) &amp; Écriture sortie (ODR)</h3></caption>
 <thead>
 <tr>
 <th class="blank level0"> </th>
-<th class="col_heading level0 col0" id="T_c5c5e_level0_col0">Bit 31</th>
-<th class="col_heading level0 col1" id="T_c5c5e_level0_col1">Bit 30</th>
-<th class="col_heading level0 col2" id="T_c5c5e_level0_col2">Bit 29</th>
-<th class="col_heading level0 col3" id="T_c5c5e_level0_col3">Bit 28</th>
-<th class="col_heading level0 col4" id="T_c5c5e_level0_col4">Bit 27</th>
-<th class="col_heading level0 col5" id="T_c5c5e_level0_col5">Bit 26</th>
-<th class="col_heading level0 col6" id="T_c5c5e_level0_col6">Bit 25</th>
-<th class="col_heading level0 col7" id="T_c5c5e_level0_col7">Bit 24</th>
-<th class="col_heading level0 col8" id="T_c5c5e_level0_col8">Bit 23</th>
-<th class="col_heading level0 col9" id="T_c5c5e_level0_col9">Bit 22</th>
-<th class="col_heading level0 col10" id="T_c5c5e_level0_col10">Bit 21</th>
-<th class="col_heading level0 col11" id="T_c5c5e_level0_col11">Bit 20</th>
-<th class="col_heading level0 col12" id="T_c5c5e_level0_col12">Bit 19</th>
-<th class="col_heading level0 col13" id="T_c5c5e_level0_col13">Bit 18</th>
-<th class="col_heading level0 col14" id="T_c5c5e_level0_col14">Bit 17</th>
-<th class="col_heading level0 col15" id="T_c5c5e_level0_col15">Bit 16</th>
-<th class="col_heading level0 col16" id="T_c5c5e_level0_col16">Bit 15</th>
-<th class="col_heading level0 col17" id="T_c5c5e_level0_col17">Bit 14</th>
-<th class="col_heading level0 col18" id="T_c5c5e_level0_col18">Bit 13</th>
-<th class="col_heading level0 col19" id="T_c5c5e_level0_col19">Bit 12</th>
-<th class="col_heading level0 col20" id="T_c5c5e_level0_col20">Bit 11</th>
-<th class="col_heading level0 col21" id="T_c5c5e_level0_col21">Bit 10</th>
-<th class="col_heading level0 col22" id="T_c5c5e_level0_col22">Bit 9</th>
-<th class="col_heading level0 col23" id="T_c5c5e_level0_col23">Bit 8</th>
-<th class="col_heading level0 col24" id="T_c5c5e_level0_col24">Bit 7</th>
-<th class="col_heading level0 col25" id="T_c5c5e_level0_col25">Bit 6</th>
-<th class="col_heading level0 col26" id="T_c5c5e_level0_col26">Bit 5</th>
-<th class="col_heading level0 col27" id="T_c5c5e_level0_col27">Bit 4</th>
-<th class="col_heading level0 col28" id="T_c5c5e_level0_col28">Bit 3</th>
-<th class="col_heading level0 col29" id="T_c5c5e_level0_col29">Bit 2</th>
-<th class="col_heading level0 col30" id="T_c5c5e_level0_col30">Bit 1</th>
-<th class="col_heading level0 col31" id="T_c5c5e_level0_col31">Bit 0</th>
+<th class="col_heading level0 col0" id="T_7b95a_level0_col0">Bit 31</th>
+<th class="col_heading level0 col1" id="T_7b95a_level0_col1">Bit 30</th>
+<th class="col_heading level0 col2" id="T_7b95a_level0_col2">Bit 29</th>
+<th class="col_heading level0 col3" id="T_7b95a_level0_col3">Bit 28</th>
+<th class="col_heading level0 col4" id="T_7b95a_level0_col4">Bit 27</th>
+<th class="col_heading level0 col5" id="T_7b95a_level0_col5">Bit 26</th>
+<th class="col_heading level0 col6" id="T_7b95a_level0_col6">Bit 25</th>
+<th class="col_heading level0 col7" id="T_7b95a_level0_col7">Bit 24</th>
+<th class="col_heading level0 col8" id="T_7b95a_level0_col8">Bit 23</th>
+<th class="col_heading level0 col9" id="T_7b95a_level0_col9">Bit 22</th>
+<th class="col_heading level0 col10" id="T_7b95a_level0_col10">Bit 21</th>
+<th class="col_heading level0 col11" id="T_7b95a_level0_col11">Bit 20</th>
+<th class="col_heading level0 col12" id="T_7b95a_level0_col12">Bit 19</th>
+<th class="col_heading level0 col13" id="T_7b95a_level0_col13">Bit 18</th>
+<th class="col_heading level0 col14" id="T_7b95a_level0_col14">Bit 17</th>
+<th class="col_heading level0 col15" id="T_7b95a_level0_col15">Bit 16</th>
+<th class="col_heading level0 col16" id="T_7b95a_level0_col16">Bit 15</th>
+<th class="col_heading level0 col17" id="T_7b95a_level0_col17">Bit 14</th>
+<th class="col_heading level0 col18" id="T_7b95a_level0_col18">Bit 13</th>
+<th class="col_heading level0 col19" id="T_7b95a_level0_col19">Bit 12</th>
+<th class="col_heading level0 col20" id="T_7b95a_level0_col20">Bit 11</th>
+<th class="col_heading level0 col21" id="T_7b95a_level0_col21">Bit 10</th>
+<th class="col_heading level0 col22" id="T_7b95a_level0_col22">Bit 9</th>
+<th class="col_heading level0 col23" id="T_7b95a_level0_col23">Bit 8</th>
+<th class="col_heading level0 col24" id="T_7b95a_level0_col24">Bit 7</th>
+<th class="col_heading level0 col25" id="T_7b95a_level0_col25">Bit 6</th>
+<th class="col_heading level0 col26" id="T_7b95a_level0_col26">Bit 5</th>
+<th class="col_heading level0 col27" id="T_7b95a_level0_col27">Bit 4</th>
+<th class="col_heading level0 col28" id="T_7b95a_level0_col28">Bit 3</th>
+<th class="col_heading level0 col29" id="T_7b95a_level0_col29">Bit 2</th>
+<th class="col_heading level0 col30" id="T_7b95a_level0_col30">Bit 1</th>
+<th class="col_heading level0 col31" id="T_7b95a_level0_col31">Bit 0</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th class="row_heading level0 row0" id="T_c5c5e_level0_row0">GPIOx_IDR</th>
-<td class="data row0 col0" id="T_c5c5e_row0_col0">Réservé (0)</td>
-<td class="data row0 col1" id="T_c5c5e_row0_col1">Réservé (0)</td>
-<td class="data row0 col2" id="T_c5c5e_row0_col2">Réservé (0)</td>
-<td class="data row0 col3" id="T_c5c5e_row0_col3">Réservé (0)</td>
-<td class="data row0 col4" id="T_c5c5e_row0_col4">Réservé (0)</td>
-<td class="data row0 col5" id="T_c5c5e_row0_col5">Réservé (0)</td>
-<td class="data row0 col6" id="T_c5c5e_row0_col6">Réservé (0)</td>
-<td class="data row0 col7" id="T_c5c5e_row0_col7">Réservé (0)</td>
-<td class="data row0 col8" id="T_c5c5e_row0_col8">Réservé (0)</td>
-<td class="data row0 col9" id="T_c5c5e_row0_col9">Réservé (0)</td>
-<td class="data row0 col10" id="T_c5c5e_row0_col10">Réservé (0)</td>
-<td class="data row0 col11" id="T_c5c5e_row0_col11">Réservé (0)</td>
-<td class="data row0 col12" id="T_c5c5e_row0_col12">Réservé (0)</td>
-<td class="data row0 col13" id="T_c5c5e_row0_col13">Réservé (0)</td>
-<td class="data row0 col14" id="T_c5c5e_row0_col14">Réservé (0)</td>
-<td class="data row0 col15" id="T_c5c5e_row0_col15">Réservé (0)</td>
-<td class="data row0 col16" id="T_c5c5e_row0_col16">IDR15</td>
-<td class="data row0 col17" id="T_c5c5e_row0_col17">IDR14</td>
-<td class="data row0 col18" id="T_c5c5e_row0_col18">IDR13</td>
-<td class="data row0 col19" id="T_c5c5e_row0_col19">IDR12</td>
-<td class="data row0 col20" id="T_c5c5e_row0_col20">IDR11</td>
-<td class="data row0 col21" id="T_c5c5e_row0_col21">IDR10</td>
-<td class="data row0 col22" id="T_c5c5e_row0_col22">IDR9</td>
-<td class="data row0 col23" id="T_c5c5e_row0_col23">IDR8</td>
-<td class="data row0 col24" id="T_c5c5e_row0_col24">IDR7</td>
-<td class="data row0 col25" id="T_c5c5e_row0_col25">IDR6</td>
-<td class="data row0 col26" id="T_c5c5e_row0_col26">IDR5</td>
-<td class="data row0 col27" id="T_c5c5e_row0_col27">IDR4</td>
-<td class="data row0 col28" id="T_c5c5e_row0_col28">IDR3</td>
-<td class="data row0 col29" id="T_c5c5e_row0_col29">IDR2</td>
-<td class="data row0 col30" id="T_c5c5e_row0_col30">IDR1</td>
-<td class="data row0 col31" id="T_c5c5e_row0_col31">IDR0</td>
+<th class="row_heading level0 row0" id="T_7b95a_level0_row0">GPIOx_IDR</th>
+<td class="data row0 col0" id="T_7b95a_row0_col0">Réservé (0)</td>
+<td class="data row0 col1" id="T_7b95a_row0_col1">Réservé (0)</td>
+<td class="data row0 col2" id="T_7b95a_row0_col2">Réservé (0)</td>
+<td class="data row0 col3" id="T_7b95a_row0_col3">Réservé (0)</td>
+<td class="data row0 col4" id="T_7b95a_row0_col4">Réservé (0)</td>
+<td class="data row0 col5" id="T_7b95a_row0_col5">Réservé (0)</td>
+<td class="data row0 col6" id="T_7b95a_row0_col6">Réservé (0)</td>
+<td class="data row0 col7" id="T_7b95a_row0_col7">Réservé (0)</td>
+<td class="data row0 col8" id="T_7b95a_row0_col8">Réservé (0)</td>
+<td class="data row0 col9" id="T_7b95a_row0_col9">Réservé (0)</td>
+<td class="data row0 col10" id="T_7b95a_row0_col10">Réservé (0)</td>
+<td class="data row0 col11" id="T_7b95a_row0_col11">Réservé (0)</td>
+<td class="data row0 col12" id="T_7b95a_row0_col12">Réservé (0)</td>
+<td class="data row0 col13" id="T_7b95a_row0_col13">Réservé (0)</td>
+<td class="data row0 col14" id="T_7b95a_row0_col14">Réservé (0)</td>
+<td class="data row0 col15" id="T_7b95a_row0_col15">Réservé (0)</td>
+<td class="data row0 col16" id="T_7b95a_row0_col16">IDR15</td>
+<td class="data row0 col17" id="T_7b95a_row0_col17">IDR14</td>
+<td class="data row0 col18" id="T_7b95a_row0_col18">IDR13</td>
+<td class="data row0 col19" id="T_7b95a_row0_col19">IDR12</td>
+<td class="data row0 col20" id="T_7b95a_row0_col20">IDR11</td>
+<td class="data row0 col21" id="T_7b95a_row0_col21">IDR10</td>
+<td class="data row0 col22" id="T_7b95a_row0_col22">IDR9</td>
+<td class="data row0 col23" id="T_7b95a_row0_col23">IDR8</td>
+<td class="data row0 col24" id="T_7b95a_row0_col24">IDR7</td>
+<td class="data row0 col25" id="T_7b95a_row0_col25">IDR6</td>
+<td class="data row0 col26" id="T_7b95a_row0_col26">IDR5</td>
+<td class="data row0 col27" id="T_7b95a_row0_col27">IDR4</td>
+<td class="data row0 col28" id="T_7b95a_row0_col28">IDR3</td>
+<td class="data row0 col29" id="T_7b95a_row0_col29">IDR2</td>
+<td class="data row0 col30" id="T_7b95a_row0_col30">IDR1</td>
+<td class="data row0 col31" id="T_7b95a_row0_col31">IDR0</td>
 </tr>
 <tr>
-<th class="row_heading level0 row1" id="T_c5c5e_level0_row1">GPIOx_ODR</th>
-<td class="data row1 col0" id="T_c5c5e_row1_col0">Réservé (0)</td>
-<td class="data row1 col1" id="T_c5c5e_row1_col1">Réservé (0)</td>
-<td class="data row1 col2" id="T_c5c5e_row1_col2">Réservé (0)</td>
-<td class="data row1 col3" id="T_c5c5e_row1_col3">Réservé (0)</td>
-<td class="data row1 col4" id="T_c5c5e_row1_col4">Réservé (0)</td>
-<td class="data row1 col5" id="T_c5c5e_row1_col5">Réservé (0)</td>
-<td class="data row1 col6" id="T_c5c5e_row1_col6">Réservé (0)</td>
-<td class="data row1 col7" id="T_c5c5e_row1_col7">Réservé (0)</td>
-<td class="data row1 col8" id="T_c5c5e_row1_col8">Réservé (0)</td>
-<td class="data row1 col9" id="T_c5c5e_row1_col9">Réservé (0)</td>
-<td class="data row1 col10" id="T_c5c5e_row1_col10">Réservé (0)</td>
-<td class="data row1 col11" id="T_c5c5e_row1_col11">Réservé (0)</td>
-<td class="data row1 col12" id="T_c5c5e_row1_col12">Réservé (0)</td>
-<td class="data row1 col13" id="T_c5c5e_row1_col13">Réservé (0)</td>
-<td class="data row1 col14" id="T_c5c5e_row1_col14">Réservé (0)</td>
-<td class="data row1 col15" id="T_c5c5e_row1_col15">Réservé (0)</td>
-<td class="data row1 col16" id="T_c5c5e_row1_col16">ODR15</td>
-<td class="data row1 col17" id="T_c5c5e_row1_col17">ODR14</td>
-<td class="data row1 col18" id="T_c5c5e_row1_col18">ODR13</td>
-<td class="data row1 col19" id="T_c5c5e_row1_col19">ODR12</td>
-<td class="data row1 col20" id="T_c5c5e_row1_col20">ODR11</td>
-<td class="data row1 col21" id="T_c5c5e_row1_col21">ODR10</td>
-<td class="data row1 col22" id="T_c5c5e_row1_col22">ODR9</td>
-<td class="data row1 col23" id="T_c5c5e_row1_col23">ODR8</td>
-<td class="data row1 col24" id="T_c5c5e_row1_col24">ODR7</td>
-<td class="data row1 col25" id="T_c5c5e_row1_col25">ODR6</td>
-<td class="data row1 col26" id="T_c5c5e_row1_col26">ODR5</td>
-<td class="data row1 col27" id="T_c5c5e_row1_col27">ODR4</td>
-<td class="data row1 col28" id="T_c5c5e_row1_col28">ODR3</td>
-<td class="data row1 col29" id="T_c5c5e_row1_col29">ODR2</td>
-<td class="data row1 col30" id="T_c5c5e_row1_col30">ODR1</td>
-<td class="data row1 col31" id="T_c5c5e_row1_col31">ODR0</td>
+<th class="row_heading level0 row1" id="T_7b95a_level0_row1">GPIOx_ODR</th>
+<td class="data row1 col0" id="T_7b95a_row1_col0">Réservé (0)</td>
+<td class="data row1 col1" id="T_7b95a_row1_col1">Réservé (0)</td>
+<td class="data row1 col2" id="T_7b95a_row1_col2">Réservé (0)</td>
+<td class="data row1 col3" id="T_7b95a_row1_col3">Réservé (0)</td>
+<td class="data row1 col4" id="T_7b95a_row1_col4">Réservé (0)</td>
+<td class="data row1 col5" id="T_7b95a_row1_col5">Réservé (0)</td>
+<td class="data row1 col6" id="T_7b95a_row1_col6">Réservé (0)</td>
+<td class="data row1 col7" id="T_7b95a_row1_col7">Réservé (0)</td>
+<td class="data row1 col8" id="T_7b95a_row1_col8">Réservé (0)</td>
+<td class="data row1 col9" id="T_7b95a_row1_col9">Réservé (0)</td>
+<td class="data row1 col10" id="T_7b95a_row1_col10">Réservé (0)</td>
+<td class="data row1 col11" id="T_7b95a_row1_col11">Réservé (0)</td>
+<td class="data row1 col12" id="T_7b95a_row1_col12">Réservé (0)</td>
+<td class="data row1 col13" id="T_7b95a_row1_col13">Réservé (0)</td>
+<td class="data row1 col14" id="T_7b95a_row1_col14">Réservé (0)</td>
+<td class="data row1 col15" id="T_7b95a_row1_col15">Réservé (0)</td>
+<td class="data row1 col16" id="T_7b95a_row1_col16">ODR15</td>
+<td class="data row1 col17" id="T_7b95a_row1_col17">ODR14</td>
+<td class="data row1 col18" id="T_7b95a_row1_col18">ODR13</td>
+<td class="data row1 col19" id="T_7b95a_row1_col19">ODR12</td>
+<td class="data row1 col20" id="T_7b95a_row1_col20">ODR11</td>
+<td class="data row1 col21" id="T_7b95a_row1_col21">ODR10</td>
+<td class="data row1 col22" id="T_7b95a_row1_col22">ODR9</td>
+<td class="data row1 col23" id="T_7b95a_row1_col23">ODR8</td>
+<td class="data row1 col24" id="T_7b95a_row1_col24">ODR7</td>
+<td class="data row1 col25" id="T_7b95a_row1_col25">ODR6</td>
+<td class="data row1 col26" id="T_7b95a_row1_col26">ODR5</td>
+<td class="data row1 col27" id="T_7b95a_row1_col27">ODR4</td>
+<td class="data row1 col28" id="T_7b95a_row1_col28">ODR3</td>
+<td class="data row1 col29" id="T_7b95a_row1_col29">ODR2</td>
+<td class="data row1 col30" id="T_7b95a_row1_col30">ODR1</td>
+<td class="data row1 col31" id="T_7b95a_row1_col31">ODR0</td>
 </tr>
 </tbody>
 </table>
@@ -1318,7 +1336,7 @@ Sur ARM, l'horloge du périphérique GPIO doit être activée dans le registre <
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Bonne pratique en C, bien que jamais atteint ici</span>
 <span class="p">}</span>
 </pre></div>
-<h3 id="usage-du-registre-bsrr">Usage du registre <code>BSRR</code><a class="anchor-link" href="#usage-du-registre-bsrr">¶</a></h3><p>Cet usage est dédié uniquement à l'écriture, fonctionnant de manière atomique en un seul cycle d'horloge, sans risque de conflit avec d'autres bits du registre.</p>
+<h3 id="usage-du-registre-bsrr-acces-atomique">Usage du registre <code>BSRR</code> accès atomique<a class="anchor-link" href="#usage-du-registre-bsrr-acces-atomique">¶</a></h3><p>Cet usage est dédié uniquement à l'écriture, fonctionnant de manière atomique en un seul cycle d'horloge, sans risque de conflit avec d'autres bits du registre.</p>
 <p>Il est divisé en deux parties de 16 bits :</p>
 <ul>
 <li>Bits 0 à 15 (Set) : Écrire un <code>1</code> met la broche correspondante à l'état haut (+3.3V). Écrire <code>0</code> ne fait rien.</li>
@@ -1496,12 +1514,12 @@ YouTubeVideo('PHbmekj2W7c', width=800, height=450)</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 
 <span class="c1"># Remplacez l'URL par celle de votre image</span>
-<span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">'rebonds.jpeg'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">'rebonds.jpeg'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">550</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-4">from IPython.display import Image
 
 # Remplacez l'URL par celle de votre image
-Image(url='rebonds.jpeg', width=600, height=300)
+Image(url='rebonds.jpeg', width=550, height=100)
 
 </div>
 </div>
@@ -1515,7 +1533,7 @@ Image(url='rebonds.jpeg', width=600, height=300)
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<img alt="No description has been provided for this image" height="300" src="rebonds.jpeg" width="600">
+<img alt="No description has been provided for this image" height="100" src="rebonds.jpeg" width="550">
 </img></div>
 </div>
 </div>
@@ -1589,7 +1607,9 @@ Image(url='rebonds.jpeg', width=600, height=300)
 </pre></div>
 <p><strong>Remarque</strong> : L'utilisation de <code>delay_ms()</code> et des boucles <code>while()</code> d'attente est catastrophique pour un système complexe et dans les systèmes temps réel. La fonction <code>delay_ms()</code> crée des délais qui arrêtent le CPU durant ce délai, gaspille des millions de cycles d'horloge. Le CPU est occupé à 100% à ne rien faire d'autre (No Operation), exécute du vide (<code>__NOP()</code>), ce qui n'est pas souhaité dans la concurrence des tâches.</p>
 <p>Quand on a plusieurs tâches concurrentes et parmi elles certaines qui doivent être temps réel, utiliser la fonction de délai bloquante <code>delay_ms()</code> est critique. Si un événement urgent survient pendant un <code>delay_ms(1000)</code>, le système est "complètement aveugle" et ne répondra qu'après la fin du délai.</p>
-<p>Pour résoudre cela, nous allons introduire un autre mécanisme pour exécuter nos tâches de manière concurrente en utilisant des** Timers** et des <strong>Interruptions</strong>. Les Timers matériels vont aider à créer des délais non bloquants en comptant le temps en arrière-plan de manière autonome, tandis que les interruptions (<code>EXTI</code>) forceront le CPU à répondre immédiatement et instantanément aux événements physiques urgents (comme l'appui sur notre bouton), sans jamais bloquer le programme principal.</p>
+<blockquote>
+<p>Pour résoudre cela, nous allons introduire un autre mécanisme pour exécuter nos tâches de manière concurrente en utilisant des <strong>Timers</strong> et des <strong>Interruptions</strong>. Les Timers matériels vont aider à créer des délais non bloquants en comptant le temps en arrière-plan de manière autonome, tandis que les interruptions (<code>EXTI</code>) forceront le CPU à répondre immédiatement et instantanément aux événements physiques urgents (comme l'appui sur notre bouton), sans jamais bloquer le programme principal.</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -1640,7 +1660,7 @@ YouTubeVideo('OJzNGNuYUz0', width=800, height=450)
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=732ef897-3971-4f8f-a3f7-039c26a98990">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=17a1f454-ee06-4804-9534-09632b562675">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -1661,87 +1681,6 @@ YouTubeVideo('OJzNGNuYUz0', width=800, height=450)
 <div class="highlight-ipynb hl-python"><pre><span></span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-6"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=ab186d89-ba26-4dd8-8dc4-95335903cd72">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-7"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=db77b5a2-5e49-4c9b-8892-0c52cb80447e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-8"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5f9baca9-e9c7-4e69-8ab9-2829af553d8e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-9"></div>
 </div>
 </div>
 </div>

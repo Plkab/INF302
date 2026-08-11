@@ -8,7 +8,7 @@
         <meta name="author" content="Ir Paul S. Kabidu">
         <link rel="canonical" href="https://Plkab.github.io/INF302/pid/pid/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Régulation et suivi de vitesse d’un moteur DC par correcteur PID - INF302 – Programmation des processeurs et Systèmestemps réel</title>
+        <title>Régulation et suivi de vitesse d’un moteur DC par correcteur PID - INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../..">INF302 – Programmation des processeurs et Systèmestemps réel</a>
+                <a class="navbar-brand" href="../..">INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -39,22 +39,25 @@
                                 <a href="../.." class="nav-link">Accueil</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Systemes%20temps%20reel/Systemes%20temps%20reel/" class="nav-link">Systèmes Embarqués et Systèmes Temps Réel</a>
+                                <a href="../../Systemes%20temps%20reel/Systemes%20temps%20reel/" class="nav-link">Systèmes embarqués et Systèmes temps réel</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Architecture%20stm32f401/Architecture%20STM32F401/" class="nav-link">Architecture du processeur ARM STM32F401</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../GPIO/GPIO/" class="nav-link">Interface d'entrée/sortie numérique</a>
+                                <a href="../../GPIO/GPIO/" class="nav-link">Comment interfacer, commander et lire des dispositifs électroniques grâce aux GPIO numériques ?</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Interruptions/Interruptions/" class="nav-link">Réactivité rapide avec les interruptions matérielles et déterminisme temporel</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Timer/Timer/" class="nav-link">Les Timers</a>
+                                <a href="../../Timer/Timer/" class="nav-link">Comment mesurer et générer précisément des périodes et fréquences grâce aux Timers ?</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Machine%20d%27etats%20finis/fsm/" class="nav-link">La machine d'état fini finis :</a>
+                                <a href="../../Machine%20d%27etats%20finis/fsm/" class="nav-link">Comment organiser le comportement d’un système réactif grâce aux Machines à États Finis (FSM) ?</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../projetClavier/projetClavier.ipynb" class="nav-link">Minuterie avec Mot de Passe et Affichage LCD</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Protothreads/Protothreads/" class="nav-link">Introduction au multitâche coopératif avec les Protothreads</a>
@@ -69,13 +72,16 @@
                                 <a href="../../UART/UART/" class="nav-link">Communication avec d'autres dispositifs</a>
                             </li>
                             <li class="nav-item">
+                                <a href="../../systemeDistribue/systemeDistribue/" class="nav-link">Système Distribué avec RS-485</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="../../ADC/ADC/" class="nav-link">Acquisition de signaux analogiques via ADC</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../fft/fft/" class="nav-link">Analyse spectrale par FFT : Détection de fréquence</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../PWM/PWM/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
+                                <a href="../../pwm/pwm/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
                             </li>
                             <li class="nav-item">
                                 <a href="./" class="nav-link active" aria-current="page">Régulation et suivi de vitesse d’un moteur DC par correcteur PID</a>
@@ -90,16 +96,19 @@
                                 <a href="../../estimation/ekf/" class="nav-link">Estimation d'attitude par Filtre de Kalman Étendu (EKF)</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../graphisme/oled/" class="nav-link">Synthèse graphique sur écran OLED</a>
+                                <a href="../../graphisme/oled/" class="nav-link">Synthèse graphique embarqué</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Jeu/Jeu/" class="nav-link">PONG sur OLED SSD1306 — Théorie &amp; Implémentation</a>
+                                <a href="../../Jeu/jeu/" class="nav-link">PONG sur OLED SSD1306 — Théorie &amp; Implémentation</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../SPI/spi/" class="nav-link">Communication via SPI</a>
+                                <a href="../../spi/spi/" class="nav-link">Communication via SPI</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../DDS/dds/" class="nav-link">Synthèse sonore avec DDS (Direct Digital Synthesis)</a>
+                                <a href="../../dds/dds/" class="nav-link">Synthèse sonore par DDS (Direct Digital Synthesis)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../syntheseVocale/syntheseVocale/" class="nav-link">Synthèse Vocale par Numérisation Directe avec DDS</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../powerElo/pwmComplemetaire/" class="nav-link">Génération d'un signal PWM complémentaire avec temps mort réglable</a>
@@ -108,14 +117,23 @@
                                 <a href="../../powerElo/zcd/" class="nav-link">Détection de passage par zéro avec interruption externe pour commande de puissance (50 Hz)</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../powerElo/controlAC/" class="nav-link">Commande de puissance CA par thyristor : contrôle de l’angle de phase par triac</a>
+                                <a href="../../powerElo/controlAC/" class="nav-link">Commande de puissance CA par Triac : contrôle de l’angle de phase</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../mppt/mppt/" class="nav-link">Mise en œuvre du MPPT pour charger une batterie</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../buckConv/buck/" class="nav-link">Réguler la tension de sortie d'un convertisseur Buck</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../iotEsp8266/esp8266/" class="nav-link">Connectivité réseau et protocoles IoT avec ESP8266</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Laboratoires</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../LABO/demarrerKiel/" class="dropdown-item">Démarrer Kiel</a>
+    <a href="../../LABO/demarrerKiel/" class="dropdown-item">Démarrer Keil</a>
 </li>
                                     
 <li>
@@ -136,7 +154,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../PWM/PWM/" class="nav-link">
+                                <a rel="prev" href="../../pwm/pwm/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -1257,33 +1275,6 @@ display(Image(filename="schemaBloc.png", width=1000))</div>
 <li><strong>Suffisamment longue :</strong> Pour garantir que le microcontrôleur termine l'intégralité de ses calculs de contrôle et l'acquisition des capteurs avant le cycle suivant.</li>
 </ol>
 <p>Pour un moteur à courant continu (DC) typique, une période $T_e = 10\text{ ms}$ (soit une fréquence de $100\text{ Hz}$) constitue un excellent compromis.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4c94a9b7-e439-46ca-9c51-0471871b619b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-2"></div>
-</div>
-</div>
 </div>
 </div>
 </div>

@@ -8,7 +8,7 @@
         <meta name="author" content="Ir Paul S. Kabidu">
         <link rel="canonical" href="https://Plkab.github.io/INF302/ADC/ADC/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Acquisition de signaux analogiques via ADC - INF302 – Programmation des processeurs et Systèmestemps réel</title>
+        <title>Acquisition de signaux analogiques via ADC - INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../..">INF302 – Programmation des processeurs et Systèmestemps réel</a>
+                <a class="navbar-brand" href="../..">INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -39,22 +39,25 @@
                                 <a href="../.." class="nav-link">Accueil</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Systemes%20temps%20reel/Systemes%20temps%20reel/" class="nav-link">Systèmes Embarqués et Systèmes Temps Réel</a>
+                                <a href="../../Systemes%20temps%20reel/Systemes%20temps%20reel/" class="nav-link">Systèmes embarqués et Systèmes temps réel</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Architecture%20stm32f401/Architecture%20STM32F401/" class="nav-link">Architecture du processeur ARM STM32F401</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../GPIO/GPIO/" class="nav-link">Interface d'entrée/sortie numérique</a>
+                                <a href="../../GPIO/GPIO/" class="nav-link">Comment interfacer, commander et lire des dispositifs électroniques grâce aux GPIO numériques ?</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Interruptions/Interruptions/" class="nav-link">Réactivité rapide avec les interruptions matérielles et déterminisme temporel</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Timer/Timer/" class="nav-link">Les Timers</a>
+                                <a href="../../Timer/Timer/" class="nav-link">Comment mesurer et générer précisément des périodes et fréquences grâce aux Timers ?</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Machine%20d%27etats%20finis/fsm/" class="nav-link">La machine d'état fini finis :</a>
+                                <a href="../../Machine%20d%27etats%20finis/fsm/" class="nav-link">Comment organiser le comportement d’un système réactif grâce aux Machines à États Finis (FSM) ?</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../projetClavier/projetClavier.ipynb" class="nav-link">Minuterie avec Mot de Passe et Affichage LCD</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Protothreads/Protothreads/" class="nav-link">Introduction au multitâche coopératif avec les Protothreads</a>
@@ -69,13 +72,16 @@
                                 <a href="../../UART/UART/" class="nav-link">Communication avec d'autres dispositifs</a>
                             </li>
                             <li class="nav-item">
+                                <a href="../../systemeDistribue/systemeDistribue/" class="nav-link">Système Distribué avec RS-485</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="./" class="nav-link active" aria-current="page">Acquisition de signaux analogiques via ADC</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../fft/fft/" class="nav-link">Analyse spectrale par FFT : Détection de fréquence</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../PWM/PWM/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
+                                <a href="../../pwm/pwm/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../pid/pid/" class="nav-link">Régulation et suivi de vitesse d’un moteur DC par correcteur PID</a>
@@ -90,16 +96,19 @@
                                 <a href="../../estimation/ekf/" class="nav-link">Estimation d'attitude par Filtre de Kalman Étendu (EKF)</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../graphisme/oled/" class="nav-link">Synthèse graphique sur écran OLED</a>
+                                <a href="../../graphisme/oled/" class="nav-link">Synthèse graphique embarqué</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Jeu/Jeu/" class="nav-link">PONG sur OLED SSD1306 — Théorie &amp; Implémentation</a>
+                                <a href="../../Jeu/jeu/" class="nav-link">PONG sur OLED SSD1306 — Théorie &amp; Implémentation</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../SPI/spi/" class="nav-link">Communication via SPI</a>
+                                <a href="../../spi/spi/" class="nav-link">Communication via SPI</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../DDS/dds/" class="nav-link">Synthèse sonore avec DDS (Direct Digital Synthesis)</a>
+                                <a href="../../dds/dds/" class="nav-link">Synthèse sonore par DDS (Direct Digital Synthesis)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../syntheseVocale/syntheseVocale/" class="nav-link">Synthèse Vocale par Numérisation Directe avec DDS</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../powerElo/pwmComplemetaire/" class="nav-link">Génération d'un signal PWM complémentaire avec temps mort réglable</a>
@@ -108,14 +117,23 @@
                                 <a href="../../powerElo/zcd/" class="nav-link">Détection de passage par zéro avec interruption externe pour commande de puissance (50 Hz)</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../powerElo/controlAC/" class="nav-link">Commande de puissance CA par thyristor : contrôle de l’angle de phase par triac</a>
+                                <a href="../../powerElo/controlAC/" class="nav-link">Commande de puissance CA par Triac : contrôle de l’angle de phase</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../mppt/mppt/" class="nav-link">Mise en œuvre du MPPT pour charger une batterie</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../buckConv/buck/" class="nav-link">Réguler la tension de sortie d'un convertisseur Buck</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../iotEsp8266/esp8266/" class="nav-link">Connectivité réseau et protocoles IoT avec ESP8266</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Laboratoires</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../LABO/demarrerKiel/" class="dropdown-item">Démarrer Kiel</a>
+    <a href="../../LABO/demarrerKiel/" class="dropdown-item">Démarrer Keil</a>
 </li>
                                     
 <li>
@@ -136,7 +154,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../UART/UART/" class="nav-link">
+                                <a rel="prev" href="../../systemeDistribue/systemeDistribue/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -767,9 +785,7 @@ $$N=\frac{V_{in}\cdot 4096}{3,3}=\frac{\text{Température}\times 0,01\cdot 4096}
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> // Indispensable pour printf</span>
 
-<span class="c1">// ============================================================================</span>
 <span class="c1">// CONFIGURATION CRITIQUE KEIL MDK (ARM COMPILER 6) - ANTI-BLOQUAGE</span>
-<span class="c1">// ============================================================================</span>
 <span class="c1">// Désactive le mécanisme de semihosting pour empêcher le blocage du CPU au démarrage</span>
 <span class="kr">__asm</span><span class="p">(</span><span class="s">".global __use_no_semihosting</span><span class="se">\n\t</span><span class="s">"</span><span class="p">);</span>
 
@@ -780,7 +796,6 @@ $$N=\frac{V_{in}\cdot 4096}{3,3}=\frac{\text{Température}\times 0,01\cdot 4096}
 <span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">x</span><span class="p">;</span><span class="w"> </span>
 <span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// Boucle infinie en cas de sortie du main</span>
 <span class="p">}</span>
-<span class="c1">// ============================================================================</span>
 
 <span class="c1">// Déclaration de la chaîne de caractères d'accueil d'origine</span>
 <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">text</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Initialisation... </span><span class="se">\n\r</span><span class="s">"</span><span class="p">;</span>
@@ -936,9 +951,6 @@ $$N=\frac{V_{in}\cdot 4096}{3,3}=\frac{\text{Température}\times 0,01\cdot 4096}
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">16000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// Ajusté approximativement pour les 84 MHz réels</span>
 <span class="p">}</span>
 
-<span class="c1">// ============================================================================</span>
-<span class="c1">// BOUCLE PRINCIPALE D'APPLICATION</span>
-<span class="c1">// ============================================================================</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Initialisation de l'arbre d'horloge système (84 MHz)</span>
 <span class="w">    </span><span class="n">SystemClock_Config_84MHz</span><span class="p">();</span>
@@ -1037,7 +1049,7 @@ YouTubeVideo('vK-bdrvTR-Q', width=800, height=450)</div>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="lacquisition-adc-non-bloquante-par-interruption-et-timer">L'acquisition ADC non-bloquante (par Interruption et Timer)<a class="anchor-link" href="#lacquisition-adc-non-bloquante-par-interruption-et-timer">¶</a></h2><p>Si l'on souhaite analyser un signal dynamique comme un signal audio ou un tracé d'Électrocardiogramme (ECG), la capture des échantillons doit s'effectuer à des intervalles de temps rigoureusement identiques (44,1 kHz pour l'audio de haute fidélité, et traditionnellement entre 250 Hz et 1000 Hz pour un ECG diagnostique). On associe alors un Timer (le <code>TIM2</code> ou le <code>TIM3</code>) comme déclencheur automatique de l'ADC de manière purement matérielle. Le Timer compte le temps en arrière-plan, dictant de manière stable la fréquence d'échantillonnage.</p>
 <p>Dès qu'il déborde, il génère un signal interne électrique direct (événement TRGO) vers le bloc ADC pour lancer instantanément la conversion. Une fois la conversion terminée, l'ADC alerte le processeur en levant une interruption et en déroutant le CPU vers son gestionnaire vectoriel dédié (<code>ADC_IRQHandler</code>).</p>
-<h3 id="les-registres-a-configurer">Les Registres à Configurer<a class="anchor-link" href="#les-registres-a-configurer">¶</a></h3><p>Sur le STM32F401, ce couplage s'effectue en configurant les registres de la structure <code>ADC1</code> :</p>
+<h3 id="les-registres-a-configurer">Les registres à configurer<a class="anchor-link" href="#les-registres-a-configurer">¶</a></h3><p>Sur le STM32F401, ce couplage s'effectue en configurant les registres de la structure <code>ADC1</code> :</p>
 <ul>
 <li><code>EXTEN[1:0]</code> dans <code>ADC1-&gt;CR2</code> (<em>External Trigger Enable</em>) : Active le déclenchement matériel automatique de l'ADC par une source externe (on choisit le front montant <code>0b01</code>).</li>
 <li><code>EXTSEL[3:0]</code> dans <code>ADC1-&gt;CR2</code> (<em>External Event Selection</em>) : Sélectionne le périphérique maître qui va piloter l'ADC. Le code matériel <code>0b1000</code> (valeur decimale 8) associe le déclenchement de l'ADC1 à l'événement de mise à jour (Update) du TIM3.</li>
@@ -1062,7 +1074,7 @@ YouTubeVideo('vK-bdrvTR-Q', width=800, height=450)</div>
 <span class="w">    </span><span class="c1">// Démarrage effectif du compteur matériel du Timer3</span>
 <span class="w">    </span><span class="n">TIM3</span><span class="o">-&gt;</span><span class="n">CR1</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">TIM_CR1_CEN</span><span class="p">;</span>
 </pre></div>
-<h3 id="synchronisation-et-reception-sur-ladc1">Synchronisation et Réception sur l'ADC1<a class="anchor-link" href="#synchronisation-et-reception-sur-ladc1">¶</a></h3><p>Du côté du convertisseur analogique-numérique, l'ADC1 doit abandonner son déclenchement par logiciel (<code>SWSTART</code>) pour se mettre à l'écoute de cette impulsion externe. La configuration se réalise sur deux registres de contrôle :</p>
+<h3 id="synchronisation-et-reception-sur-ladc1">Synchronisation et réception sur l'ADC1<a class="anchor-link" href="#synchronisation-et-reception-sur-ladc1">¶</a></h3><p>Du côté du convertisseur analogique-numérique, l'ADC1 doit abandonner son déclenchement par logiciel (<code>SWSTART</code>) pour se mettre à l'écoute de cette impulsion externe. La configuration se réalise sur deux registres de contrôle :</p>
 <ul>
 <li>Sélection de la Source (<code>EXTSEL</code>) : Le registre <code>ADC1-&gt;CR2</code> dispose de 4 bits nommés <code>EXTSEL[3:0]</code> (<em>External Event Selection</em> pour groupe régulier). La table des connexions matérielles du STM32F401 associe le code matériel <code>0b0110 (décimal 6)</code> à l'événement interne <code>TIM3_TRGO</code>.</li>
 <li>Activation du Déclencheur (<code>EXTEN</code>) : Toujours dans <code>ADC1-&gt;CR2</code>, les bits <code>EXTEN[1:0] (External Trigger Enable)</code> activent la sensibilité du convertisseur aux signaux extérieurs. En configurant le code <code>0b01</code>, on active le déclenchement matériel uniquement sur le front montant (<em>Rising Edge</em>) de la ligne <code>TRGO</code>.</li>
@@ -1091,10 +1103,9 @@ YouTubeVideo('vK-bdrvTR-Q', width=800, height=450)</div>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1">       // Nécessaire pour utiliser printf() (via la MicroLIB)</span>
 
-<span class="cm">/* ============================================================================</span>
-<span class="cm">   SECTION : CONFIGURATION POUR KEIL MDK (ARM COMPILER 6)</span>
-<span class="cm">   ============================================================================</span>
-<span class="cm">   Le compilateur ARM utilise par défaut le "semihosting" pour rediriger les</span>
+<span class="cm">/* SECTION : CONFIGURATION POUR KEIL MDK (ARM COMPILER 6)</span>
+
+<span class="cm">    Le compilateur ARM utilise par défaut le "semihosting" pour rediriger les</span>
 <span class="cm">   sorties (printf, etc.) vers l'IDE. En mode bare-metal (sans OS), cette</span>
 <span class="cm">   fonctionnalité n'est pas disponible et peut bloquer le µC.</span>
 <span class="cm">   On désactive explicitement le semihosting avec l'assembleur en ligne.</span>
@@ -1104,7 +1115,7 @@ YouTubeVideo('vK-bdrvTR-Q', width=800, height=450)</div>
 <span class="kr">__asm</span><span class="p">(</span><span class="s">".global __use_no_semihosting</span><span class="se">\n\t</span><span class="s">"</span><span class="p">);</span>
 <span class="kt">FILE</span><span class="w"> </span><span class="n">__stdout</span><span class="p">;</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">_sys_exit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="cm">/* ============================================================================ */</span>
+
 
 <span class="c1">// Variables globales modifiées dans l'ISR (arrière-plan) et lues dans la boucle</span>
 <span class="c1">// principale. Le qualificatif 'volatile' empêche le compilateur d'optimiser</span>
@@ -1119,9 +1130,8 @@ YouTubeVideo('vK-bdrvTR-Q', width=800, height=450)</div>
 <span class="kt">int</span><span class="w"> </span><span class="nf">fputc</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">ch</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">f</span><span class="p">);</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">ADC1_ECG_Timer_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
 
-<span class="cm">/* ============================================================================</span>
-<span class="cm">   FONCTION : SystemClock_Config_84MHz</span>
-<span class="cm">   ============================================================================</span>
+<span class="cm">/* FONCTION : SystemClock_Config_84MHz</span>
+
 <span class="cm">   Configure l'horloge système à 84 MHz à partir de l'oscillateur interne HSI</span>
 <span class="cm">   16 MHz. L'horloge finale est obtenue grâce à la PLL.</span>
 <span class="cm">   Schéma : HSI (16 MHz) ? PLLM (diviseur /16) ? PLLN (multiplicateur *336) ?</span>
@@ -1170,10 +1180,9 @@ YouTubeVideo('vK-bdrvTR-Q', width=800, height=450)</div>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">CFGR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">RCC_CFGR_SWS</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RCC_CFGR_SWS_PLL</span><span class="p">);</span><span class="w"> </span><span class="c1">// Attendre que le basculement soit effectif</span>
 <span class="p">}</span>
 
-<span class="cm">/* ============================================================================</span>
-<span class="cm">   FONCTION : UART_Init</span>
-<span class="cm">   ============================================================================</span>
-<span class="cm">   Initialise l'USART2 sur les broches PA2 (TX) et PA3 (RX) en mode asynchrone.</span>
+<span class="cm">/* FONCTION : UART_Init</span>
+
+<span class="cm">    Initialise l'USART2 sur les broches PA2 (TX) et PA3 (RX) en mode asynchrone.</span>
 <span class="cm">   La fréquence du bus APB1 est de 42 MHz (déterminée plus haut).</span>
 <span class="cm">   Le baud rate est calculé par le registre BRR = f_APB1 / baud.</span>
 <span class="cm">*/</span>
@@ -1204,9 +1213,9 @@ YouTubeVideo('vK-bdrvTR-Q', width=800, height=450)</div>
 <span class="w">    </span><span class="c1">// RE  : Activation du récepteur (Receiver Enable)</span>
 <span class="p">}</span>
 
-<span class="cm">/* ============================================================================</span>
+<span class="cm">/* </span>
 <span class="cm">   FONCTION : UART_Print_Char</span>
-<span class="cm">   ============================================================================</span>
+
 <span class="cm">   Émet un caractère sur l'USART2 en attente que le registre de transmission</span>
 <span class="cm">   soit vide (bit TXE = 1 dans le registre SR).</span>
 <span class="cm">*/</span>

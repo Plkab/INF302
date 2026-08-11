@@ -4,11 +4,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Cours de Licence en Génie Informatique">
+        <meta name="description" content="Cours de Licence et de Master en Génie Informatique à l'ISTA-GOMA">
         <meta name="author" content="Ir Paul S. Kabidu">
         <link rel="canonical" href="https://Plkab.github.io/INF302/">
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>INF302 – Programmation des processeurs et Systèmestemps réel</title>
+        <title>INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/fontawesome.min.css" rel="stylesheet">
         <link href="css/brands.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
     <body class="homepage">
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href=".">INF302 – Programmation des processeurs et Systèmestemps réel</a>
+                <a class="navbar-brand" href=".">INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -39,22 +39,25 @@
                                 <a href="." class="nav-link active" aria-current="page">Accueil</a>
                             </li>
                             <li class="nav-item">
-                                <a href="Systemes%20temps%20reel/Systemes%20temps%20reel/" class="nav-link">Systèmes Embarqués et Systèmes Temps Réel</a>
+                                <a href="Systemes%20temps%20reel/Systemes%20temps%20reel/" class="nav-link">Systèmes embarqués et Systèmes temps réel</a>
                             </li>
                             <li class="nav-item">
                                 <a href="Architecture%20stm32f401/Architecture%20STM32F401/" class="nav-link">Architecture du processeur ARM STM32F401</a>
                             </li>
                             <li class="nav-item">
-                                <a href="GPIO/GPIO/" class="nav-link">Interface d'entrée/sortie numérique</a>
+                                <a href="GPIO/GPIO/" class="nav-link">Comment interfacer, commander et lire des dispositifs électroniques grâce aux GPIO numériques ?</a>
                             </li>
                             <li class="nav-item">
                                 <a href="Interruptions/Interruptions/" class="nav-link">Réactivité rapide avec les interruptions matérielles et déterminisme temporel</a>
                             </li>
                             <li class="nav-item">
-                                <a href="Timer/Timer/" class="nav-link">Les Timers</a>
+                                <a href="Timer/Timer/" class="nav-link">Comment mesurer et générer précisément des périodes et fréquences grâce aux Timers ?</a>
                             </li>
                             <li class="nav-item">
-                                <a href="Machine%20d%27etats%20finis/fsm/" class="nav-link">La machine d'état fini finis :</a>
+                                <a href="Machine%20d%27etats%20finis/fsm/" class="nav-link">Comment organiser le comportement d’un système réactif grâce aux Machines à États Finis (FSM) ?</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="projetClavier/projetClavier.ipynb" class="nav-link">Minuterie avec Mot de Passe et Affichage LCD</a>
                             </li>
                             <li class="nav-item">
                                 <a href="Protothreads/Protothreads/" class="nav-link">Introduction au multitâche coopératif avec les Protothreads</a>
@@ -69,13 +72,16 @@
                                 <a href="UART/UART/" class="nav-link">Communication avec d'autres dispositifs</a>
                             </li>
                             <li class="nav-item">
+                                <a href="systemeDistribue/systemeDistribue/" class="nav-link">Système Distribué avec RS-485</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="ADC/ADC/" class="nav-link">Acquisition de signaux analogiques via ADC</a>
                             </li>
                             <li class="nav-item">
                                 <a href="fft/fft/" class="nav-link">Analyse spectrale par FFT : Détection de fréquence</a>
                             </li>
                             <li class="nav-item">
-                                <a href="PWM/PWM/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
+                                <a href="pwm/pwm/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
                             </li>
                             <li class="nav-item">
                                 <a href="pid/pid/" class="nav-link">Régulation et suivi de vitesse d’un moteur DC par correcteur PID</a>
@@ -90,16 +96,19 @@
                                 <a href="estimation/ekf/" class="nav-link">Estimation d'attitude par Filtre de Kalman Étendu (EKF)</a>
                             </li>
                             <li class="nav-item">
-                                <a href="graphisme/oled/" class="nav-link">Synthèse graphique sur écran OLED</a>
+                                <a href="graphisme/oled/" class="nav-link">Synthèse graphique embarqué</a>
                             </li>
                             <li class="nav-item">
-                                <a href="Jeu/Jeu/" class="nav-link">PONG sur OLED SSD1306 — Théorie &amp; Implémentation</a>
+                                <a href="Jeu/jeu/" class="nav-link">PONG sur OLED SSD1306 — Théorie &amp; Implémentation</a>
                             </li>
                             <li class="nav-item">
-                                <a href="SPI/spi/" class="nav-link">Communication via SPI</a>
+                                <a href="spi/spi/" class="nav-link">Communication via SPI</a>
                             </li>
                             <li class="nav-item">
-                                <a href="DDS/dds/" class="nav-link">Synthèse sonore avec DDS (Direct Digital Synthesis)</a>
+                                <a href="dds/dds/" class="nav-link">Synthèse sonore par DDS (Direct Digital Synthesis)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="syntheseVocale/syntheseVocale/" class="nav-link">Synthèse Vocale par Numérisation Directe avec DDS</a>
                             </li>
                             <li class="nav-item">
                                 <a href="powerElo/pwmComplemetaire/" class="nav-link">Génération d'un signal PWM complémentaire avec temps mort réglable</a>
@@ -108,14 +117,23 @@
                                 <a href="powerElo/zcd/" class="nav-link">Détection de passage par zéro avec interruption externe pour commande de puissance (50 Hz)</a>
                             </li>
                             <li class="nav-item">
-                                <a href="powerElo/controlAC/" class="nav-link">Commande de puissance CA par thyristor : contrôle de l’angle de phase par triac</a>
+                                <a href="powerElo/controlAC/" class="nav-link">Commande de puissance CA par Triac : contrôle de l’angle de phase</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="mppt/mppt/" class="nav-link">Mise en œuvre du MPPT pour charger une batterie</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="buckConv/buck/" class="nav-link">Réguler la tension de sortie d'un convertisseur Buck</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="iotEsp8266/esp8266/" class="nav-link">Connectivité réseau et protocoles IoT avec ESP8266</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Laboratoires</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="LABO/demarrerKiel/" class="dropdown-item">Démarrer Kiel</a>
+    <a href="LABO/demarrerKiel/" class="dropdown-item">Démarrer Keil</a>
 </li>
                                     
 <li>
@@ -163,7 +181,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#inf302-programmation-des-processeurs-et-systemes-temps-reel" class="nav-link">INF302 – Programmation des processeurs et Systèmes temps réel</a>
+            <li class="nav-item" data-bs-level="1"><a href="#inf302cst2232-programmation-des-processeurs-et-conception-des-systemes-temps-reel-a-base-du-microcontroleur-stm32f401" class="nav-link">INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -172,7 +190,7 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="inf302-programmation-des-processeurs-et-systemes-temps-reel">INF302 – Programmation des processeurs et Systèmes temps réel</h1>
+<h1 id="inf302cst2232-programmation-des-processeurs-et-conception-des-systemes-temps-reel-a-base-du-microcontroleur-stm32f401">INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</h1>
 <p style="text-align: center;"><em>Ir Paul S. Kabidu, M.Eng.</em><br />
 Enseignant au Département de Génie Électrique et Informatique<br />
 Institut Supérieur des Techniques Appliquées de Goma (ISTA)<br />
@@ -180,10 +198,16 @@ Contact : <a href="mailto:spaulkabidu@gmail.com">spaulkabidu@gmail.com</a><br />
 <hr />
 <p><br>
 <br> </p>
-<h5 id="Accueil">Accueil</h5>
-<p><br> </p>
-<p>Chaine YouTube du cours : <a href="https://youtube.com/@splkab?si=64BEUT4Chq8oZBqW">https://youtube.com/@splkab?si=64BEUT4Chq8oZBqW</a> </p>
+<p>Les enseignements <strong>INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</strong> constitue un parcours progressif consacré à la programmation, à l’exploitation et à la conception de systèmes embarqués temps réel. Organisé sur deux niveaux complémentaires, il accompagne l’étudiant de la compréhension du microcontrôleur jusqu’à la réalisation de systèmes temps réel intégrés.</p>
+<p><strong>INF302</strong> est destiné aux étudiants de <strong>Licence</strong> et il établit les fondations matérielles et logicielles. Il porte sur l’architecture du processeur STM32F401, la programmation bas niveau, les périphériques, les interruptions, les temporisations, les mécanismes de concurrence et les principales interfaces de communication. Ces connaissances sont consolidées par des applications pratiques faisant intervenir l’acquisition et la génération de signaux, le traitement numérique, la visualisation, l’estimation et la commande.</p>
+<p><strong>CST2232</strong> est destiné aux étudiants de <strong>Master</strong>, on approfondit ces acquis dans une démarche de <strong>conception de systèmes temps réel complets</strong>. L’étudiant apprend à intégrer plusieurs ressources matérielles et logicielles, à gérer les contraintes temporelles et les interactions entre composants, et à mettre en œuvre des algorithmes et techniques avancés de traitement du signal, d’estimation, de contrôle et de communication.</p>
+<p>La progression repose sur une <strong>expérience de conception cumulative (<em>Cumulative Design Experience – CDE</em>)</strong> : chaque concept étudié devient une brique réutilisable dans les activités suivantes. Cette démarche permet de passer progressivement de la <strong>maîtrise du microcontrôleur à l’intégration de fonctions complexes</strong>, puis à la conception et à la validation de systèmes embarqués répondant à des contraintes réelles de temps, de ressources et de fonctionnement.</p>
+<ul>
+<li>Chaine <a href="https://youtube.com/@splkab?si=64BEUT4Chq8oZBqW">YouTube du cours</a> </li>
+<li>Dépôt <a href="https://github.com/Plkab/INF302.git">GitHub du cours</a></li>
+</ul>
 <hr />
+<p><br> </p>
 <h5 id="architecture-materielle-et-peripheriques">Architecture Matérielle et Périphériques</h5>
 <p><br></p>
 <ol>
@@ -197,9 +221,9 @@ Contact : <a href="mailto:spaulkabidu@gmail.com">spaulkabidu@gmail.com</a><br />
 <h5 id="programmation-concurrente-et-multitache">Programmation Concurrente et Multitâche</h5>
 <p><br></p>
 <ol>
-<li><a href="Machine%20d%27etats%20finis/fsm/">Machine d'états finis</a></li>
+<li><a href="Machine%20d%27etats%20finis/fsm/">Machine d'états finis et interface homme-machine : LCD et Clavier matriciel</a></li>
 <li><a href="Protothreads/Protothreads/">Introduction aux Protothreads</a></li>
-<li><a href="SemProto/SemProto/">Semaphores dans les Protothreads</a></li>
+<li><a href="SemProto/SemProto/">Synchronisation avec les Sémaphores dans les Protothreads</a></li>
 <li><a href="Protothreads/TimeProto/">Gestion du temps dans les Protothreads</a></li>
 </ol>
 <hr />
@@ -208,14 +232,14 @@ Contact : <a href="mailto:spaulkabidu@gmail.com">spaulkabidu@gmail.com</a><br />
 <ol>
 <li><a href="UART/UART/">Communication série via UART</a></li>
 <li><a href="I2C/I2C/">Interfaçage avec I2C</a></li>
-<li><a href="SPI/spi/">Interfaçage avec SPI</a></li>
+<li><a href="spi/spi/">Interfaçage avec SPI</a></li>
 </ol>
 <hr />
 <h5 id="conversion-de-signaux">Conversion de Signaux</h5>
 <p><br></p>
 <ol>
 <li><a href="ADC/ADC/">Acquisition analogique avec ADC</a></li>
-<li><a href="PWM/PWM/">Génération des signaux avec PWM</a></li>
+<li><a href="pwm/pwm/">Génération des signaux avec PWM</a></li>
 </ol>
 <hr />
 <h5 id="techniques-et-algorithmes-dapplications">Techniques et Algorithmes d'applications</h5>
@@ -224,40 +248,49 @@ Contact : <a href="mailto:spaulkabidu@gmail.com">spaulkabidu@gmail.com</a><br />
 <li><a href="estimation/filtreComplementaire/">Estimation de l'angle d'inclinaison par Filtre Complémentaire</a></li>
 <li><a href="estimation/ekf/">Estimation d'attitude par Filtre de Kalman Étendu (EKF)</a></li>
 <li><a href="graphisme/oled/">Synthèse graphique sur écran OLED</a></li>
-<li><a href="Jeu/Jeu/">Jeux interractifs</a></li>
-<li><a href="DDS/dds/">Synthèse sonore avec DDS</a></li>
+<li><a href="Jeu/jeu/">Jeux interractifs</a></li>
+<li><a href="dds/dds/">Synthèse sonore avec DDS</a></li>
+<li><a href="syntheseVocale/syntheseVocale/">Synthèse Vocale par PCM avec DDS</a></li>
 <li><a href="fft/fft/">Analyse spectrale par FFT</a></li>
 <li><a href="pid/pid/">Régulation avec PID</a></li>
-</ol>
-<hr />
-<h5 id="electronique-de-puissance">Électronique de puissance</h5>
-<p><br></p>
-<ol>
+<li><a href="systemeDistribue/systemeDistribue/">Système Distribué avec RS-485</a></li>
 <li><a href="powerElo/pwmComplemetaire/">Génération d'un signal PWM complémentaire avec temps mort réglable</a></li>
 <li><a href="powerElo/zcd/">Détection de passage par zéro avec interruption externe</a></li>
-<li><a href="powerElo/controlAC/">Commande de puissance CA par thyristor - contrôle de l’angle de phase par triac</a></li>
+<li><a href="powerElo/controlAC/">Commande de puissance CA par Triac - contrôle de l’angle de phase</a></li>
+<li><a href="mppt/mppt/">Mise en œuvre du MPPT pour charger une batterie</a></li>
+<li><a href="iotEsp8266/esp8266/">Connectivité réseau et protocoles IoT avec ESP8266</a></li>
 </ol>
 <hr />
 <h5 id="projets-et-applications-pratiques">Projets et Applications Pratiques</h5>
 <p><br></p>
 <ol>
-<li></li>
+<li><a href="Timer/Timer/#exemple2-chrono">Chronomètre numérique avec afficheurs 7 segments (Multiplexage temporel)</a></li>
+<li><a href="Machine%20d%27etats%20finis/fsm/#Intégration-Clavier-LCD">Intégration Clavier Matriciel et LCD : Affichage Temps Réel</a></li>
+<li><a href="ProjetClavier/projetClavier/">Minuterie avec Mot de Passe et Affichage LCD</a></li>
+<li><a href="Protothreads/Protothreads/#exemple-proto">Multi-threads avec Anti-rebond et Clignotement 1 kHz et LCD</a></li>
+<li><a href="UART/UART/#gps">Lecture d’un module GPS (format NMEA)</a></li>
+<li><a href="spi/spi/#spi-mcp4921-signaux">Générateur de sinusoïde : Usage des Protothreads</a></li>
+<li><a href="dds/dds/#exemple2-dds">Générateur de signaux par DDS avec STM32F401 + MCP4921</a></li>
+<li><a href="buckConv/buck/">Réguler la tension de sortie d'un convertisseur Buck</a></li>
 </ol>
 <hr />
 <h5 id="laboratoires">Laboratoires</h5>
 <p><br></p>
 <ol>
 <li><a href="LABO/TP1%20Chronometre%20et%20Horloge/">TP1 Chronomètre et Horloge programmable</a> <ul>
-<li><a href="LABO/demarrerKiel/">Démarrer Kiel</a></li>
+<li><a href="LABO/demarrerKiel/">Création Projet sous Keil uVision</a></li>
 <li><a href="LABO/langageC/">Langage C</a></li>
 </ul>
 </li>
 </ol>
 <hr />
-<h3 id="ressources">Ressources</h3>
+<h5 id="ressources">Ressources</h5>
 <p><br></p>
 <ol>
-<li><a href="Ressources/rm0368-stm32f401xbc-and-stm32f401xde-advanced-armbased-32bit-mcus-stmicroelectronics.pdf">Datasheet du STM32F4</a></li>
+<li><a href="Ressources/rm0368-stm32f401xbc-and-stm32f401xde-advanced-armbased-32bit-mcus-stmicroelectronics.pdf">Manuel de Références pour STM32F4</a></li>
+<li><a href="https://www.st.com/resource/en/reference_manual/dm00135183.pdf">Manuel de Références RM0390 pour STM32F4</a></li>
+<li><a href="https://www.st.com/resource/en/datasheet/stm32f401re.pdf">Datasheet de STM32F401x</a></li>
+<li><a href="https://documentation-service.arm.com/static/5e8f224c7100066a414f7810?token=">Manuel de Références pour Cortex-M</a></li>
 </ol>
 <p><br></p></div>
             </div>
@@ -343,5 +376,5 @@ Contact : <a href="mailto:spaulkabidu@gmail.com">spaulkabidu@gmail.com</a><br />
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-07-07 13:32:26.082616+00:00
+Build Date UTC : 2026-08-11 21:58:22.200250+00:00
 -->

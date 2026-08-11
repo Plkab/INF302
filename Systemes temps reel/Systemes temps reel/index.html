@@ -8,7 +8,7 @@
         <meta name="author" content="Ir Paul S. Kabidu">
         <link rel="canonical" href="https://Plkab.github.io/INF302/Systemes%20temps%20reel/Systemes%20temps%20reel/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Systèmes Embarqués et Systèmes Temps Réel - INF302 – Programmation des processeurs et Systèmestemps réel</title>
+        <title>Systèmes embarqués et Systèmes temps réel - INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../..">INF302 – Programmation des processeurs et Systèmestemps réel</a>
+                <a class="navbar-brand" href="../..">INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -39,22 +39,25 @@
                                 <a href="../.." class="nav-link">Accueil</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">Systèmes Embarqués et Systèmes Temps Réel</a>
+                                <a href="./" class="nav-link active" aria-current="page">Systèmes embarqués et Systèmes temps réel</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Architecture%20stm32f401/Architecture%20STM32F401/" class="nav-link">Architecture du processeur ARM STM32F401</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../GPIO/GPIO/" class="nav-link">Interface d'entrée/sortie numérique</a>
+                                <a href="../../GPIO/GPIO/" class="nav-link">Comment interfacer, commander et lire des dispositifs électroniques grâce aux GPIO numériques ?</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Interruptions/Interruptions/" class="nav-link">Réactivité rapide avec les interruptions matérielles et déterminisme temporel</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Timer/Timer/" class="nav-link">Les Timers</a>
+                                <a href="../../Timer/Timer/" class="nav-link">Comment mesurer et générer précisément des périodes et fréquences grâce aux Timers ?</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Machine%20d%27etats%20finis/fsm/" class="nav-link">La machine d'état fini finis :</a>
+                                <a href="../../Machine%20d%27etats%20finis/fsm/" class="nav-link">Comment organiser le comportement d’un système réactif grâce aux Machines à États Finis (FSM) ?</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../projetClavier/projetClavier.ipynb" class="nav-link">Minuterie avec Mot de Passe et Affichage LCD</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Protothreads/Protothreads/" class="nav-link">Introduction au multitâche coopératif avec les Protothreads</a>
@@ -69,13 +72,16 @@
                                 <a href="../../UART/UART/" class="nav-link">Communication avec d'autres dispositifs</a>
                             </li>
                             <li class="nav-item">
+                                <a href="../../systemeDistribue/systemeDistribue/" class="nav-link">Système Distribué avec RS-485</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="../../ADC/ADC/" class="nav-link">Acquisition de signaux analogiques via ADC</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../fft/fft/" class="nav-link">Analyse spectrale par FFT : Détection de fréquence</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../PWM/PWM/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
+                                <a href="../../pwm/pwm/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../pid/pid/" class="nav-link">Régulation et suivi de vitesse d’un moteur DC par correcteur PID</a>
@@ -90,16 +96,19 @@
                                 <a href="../../estimation/ekf/" class="nav-link">Estimation d'attitude par Filtre de Kalman Étendu (EKF)</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../graphisme/oled/" class="nav-link">Synthèse graphique sur écran OLED</a>
+                                <a href="../../graphisme/oled/" class="nav-link">Synthèse graphique embarqué</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Jeu/Jeu/" class="nav-link">PONG sur OLED SSD1306 — Théorie &amp; Implémentation</a>
+                                <a href="../../Jeu/jeu/" class="nav-link">PONG sur OLED SSD1306 — Théorie &amp; Implémentation</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../SPI/spi/" class="nav-link">Communication via SPI</a>
+                                <a href="../../spi/spi/" class="nav-link">Communication via SPI</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../DDS/dds/" class="nav-link">Synthèse sonore avec DDS (Direct Digital Synthesis)</a>
+                                <a href="../../dds/dds/" class="nav-link">Synthèse sonore par DDS (Direct Digital Synthesis)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../syntheseVocale/syntheseVocale/" class="nav-link">Synthèse Vocale par Numérisation Directe avec DDS</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../powerElo/pwmComplemetaire/" class="nav-link">Génération d'un signal PWM complémentaire avec temps mort réglable</a>
@@ -108,14 +117,23 @@
                                 <a href="../../powerElo/zcd/" class="nav-link">Détection de passage par zéro avec interruption externe pour commande de puissance (50 Hz)</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../powerElo/controlAC/" class="nav-link">Commande de puissance CA par thyristor : contrôle de l’angle de phase par triac</a>
+                                <a href="../../powerElo/controlAC/" class="nav-link">Commande de puissance CA par Triac : contrôle de l’angle de phase</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../mppt/mppt/" class="nav-link">Mise en œuvre du MPPT pour charger une batterie</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../buckConv/buck/" class="nav-link">Réguler la tension de sortie d'un convertisseur Buck</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../iotEsp8266/esp8266/" class="nav-link">Connectivité réseau et protocoles IoT avec ESP8266</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Laboratoires</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../LABO/demarrerKiel/" class="dropdown-item">Démarrer Kiel</a>
+    <a href="../../LABO/demarrerKiel/" class="dropdown-item">Démarrer Keil</a>
 </li>
                                     
 <li>
@@ -163,7 +181,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#systemes-embarques-et-systemes-temps-reel" class="nav-link">Systèmes Embarqués et Systèmes Temps Réel</a>
+            <li class="nav-item" data-bs-level="1"><a href="#systemes-embarques-et-systemes-temps-reel" class="nav-link">Systèmes embarqués et Systèmes temps réel</a>
               <ul class="nav flex-column">
             <li class="nav-item" data-bs-level="2"><a href="#quest-ce-quun-systeme-embarque" class="nav-link">Qu'est-ce qu'un Système embarqué ?</a>
               <ul class="nav flex-column">
@@ -625,7 +643,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="systemes-embarques-et-systemes-temps-reel">Systèmes Embarqués et Systèmes Temps Réel<a class="anchor-link" href="#systemes-embarques-et-systemes-temps-reel">¶</a></h1>
+<h1 id="systemes-embarques-et-systemes-temps-reel">Systèmes embarqués et Systèmes temps réel<a class="anchor-link" href="#systemes-embarques-et-systemes-temps-reel">¶</a></h1>
 </div>
 </div>
 </div>
@@ -774,7 +792,10 @@ Dans le système classique qui n'est pas temps réel, le résultat seul est impo
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<blockquote>
 <p>Lorsque le système devient complexe, intégrant plusieurs tâches simultanées, des priorités variées, des interfaces de communication et des contraintes temporelles strictes; l’usage d’un <strong>RTOS (Real-Time Operating System)</strong> devient indispensable.</p>
+</blockquote>
+<blockquote>
 <p>Le RTOS est une couche logicielle supérieure (framework) qui permet d'organiser le code afin de :</p>
 <ul>
 <li>Garantir le respect des échéances (deadlines) du temps réel ou fournir le comportement temporel prévisible.</li>
@@ -782,6 +803,7 @@ Dans le système classique qui n'est pas temps réel, le résultat seul est impo
 <li>Gérer le partage du temps processeur (ordonnancement). C'est à dire l'ordre dans lequel les tâches sont exécutées.</li>
 <li>Priorisation entre les tâches. Une tache de priorité peut arrêter une tâche de priorité inférieure, c'est la préemption.</li>
 </ul>
+</blockquote>
 <p>On retrouve parmi les plus célèbres : FreeRTOS, VxWorks, Zephyr, QNX ou encore RTLinux.</p>
 <p><strong>Exemple concret d'un robot auto-équilibré</strong></p>
 <p>Supposons un système gérant trois tâches aux périodicités différentes : Lecture IMU toutes les 1 ms (Critique), la mise à jour Wi-Fi toutes les 50 ms (Lourde). Et l'affichage toutes les 20 ms (Secondaire).</p>
@@ -801,8 +823,8 @@ Dans le système classique qui n'est pas temps réel, le résultat seul est impo
 <p>Si une tâche de priorité supérieure à celle en cours devient prête (ex: un capteur a déclenché une interruption), le RTOS suspend immédiatement (préempte) la tâche en cours, sauvegarde son contexte (registres, pointeur de pile), restaure le contexte de la tâche prioritaire, et lui donne la main. La tâche préemptée reprendra plus tard, exactement là où elle s'était arrêtée.</p>
 </li>
 </ul>
-<p>Ce changement de contexte en utilisant la pile consomme un peu plus de mémoire. Pour des microcontrôleurs avec une faible taille de mémoire, cela devient un problème. Pour le cas de FreeRTOS, l'empreinte mémoire est de 6 à 10 ko. Pour un Arduino de 2 Kb, ça ne passe pas, on ne peut pas l'utiliser complètement sans le dépouiller de certaines fonctionnalités.</p>
-<p>C'est pour cette raison que nous allons utiliser les <strong>Protothreads</strong> qui utilisent moins de mémoire, seulement 2 à 10 octets par tâche (protothread) pour mémoriser l'état, pas de pile (stack). C'est juste un ensemble de macros en C, ~0.1 à 0.5 Ko du code. Nous allons les détailler prochainement.</p>
+<p><code>Ce changement de contexte en utilisant la pile consomme un peu plus de mémoire</code>. Pour des microcontrôleurs avec une faible taille de mémoire, cela devient un problème. Pour le cas de FreeRTOS, l'empreinte mémoire est de 6 à 10 ko. Pour un Arduino de 2 Kb, ça ne passe pas, on ne peut pas l'utiliser complètement sans le dépouiller de certaines fonctionnalités.</p>
+<p>C'est pour cette raison que nous allons utiliser les <a href="Protothreads/Protothreads.ipynb"><strong>Protothreads</strong></a> qui utilisent moins de mémoire, seulement 2 à 10 octets par tâche (protothread) pour mémoriser l'état, pas de pile (stack). C'est juste un ensemble de macros en C, ~0.1 à 0.5 Ko du code. Nous allons les détailler prochainement.</p>
 </div>
 </div>
 </div>
@@ -813,15 +835,15 @@ Dans le système classique qui n'est pas temps réel, le résultat seul est impo
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="quelques-concepts-de-temps-reel">Quelques concepts de temps reel<a class="anchor-link" href="#quelques-concepts-de-temps-reel">¶</a></h3><p>-<strong>La tâche</strong> : C'est un concept abstrait. Une tâche représente un bloc de travail ou une activité qu'un programme doit accomplir (par exemple : télécharger un fichier, afficher une image). En informatique, une tâche se concrétise sous la forme d'un processus ou d'un <strong>thread</strong>.</p>
-<ul>
+<h3 id="quelques-concepts-de-temps-reel">Quelques concepts de temps reel<a class="anchor-link" href="#quelques-concepts-de-temps-reel">¶</a></h3><ul>
+<li><p><strong>La tâche</strong> : C'est un concept abstrait. Une tâche représente un bloc de travail ou une activité qu'un programme doit accomplir (par exemple : télécharger un fichier, afficher une image). En informatique, une tâche se concrétise sous la forme d'un processus ou d'un <strong>thread</strong>.</p>
+</li>
 <li><p><strong>Thread (Fil d'exécution)</strong> : C'est la plus petite unité d'exécution planifiable par le système d'exploitation.</p>
 </li>
 <li><p><strong>Multitasking (Multitâche)</strong> : La capacité d'un <strong>système d'exploitation</strong> à exécuter plusieurs tâches (ou programmes) différents en même temps. Sur un processeur à un seul cœur, le multitasking se fait par "partage de temps" (le CPU passe si vite d'une tâche à l'autre que l'utilisateur a l'impression qu'elles s'exécutent en même temps).</p>
 </li>
 <li><p><strong>Multithreading</strong> : Technique où un seul processus (programme) est divisé en plusieurs threads qui s'exécutent de façon indépendante. Cela permet à une application de faire plusieurs choses à la fois (par exemple, un thread gère l'interface graphique pendant qu'un autre télécharge un fichier).</p>
-</li>
-<li><p>Le multitâche (Multitasking) et le multithreading ne se situent pas au même niveau d'abstraction. La différence fondamentale réside dans l'échelle et le partage des ressources (notamment la mémoire).</p>
+<p>Le multitâche (Multitasking) et le multithreading ne se situent pas au même niveau d'abstraction. La différence fondamentale réside dans l'échelle et le partage des ressources (notamment la mémoire).</p>
 </li>
 <li><p><strong>Multiprocessing/Parallélisme</strong> : Utilisation de plusieurs processeurs ou cœurs de processeur (CPU Cores) physiques pour exécuter plusieurs processus simultanément.</p>
 </li>

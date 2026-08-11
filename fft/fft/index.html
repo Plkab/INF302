@@ -8,7 +8,7 @@
         <meta name="author" content="Ir Paul S. Kabidu">
         <link rel="canonical" href="https://Plkab.github.io/INF302/fft/fft/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Analyse spectrale par FFT : Détection de fréquence - INF302 – Programmation des processeurs et Systèmestemps réel</title>
+        <title>Analyse spectrale par FFT : Détection de fréquence - INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../..">INF302 – Programmation des processeurs et Systèmestemps réel</a>
+                <a class="navbar-brand" href="../..">INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -39,22 +39,25 @@
                                 <a href="../.." class="nav-link">Accueil</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Systemes%20temps%20reel/Systemes%20temps%20reel/" class="nav-link">Systèmes Embarqués et Systèmes Temps Réel</a>
+                                <a href="../../Systemes%20temps%20reel/Systemes%20temps%20reel/" class="nav-link">Systèmes embarqués et Systèmes temps réel</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Architecture%20stm32f401/Architecture%20STM32F401/" class="nav-link">Architecture du processeur ARM STM32F401</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../GPIO/GPIO/" class="nav-link">Interface d'entrée/sortie numérique</a>
+                                <a href="../../GPIO/GPIO/" class="nav-link">Comment interfacer, commander et lire des dispositifs électroniques grâce aux GPIO numériques ?</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Interruptions/Interruptions/" class="nav-link">Réactivité rapide avec les interruptions matérielles et déterminisme temporel</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Timer/Timer/" class="nav-link">Les Timers</a>
+                                <a href="../../Timer/Timer/" class="nav-link">Comment mesurer et générer précisément des périodes et fréquences grâce aux Timers ?</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Machine%20d%27etats%20finis/fsm/" class="nav-link">La machine d'état fini finis :</a>
+                                <a href="../../Machine%20d%27etats%20finis/fsm/" class="nav-link">Comment organiser le comportement d’un système réactif grâce aux Machines à États Finis (FSM) ?</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../projetClavier/projetClavier.ipynb" class="nav-link">Minuterie avec Mot de Passe et Affichage LCD</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../Protothreads/Protothreads/" class="nav-link">Introduction au multitâche coopératif avec les Protothreads</a>
@@ -69,13 +72,16 @@
                                 <a href="../../UART/UART/" class="nav-link">Communication avec d'autres dispositifs</a>
                             </li>
                             <li class="nav-item">
+                                <a href="../../systemeDistribue/systemeDistribue/" class="nav-link">Système Distribué avec RS-485</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="../../ADC/ADC/" class="nav-link">Acquisition de signaux analogiques via ADC</a>
                             </li>
                             <li class="nav-item">
                                 <a href="./" class="nav-link active" aria-current="page">Analyse spectrale par FFT : Détection de fréquence</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../PWM/PWM/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
+                                <a href="../../pwm/pwm/" class="nav-link">Introduction au PWM (Pulse Width Modulation)</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../pid/pid/" class="nav-link">Régulation et suivi de vitesse d’un moteur DC par correcteur PID</a>
@@ -90,16 +96,19 @@
                                 <a href="../../estimation/ekf/" class="nav-link">Estimation d'attitude par Filtre de Kalman Étendu (EKF)</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../graphisme/oled/" class="nav-link">Synthèse graphique sur écran OLED</a>
+                                <a href="../../graphisme/oled/" class="nav-link">Synthèse graphique embarqué</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../Jeu/Jeu/" class="nav-link">PONG sur OLED SSD1306 — Théorie &amp; Implémentation</a>
+                                <a href="../../Jeu/jeu/" class="nav-link">PONG sur OLED SSD1306 — Théorie &amp; Implémentation</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../SPI/spi/" class="nav-link">Communication via SPI</a>
+                                <a href="../../spi/spi/" class="nav-link">Communication via SPI</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../DDS/dds/" class="nav-link">Synthèse sonore avec DDS (Direct Digital Synthesis)</a>
+                                <a href="../../dds/dds/" class="nav-link">Synthèse sonore par DDS (Direct Digital Synthesis)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../syntheseVocale/syntheseVocale/" class="nav-link">Synthèse Vocale par Numérisation Directe avec DDS</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../powerElo/pwmComplemetaire/" class="nav-link">Génération d'un signal PWM complémentaire avec temps mort réglable</a>
@@ -108,14 +117,23 @@
                                 <a href="../../powerElo/zcd/" class="nav-link">Détection de passage par zéro avec interruption externe pour commande de puissance (50 Hz)</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../powerElo/controlAC/" class="nav-link">Commande de puissance CA par thyristor : contrôle de l’angle de phase par triac</a>
+                                <a href="../../powerElo/controlAC/" class="nav-link">Commande de puissance CA par Triac : contrôle de l’angle de phase</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../mppt/mppt/" class="nav-link">Mise en œuvre du MPPT pour charger une batterie</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../buckConv/buck/" class="nav-link">Réguler la tension de sortie d'un convertisseur Buck</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../iotEsp8266/esp8266/" class="nav-link">Connectivité réseau et protocoles IoT avec ESP8266</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Laboratoires</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../LABO/demarrerKiel/" class="dropdown-item">Démarrer Kiel</a>
+    <a href="../../LABO/demarrerKiel/" class="dropdown-item">Démarrer Keil</a>
 </li>
                                     
 <li>
@@ -141,7 +159,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../PWM/PWM/" class="nav-link">
+                                <a rel="next" href="../../pwm/pwm/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -196,6 +214,11 @@
               </ul>
             </li>
             
+            <li class="nav-item" data-bs-level="1"><a href="#include-stm32f4xxh" class="nav-link">include "stm32f4xx.h"</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
             <li class="nav-item" data-bs-level="1"><a href="#include" class="nav-link">include</a>
               <ul class="nav flex-column">
               </ul>
@@ -211,27 +234,72 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="1"><a href="#include_3" class="nav-link">include</a>
+            <li class="nav-item" data-bs-level="1"><a href="#define-num_samples-1024-nombre-dechantillons-par-fft" class="nav-link">define NUM_SAMPLES 1024 // Nombre d'echantillons par FFT</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="1"><a href="#include_4" class="nav-link">include</a>
+            <li class="nav-item" data-bs-level="1"><a href="#define-log2_num_samples-10-log21024" class="nav-link">define LOG2_NUM_SAMPLES 10 // log2(1024)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="1"><a href="#define-n_points-256-taille-de-la-fft-puissance-de-2" class="nav-link">define N_POINTS 256 // Taille de la FFT (puissance de 2)</a>
+            <li class="nav-item" data-bs-level="1"><a href="#define-fs-100000f-frequence-dechantillonnage-hz" class="nav-link">define FS 10000.0f // Frequence d'echantillonnage (Hz)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="1"><a href="#define-fs-10000f-frequence-dechantillonnage-hz" class="nav-link">define FS 1000.0f // Fréquence d'échantillonnage (Hz)</a>
+            <li class="nav-item" data-bs-level="1"><a href="#define-adc_pin-gpio_pin_0-pa0" class="nav-link">define ADC_PIN GPIO_Pin_0 // PA0</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="1"><a href="#define-dt-10f-fs-periode-dechantillonnage-s" class="nav-link">define DT (1.0f / FS) // Période d'échantillonnage (s)</a>
+            <li class="nav-item" data-bs-level="1"><a href="#define-adc_port-gpioa" class="nav-link">define ADC_PORT GPIOA</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#define-scl_pin-gpio_pin_6-pb6" class="nav-link">define SCL_PIN GPIO_Pin_6 // PB6</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#define-sda_pin-gpio_pin_7-pb7" class="nav-link">define SDA_PIN GPIO_Pin_7 // PB7</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#define-i2c_port-gpiob" class="nav-link">define I2C_PORT GPIOB</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#define-oled_addr-0x3c" class="nav-link">define OLED_ADDR 0x3C</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#define-scl_high-i2c_port-bsrr-scl_pin" class="nav-link">define SCL_HIGH() (I2C_PORT-&gt;BSRR = SCL_PIN)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#define-scl_low-i2c_port-bsrr-uint32_tscl_pin-16" class="nav-link">define SCL_LOW() (I2C_PORT-&gt;BSRR = (uint32_t)SCL_PIN &lt;&lt; 16)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#define-sda_high-i2c_port-bsrr-sda_pin" class="nav-link">define SDA_HIGH() (I2C_PORT-&gt;BSRR = SDA_PIN)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#define-sda_low-i2c_port-bsrr-uint32_tsda_pin-16" class="nav-link">define SDA_LOW() (I2C_PORT-&gt;BSRR = (uint32_t)SDA_PIN &lt;&lt; 16)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#define-sda_read-i2c_port-idr-sda_pin-0" class="nav-link">define SDA_READ() ((I2C_PORT-&gt;IDR &amp; SDA_PIN) != 0)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -1160,6 +1228,565 @@ $$W_N^k = e^{-j\frac{2\pi k}{N}} = \cos\left(\frac{2\pi k}{N}\right) - j \sin\le
 <div class="highlight-ipynb hl-python"><pre><span></span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-1"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=605af029-f6ba-42ff-93aa-dfc3006f867d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="analyseur-de-spectre-audio">Analyseur de spectre audio<a class="anchor-link" href="#analyseur-de-spectre-audio">¶</a></h1><p>Ce projet réalise un analyseur de spectre audio embarqué, qui affiche en temps réel les fréquences dominantes d’un signal sonore sur un écran OLED 128×64. L’objectif est de démontrer comment allier acquisition analogique, calcul numérique haute performance et affichage graphique dans un environnement contraint, tout en maîtrisant chaque registre matériel.</p>
+<p>La carte STM32F401CCU6 (Black Pill) est cadencée à 84 MHz et dispose d’une FPU, ce qui accélère les calculs en virgule flottante. L’entrée audio est branchée sur la broche PA0 (ADC1) pour numériser le signal, et l’affichage se fait via un écran OLED SSD1306 connecté en I²C sur les broches PB6 (SCL) et PB7 (SDA).<br/>
+Ce matériel minimaliste suffit pour une acquisition à 10 kHz et une FFT 1024 points, le tout alimenté en 3,3 V.</p>
+<p>Le timer TIM2 déclenche l’ADC à 10 000 échantillons par seconde ; chaque conversion est automatiquement transférée par DMA dans une mémoire tampon de 1024 valeurs. Une fois le bloc rempli, une fenêtre de Hann est appliquée pour réduire les fuites spectrales, puis la FFT calcule les composantes fréquentielles complexes.<br/>
+Le module de chaque raie est extrait (via une racine carrée) et les 128 premières raies utiles sont mises à l’échelle pour piloter les barres verticales de l’écran OLED. L’affichage est rafraîchi à chaque cycle d’acquisition.</p>
+<p>Le spectre s’affiche en direct sous forme de barres dynamiques : les pics correspondent aux fréquences du signal d’entrée (voix, musique, etc.). La fréquence la plus puissante est repérée et peut être calculée pour un affichage numérique supplémentaire.<br/>
+Grâce à la FPU, la FFT s’exécute en environ 2 ms, ce qui est très inférieur à la durée d’acquisition (102 ms) ; le système est donc parfaitement temps réel.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=087b8b15-8dae-458e-9ef2-d9241b342a36">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * =============================================================================</span>
+<span class="cm"> * Analyseur de spectre audio sur STM32F401CCU6 </span>
+<span class="cm"> * - ADC1 (PA0) + TIM2 (10 kHz) + DMA2 Stream 0</span>
+<span class="cm"> * - FFT 1024 points en virgule flottante (FPU activee)</span>
+<span class="cm"> * - Affichage sur OLED SSD1306 128x64 (I2C bit-bang, PB6=SCL, PB7=SDA)</span>
+<span class="cm"> *</span>
+<span class="cm"> * Auteur  : adaptation du projet de Hunter Adams (RP2040) pour STM32F4</span>
+<span class="cm"> * =============================================================================</span>
+<span class="cm"> */</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+
+<span class="cm">/* ==========================================================================</span>
+<span class="cm">   Configuration materielle</span>
+<span class="cm">   ========================================================================== */</span>
+<span class="cp">#define NUM_SAMPLES         1024          </span><span class="c1">// Nombre d'echantillons par FFT</span>
+<span class="cp">#define LOG2_NUM_SAMPLES    10            </span><span class="c1">// log2(1024)</span>
+<span class="cp">#define FS                  10000.0f      </span><span class="c1">// Frequence d'echantillonnage (Hz)</span>
+
+<span class="c1">// Pins ADC</span>
+<span class="cp">#define ADC_PIN             GPIO_Pin_0    </span><span class="c1">// PA0</span>
+<span class="cp">#define ADC_PORT            GPIOA</span>
+
+<span class="c1">// Pins I2C (bit-bang)</span>
+<span class="cp">#define SCL_PIN             GPIO_Pin_6    </span><span class="c1">// PB6</span>
+<span class="cp">#define SDA_PIN             GPIO_Pin_7    </span><span class="c1">// PB7</span>
+<span class="cp">#define I2C_PORT            GPIOB</span>
+
+<span class="c1">// Adresse I2C de l'OLED (0x3C)</span>
+<span class="cp">#define OLED_ADDR           0x3C</span>
+
+<span class="cm">/* ==========================================================================</span>
+<span class="cm">   Variables globales</span>
+<span class="cm">   ========================================================================== */</span>
+<span class="c1">// Buffers pour les echantillons ADC (12 bits) et la FFT</span>
+<span class="kt">uint16_t</span><span class="w"> </span><span class="n">sample_array</span><span class="p">[</span><span class="n">NUM_SAMPLES</span><span class="p">];</span>
+<span class="kt">float</span><span class="w">    </span><span class="n">fr</span><span class="p">[</span><span class="n">NUM_SAMPLES</span><span class="p">];</span><span class="w">       </span><span class="c1">// Partie reelle</span>
+<span class="kt">float</span><span class="w">    </span><span class="n">fi</span><span class="p">[</span><span class="n">NUM_SAMPLES</span><span class="p">];</span><span class="w">       </span><span class="c1">// Partie imaginaire</span>
+
+<span class="c1">// Tables precalculees</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">Sinewave</span><span class="p">[</span><span class="n">NUM_SAMPLES</span><span class="p">];</span><span class="w">    </span><span class="c1">// Sinus pour la FFT (twiddle factors)</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">window</span><span class="p">[</span><span class="n">NUM_SAMPLES</span><span class="p">];</span><span class="w">      </span><span class="c1">// Fenetre de Hann</span>
+
+<span class="c1">// Framebuffer OLED (128x64, 1 bit/pixel, organisation par pages de 8 pixels)</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">oled_buffer</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+
+<span class="c1">// Compteur pour les delais (SysTick)</span>
+<span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">systick_counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/* ==========================================================================</span>
+<span class="cm">   Fonctions de delai (SysTick)</span>
+<span class="cm">   ========================================================================== */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">SysTick_Handler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">systick_counter</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Delai en microsecondes (bloquant)</span>
+<span class="c1">// CORRECTION : le calcul des ticks depend de la frequence SysTick.</span>
+<span class="c1">// Ici SysTick est configure a 1 MHz (1 tick = 1 us).</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">delay_us</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">us</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">systick_counter</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">systick_counter</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">us</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">delay_ms</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ms</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">delay_us</span><span class="p">(</span><span class="n">ms</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* ==========================================================================</span>
+<span class="cm">   I2C bit-bang (pour OLED)</span>
+<span class="cm">   ========================================================================== */</span>
+<span class="c1">// Macros pour commander les broches en open-drain</span>
+<span class="cp">#define SCL_HIGH()  (I2C_PORT-&gt;BSRR = SCL_PIN)</span>
+<span class="cp">#define SCL_LOW()   (I2C_PORT-&gt;BSRR = (uint32_t)SCL_PIN &lt;&lt; 16)</span>
+<span class="cp">#define SDA_HIGH()  (I2C_PORT-&gt;BSRR = SDA_PIN)</span>
+<span class="cp">#define SDA_LOW()   (I2C_PORT-&gt;BSRR = (uint32_t)SDA_PIN &lt;&lt; 16)</span>
+<span class="cp">#define SDA_READ()  ((I2C_PORT-&gt;IDR &amp; SDA_PIN) != 0)</span>
+
+<span class="c1">// Initialisation des broches I2C en sortie open-drain avec pull-up</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">I2C_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Activer l'horloge pour GPIOB</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">AHB1ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_AHB1ENR_GPIOBEN</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Configurer PB6 et PB7 en sortie open-drain, pull-up, vitesse 50 MHz</span>
+<span class="w">    </span><span class="n">GPIOB</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w">   </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="n">GPIO_MODER_MODER6</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GPIO_MODER_MODER7</span><span class="p">);</span>
+<span class="w">    </span><span class="n">GPIOB</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w">   </span><span class="o">|=</span><span class="w">  </span><span class="p">(</span><span class="n">GPIO_MODER_MODER6_0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GPIO_MODER_MODER7_0</span><span class="p">);</span><span class="w"> </span><span class="c1">// sortie</span>
+<span class="w">    </span><span class="n">GPIOB</span><span class="o">-&gt;</span><span class="n">OTYPER</span><span class="w">  </span><span class="o">|=</span><span class="w">  </span><span class="p">(</span><span class="n">GPIO_OTYPER_OT_6</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GPIO_OTYPER_OT_7</span><span class="p">);</span><span class="w">       </span><span class="c1">// open-drain</span>
+<span class="w">    </span><span class="n">GPIOB</span><span class="o">-&gt;</span><span class="n">PUPDR</span><span class="w">   </span><span class="o">|=</span><span class="w">  </span><span class="p">(</span><span class="n">GPIO_PUPDR_PUPDR6_0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GPIO_PUPDR_PUPDR7_0</span><span class="p">);</span><span class="w"> </span><span class="c1">// pull-up</span>
+<span class="w">    </span><span class="n">GPIOB</span><span class="o">-&gt;</span><span class="n">OSPEEDR</span><span class="w"> </span><span class="o">|=</span><span class="w">  </span><span class="p">(</span><span class="n">GPIO_OSPEEDER_OSPEEDR6</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GPIO_OSPEEDER_OSPEEDR7</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Mettre les lignes au repos (high)</span>
+<span class="w">    </span><span class="n">SCL_HIGH</span><span class="p">();</span>
+<span class="w">    </span><span class="n">SDA_HIGH</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Condition START I2C</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">I2C_Start</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">SDA_HIGH</span><span class="p">();</span>
+<span class="w">    </span><span class="n">SCL_HIGH</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay_us</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="w">    </span><span class="n">SDA_LOW</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay_us</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="w">    </span><span class="n">SCL_LOW</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Condition STOP I2C</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">I2C_Stop</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">SDA_LOW</span><span class="p">();</span>
+<span class="w">    </span><span class="n">SCL_HIGH</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay_us</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="w">    </span><span class="n">SDA_HIGH</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay_us</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Ecrit un octet, retourne l'ACK (0 = ACK, 1 = NACK)</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="nf">I2C_WriteByte</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">byte</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="n">bit</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">byte</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x80</span><span class="p">)</span><span class="w"> </span><span class="n">SDA_HIGH</span><span class="p">();</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">SDA_LOW</span><span class="p">();</span>
+<span class="w">        </span><span class="n">byte</span><span class="w"> </span><span class="o">&lt;&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">delay_us</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">        </span><span class="n">SCL_HIGH</span><span class="p">();</span>
+<span class="w">        </span><span class="n">delay_us</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="w">        </span><span class="n">SCL_LOW</span><span class="p">();</span>
+<span class="w">        </span><span class="n">delay_us</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Liberer SDA pour lire l'ACK de l'esclave</span>
+<span class="w">    </span><span class="n">SDA_HIGH</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay_us</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">SCL_HIGH</span><span class="p">();</span>
+<span class="w">    </span><span class="n">delay_us</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SDA_READ</span><span class="p">();</span><span class="w">   </span><span class="c1">// 0 = ACK, 1 = NACK</span>
+<span class="w">    </span><span class="n">SCL_LOW</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ack</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Envoie une commande a l'OLED</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">OLED_WriteCmd</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">cmd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">I2C_Start</span><span class="p">();</span>
+<span class="w">    </span><span class="n">I2C_WriteByte</span><span class="p">(</span><span class="n">OLED_ADDR</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// adresse en ecriture</span>
+<span class="w">    </span><span class="n">I2C_WriteByte</span><span class="p">(</span><span class="mh">0x00</span><span class="p">);</span><span class="w">           </span><span class="c1">// controle : commande</span>
+<span class="w">    </span><span class="n">I2C_WriteByte</span><span class="p">(</span><span class="n">cmd</span><span class="p">);</span>
+<span class="w">    </span><span class="n">I2C_Stop</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Envoie une donnee a l'OLED</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">OLED_WriteData</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">I2C_Start</span><span class="p">();</span>
+<span class="w">    </span><span class="n">I2C_WriteByte</span><span class="p">(</span><span class="n">OLED_ADDR</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">I2C_WriteByte</span><span class="p">(</span><span class="mh">0x40</span><span class="p">);</span><span class="w">           </span><span class="c1">// controle : donnee</span>
+<span class="w">    </span><span class="n">I2C_WriteByte</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="w">    </span><span class="n">I2C_Stop</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="cm">/* ==========================================================================</span>
+<span class="cm">   Pilotage de l'OLED SSD1306</span>
+<span class="cm">   ========================================================================== */</span>
+<span class="c1">// Initialisation de l'ecran</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">OLED_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">delay_ms</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Sequence d'initialisation standard pour 128x64</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0xAE</span><span class="p">);</span><span class="w"> </span><span class="c1">// display OFF</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0xD5</span><span class="p">);</span><span class="w"> </span><span class="c1">// reglage oscillateur</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0x80</span><span class="p">);</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0xA8</span><span class="p">);</span><span class="w"> </span><span class="c1">// multiplex ratio</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0x3F</span><span class="p">);</span><span class="w"> </span><span class="c1">// 64 MUX</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0xD3</span><span class="p">);</span><span class="w"> </span><span class="c1">// display offset</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0x00</span><span class="p">);</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0x40</span><span class="p">);</span><span class="w"> </span><span class="c1">// ligne de depart = 0</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0x8D</span><span class="p">);</span><span class="w"> </span><span class="c1">// charge pump</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0x14</span><span class="p">);</span><span class="w"> </span><span class="c1">// active charge pump</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0x20</span><span class="p">);</span><span class="w"> </span><span class="c1">// mode memoire</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0x02</span><span class="p">);</span><span class="w"> </span><span class="c1">// adressage par pages (horizontal)</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0xA1</span><span class="p">);</span><span class="w"> </span><span class="c1">// remappage segments (segment 127 -&gt; SEG0)</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0xC8</span><span class="p">);</span><span class="w"> </span><span class="c1">// balayage COM inverse</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0xDA</span><span class="p">);</span><span class="w"> </span><span class="c1">// configuration pins COM</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0x12</span><span class="p">);</span><span class="w"> </span><span class="c1">// alternative COM, desactive remap</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0x81</span><span class="p">);</span><span class="w"> </span><span class="c1">// contraste</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0xCF</span><span class="p">);</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0xD9</span><span class="p">);</span><span class="w"> </span><span class="c1">// periode de precharge</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0xF1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0xDB</span><span class="p">);</span><span class="w"> </span><span class="c1">// niveau VCOMH</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0x40</span><span class="p">);</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0xA4</span><span class="p">);</span><span class="w"> </span><span class="c1">// affichage depuis RAM (pas tout allume)</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0xA6</span><span class="p">);</span><span class="w"> </span><span class="c1">// non inverse</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0x2E</span><span class="p">);</span><span class="w"> </span><span class="c1">// desactiver defilement</span>
+<span class="w">    </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0xAF</span><span class="p">);</span><span class="w"> </span><span class="c1">// display ON</span>
+
+<span class="w">    </span><span class="c1">// Effacer le framebuffer et mettre a jour l'ecran</span>
+<span class="w">    </span><span class="n">memset</span><span class="p">(</span><span class="n">oled_buffer</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">oled_buffer</span><span class="p">));</span>
+<span class="w">    </span><span class="n">OLED_Update</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Rafraichit l'ecran a partir du framebuffer (mode page)</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">OLED_Update</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="n">page</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0xB0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">page</span><span class="p">);</span><span class="w">      </span><span class="c1">// adresse page</span>
+<span class="w">        </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0x00</span><span class="p">);</span><span class="w">             </span><span class="c1">// colonne basse = 0</span>
+<span class="w">        </span><span class="n">OLED_WriteCmd</span><span class="p">(</span><span class="mh">0x10</span><span class="p">);</span><span class="w">             </span><span class="c1">// colonne haute = 0</span>
+
+<span class="w">        </span><span class="c1">// Envoyer les 128 octets de la page en une seule transaction I2C</span>
+<span class="w">        </span><span class="n">I2C_Start</span><span class="p">();</span>
+<span class="w">        </span><span class="n">I2C_WriteByte</span><span class="p">(</span><span class="n">OLED_ADDR</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="n">I2C_WriteByte</span><span class="p">(</span><span class="mh">0x40</span><span class="p">);</span><span class="w">             </span><span class="c1">// controle : data</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">128</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">I2C_WriteByte</span><span class="p">(</span><span class="n">oled_buffer</span><span class="p">[</span><span class="n">page</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">]);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">I2C_Stop</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Efface le framebuffer (pas d'update automatique)</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">OLED_Clear</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">memset</span><span class="p">(</span><span class="n">oled_buffer</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">oled_buffer</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// Allume ou eteint un pixel (x=0..127, y=0..63, color=0/1)</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">OLED_SetPixel</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">color</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">bit</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+<span class="w">        </span><span class="n">oled_buffer</span><span class="p">[</span><span class="n">page</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">|=</span><span class="w">  </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">bit</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">oled_buffer</span><span class="p">[</span><span class="n">page</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">bit</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Efface une colonne verticale (toute la hauteur)</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">OLED_ClearColumn</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="n">page</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">oled_buffer</span><span class="p">[</span><span class="n">page</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Dessine une barre verticale depuis le bas (height en pixels, color=1 pour allume)</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">OLED_DrawBar</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">color</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">height</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">height</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">OLED_SetPixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">63</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">);</span><span class="w">   </span><span class="c1">// y=0 -&gt; bas de l'ecran</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/* ==========================================================================</span>
+<span class="cm">   Configuration ADC + TIM2 + DMA</span>
+<span class="cm">   ========================================================================== */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ADC_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. Activer les horloges peripheriques</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">AHB1ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_AHB1ENR_GPIOAEN</span><span class="p">;</span><span class="w">   </span><span class="c1">// GPIOA pour ADC</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">AHB1ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_AHB1ENR_DMA2EN</span><span class="p">;</span><span class="w">    </span><span class="c1">// DMA2</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">APB2ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_APB2ENR_ADC1EN</span><span class="p">;</span><span class="w">    </span><span class="c1">// ADC1</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">APB1ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_APB1ENR_TIM2EN</span><span class="p">;</span><span class="w">    </span><span class="c1">// TIM2</span>
+
+<span class="w">    </span><span class="c1">// 2. Configurer PA0 en mode analogique</span>
+<span class="w">    </span><span class="n">GPIOA</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w">   </span><span class="o">|=</span><span class="w"> </span><span class="n">GPIO_MODER_MODER0</span><span class="p">;</span><span class="w">    </span><span class="c1">// mode analogique (11)</span>
+<span class="w">    </span><span class="n">GPIOA</span><span class="o">-&gt;</span><span class="n">PUPDR</span><span class="w">   </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">GPIO_PUPDR_PUPDR0</span><span class="p">;</span><span class="w">   </span><span class="c1">// pas de pull-up/down</span>
+
+<span class="w">    </span><span class="c1">// 3. Temps d'echantillonnage ADC</span>
+<span class="w">    </span><span class="c1">// CORRECTION : il faut configurer le temps d'echantillonnage pour que</span>
+<span class="w">    </span><span class="c1">// la conversion soit terminee avant le prochain declenchement.</span>
+<span class="w">    </span><span class="c1">// A 84 MHz, 84 cycles = 1 us, ce qui laisse suffisamment de marge</span>
+<span class="w">    </span><span class="c1">// pour une conversion 12 bits (~15 cycles) avant le prochain trigger a 100 us.</span>
+<span class="w">    </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">SMPR2</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">ADC_SMPR2_SMP0_2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ADC_SMPR2_SMP0_0</span><span class="p">;</span><span class="w">  </span><span class="c1">// 84 cycles sur canal 0</span>
+
+<span class="w">    </span><span class="c1">// 4. Configuration ADC1 : conversion simple, declenchee par TIM2 TRGO</span>
+<span class="w">    </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">CR1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                          </span><span class="c1">// mode independent, pas de scan</span>
+<span class="w">    </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">CR2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_CR2_ADON</span><span class="p">;</span><span class="w">               </span><span class="c1">// active l'ADC</span>
+<span class="w">    </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">CR2</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">ADC_CR2_EXTEN_0</span><span class="p">;</span><span class="w">           </span><span class="c1">// declenchement sur front montant</span>
+<span class="w">    </span><span class="c1">// EXTSEL = 011 (TIM2 TRGO) -&gt; bits 27:24</span>
+<span class="w">    </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">CR2</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">ADC_CR2_EXTSEL_1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ADC_CR2_EXTSEL_0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">SQR1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                         </span><span class="c1">// 1 conversion dans la sequence</span>
+<span class="w">    </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">SQR3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                         </span><span class="c1">// canal 0 (PA0) en premiere position</span>
+
+<span class="w">    </span><span class="c1">// 5. DMA2 Stream 0, Channel 0 (ADC1)</span>
+<span class="w">    </span><span class="c1">// CORRECTION : on retire le mode circulaire (CIRC) car on attend</span>
+<span class="w">    </span><span class="c1">// explicitement la fin du transfert (NDTR == 0). En mode circulaire,</span>
+<span class="w">    </span><span class="c1">// NDTR se recharge automatiquement et ne descend jamais a 0 -&gt; blocage infini.</span>
+<span class="w">    </span><span class="n">DMA2_Stream0</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                   </span><span class="c1">// reset</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">DMA2_Stream0</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">DMA_SxCR_EN</span><span class="p">);</span><span class="w"> </span><span class="c1">// attendre si actif</span>
+<span class="w">    </span><span class="n">DMA2_Stream0</span><span class="o">-&gt;</span><span class="n">PAR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">DR</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DMA2_Stream0</span><span class="o">-&gt;</span><span class="n">M0AR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">sample_array</span><span class="p">;</span>
+<span class="w">    </span><span class="n">DMA2_Stream0</span><span class="o">-&gt;</span><span class="n">NDTR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NUM_SAMPLES</span><span class="p">;</span>
+<span class="w">    </span><span class="n">DMA2_Stream0</span><span class="o">-&gt;</span><span class="n">FCR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                  </span><span class="c1">// pas de FIFO (mode direct)</span>
+<span class="w">    </span><span class="n">DMA2_Stream0</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">DMA_SxCR_CHSEL_0</span><span class="p">;</span><span class="w">   </span><span class="c1">// canal 0 (ADC1)</span>
+<span class="w">    </span><span class="n">DMA2_Stream0</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">DMA_SxCR_PL_0</span><span class="p">;</span><span class="w">      </span><span class="c1">// priorite moyenne</span>
+<span class="w">    </span><span class="n">DMA2_Stream0</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">DMA_SxCR_MSIZE_0</span><span class="p">;</span><span class="w">   </span><span class="c1">// memoire 16 bits</span>
+<span class="w">    </span><span class="n">DMA2_Stream0</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">DMA_SxCR_PSIZE_0</span><span class="p">;</span><span class="w">   </span><span class="c1">// peripherique 16 bits</span>
+<span class="w">    </span><span class="n">DMA2_Stream0</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">DMA_SxCR_MINC</span><span class="p">;</span><span class="w">      </span><span class="c1">// increment memoire</span>
+<span class="w">    </span><span class="c1">// PAS de DMA_SxCR_CIRC ici : mode normal (single shot)</span>
+
+<span class="w">    </span><span class="c1">// 6. TIM2 comme declencheur a 10 kHz</span>
+<span class="w">    </span><span class="c1">// CORRECTION : horloge TIM2 = APB1 = 84 MHz (PPRE1 = DIV2, mais x2 car TIM)</span>
+<span class="w">    </span><span class="c1">// On utilise PSC = 83 (division par 84) -&gt; 1 MHz</span>
+<span class="w">    </span><span class="c1">// ARR = 99 (division par 100) -&gt; 10 kHz exact</span>
+<span class="w">    </span><span class="n">TIM2</span><span class="o">-&gt;</span><span class="n">PSC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">84</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                   </span><span class="c1">// 84 MHz / 84 = 1 MHz</span>
+<span class="w">    </span><span class="n">TIM2</span><span class="o">-&gt;</span><span class="n">ARR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                  </span><span class="c1">// 1 MHz / 100 = 10 kHz</span>
+<span class="w">    </span><span class="n">TIM2</span><span class="o">-&gt;</span><span class="n">CR2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TIM_CR2_MMS_1</span><span class="p">;</span><span class="w">            </span><span class="c1">// evenement update -&gt; TRGO</span>
+<span class="w">    </span><span class="n">TIM2</span><span class="o">-&gt;</span><span class="n">DIER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                       </span><span class="c1">// pas d'interruption update necessaire</span>
+<span class="w">    </span><span class="n">TIM2</span><span class="o">-&gt;</span><span class="n">CR1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TIM_CR1_CEN</span><span class="p">;</span><span class="w">              </span><span class="c1">// demarre le timer (sera controle)</span>
+
+<span class="w">    </span><span class="c1">// 7. Stabilisation ADC</span>
+<span class="w">    </span><span class="c1">// CORRECTION : sur STM32F4, il n'y a pas de procedure de calibration</span>
+<span class="w">    </span><span class="c1">// automatique comme sur F1. On attend simplement la stabilisation.</span>
+<span class="w">    </span><span class="n">delay_ms</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Demarre une acquisition (active le DMA puis le timer)</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ADC_Start</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Reinitialiser le compteur DMA</span>
+<span class="w">    </span><span class="n">DMA2_Stream0</span><span class="o">-&gt;</span><span class="n">NDTR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NUM_SAMPLES</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Activer le stream DMA</span>
+<span class="w">    </span><span class="n">DMA2_Stream0</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">DMA_SxCR_EN</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Demarrer le timer (les conversions commencent au prochain evenement update)</span>
+<span class="w">    </span><span class="n">TIM2</span><span class="o">-&gt;</span><span class="n">CR1</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">TIM_CR1_CEN</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Attend la fin de l'acquisition (bloquant)</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ADC_WaitForComplete</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// CORRECTION : en mode non circulaire, NDTR compte jusqu'a 0</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">DMA2_Stream0</span><span class="o">-&gt;</span><span class="n">NDTR</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// attente active</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Desactiver le DMA et le timer</span>
+<span class="w">    </span><span class="n">DMA2_Stream0</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">DMA_SxCR_EN</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TIM2</span><span class="o">-&gt;</span><span class="n">CR1</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">TIM_CR1_CEN</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Interruption DMA (optionnelle, pour fonctionnement en arriere-plan)</span>
+<span class="c1">// CORRECTION : sur STM32F4, les flags d'interruption sont dans LISR/LIFCR</span>
+<span class="c1">// pour les Streams 0-3. Stream 0 utilise TCIF0 dans LISR.</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">DMA2_Stream0_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DMA2</span><span class="o">-&gt;</span><span class="n">LISR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">DMA_LISR_TCIF0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">DMA2</span><span class="o">-&gt;</span><span class="n">LIFCR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DMA_LIFCR_CTCIF0</span><span class="p">;</span><span class="w">  </span><span class="c1">// ecrire 1 pour effacer le flag</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/* ==========================================================================</span>
+<span class="cm">   FFT en virgule flottante (Cooley-Tukey radix-2, DIT)</span>
+<span class="cm">   ========================================================================== */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">FFT</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">fr</span><span class="p">[],</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">fi</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">mr</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">tr</span><span class="p">,</span><span class="w"> </span><span class="n">ti</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">istep</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">wr</span><span class="p">,</span><span class="w"> </span><span class="n">wi</span><span class="p">,</span><span class="w"> </span><span class="n">qr</span><span class="p">,</span><span class="w"> </span><span class="n">qi</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// --- Reorganisation par bit-reversal ---</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_SAMPLES</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">m</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">mr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">m</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x5555</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">((</span><span class="n">m</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x5555</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="n">mr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">mr</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x3333</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">((</span><span class="n">mr</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x3333</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">        </span><span class="n">mr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">mr</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x0F0F</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">((</span><span class="n">mr</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x0F0F</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+<span class="w">        </span><span class="n">mr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">mr</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x00FF</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">((</span><span class="n">mr</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x00FF</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+<span class="w">        </span><span class="n">mr</span><span class="w"> </span><span class="o">&gt;&gt;=</span><span class="w"> </span><span class="p">(</span><span class="mi">16</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">LOG2_NUM_SAMPLES</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// echange des echantillons</span>
+<span class="w">        </span><span class="n">tr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fr</span><span class="p">[</span><span class="n">m</span><span class="p">];</span><span class="w"> </span><span class="n">fr</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fr</span><span class="p">[</span><span class="n">mr</span><span class="p">];</span><span class="w"> </span><span class="n">fr</span><span class="p">[</span><span class="n">mr</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tr</span><span class="p">;</span>
+<span class="w">        </span><span class="n">ti</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fi</span><span class="p">[</span><span class="n">m</span><span class="p">];</span><span class="w"> </span><span class="n">fi</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fi</span><span class="p">[</span><span class="n">mr</span><span class="p">];</span><span class="w"> </span><span class="n">fi</span><span class="p">[</span><span class="n">mr</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ti</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// --- Boucles de Danielson-Lanczos ---</span>
+<span class="w">    </span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LOG2_NUM_SAMPLES</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_SAMPLES</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">istep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">L</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">k</span><span class="p">;</span>
+<span class="w">            </span><span class="c1">// cos(2*pi*m/N) et -sin(2*pi*m/N) depuis la table</span>
+<span class="w">            </span><span class="n">wr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sinewave</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">NUM_SAMPLES</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="p">];</span>
+<span class="w">            </span><span class="n">wi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">Sinewave</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+<span class="w">            </span><span class="c1">// Division par 2 pour eviter le debordement en cours de calcul</span>
+<span class="w">            </span><span class="n">wr</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span><span class="w"> </span><span class="n">wi</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_SAMPLES</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">istep</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">L</span><span class="p">;</span>
+<span class="w">                </span><span class="n">tr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wr</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">wi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fi</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+<span class="w">                </span><span class="n">ti</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wr</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fi</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">wi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fr</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+<span class="w">                </span><span class="n">qr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+<span class="w">                </span><span class="n">qi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+<span class="w">                </span><span class="n">fr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qr</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tr</span><span class="p">;</span>
+<span class="w">                </span><span class="n">fi</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qi</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ti</span><span class="p">;</span>
+<span class="w">                </span><span class="n">fr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tr</span><span class="p">;</span>
+<span class="w">                </span><span class="n">fi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qi</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ti</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="o">--</span><span class="n">k</span><span class="p">;</span>
+<span class="w">        </span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">istep</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/* ==========================================================================</span>
+<span class="cm">   Fonction principale</span>
+<span class="cm">   ========================================================================== */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// --- 1. Configuration de l'horloge systeme a 84 MHz via HSE (8 MHz) ---</span>
+<span class="w">    </span><span class="c1">// Activer HSE</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_CR_HSEON</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">RCC_CR_HSERDY</span><span class="p">));</span>
+
+<span class="w">    </span><span class="c1">// Configurer le PLL : HSE/8 * 336 / 4 = 84 MHz</span>
+<span class="w">    </span><span class="c1">// CORRECTION : suppression de la double assignation de RCC-&gt;PLLCFGR.</span>
+<span class="w">    </span><span class="c1">// PLLM = 8, PLLN = 336, PLLP = 4 (01 -&gt; division par 4)</span>
+<span class="w">    </span><span class="c1">// PLLQ = 7 (pour USB a 48 MHz si necessaire)</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">PLLCFGR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">8</span><span class="w">  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">RCC_PLLCFGR_PLLM_Pos</span><span class="p">)</span><span class="w">  </span><span class="o">|</span>
+<span class="w">                   </span><span class="p">(</span><span class="mi">336</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">RCC_PLLCFGR_PLLN_Pos</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">                   </span><span class="p">(</span><span class="mi">1</span><span class="w">   </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">RCC_PLLCFGR_PLLP_Pos</span><span class="p">)</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="c1">// 01 = /4</span>
+<span class="w">                   </span><span class="p">(</span><span class="mi">7</span><span class="w">   </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">RCC_PLLCFGR_PLLQ_Pos</span><span class="p">)</span><span class="w">  </span><span class="o">|</span>
+<span class="w">                   </span><span class="n">RCC_PLLCFGR_PLLSRC_HSE</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Activer le PLL et attendre qu'il soit pret</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_CR_PLLON</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">RCC_CR_PLLRDY</span><span class="p">));</span>
+
+<span class="w">    </span><span class="c1">// Basculer le systeme sur PLL</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">CFGR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_CFGR_SW_PLL</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">CFGR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">RCC_CFGR_SWS</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RCC_CFGR_SWS_PLL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">SystemCoreClock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">84000000</span><span class="p">;</span><span class="w"> </span><span class="c1">// mise a jour de la variable globale</span>
+
+<span class="w">    </span><span class="c1">// --- 2. Activer la FPU (Coprocesseur Virgule Flottante) ---</span>
+<span class="w">    </span><span class="c1">// Les bits CP10 et CP11 dans CPACR doivent etre a 0b11 (plein acces)</span>
+<span class="w">    </span><span class="n">SCB</span><span class="o">-&gt;</span><span class="n">CPACR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="p">((</span><span class="mi">3UL</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">10</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mi">3UL</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">11</span><span class="o">*</span><span class="mi">2</span><span class="p">));</span>
+
+<span class="w">    </span><span class="c1">// --- 3. Configurer SysTick pour les delais (1 tick = 1 us) ---</span>
+<span class="w">    </span><span class="n">SysTick_Config</span><span class="p">(</span><span class="n">SystemCoreClock</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000000</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// --- 4. Initialiser les peripheriques ---</span>
+<span class="w">    </span><span class="n">I2C_Init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">OLED_Init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">OLED_Clear</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ADC_Init</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// --- 5. Precalculer les tables sinusoidales et de fenetrage ---</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_SAMPLES</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3.141592653589793f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">NUM_SAMPLES</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Sinewave</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sinf</span><span class="p">(</span><span class="n">angle</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Fenetre de Hann : w[n] = 0.5 * (1 - cos(2*pi*n/N))</span>
+<span class="w">        </span><span class="n">window</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">cosf</span><span class="p">(</span><span class="n">angle</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// --- 6. Boucle principale ---</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Démarrer l'acquisition ADC par DMA</span>
+<span class="w">        </span><span class="n">ADC_Start</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// Attendre la fin des 1024 echantillons</span>
+<span class="w">        </span><span class="n">ADC_WaitForComplete</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// Appliquer la fenetre de Hann et copier dans les buffers FFT</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_SAMPLES</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">fr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="kt">float</span><span class="p">)</span><span class="n">sample_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">2048.0f</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">window</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w">  </span><span class="c1">// centrer sur 0</span>
+<span class="w">            </span><span class="n">fi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Calculer la FFT</span>
+<span class="w">        </span><span class="n">FFT</span><span class="p">(</span><span class="n">fr</span><span class="p">,</span><span class="w"> </span><span class="n">fi</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Calculer le module (magnitude) et trouver le maximum</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">max_mag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int</span><span class="w">   </span><span class="n">max_bin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// On ignore les 5 premiers bins (composante continue et tres basses frequences)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">NUM_SAMPLES</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">mag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqrtf</span><span class="p">(</span><span class="n">fr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">fr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">fi</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">            </span><span class="n">fr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mag</span><span class="p">;</span><span class="w">   </span><span class="c1">// stockage temporaire pour l'affichage</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mag</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max_mag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">max_mag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mag</span><span class="p">;</span>
+<span class="w">                </span><span class="n">max_bin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Frequence maximale detectee (pour information / debug)</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">max_freq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max_bin</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">FS</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">NUM_SAMPLES</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Effacer le framebuffer precedent</span>
+<span class="w">        </span><span class="n">OLED_Clear</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// Dessiner le spectre : on repartit les bins sur 128 colonnes</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">NUM_SAMPLES</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">128</span><span class="p">;</span><span class="w">  </span><span class="c1">// ~4 bins par colonne</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">NUM_SAMPLES</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">step</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Moyenne des 'step' bins pour lisser legerement</span>
+<span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">mag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">NUM_SAMPLES</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">s</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">mag</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">fr</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="p">];</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">mag</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">step</span><span class="p">;</span>
+
+<span class="w">            </span><span class="c1">// Mise a l'echelle : hauteur max = 63 pixels</span>
+<span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">max_mag</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="mf">63.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">max_mag</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">;</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">mag</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">scale</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">height</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">63</span><span class="p">)</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">63</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">height</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">  </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">            </span><span class="n">OLED_DrawBar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Mettre a jour l'ecran OLED</span>
+<span class="w">        </span><span class="n">OLED_Update</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// Petite pause avant la prochaine acquisition (≈ 10 fps)</span>
+<span class="w">        </span><span class="n">delay_ms</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=87506c74-c027-4a24-810d-b6219be06490">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-2"></div>
 </div>
 </div>
 </div>
