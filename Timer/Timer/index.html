@@ -645,8 +645,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="comment-mesurer-et-generer-precisement-des-periodes-et-frequences-grace-aux-timers">Comment mesurer et générer précisément des périodes et fréquences grâce aux Timers ?<a class="anchor-link" href="#comment-mesurer-et-generer-precisement-des-periodes-et-frequences-grace-aux-timers">¶</a></h1>
 </div>
 </div>
@@ -656,8 +655,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Un Timer est un compteur matériel indépendant du processeur qui compte les impulsions de l'horloge système interne $(F_{tim})$, préalablement divisée par un Prescaler (diviseur de fréquence). Il est configuré pour générer un signal (drapeau : <em>flag</em>) ou déclencher une interruption lorsqu'il atteint sa valeur maximale de basculement (débordement ou <em>Overflow</em>) indiquée dans le registre de période (<code>Auto-Reload</code>), ou une valeur de comparaison spécifique.</p>
 <p>Le temps écoulé entre son activation et le moment où le drapeau est levé peut être calculé. Ce mécanisme est plus précis temporellement et est non-bloquant pour le processeur. Il dépend de l'horloge interne (souvent stabilisée par un quartz) et non de la vitesse d'exécution du code.</p>
 <p>Pour calculer le temps désiré exact, il faut calculer la durée d'un unique incrément (le <em>Tick</em>) ainsi que le nombre de pas nécessaires pour atteindre le délai souhaité. On utilise la formule :</p>
@@ -681,8 +679,7 @@ $$T_{\text{période}} = \frac{(\text{Prescaler} + 1) \times (\text{ARR} + 1)}{F_
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
@@ -691,8 +688,7 @@ $$T_{\text{période}} = \frac{(\text{Prescaler} + 1) \times (\text{ARR} + 1)}{F_
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="creation-de-delais-avec-debordement-clignotement-precis-avec-delay-timer">Création de délais avec débordement : Clignotement précis avec delay-Timer<a class="anchor-link" href="#creation-de-delais-avec-debordement-clignotement-precis-avec-delay-timer">¶</a></h2><p>Ici, nous configurons le Timer 2 qui est de 32 bits avec une horloge par défaut à 16 MHz issue de l'oscillateur interne (<code>HSI</code>). Pour simplifier le calcul et éviter d'avoir à compter des dizaines de débordements successifs, nous ajustons directement les registres <code>PSC</code> et <code>ARR</code> pour obtenir un débordement unique toutes les 1 seconde (1000 ms).</p>
 <p>Pour cela, nous configurons le Prescaler à 1599. Le Timer s'incrémente à une fréquence de :</p>
 $$\frac{16\,000\,000\ \mathrm{Hz}}{1599+1}=10\,000\ \mathrm{ticks/seconde}$$<p>Le registre de période <code>ARR</code> étant configuré à 9999, un débordement unique (<code>UIF</code>) survient exactement après 10 000 ticks, soit toutes les :</p>
@@ -760,7 +756,7 @@ $$\frac{9999+1}{10\,000\text{ Hz}}=1,000000\text{ seconde}$$<div class="highligh
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -793,7 +789,6 @@ YouTubeVideo('XBCwYPPZzio', width=800, height=450)
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <iframe allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/XBCwYPPZzio" width="800"></iframe>
 </div>
@@ -806,8 +801,7 @@ YouTubeVideo('XBCwYPPZzio', width=800, height=450)
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="exemple-2-anti-rebond-debounce-avec-interruption-et-timer">Exemple 2 : Anti-rebond (Debounce) avec Interruption et Timer<a class="anchor-link" href="#exemple-2-anti-rebond-debounce-avec-interruption-et-timer">¶</a></h3><p>Les stratégies utilisées ici :</p>
 <ul>
 <li>L'appui matériel sur le bouton déclenche une Interruption Externe (<code>EXTI0</code>).</li>
@@ -825,8 +819,7 @@ $$F_{tim}=\frac{16\,000\,000\ \mathrm{Hz}}{1599+1}=10\,000\ \mathrm{Hz}$$$$\text
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
 
 <span class="cp">#define LED_PIN     13</span>
@@ -943,7 +936,7 @@ $$F_{tim}=\frac{16\,000\,000\ \mathrm{Hz}}{1599+1}=10\,000\ \mathrm{Hz}$$$$\text
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -974,7 +967,6 @@ YouTubeVideo('GLnzqnRdpWw', width=800, height=450)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <iframe allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/GLnzqnRdpWw" width="800"></iframe>
 </div>
@@ -987,8 +979,7 @@ YouTubeVideo('GLnzqnRdpWw', width=800, height=450)</div>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="comment-generer-des-temporisations-periodiques-sans-bloquer-le-processeur">Comment génerer des temporisations périodiques sans bloquer le processeur ?<a class="anchor-link" href="#comment-generer-des-temporisations-periodiques-sans-bloquer-le-processeur">¶</a></h2><p>Pour supprimer définitivement l'attente active du processeur et rendre notre système réellement multitâche, nous devons lier le débordement du Timer au contrôleur d'interruptions du processeur (NVIC).</p>
 <p>Sur le STM32F401, le Timer possède un registre dédié à l'autorisation des événements, le registre <code>TIMx-&gt;DIER</code> (<em>DMA/Interrupt Enable Register</em>). En y activant le bit <code>UIE</code> (<em>Update Interrupt Enable</em>), le matériel va générer automatiquement une requête d'interruption vers le <code>NVIC</code> à chaque fois que le compteur atteint la valeur du registre <code>ARR</code> (débordement). Le NVIC prend alors le relais, suspend le programme principal, et exécute la routine dédiée nommée <code>TIM2_IRQHandler</code>.</p>
 <p>Les règles impératives dans l'ISR du Timer :</p>
@@ -1075,7 +1066,7 @@ YouTubeVideo('GLnzqnRdpWw', width=800, height=450)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -1106,7 +1097,6 @@ YouTubeVideo('l6ko95VhIbU', width=800, height=450)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <iframe allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/l6ko95VhIbU" width="800"></iframe>
 </div>
@@ -1119,8 +1109,7 @@ YouTubeVideo('l6ko95VhIbU', width=800, height=450)</div>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="interruption-periodiques-grace-au-timer-systick">Interruption périodiques grâce au Timer SysTick<a class="anchor-link" href="#interruption-periodiques-grace-au-timer-systick">¶</a></h2><p>Le Timer <code>SysTick</code> est un alternative de Timer classique. Nous allons l'utiliser comme une <strong>référence temporelle régulière et fiable</strong> et va générer des interruptions périodiques, une base de temps pour les systèmes d'exploitation temps réel (RTOS) comme FreeRTOS ou les Protothreads.</p>
 <p>Le SysTick est un timer <strong>24 bits à décompte descendant</strong> avec rechargement automatique. Cela signifie qu'il peut compter de 16 777 215 (2²⁴ - 1) jusqu'à 0.</p>
 <p>Le SysTick est contrôlé par <strong>trois registres</strong> 32 bits, accessibles via la structure <code>SysTick</code> (définie dans le CMSIS) :</p>
@@ -1274,8 +1263,7 @@ $$\text{RELOAD} = \frac{16\,000\,000}{1000} - 1 = 15999$$<h4 id="exemple-1-blink
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="pilotage-dun-afficheur-7-segments">Pilotage d'un afficheur 7 segments<a class="anchor-link" href="#pilotage-dun-afficheur-7-segments">¶</a></h2><p>Pour obtenir un déclenchement précis sans bloquer le processeur, nous configurons Timer 0 pour générer une interruption environ toutes les 2 millisecondes.  À chaque interruption, le microcontrôleur change de chiffre (multiplexage dynamique), laissant la boucle principale while(1) totalement libre pour exécuter d'autres tâches. Une machine à états bascule d'un afficheur à l'autre à chaque interruption. Les 4 afficheurs sont ainsi rafraîchis en moins de 10 millisecondes (fréquence globale &gt; 100 Hz), ce qui est parfait pour tromper l'œil humain sans aucun scintillement.</p>
 <p>L'utilisation de l'opérateur modulo % remplace les soustractions complexes pour extraire les chiffres de manière plus propre.</p>
 </div>
@@ -1287,7 +1275,7 @@ $$\text{RELOAD} = \frac{16\,000\,000}{1000} - 1 = 15999$$<h4 id="exemple-1-blink
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -1318,7 +1306,6 @@ display(Image(filename=r"C:\Users\Pc\plkab-course\INF302\docs\Timer\7seg.jpg", w
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedImage jp-OutputArea-output" tabindex="0">
 <img alt="No description has been provided for this image" class="" src="data:image/jpeg;base64,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zUVHmKNsUbWRtDWNAAA6BekRAREQEREBERAREQFKhSgIiIMK63OktNKamvl7OHeDd7dJ4ngOS0Wnr7bmTPpD20U9TVSGJj6WRm/kk8y0dFlamq3l8NtjjhPhTHl7p2FzQ0DiABzKq1musdBO6eR3hRMLGU9TI8uERJ4x+TPeeJxxQdJRVqyXquqK2liqxTOjrGzPj7PIdGGOxgjrnPNWVAREQEREBERAREQEREBERAREQF86iaKngfNPI2OJgLnPccBo719FoNeU1RV6RucFGxz5nQnDGc3DmR8iCs6lvNq1Da9+e3XWKjjkDobtHBgQuB4SA893y8sLDtf4/Vdrg1ncoaypdEZLXFEPxEgH9Y7veRxAW1ud9hfpSCay3az00DKbdlgrG7/JuNzd3gQc8MLVig/CS4UEVQ1tNUSWRssRjZu9hKH5aWjpjuQXW46kobfVV1NOJC+ioxVy7rcjcyRw8vBa6DXVC80zqq33Kjp6ktbHU1EG7Fl3LLumcqkSXOe41eqW18ZjuFLYRT1bS3A3w53Ed4IIPpW/1BdbdJsyfQxVtNNWVFC2CGGKUOeZXNw0YGTz+RB0NpzxUrDs8UkFrpIp/wAqyFjX+cAZWYgIiICIiAiIgIiICIiCEREBERAREQEREBERAREQEREBERBqKOxQ0t4muTZXOMm9uxkDDCefFbdAiAiIgIiICIiAiIgInREBERAREQEREBERBjVlDS1zAysgZM1pyA8ZwV822m3ti7FtHCI/F8XcGPF5fIs1EGHR2ugopXS0tLFFI/O85reJ45WYiICIgQSiIgIiICIiAiIgIiICIiAoIypRBqn6csr68V77VRuqx/XGEb3yrPFND2wn7NvbBu4H44hvcvsiDGkt9JJJLI+mic+ZnZyOLRl7e494WLSWG00Uwmo7bSwyDk9kQBC2aIIAwpREBERAREQEREBERAREQQiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICBECCUREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQQgREAoiICIiAiIgIiIClEQQiIgIiICIiAiIgKURBCIiAiIgIiICIiAiIgIiICIiAiIgIiICBEQSiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiD/9k=" width="450"/>
 </div>
@@ -1331,8 +1318,7 @@ display(Image(filename=r"C:\Users\Pc\plkab-course\INF302\docs\Timer\7seg.jpg", w
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="exemple-1-chronometre-7-segments">Exemple 1 : Chronometre 7 segments<a class="anchor-link" href="#exemple-1-chronometre-7-segments">¶</a></h3><p>Le Timer 2 gère la base de temps précise de 1 ms en arrière-plan, sans blocage du processeur. Nous disposons d'un tableau constant qui contient le motif d'allumage des LED pour un afficheur 7 segments à cathode commune.</p>
 <p><strong>Détail du calcul pour 1 ms (Timer 2 - 32 bits)</strong></p>
 <p>Pour une fréquence d'horloge interne par défaut à 16 MHz (HSI) et un Prescaler configuré à 15 (division réelle par 16) :</p>
@@ -1428,7 +1414,7 @@ $$F_{tim}=\frac{16\,000\,000\ \mathrm{Hz}}{15+1}=1\,000\,000\ \mathrm{Hz}\ (1\ \
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -1472,13 +1458,11 @@ display(Markdown("""
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>&lt;IPython.core.display.Image object&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
 <blockquote>
 <p><strong>Attribution de l'image :</strong>
@@ -1495,7 +1479,7 @@ By <a href="//commons.wikimedia.org/wiki/User:Guam~commonswiki" title="User:Guam
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
@@ -1527,7 +1511,6 @@ YouTubeVideo('kRCQ1h7pWOQ', width=800, height=450)
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <iframe allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/kRCQ1h7pWOQ" width="800"></iframe>
 </div>
@@ -1540,8 +1523,7 @@ YouTubeVideo('kRCQ1h7pWOQ', width=800, height=450)
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><a id="exemple2-chrono"></a></p>
 <h3 id="exemple-2-chronometre-numerique-multiplexage-temporel">Exemple 2 : Chronomètre numérique (Multiplexage temporel)<a class="anchor-link" href="#exemple-2-chronometre-numerique-multiplexage-temporel">¶</a></h3><p>Les segments (A à G) sont reliés aux broches PA0 à PA6 (Port A), et la sélection des 4 afficheurs se fait via les broches PB2, PB3, PB4 et PB5 (Port B).</p>
 <div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
@@ -1694,7 +1676,7 @@ YouTubeVideo('kRCQ1h7pWOQ', width=800, height=450)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
@@ -1725,7 +1707,6 @@ YouTubeVideo('IudErcPC6tw', width=800, height=450)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <iframe allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/IudErcPC6tw" width="800"></iframe>
 </div>
@@ -1739,7 +1720,7 @@ YouTubeVideo('IudErcPC6tw', width=800, height=450)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">

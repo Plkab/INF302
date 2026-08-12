@@ -747,8 +747,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="analyse-spectrale-par-fft-detection-de-frequence">Analyse spectrale par FFT : Détection de fréquence<a class="anchor-link" href="#analyse-spectrale-par-fft-detection-de-frequence">¶</a></h1>
 </div>
 </div>
@@ -758,8 +757,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="introduction-pourquoi-analyser-un-signal-en-frequence">Introduction: Pourquoi analyser un signal en fréquence ?<a class="anchor-link" href="#introduction-pourquoi-analyser-un-signal-en-frequence">¶</a></h2><p>Un signal analogique (comme une tension, une vibration, un son) est naturellement perçu comme une <strong>évolution dans le temps</strong>. C'est ce que nous voyons sur un oscilloscope : l'amplitude en fonction du temps.</p>
 <p>Cependant, la plupart des informations "intéressantes" sont cachées dans le <strong>domaine fréquentiel</strong>. Par exemple :</p>
 <ul>
@@ -1212,7 +1210,7 @@ $$W_N^k = e^{-j\frac{2\pi k}{N}} = \cos\left(\frac{2\pi k}{N}\right) - j \sin\le
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -1238,8 +1236,7 @@ $$W_N^k = e^{-j\frac{2\pi k}{N}} = \cos\left(\frac{2\pi k}{N}\right) - j \sin\le
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="analyseur-de-spectre-audio">Analyseur de spectre audio<a class="anchor-link" href="#analyseur-de-spectre-audio">¶</a></h1><p>Ce projet réalise un analyseur de spectre audio embarqué, qui affiche en temps réel les fréquences dominantes d’un signal sonore sur un écran OLED 128×64. L’objectif est de démontrer comment allier acquisition analogique, calcul numérique haute performance et affichage graphique dans un environnement contraint, tout en maîtrisant chaque registre matériel.</p>
 <p>La carte STM32F401CCU6 (Black Pill) est cadencée à 84 MHz et dispose d’une FPU, ce qui accélère les calculs en virgule flottante. L’entrée audio est branchée sur la broche PA0 (ADC1) pour numériser le signal, et l’affichage se fait via un écran OLED SSD1306 connecté en I²C sur les broches PB6 (SCL) et PB7 (SDA).<br/>
 Ce matériel minimaliste suffit pour une acquisition à 10 kHz et une FFT 1024 points, le tout alimenté en 3,3 V.</p>
@@ -1255,8 +1252,7 @@ Grâce à la FPU, la FFT s’exécute en environ 2 ms, ce qui est très inférie
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="cm">/*</span>
 <span class="cm"> * =============================================================================</span>
 <span class="cm"> * Analyseur de spectre audio sur STM32F401CCU6 </span>
@@ -1771,7 +1767,7 @@ Grâce à la FPU, la FFT s’exécute en environ 2 ms, ce qui est très inférie
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">

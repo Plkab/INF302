@@ -661,8 +661,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="acquisition-de-signaux-analogiques-via-adc">Acquisition de signaux analogiques via ADC<a class="anchor-link" href="#acquisition-de-signaux-analogiques-via-adc">¶</a></h1>
 </div>
 </div>
@@ -672,8 +671,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>L'acquisition de signaux analogiques est une étape fondamentale dans les systèmes embarqués. Elle consiste à convertir des phénomènes physiques continus (température, pression, son, etc.) en une séquence de valeurs numériques discrètes exploitables par un microcontrôleur. Cette conversion est réalisée par un <em>Convertisseur Analogique-Numérique (CAN ou ADC pour Analog-to-Digital Converter)</em>.</p>
 <p><strong>Caractéristiques de l'ADC du STM32F401</strong></p>
 <p>L'ATmega328P intègre un convertisseur basé sur l'architecture à approximations successives, sa résolution est de 12 bits, ce qui détermine le nombre de niveaux de quantification disponibles. Il convertit une tension analogique $V_{in}$ en une valeur numérique entière N comprise entre 0 et 2¹²-1 (soit de 0 à 4095).</p>
@@ -690,8 +688,7 @@ $$N=\text{int}\left(\frac{V_{in}\cdot 4096}{V_{ref}}\right)$$</p>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="le-theoreme-dechantillonnage-nyquist-shannon">Le Théorème d'Échantillonnage (Nyquist-Shannon)<a class="anchor-link" href="#le-theoreme-dechantillonnage-nyquist-shannon">¶</a></h2><p>Pour pouvoir reconstruire parfaitement un signal analogique sans perte d'information, la fréquence d'échantillonnage $(F_{e})$ doit être strictement supérieure au double de la fréquence maximale $(F_{max})$ présente dans le signal :
 $$F_{e}&gt;2\cdot F_{max}$$</p>
 <p>Risque de repliement spectral (Aliasing) : Si $F_e \le 2 \cdot F_{max}$, les hautes fréquences se replient et viennent corrompre les basses fréquences du signal utile. Pour éviter cela, on place systématiquement un filtre analogique passe-bas (appelé filtre anti-repliement) en amont de la broche du microcontrôleur.</p>
@@ -704,8 +701,7 @@ $$F_{e}&gt;2\cdot F_{max}$$</p>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="lecture-de-ladc-en-mode-bloquant-lapproche-classique">Lecture de l'ADC en mode bloquant : L'approche classique<a class="anchor-link" href="#lecture-de-ladc-en-mode-bloquant-lapproche-classique">¶</a></h2><p>Pour piloter l'ADC en mode bloquant sur le STM32F401, le microcontrôleur s'appuie sur une structure nommée ADC1 qui regroupe les registres majeurs suivants :</p>
 <ul>
 <li><code>ADC-&gt;CCR</code> (<em>Common Control Register</em>) : Permet de configurer l'horloge commune de l'ADC et son diviseur de fréquence (bits <code>ADCPRE[1:0]</code>).</li>
@@ -774,8 +770,7 @@ $$F_{e}&gt;2\cdot F_{max}$$</p>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="exemple-1-thermometre-avec-lm35-via-le-moniteur-serie">Exemple 1 : Thermomètre avec LM35 via le Moniteur Série<a class="anchor-link" href="#exemple-1-thermometre-avec-lm35-via-le-moniteur-serie">¶</a></h3><p>Le capteur LM35 fournit une variation linéaire de tension de $10\text{ mV/°C}$ (soit $0,01\text{ V/°C})$. C'est a dire que la tension mesurée est égale à $V_{in} = \text{Température} \times 0,01$. En remplaçant $V_{in}$ dans l'équation de l'ADC avec $V_{ref} = 3,3\text{ V}$ :
 $$N=\frac{V_{in}\cdot 4096}{3,3}=\frac{\text{Température}\times 0,01\cdot 4096}{3,3}$$</p>
 <p>$$\text{Température}=\frac{N\times 3,3}{40,96}\approx \frac{N\times 0,805\text{\ mV}}{10\text{\ mV}}$$</p>
@@ -1001,7 +996,7 @@ $$N=\frac{V_{in}\cdot 4096}{3,3}=\frac{\text{Température}\times 0,01\cdot 4096}
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -1032,7 +1027,6 @@ YouTubeVideo('vK-bdrvTR-Q', width=800, height=450)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <iframe allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/vK-bdrvTR-Q" width="800"></iframe>
 </div>
@@ -1045,8 +1039,7 @@ YouTubeVideo('vK-bdrvTR-Q', width=800, height=450)</div>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="lacquisition-adc-non-bloquante-par-interruption-et-timer">L'acquisition ADC non-bloquante (par Interruption et Timer)<a class="anchor-link" href="#lacquisition-adc-non-bloquante-par-interruption-et-timer">¶</a></h2><p>Si l'on souhaite analyser un signal dynamique comme un signal audio ou un tracé d'Électrocardiogramme (ECG), la capture des échantillons doit s'effectuer à des intervalles de temps rigoureusement identiques (44,1 kHz pour l'audio de haute fidélité, et traditionnellement entre 250 Hz et 1000 Hz pour un ECG diagnostique). On associe alors un Timer (le <code>TIM2</code> ou le <code>TIM3</code>) comme déclencheur automatique de l'ADC de manière purement matérielle. Le Timer compte le temps en arrière-plan, dictant de manière stable la fréquence d'échantillonnage.</p>
 <p>Dès qu'il déborde, il génère un signal interne électrique direct (événement TRGO) vers le bloc ADC pour lancer instantanément la conversion. Une fois la conversion terminée, l'ADC alerte le processeur en levant une interruption et en déroutant le CPU vers son gestionnaire vectoriel dédié (<code>ADC_IRQHandler</code>).</p>
 <h3 id="les-registres-a-configurer">Les registres à configurer<a class="anchor-link" href="#les-registres-a-configurer">¶</a></h3><p>Sur le STM32F401, ce couplage s'effectue en configurant les registres de la structure <code>ADC1</code> :</p>
@@ -1391,7 +1384,7 @@ YouTubeVideo('vK-bdrvTR-Q', width=800, height=450)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -1422,7 +1415,6 @@ YouTubeVideo('xFwkk2RSLhY', width=800, height=450)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <iframe allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/xFwkk2RSLhY" width="800"></iframe>
 </div>
@@ -1435,8 +1427,7 @@ YouTubeVideo('xFwkk2RSLhY', width=800, height=450)</div>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="le-script-python-pour-laffichage-en-temps-reel">Le Script Python pour l'affichage en Temps Réel<a class="anchor-link" href="#le-script-python-pour-laffichage-en-temps-reel">¶</a></h3><p>Voici le script Python (utilisant matplotlib et pyserial) que vos étudiants doivent lancer sur leur PC pour intercepter les paquets envoyés par le STM32 et afficher le graphique ECG dynamique.</p>
 </div>
 </div>
@@ -1447,7 +1438,7 @@ YouTubeVideo('xFwkk2RSLhY', width=800, height=450)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -1573,9 +1564,8 @@ if ser is not None:
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Erreur de connexion sur le port COM10 : could not open port 'COM10': FileNotFoundError(2, 'Le fichier spécifié est introuvable.', None, 2)
+<pre>Erreur de connexion sur le port COM10 : could not open port 'COM10': PermissionError(13, 'Accès refusé.', None, 5)
 </pre>
 </div>
 </div>
@@ -1588,7 +1578,7 @@ if ser is not None:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -1615,7 +1605,7 @@ if ser is not None:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -1642,7 +1632,7 @@ if ser is not None:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
@@ -1669,7 +1659,7 @@ if ser is not None:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
@@ -1696,7 +1686,7 @@ if ser is not None:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
@@ -1907,14 +1897,12 @@ if __name__ == "__main__":
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Erreur : could not open port 'COM10': FileNotFoundError(2, 'Le fichier spécifié est introuvable.', None, 2)
+<pre>Erreur : could not open port 'COM10': PermissionError(13, 'Accès refusé.', None, 5)
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
 <pre>
 An exception has occurred, use %tb to see the full traceback.
@@ -1932,7 +1920,7 @@ An exception has occurred, use %tb to see the full traceback.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">

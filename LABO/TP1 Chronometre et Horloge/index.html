@@ -649,8 +649,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="tp-chronometre-et-horloge-programmable-sur-stm32f4-construction-par-etapes">TP : Chronomètre et horloge programmable sur STM32F4 – Construction par étapes<a class="anchor-link" href="#tp-chronometre-et-horloge-programmable-sur-stm32f4-construction-par-etapes">¶</a></h1>
 </div>
 </div>
@@ -660,8 +659,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="demo-du-resultat">DEMO DU RESULTAT :<a class="anchor-link" href="#demo-du-resultat">¶</a></h3>
 </div>
 </div>
@@ -672,7 +670,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -704,7 +702,6 @@ YouTubeVideo('sny7JVg1VT0', width=800, height=450)
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <iframe allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/sny7JVg1VT0" width="800"></iframe>
 </div>
@@ -717,8 +714,7 @@ YouTubeVideo('sny7JVg1VT0', width=800, height=450)
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="objectif-general">Objectif général<a class="anchor-link" href="#objectif-general">¶</a></h2><p>Réaliser un système embarqué sur STM32F401CCU (Blackpill) qui propose un menu à deux pages sur un afficheur LCD 16×2 :</p>
 <ul>
 <li><strong>Page 0</strong> : un chronomètre affichant <code>hh:mm:ss:tt</code> (heures, minutes, secondes et tierces – 1/60ᵉ de seconde).</li>
@@ -769,8 +765,7 @@ YouTubeVideo('sny7JVg1VT0', width=800, height=450)
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="description-du-tp-les-7-etapes-de-construction">Description du TP : les 7 étapes de construction<a class="anchor-link" href="#description-du-tp-les-7-etapes-de-construction">¶</a></h2><p>Vous allez construire le programme <strong>brique par brique</strong>. Chaque étape est une fonctionnalité indépendante que vous devez implémenter, tester et valider avant de passer à la suivante. À la fin, toutes les briques s’assemblent pour former le programme final.</p>
 <h3 id="etape-1-mise-en-place-du-timer3-interruption-1-ms">Étape 1 – Mise en place du Timer3 (interruption 1 ms)<a class="anchor-link" href="#etape-1-mise-en-place-du-timer3-interruption-1-ms">¶</a></h3><p><strong>Objectif</strong> : Configurer le Timer3 pour qu’il génère une interruption toutes les 1 ms. Dans le gestionnaire d’interruption, vous incrémenterez un compteur global <code>tick_ms</code>. Vous afficherez sa valeur sur le LCD (par exemple toutes les 100 ms) pour vérifier la périodicité.</p>
 <p><strong>Consignes</strong> :</p>
@@ -859,8 +854,7 @@ YouTubeVideo('sny7JVg1VT0', width=800, height=450)
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="pistes-de-reflexion-et-aide">Pistes de réflexion et aide<a class="anchor-link" href="#pistes-de-reflexion-et-aide">¶</a></h2><ul>
 <li><strong>Calcul du Timer3</strong> : pour 16 MHz, on peut choisir <code>PSC = 1599</code> (division par 1600) et <code>ARR = 9</code> (division par 10) → 1 kHz.</li>
 <li><strong>Anti‑rebond</strong> : utilisez une variable <code>debounce</code> initialisée à 5 lorsque le niveau change ; décrémentez‑la tant que le niveau reste stable. Quand elle atteint 0, le niveau est validé.</li>
@@ -889,8 +883,7 @@ YouTubeVideo('sny7JVg1VT0', width=800, height=450)
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="livrables-attendus">Livrables attendus<a class="anchor-link" href="#livrables-attendus">¶</a></h2><ul>
 <li>Code source complet et commenté dans un fichier compressee 20%.</li>
 <li>Schéma de câblage sous Prroteus Isis 10%.</li>
@@ -906,7 +899,7 @@ YouTubeVideo('sny7JVg1VT0', width=800, height=450)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">

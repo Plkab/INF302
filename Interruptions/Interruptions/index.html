@@ -637,8 +637,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="reactivite-rapide-avec-les-interruptions-materielles-et-determinisme-temporel">Réactivité rapide avec les interruptions matérielles et déterminisme temporel<a class="anchor-link" href="#reactivite-rapide-avec-les-interruptions-materielles-et-determinisme-temporel">¶</a></h1>
 </div>
 </div>
@@ -648,8 +647,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="principe-des-interruptions">Principe des interruptions<a class="anchor-link" href="#principe-des-interruptions">¶</a></h2><p>Une interruption est un événement qui survient au processeur, lui forçant d'interrompre immédiatement ce qu'il fait dans le but d'exécuter une tâche plus urgente appelée <strong>ISR</strong> (<em>Interrupt Service Routine</em>) ou <em>Handler</em>. Ceci garantit une réactivité rapide et efficace. Une fois l'ISR terminée, le processeur reprend exactement là où il s'était arrêté.</p>
 <p><strong>Pourquoi les utiliser ?</strong></p>
 <p>Contrairement au "<em>polling</em>" (scrutation) qui consiste à vérifier en boucle l'état d'un bouton, consomme 100% des ressources CPU pour surveiller une broche; l'interruption garantit une réactivité immédiate d'ordre de quelques microsecondes à un événement externe et libère ainsi du temps CPU pour d'autres calculs. <strong>C'est la base du système déterminisme temps réel.</strong></p>
@@ -662,8 +660,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="configuration-des-interruptions-materielles">Configuration des interruptions materielles<a class="anchor-link" href="#configuration-des-interruptions-materielles">¶</a></h2><p>Voir à la page 202 du datasheet RM0368 : 10 Interrupts and events</p>
 <p>Pour configurer ce mécanisme, nous utilisons des registres spécifiques :</p>
 <ul>
@@ -831,8 +828,7 @@ Exemple : Si vous configurez <code>EXTI0</code> pour écouter <code>PA0</code>, 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="exemple-1-comment-savoir-si-quelquun-a-appuye-sur-un-bouton-sans-rater-lappui">Exemple 1 : Comment savoir si quelqu’un a appuyé sur un bouton sans rater l’appui ?<a class="anchor-link" href="#exemple-1-comment-savoir-si-quelquun-a-appuye-sur-un-bouton-sans-rater-lappui">¶</a></h3><p>À chaque appui sur le bouton poussoir connectee sur la broche PA0 la LED sur PC13 bascule son état.</p>
 <div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
 
@@ -928,7 +924,7 @@ Exemple : Si vous configurez <code>EXTI0</code> pour écouter <code>PA0</code>, 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -960,7 +956,6 @@ YouTubeVideo('BxU0e9iXK0g', width=800, height=450)
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <iframe allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/BxU0e9iXK0g" width="800"></iframe>
 </div>
@@ -973,8 +968,7 @@ YouTubeVideo('BxU0e9iXK0g', width=800, height=450)
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="exemple-2-algorithme-danti-redonds-logiciel-lecture-dun-bouton-poussoir">Exemple 2 : Algorithme d'anti-redonds logiciel - Lecture d'un bouton poussoir<a class="anchor-link" href="#exemple-2-algorithme-danti-redonds-logiciel-lecture-dun-bouton-poussoir">¶</a></h3><p>À chaque appui sur le bouton poussoir connectee sur la broche PA0 la LED sur PC13 bascule son état.</p>
 <div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
 
@@ -1088,8 +1082,7 @@ YouTubeVideo('BxU0e9iXK0g', width=800, height=450)
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>

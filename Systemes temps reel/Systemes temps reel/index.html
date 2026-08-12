@@ -641,8 +641,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="systemes-embarques-et-systemes-temps-reel">Systèmes embarqués et Systèmes temps réel<a class="anchor-link" href="#systemes-embarques-et-systemes-temps-reel">¶</a></h1>
 </div>
 </div>
@@ -652,8 +651,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="quest-ce-quun-systeme-embarque">Qu'est-ce qu'un Système embarqué ?<a class="anchor-link" href="#quest-ce-quun-systeme-embarque">¶</a></h2>
 </div>
 </div>
@@ -663,8 +661,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Un système embarqué est un dispositif électronique intégrant un processeur sur lequel s'exécute un logiciel spécifique appelé <em>firmware</em>. Ce dispositif est conçu pour répondre à un objectif précis et défini, mission dédiée à remplir. Il n'est pas d'usage général, ni polyvalent comme un ordinateur personnel PC qui peut exécuter une multitude de programmes différents en meme temps.</p>
 <p>La plupart de ces systèmes sont conçus sur la base des microcontrôleurs, SoC (System On Chip). Et dans ce cours, nous allons utiliser un microcontrôleur, le STM32F401CCU fabriqué par la societé STMicroelectronics. Les microcontrôleurs sont omniprésents dans notre quotidien, ils sont cachés dans des objets et ils représentent environ 98 % des microprocesseurs fabriqués dans le monde. Aujourd'hui nous pouvons affirmer que la quasi-totalité (plus de 90-95 %) des appareils électriques modernes intègrent désormais un système embarqué.</p>
 </div>
@@ -675,8 +672,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="quest-ce-quun-systeme-embarque-temps-reel">Qu'est-ce qu'un système embarqué temps réel ?<a class="anchor-link" href="#quest-ce-quun-systeme-embarque-temps-reel">¶</a></h2>
 </div>
 </div>
@@ -686,8 +682,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Un système embarqué est dit <em>temps réel</em> lorsqu'il exécute des tâches ou réagit à des événements extérieurs dans un délai garanti. Les résultats produits ne sont pas seulement corrects, mais ils sont fournis dans un délai requis. C'est-à-dire que le moment de la livraison des résultats est capital. C'est là l'un des principaux objetifs du cours : apprendre à construire des systèmes qui répondent à cette contrainte, les résultats doivent être <strong>prévisibles dans le temps</strong>. Tous les systèmes construits doivent garantir qu'une tâche se terminera toujours en moins de X microsecondes, maximale non négociable, c'est le <strong>déterminisme temporel</strong>. <code>Autrement dit, un système temps réel doit non seulement fournir une réponse correcte, mais aussi la fournir dans un délai imparti</code>.</p>
 <p>Prenons l'exemple du déclenchement d'un airbag lors du choc d'un véhicule : si le signal arrive ne serait-ce que 50 millisecondes après l'impact, le système est inutile et les conséquences pour le conducteur peuvent être graves. D'une autre façon, on peut dire que si les résultats du système produits sont corrects mais arrivent en retard, le système a échoué, ce qui est équivalent à une défaillance.</p>
 </div>
@@ -698,8 +693,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Il existe deux types principaux de systèmes temps réel d'apres le contrainte temps réel :</p>
 <ul>
 <li><p><strong>Systèmes temps réel stricts (Hard Real-Time)</strong> : Le non-respect du délais entraîne une catastophe ou une défaillance totale du système. Ici, WCET doit toujours inférieur à le deadline (l’échéance) dans toute les conditions.</p>
@@ -720,8 +714,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="pourquoi-les-contraintes-temporelles-existent">Pourquoi les contraintes temporelles existent ?<a class="anchor-link" href="#pourquoi-les-contraintes-temporelles-existent">¶</a></h3><p>Le système doit impérativement suivre la vitesse du monde réel, car l'environnement physique est par nature réactif et dynamique.</p>
 <ul>
 <li><strong>Le temps ne s'arrête pas</strong> : Le monde extérieur évolue en permanence, même pendant que le processeur effectue ses calculs.</li>
@@ -739,8 +732,7 @@ Dans le système classique qui n'est pas temps réel, le résultat seul est impo
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="conception-des-systemes-embarque-temps-reel">Conception des systèmes embarqué temps réel<a class="anchor-link" href="#conception-des-systemes-embarque-temps-reel">¶</a></h2><p>Ils sont sujets à des contraintes et des ressources :</p>
 <ul>
 <li>Dans ces systèmes temps réel, il n'y a pas de surprise, tout est déterministe.</li>
@@ -755,8 +747,7 @@ Dans le système classique qui n'est pas temps réel, le résultat seul est impo
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Afin de parvenir à rendre un système "temps réel", nous allons mettre en œuvre les stratégies suivantes :</p>
 <ol>
 <li><strong>Gestion des interruptions et Machines d'États (FSM)</strong> : Utilisation conjointe d'interruptions et de machines d'états pour répondre aux tâches urgentes et prioritaires de manière structurée.</li>
@@ -775,8 +766,7 @@ Dans le système classique qui n'est pas temps réel, le résultat seul est impo
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Exemple concret : Un contrôleur de vitesse de moteur</p>
 <ol>
 <li>Timer Interruption (chaque 500µs) : Lecture du capteur de position et calcul de la nouvelle commande (priorité absolue).</li>
@@ -790,8 +780,7 @@ Dans le système classique qui n'est pas temps réel, le résultat seul est impo
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <blockquote>
 <p>Lorsque le système devient complexe, intégrant plusieurs tâches simultanées, des priorités variées, des interfaces de communication et des contraintes temporelles strictes; l’usage d’un <strong>RTOS (Real-Time Operating System)</strong> devient indispensable.</p>
 </blockquote>
@@ -833,8 +822,7 @@ Dans le système classique qui n'est pas temps réel, le résultat seul est impo
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="quelques-concepts-de-temps-reel">Quelques concepts de temps reel<a class="anchor-link" href="#quelques-concepts-de-temps-reel">¶</a></h3><ul>
 <li><p><strong>La tâche</strong> : C'est un concept abstrait. Une tâche représente un bloc de travail ou une activité qu'un programme doit accomplir (par exemple : télécharger un fichier, afficher une image). En informatique, une tâche se concrétise sous la forme d'un processus ou d'un <strong>thread</strong>.</p>
 </li>
@@ -876,7 +864,7 @@ Le jitter crée de l’instabilité. Une forte gigue dégrade la précision temp
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">

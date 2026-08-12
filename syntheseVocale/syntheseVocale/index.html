@@ -202,17 +202,47 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="1"><a href="#include-stm32f4xxh" class="nav-link">include "stm32f4xx.h"</a>
+            <li class="nav-item" data-bs-level="1"><a href="#include-stm32f401xch" class="nav-link">include "stm32f401xc.h"</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="1"><a href="#include" class="nav-link">include</a>
+            <li class="nav-item" data-bs-level="1"><a href="#define-sysclk_freq-84000000ul-84-mhz" class="nav-link">define SYSCLK_FREQ 84000000UL / 84 MHz /</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="1"><a href="#include-audio_datah-inclut-audio_data-et-les-constantes" class="nav-link">include "audio_data.h" // Inclut audio_data[] et les constantes</a>
+            <li class="nav-item" data-bs-level="1"><a href="#define-apb1_freq-42000000ul-apb1-sysclk-2" class="nav-link">define APB1_FREQ 42000000UL / APB1 = SYSCLK / 2 /</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#define-apb2_freq-84000000ul-apb2-sysclk" class="nav-link">define APB2_FREQ 84000000UL / APB2 = SYSCLK /</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#define-sample_rate-8000u-8-khz-audio" class="nav-link">define SAMPLE_RATE 8000U / 8 kHz audio /</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#define-buffer_size-16384u-16384-samples-2048s" class="nav-link">define BUFFER_SIZE 16384U / 16384 samples = 2.048s /</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#define-led_on-gpioc-bsrr-gpio_bsrr_br13" class="nav-link">define LED_ON() (GPIOC-&gt;BSRR = GPIO_BSRR_BR13)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#define-led_off-gpioc-bsrr-gpio_bsrr_bs13" class="nav-link">define LED_OFF() (GPIOC-&gt;BSRR = GPIO_BSRR_BS13)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#define-led_toggle-gpioc-odr-gpio_odr_od13" class="nav-link">define LED_TOGGLE() (GPIOC-&gt;ODR ^= GPIO_ODR_OD13)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -660,8 +690,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="synthese-vocale-par-numerisation-directe-avec-dds">Synthèse Vocale par Numérisation Directe avec DDS<a class="anchor-link" href="#synthese-vocale-par-numerisation-directe-avec-dds">¶</a></h1>
 </div>
 </div>
@@ -671,8 +700,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>La synthèse vocale permet à un système embarqué de communiquer verbalement avec l’utilisateur. Dans de nombreuses applications (annonces, alarmes, jeux, interfaces homme-machine), il est souhaitable de restituer des messages préenregistrés avec une qualité audio satisfaisante, tout en minimisant la mémoire nécessaire et la charge du processeur.</p>
 <p><strong>La numérisation directe (PCM : Pulse Code Modulation)</strong> est la méthode la plus simple et la plus fidèle : elle consiste à enregistrer le signal analogique, à l’échantillonner et à le quantifier, puis à stocker les échantillons numériques. Pour la restitution, il suffit de lire les échantillons dans l’ordre et de les envoyer à un convertisseur numérique-analogique (DAC). La qualité est excellente, mais le volume de données peut être important.</p>
 <p>Ce chapitre présente une solution complète pour la synthèse vocale sur microcontrôleur STM32F401, en utilisant la compression ADPCM (Adaptive Differential Pulse Code Modulation) pour réduire de moitié la mémoire requise, et un DAC SPI externe (MCP4921) pour une restitution haute fidélité.</p>
@@ -724,7 +752,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -1049,14 +1077,12 @@ if __name__ == "__main__":
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Erreur : impossible d'ouvrir -f - [Errno 2] No such file or directory: '-f'
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
 <pre>
 An exception has occurred, use %tb to see the full traceback.
@@ -1066,7 +1092,6 @@ An exception has occurred, use %tb to see the full traceback.
 </div>
 </div>
 <div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
 <pre>C:\Users\Pc\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py:3585: UserWarning: To exit: use 'exit', 'quit', or Ctrl-D.
   warn("To exit: use 'exit', 'quit', or Ctrl-D.", stacklevel=1)
@@ -1081,8 +1106,7 @@ An exception has occurred, use %tb to see the full traceback.
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="architecture-materielle-du-synthetiseur-vocal">Architecture matérielle du synthétiseur vocal<a class="anchor-link" href="#architecture-materielle-du-synthetiseur-vocal">¶</a></h2><p>Le microcontrôleur <strong>STM32F401</strong> communique avec un DAC <strong>MCP4921</strong> via l’interface SPI pour restituer le signal analogique. La sortie du DAC est amplifiée par un petit amplificateur (ex : LM386) qui pilote un haut-parleur.</p>
 <h3 id="connexions-materielles">Connexions matérielles<a class="anchor-link" href="#connexions-materielles">¶</a></h3><table>
 <thead>
@@ -1377,7 +1401,7 @@ An exception has occurred, use %tb to see the full traceback.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -1395,6 +1419,814 @@ An exception has occurred, use %tb to see the full traceback.
 <div class="clipboard-copy-txt" id="cell-2"></div>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0f815039">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-3"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9e531e13">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-4"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=ac15e6f2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-5"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=b54a57a4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-6"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4dd94224">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-7"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=650a3b66">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-8"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=bad69b35">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-9"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8ec8bfb4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-10"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=76bb6033">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-11"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4123e0b0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-12">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="err">````</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-12">````</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f08ec23f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * main.c - Lecteur / enregistreur ADPCM IMA sur STM32F401CCU6 (CMSIS Bare Metal)</span>
+<span class="cm"> *</span>
+<span class="cm"> * Basé sur l'Application Note Microchip AN643 (IMA ADPCM Reference Algorithm)</span>
+<span class="cm"> * </span>
+<span class="cm"> * Matériel : STM32F401CCU6 (Cortex-M4 @ 84MHz, 256KB Flash, 64KB SRAM)</span>
+<span class="cm"> * </span>
+<span class="cm"> * Configuration :</span>
+<span class="cm"> *   - Horloge  : HSE 8MHz -&gt; PLL -&gt; SYSCLK 84MHz</span>
+<span class="cm"> *   - Entrée   : ADC1_IN0 (PA0) - Audio 12-bit</span>
+<span class="cm"> *   - Sortie   : TIM3_CH1 (PA6) - PWM 32kHz, 9-bit</span>
+<span class="cm"> *   - Timer    : TIM2 @ 8kHz (ISR échantillonnage)</span>
+<span class="cm"> *   - LED      : PC13 (Black Pill)</span>
+<span class="cm"> *</span>
+<span class="cm"> * Compilation :</span>
+<span class="cm"> *   arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard</span>
+<span class="cm"> *     -O2 -Wall -ffunction-sections -fdata-sections -nostdlib -std=c11</span>
+<span class="cm"> *     -T linker_script.ld -o firmware.elf main.c</span>
+<span class="cm"> *     &amp;&amp; arm-none-eabi-objcopy -O binary firmware.elf firmware.bin</span>
+<span class="cm"> */</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f401xc.h"</span>
+
+<span class="cm">/* ========================================================================</span>
+<span class="cm"> * 1. CONSTANTES DU SYSTÈME</span>
+<span class="cm"> * ======================================================================== */</span>
+
+<span class="cp">#define SYSCLK_FREQ     84000000UL      </span><span class="cm">/* 84 MHz */</span>
+<span class="cp">#define APB1_FREQ       42000000UL      </span><span class="cm">/* APB1 = SYSCLK / 2 */</span>
+<span class="cp">#define APB2_FREQ       84000000UL      </span><span class="cm">/* APB2 = SYSCLK */</span>
+<span class="cp">#define SAMPLE_RATE     8000U           </span><span class="cm">/* 8 kHz audio */</span>
+
+<span class="cm">/* Taille du buffer : puissance de 2 pour masque circulaire.</span>
+<span class="cm">   Ici 16384 = 2 secondes @ 8kHz (16k échantillons) */</span>
+<span class="cp">#define BUFFER_SIZE     16384U          </span><span class="cm">/* 16384 samples = 2.048s */</span>
+
+<span class="cm">/* LED sur PC13 (active low sur Black Pill) */</span>
+<span class="cp">#define LED_ON()        (GPIOC-&gt;BSRR = GPIO_BSRR_BR13)</span>
+<span class="cp">#define LED_OFF()       (GPIOC-&gt;BSRR = GPIO_BSRR_BS13)</span>
+<span class="cp">#define LED_TOGGLE()    (GPIOC-&gt;ODR ^= GPIO_ODR_OD13)</span>
+
+<span class="cm">/* ========================================================================</span>
+<span class="cm"> * 2. TABLES ET STRUCTURES ADPCM IMA (AN643)</span>
+<span class="cm"> * ======================================================================== */</span>
+
+<span class="cm">/* Table des ajustements d'index (codes 0-15 -&gt; delta index) */</span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int8_t</span><span class="w"> </span><span class="n">IndexTable</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span>
+<span class="p">};</span>
+
+<span class="cm">/* Table des pas de quantification (89 entrées, 7 à 32767) */</span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">StepSizeTable</span><span class="p">[</span><span class="mi">89</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">66</span><span class="p">,</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="mi">88</span><span class="p">,</span><span class="w"> </span><span class="mi">97</span><span class="p">,</span><span class="w"> </span><span class="mi">107</span><span class="p">,</span><span class="w"> </span><span class="mi">118</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">130</span><span class="p">,</span><span class="w"> </span><span class="mi">143</span><span class="p">,</span><span class="w"> </span><span class="mi">157</span><span class="p">,</span><span class="w"> </span><span class="mi">173</span><span class="p">,</span><span class="w"> </span><span class="mi">190</span><span class="p">,</span><span class="w"> </span><span class="mi">209</span><span class="p">,</span><span class="w"> </span><span class="mi">230</span><span class="p">,</span><span class="w"> </span><span class="mi">253</span><span class="p">,</span><span class="w"> </span><span class="mi">279</span><span class="p">,</span><span class="w"> </span><span class="mi">307</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">337</span><span class="p">,</span><span class="w"> </span><span class="mi">371</span><span class="p">,</span><span class="w"> </span><span class="mi">408</span><span class="p">,</span><span class="w"> </span><span class="mi">449</span><span class="p">,</span><span class="w"> </span><span class="mi">494</span><span class="p">,</span><span class="w"> </span><span class="mi">544</span><span class="p">,</span><span class="w"> </span><span class="mi">598</span><span class="p">,</span><span class="w"> </span><span class="mi">658</span><span class="p">,</span><span class="w"> </span><span class="mi">724</span><span class="p">,</span><span class="w"> </span><span class="mi">796</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">876</span><span class="p">,</span><span class="w"> </span><span class="mi">963</span><span class="p">,</span><span class="w"> </span><span class="mi">1060</span><span class="p">,</span><span class="w"> </span><span class="mi">1166</span><span class="p">,</span><span class="w"> </span><span class="mi">1282</span><span class="p">,</span><span class="w"> </span><span class="mi">1411</span><span class="p">,</span><span class="w"> </span><span class="mi">1552</span><span class="p">,</span><span class="w"> </span><span class="mi">1707</span><span class="p">,</span><span class="w"> </span><span class="mi">1878</span><span class="p">,</span><span class="w"> </span><span class="mi">2066</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">2272</span><span class="p">,</span><span class="w"> </span><span class="mi">2499</span><span class="p">,</span><span class="w"> </span><span class="mi">2749</span><span class="p">,</span><span class="w"> </span><span class="mi">3024</span><span class="p">,</span><span class="w"> </span><span class="mi">3327</span><span class="p">,</span><span class="w"> </span><span class="mi">3660</span><span class="p">,</span><span class="w"> </span><span class="mi">4026</span><span class="p">,</span><span class="w"> </span><span class="mi">4428</span><span class="p">,</span><span class="w"> </span><span class="mi">4871</span><span class="p">,</span><span class="w"> </span><span class="mi">5358</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">5894</span><span class="p">,</span><span class="w"> </span><span class="mi">6484</span><span class="p">,</span><span class="w"> </span><span class="mi">7132</span><span class="p">,</span><span class="w"> </span><span class="mi">7845</span><span class="p">,</span><span class="w"> </span><span class="mi">8630</span><span class="p">,</span><span class="w"> </span><span class="mi">9493</span><span class="p">,</span><span class="w"> </span><span class="mi">10442</span><span class="p">,</span><span class="w"> </span><span class="mi">11487</span><span class="p">,</span><span class="w"> </span><span class="mi">12635</span><span class="p">,</span><span class="w"> </span><span class="mi">13899</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">15289</span><span class="p">,</span><span class="w"> </span><span class="mi">16818</span><span class="p">,</span><span class="w"> </span><span class="mi">18500</span><span class="p">,</span><span class="w"> </span><span class="mi">20350</span><span class="p">,</span><span class="w"> </span><span class="mi">22385</span><span class="p">,</span><span class="w"> </span><span class="mi">24623</span><span class="p">,</span><span class="w"> </span><span class="mi">27086</span><span class="p">,</span><span class="w"> </span><span class="mi">29794</span><span class="p">,</span><span class="w"> </span><span class="mi">32767</span>
+<span class="p">};</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">prevsample</span><span class="p">;</span><span class="w">   </span><span class="cm">/* Échantillon prédit (-32768..32767) */</span>
+<span class="w">    </span><span class="kt">int8_t</span><span class="w">  </span><span class="n">previndex</span><span class="p">;</span><span class="w">    </span><span class="cm">/* Index dans StepSizeTable (0..88) */</span>
+<span class="p">}</span><span class="w"> </span><span class="n">ADPCM_State</span><span class="p">;</span>
+
+<span class="cm">/* ========================================================================</span>
+<span class="cm"> * 3. FONCTIONS ADPCM (INLINE pour performance)</span>
+<span class="cm"> * ======================================================================== */</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ADPCM_Init</span><span class="p">(</span><span class="n">ADPCM_State</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">prevsample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">previndex</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Encode un échantillon PCM 16-bit signé en nibble ADPCM 4-bit.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="nf">ADPCM_Encode</span><span class="p">(</span><span class="n">ADPCM_State</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">sample</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">predsample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">prevsample</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">previndex</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StepSizeTable</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int32_t</span><span class="p">)</span><span class="n">sample</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">predsample</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diff</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="w">        </span><span class="n">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">diff</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">tempstep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">step</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diff</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">tempstep</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">code</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">        </span><span class="n">diff</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">tempstep</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">tempstep</span><span class="w"> </span><span class="o">&gt;&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diff</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">tempstep</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">code</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">        </span><span class="n">diff</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">tempstep</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">tempstep</span><span class="w"> </span><span class="o">&gt;&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diff</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">tempstep</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">code</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* Déquantification inverse pour resynchronisation */</span>
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">diffq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="n">diffq</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">step</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">diffq</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">step</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">diffq</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">step</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span>
+<span class="w">        </span><span class="n">predsample</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">diffq</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">predsample</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">diffq</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">predsample</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">32767</span><span class="p">)</span><span class="w">       </span><span class="n">predsample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32767</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">predsample</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">-32768</span><span class="p">)</span><span class="w"> </span><span class="n">predsample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-32768</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">index</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">IndexTable</span><span class="p">[</span><span class="n">code</span><span class="p">];</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">   </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">88</span><span class="p">)</span><span class="w">  </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">88</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">prevsample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">predsample</span><span class="p">;</span>
+<span class="w">    </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">previndex</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int8_t</span><span class="p">)</span><span class="n">index</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x0F</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Décode un nibble ADPCM 4-bit en échantillon PCM 16-bit signé.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int16_t</span><span class="w"> </span><span class="nf">ADPCM_Decode</span><span class="p">(</span><span class="n">ADPCM_State</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">code</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StepSizeTable</span><span class="p">[</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">previndex</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">diffq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="n">diffq</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">step</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">diffq</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">step</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">diffq</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">step</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">predsample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">prevsample</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span>
+<span class="w">        </span><span class="n">predsample</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">diffq</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">predsample</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">diffq</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">predsample</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">32767</span><span class="p">)</span><span class="w">       </span><span class="n">predsample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32767</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">predsample</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">-32768</span><span class="p">)</span><span class="w"> </span><span class="n">predsample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-32768</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">previndex</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">IndexTable</span><span class="p">[</span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x0F</span><span class="p">];</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">   </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">88</span><span class="p">)</span><span class="w">  </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">88</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">prevsample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">predsample</span><span class="p">;</span>
+<span class="w">    </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">previndex</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int8_t</span><span class="p">)</span><span class="n">index</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="kt">int16_t</span><span class="p">)</span><span class="n">predsample</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Encode un buffer d'échantillons (2 samples -&gt; 1 octet)</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ADPCM_EncodeBuffer</span><span class="p">(</span><span class="n">ADPCM_State</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int16_t</span><span class="w"> </span><span class="o">*</span><span class="n">in</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nbSamples</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nbSamples</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADPCM_Encode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">        </span><span class="n">code</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">ADPCM_Encode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">code</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Décode un buffer ADPCM (1 octet -&gt; 2 samples)</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ADPCM_DecodeBuffer</span><span class="p">(</span><span class="n">ADPCM_State</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">in</span><span class="p">,</span><span class="w"> </span><span class="kt">int16_t</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nbSamples</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nbSamples</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
+<span class="w">        </span><span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">ADPCM_Decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+<span class="w">        </span><span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADPCM_Decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x0F</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/* ========================================================================</span>
+<span class="cm"> * 4. VARIABLES GLOBALES ET BUFFERS</span>
+<span class="cm"> * ======================================================================== */</span>
+
+<span class="cm">/* Buffers circulaires */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int16_t</span><span class="w">  </span><span class="n">g_adcBuf</span><span class="p">[</span><span class="n">BUFFER_SIZE</span><span class="p">];</span><span class="w">       </span><span class="cm">/* Entrée ADC (brut) */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w">  </span><span class="n">g_adpcmBuf</span><span class="p">[</span><span class="n">BUFFER_SIZE</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">];</span><span class="w"> </span><span class="cm">/* Compressé (ratio 2:1) */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int16_t</span><span class="w">  </span><span class="n">g_dacBuf</span><span class="p">[</span><span class="n">BUFFER_SIZE</span><span class="p">];</span><span class="w">       </span><span class="cm">/* Sortie PWM (décompressé) */</span>
+
+<span class="cm">/* Index circulaires (volatile car modifiés par ISR) */</span>
+<span class="k">static</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">g_adcWr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">g_adcRd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">g_dacWr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">g_dacRd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/* Flags de contrôle */</span>
+<span class="k">static</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">g_recording</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">g_playing</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">g_process</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/* États ADPCM */</span>
+<span class="k">static</span><span class="w"> </span><span class="n">ADPCM_State</span><span class="w"> </span><span class="n">g_encState</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="n">ADPCM_State</span><span class="w"> </span><span class="n">g_decState</span><span class="p">;</span>
+
+<span class="cm">/* ========================================================================</span>
+<span class="cm"> * 5. INITIALISATIONS MATÉRIELLES (CMSIS)</span>
+<span class="cm"> * ======================================================================== */</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Configure l'horloge système à 84 MHz via PLL.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">SystemClock_Config</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/* 1. Activer prefetch et caches Flash (5 wait states à 84 MHz) */</span>
+<span class="w">    </span><span class="n">FLASH</span><span class="o">-&gt;</span><span class="n">ACR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FLASH_ACR_LATENCY_5WS</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">FLASH_ACR_PRFTEN</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">FLASH_ACR_ICEN</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">FLASH_ACR_DCEN</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* 2. Activer HSE */</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_CR_HSEON</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">RCC_CR_HSERDY</span><span class="p">));</span>
+
+<span class="w">    </span><span class="cm">/* 3. Configurer PLL : HSE(8MHz) / 8 * 336 / 2 = 84 MHz */</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">PLLCFGR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RCC_PLLCFGR_PLLSRC_HSE</span><span class="w"> </span><span class="o">|</span><span class="w">           </span><span class="cm">/* Source = HSE */</span>
+<span class="w">                   </span><span class="p">(</span><span class="mi">8UL</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">RCC_PLLCFGR_PLLM_Pos</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="cm">/* M = 8 */</span>
+<span class="w">                   </span><span class="p">(</span><span class="mi">336UL</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">RCC_PLLCFGR_PLLN_Pos</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="cm">/* N = 336 */</span>
+<span class="w">                   </span><span class="p">(</span><span class="mi">0UL</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">RCC_PLLCFGR_PLLP_Pos</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="cm">/* P = 2 (00) */</span>
+<span class="w">                   </span><span class="p">(</span><span class="mi">7UL</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">RCC_PLLCFGR_PLLQ_Pos</span><span class="p">);</span><span class="w">     </span><span class="cm">/* Q = 7 */</span>
+
+<span class="w">    </span><span class="cm">/* 4. Activer PLL */</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_CR_PLLON</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">RCC_CR_PLLRDY</span><span class="p">));</span>
+
+<span class="w">    </span><span class="cm">/* 5. Configurer bus prescalers */</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">CFGR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RCC_CFGR_HPRE_DIV1</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="cm">/* AHB = SYSCLK */</span>
+<span class="w">                </span><span class="n">RCC_CFGR_PPRE1_DIV2</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="cm">/* APB1 = SYSCLK/2 = 42MHz */</span>
+<span class="w">                </span><span class="n">RCC_CFGR_PPRE2_DIV1</span><span class="p">;</span><span class="w">   </span><span class="cm">/* APB2 = SYSCLK = 84MHz */</span>
+
+<span class="w">    </span><span class="cm">/* 6. Basculer vers PLL */</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">CFGR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_CFGR_SW_PLL</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">CFGR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">RCC_CFGR_SWS</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RCC_CFGR_SWS_PLL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* 7. Désactiver HSI (économie d'énergie) */</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">CR</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">RCC_CR_HSION</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Initialise les GPIOs.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">GPIO_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/* Activer horloges GPIOA et GPIOC */</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">AHB1ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_AHB1ENR_GPIOAEN</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">RCC_AHB1ENR_GPIOCEN</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* PC13 : LED - sortie push-pull, vitesse haute */</span>
+<span class="w">    </span><span class="n">GPIOC</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">GPIOC</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="n">GPIO_MODER_MODER13_Msk</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GPIO_MODER_MODER13_0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">GPIOC</span><span class="o">-&gt;</span><span class="n">OTYPER</span><span class="w">  </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">GPIO_OTYPER_OT13</span><span class="p">;</span>
+<span class="w">    </span><span class="n">GPIOC</span><span class="o">-&gt;</span><span class="n">OSPEEDR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">GPIOC</span><span class="o">-&gt;</span><span class="n">OSPEEDR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="n">GPIO_OSPEEDER_OSPEEDR13_Msk</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GPIO_OSPEEDER_OSPEEDR13_1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">GPIOC</span><span class="o">-&gt;</span><span class="n">PUPDR</span><span class="w">   </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">GPIO_PUPDR_PUPDR13_Msk</span><span class="p">;</span>
+<span class="w">    </span><span class="n">LED_OFF</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/* PA0 : ADC1_IN0 - mode analogique */</span>
+<span class="w">    </span><span class="n">GPIOA</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">GPIO_MODER_MODER0_Msk</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* PA6 : TIM3_CH1 - Alternate Function 2 */</span>
+<span class="w">    </span><span class="n">GPIOA</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">GPIOA</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="n">GPIO_MODER_MODER6_Msk</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GPIO_MODER_MODER6_1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">GPIOA</span><span class="o">-&gt;</span><span class="n">AFR</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">GPIOA</span><span class="o">-&gt;</span><span class="n">AFR</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="n">GPIO_AFRL_AFSEL6_Msk</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mi">2UL</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">GPIO_AFRL_AFSEL6_Pos</span><span class="p">);</span>
+<span class="w">    </span><span class="n">GPIOA</span><span class="o">-&gt;</span><span class="n">OSPEEDR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">GPIOA</span><span class="o">-&gt;</span><span class="n">OSPEEDR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="n">GPIO_OSPEEDER_OSPEEDR6_Msk</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GPIO_OSPEEDER_OSPEEDR6_1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Initialise TIM2 pour l'échantillonnage audio à 8kHz.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">TIM2_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">APB1ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_APB1ENR_TIM2EN</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">TIM2</span><span class="o">-&gt;</span><span class="n">CR1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TIM2</span><span class="o">-&gt;</span><span class="n">PSC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TIM2</span><span class="o">-&gt;</span><span class="n">ARR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">APB1_FREQ</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">SAMPLE_RATE</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span><span class="cm">/* 5250 - 1 = 5249 */</span>
+
+<span class="w">    </span><span class="cm">/* Interruption sur mise à jour */</span>
+<span class="w">    </span><span class="n">TIM2</span><span class="o">-&gt;</span><span class="n">DIER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TIM_DIER_UIE</span><span class="p">;</span>
+<span class="w">    </span><span class="n">NVIC_SetPriority</span><span class="p">(</span><span class="n">TIM2_IRQn</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">NVIC_EnableIRQ</span><span class="p">(</span><span class="n">TIM2_IRQn</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">TIM2</span><span class="o">-&gt;</span><span class="n">CR1</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">TIM_CR1_CEN</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Initialise TIM3 pour la sortie PWM audio à ~32kHz.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">TIM3_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">APB1ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_APB1ENR_TIM3EN</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">TIM3</span><span class="o">-&gt;</span><span class="n">CR1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TIM3</span><span class="o">-&gt;</span><span class="n">PSC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TIM3</span><span class="o">-&gt;</span><span class="n">ARR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1311</span><span class="p">;</span><span class="w">  </span><span class="cm">/* 42MHz / 1312 = 32.012 kHz */</span>
+
+<span class="w">    </span><span class="cm">/* Canal 1 : PWM Mode 1, preload enable */</span>
+<span class="w">    </span><span class="n">TIM3</span><span class="o">-&gt;</span><span class="n">CCMR1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TIM_CCMR1_OC1M_2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">TIM_CCMR1_OC1M_1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">TIM_CCMR1_OC1PE</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TIM3</span><span class="o">-&gt;</span><span class="n">CCER</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">TIM_CCER_CC1E</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TIM3</span><span class="o">-&gt;</span><span class="n">CCR1</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">656</span><span class="p">;</span><span class="w">  </span><span class="cm">/* 50% duty cycle initial */</span>
+
+<span class="w">    </span><span class="n">TIM3</span><span class="o">-&gt;</span><span class="n">CR1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TIM_CR1_CEN</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">TIM_CR1_ARPE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Initialise ADC1 pour l'acquisition audio.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ADC1_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">APB2ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_APB2ENR_ADC1EN</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">CR1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">CR2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_CR2_ADON</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">SMPR2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_SMPR2_SMP0_0</span><span class="p">;</span><span class="w">  </span><span class="cm">/* 15 cycles d'échantillonnage */</span>
+<span class="w">    </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">SQR1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                   </span><span class="cm">/* 1 conversion */</span>
+<span class="w">    </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">SQR3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                   </span><span class="cm">/* Canal 0 */</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Lit un échantillon ADC et le convertit en 16-bit signé.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">int16_t</span><span class="w"> </span><span class="nf">ADC1_Read</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">CR2</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">ADC_CR2_SWSTART</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">SR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ADC_SR_EOC</span><span class="p">));</span>
+
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">raw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">DR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xFFFU</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">centered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="kt">int32_t</span><span class="p">)</span><span class="n">raw</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2048</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">centered</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">32767</span><span class="p">)</span><span class="w">  </span><span class="n">centered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32767</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">centered</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">-32768</span><span class="p">)</span><span class="w"> </span><span class="n">centered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-32768</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="kt">int16_t</span><span class="p">)</span><span class="n">centered</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Met à jour le duty cycle PWM.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">PWM_Set</span><span class="p">(</span><span class="kt">int16_t</span><span class="w"> </span><span class="n">sample</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)((</span><span class="kt">int32_t</span><span class="p">)</span><span class="n">sample</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">32768</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">val</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">511</span><span class="p">)</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">511</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TIM3</span><span class="o">-&gt;</span><span class="n">CCR1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* ========================================================================</span>
+<span class="cm"> * 6. GESTIONNAIRE D'INTERRUPTION TIM2 (8kHz)</span>
+<span class="cm"> * ======================================================================== */</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief ISR TIM2 - Appelée toutes les 125µs (8kHz).</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TIM2_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TIM2</span><span class="o">-&gt;</span><span class="n">SR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">TIM_SR_UIF</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">TIM2</span><span class="o">-&gt;</span><span class="n">SR</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">TIM_SR_UIF</span><span class="p">;</span><span class="w">  </span><span class="cm">/* Clear flag */</span>
+
+<span class="w">        </span><span class="cm">/* --- Acquisition ADC --- */</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">g_recording</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">g_adcBuf</span><span class="p">[</span><span class="n">g_adcWr</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC1_Read</span><span class="p">();</span>
+<span class="w">            </span><span class="n">g_adcWr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">g_adcWr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">BUFFER_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="cm">/* --- Restitution PWM --- */</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">g_playing</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">g_dacRd</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">g_dacWr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">PWM_Set</span><span class="p">(</span><span class="n">g_dacBuf</span><span class="p">[</span><span class="n">g_dacRd</span><span class="p">]);</span>
+<span class="w">                </span><span class="n">g_dacRd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">g_dacRd</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">BUFFER_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="cm">/* Signaler à main() que de nouvelles données sont disponibles */</span>
+<span class="w">        </span><span class="n">g_process</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/* ========================================================================</span>
+<span class="cm"> * 7. FONCTIONS DE DÉMONSTRATION</span>
+<span class="cm"> * ======================================================================== */</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Test de validation : signal carré encodé/décodé.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Demo_TestPattern</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ADPCM_State</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">enc</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">out</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">in</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">16000</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">-16000</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">ADPCM_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">e</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ADPCM_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">d</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ADPCM_EncodeBuffer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">in</span><span class="p">,</span><span class="w"> </span><span class="n">enc</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ADPCM_DecodeBuffer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">enc</span><span class="p">,</span><span class="w"> </span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diff</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">diff</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diff</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">8000</span><span class="p">)</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">ok</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">LED_ON</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">500000</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">);</span>
+<span class="w">        </span><span class="n">LED_OFF</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">500000</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Mode pass-through : ADC -&gt; ADPCM -&gt; PWM en temps réel.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Demo_PassThrough</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ADPCM_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">g_encState</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ADPCM_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">g_decState</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">g_adcWr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">g_adcRd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">g_dacWr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">g_dacRd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">g_recording</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">g_playing</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">LED_ON</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="cm">/* Attendre signal de l'ISR */</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">g_process</span><span class="p">);</span>
+<span class="w">        </span><span class="n">g_process</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">        </span><span class="cm">/* Traiter les échantillons ADC disponibles */</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(((</span><span class="n">g_adcWr</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">g_adcRd</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">BUFFER_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">code</span><span class="p">;</span>
+
+<span class="w">            </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADPCM_Encode</span><span class="p">(</span><span class="o">&amp;</span><span class="n">g_encState</span><span class="p">,</span><span class="w"> </span><span class="n">g_adcBuf</span><span class="p">[</span><span class="n">g_adcRd</span><span class="p">]);</span>
+<span class="w">            </span><span class="n">g_adcRd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">g_adcRd</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">BUFFER_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">            </span><span class="n">code</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">ADPCM_Encode</span><span class="p">(</span><span class="o">&amp;</span><span class="n">g_encState</span><span class="p">,</span><span class="w"> </span><span class="n">g_adcBuf</span><span class="p">[</span><span class="n">g_adcRd</span><span class="p">])</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">            </span><span class="n">g_adcRd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">g_adcRd</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">BUFFER_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">            </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nextWr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">g_dacWr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">BUFFER_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nextWr</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">g_dacRd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">g_dacBuf</span><span class="p">[</span><span class="n">g_dacWr</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADPCM_Decode</span><span class="p">(</span><span class="o">&amp;</span><span class="n">g_decState</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+<span class="w">                </span><span class="n">g_dacWr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nextWr</span><span class="p">;</span>
+
+<span class="w">                </span><span class="n">nextWr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">g_dacWr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">BUFFER_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nextWr</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">g_dacRd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">g_dacBuf</span><span class="p">[</span><span class="n">g_dacWr</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADPCM_Decode</span><span class="p">(</span><span class="o">&amp;</span><span class="n">g_decState</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x0F</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">g_dacWr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nextWr</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Enregistre 2 secondes d'audio puis lit en boucle (version corrigée).</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Demo_RecordPlayback</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/* ---- PHASE 1 : ENREGISTREMENT ---- */</span>
+<span class="w">    </span><span class="n">LED_ON</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ADPCM_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">g_encState</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_adcWr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">g_adcRd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">g_recording</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Attendre que le buffer soit rempli (BUFFER_SIZE échantillons) */</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">g_adcWr</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">BUFFER_SIZE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="cm">/* L'ISR remplit le buffer */</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">g_recording</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">LED_OFF</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/* Nombre d'échantillons acquis (BUFFER_SIZE) */</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BUFFER_SIZE</span><span class="p">;</span><span class="w">  </span><span class="cm">/* car g_adcWr = BUFFER_SIZE */</span>
+
+<span class="w">    </span><span class="cm">/* Encodage */</span>
+<span class="w">    </span><span class="n">ADPCM_EncodeBuffer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">g_encState</span><span class="p">,</span><span class="w"> </span><span class="n">g_adcBuf</span><span class="p">,</span><span class="w"> </span><span class="n">g_adpcmBuf</span><span class="p">,</span><span class="w"> </span><span class="n">samples</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* ---- PHASE 2 : LECTURE ---- */</span>
+<span class="w">    </span><span class="n">ADPCM_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">g_decState</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ADPCM_DecodeBuffer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">g_decState</span><span class="p">,</span><span class="w"> </span><span class="n">g_adpcmBuf</span><span class="p">,</span><span class="w"> </span><span class="n">g_dacBuf</span><span class="p">,</span><span class="w"> </span><span class="n">samples</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">g_dacWr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">samples</span><span class="p">;</span>
+<span class="w">    </span><span class="n">g_dacRd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">g_playing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Lecture en boucle continue */</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">__WFI</span><span class="p">();</span><span class="w">  </span><span class="cm">/* Attente d'interruption */</span>
+<span class="w">        </span><span class="cm">/* Si la lecture est terminée, on rembobine */</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">g_dacRd</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">g_dacWr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">g_dacRd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/* ========================================================================</span>
+<span class="cm"> * 8. POINT D'ENTRÉE PRINCIPAL</span>
+<span class="cm"> * ======================================================================== */</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/* Initialisation du système */</span>
+<span class="w">    </span><span class="n">SystemClock_Config</span><span class="p">();</span>
+<span class="w">    </span><span class="n">GPIO_Init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ADC1_Init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">TIM3_Init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">TIM2_Init</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/* Test de validation de l'algorithme */</span>
+<span class="w">    </span><span class="n">Demo_TestPattern</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/* Exécuter la démo principale (pass-through ou enregistrement/lecture) */</span>
+<span class="w">    </span><span class="cm">/* Choix : décommenter la ligne souhaitée */</span>
+<span class="w">    </span><span class="c1">// Demo_PassThrough();</span>
+<span class="w">    </span><span class="n">Demo_RecordPlayback</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/* Jamais atteint */</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d8566c62">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>

@@ -673,8 +673,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="synthese-graphique-embarque">Synthèse graphique embarqué<a class="anchor-link" href="#synthese-graphique-embarque">¶</a></h1>
 </div>
 </div>
@@ -684,8 +683,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>En informatique embarquée, un afficheur est modélisé de manière synchrone par une matrice bidimensionnelle abstraite projetée sur un espace mémoire linéaire (Frame-Buffer). Pour un écran couleur standard de résolution L × H, la mémoire est un tableau contigu de scalaires dont la taille dépend de la profondeur de couleur.</p>
 <p>Au format standardisé RGB565, chaque pixel requiert 16 bits (2 octets). L'espace mémoire nécessaire s'exprime par :</p>
 $$\text{Taille}_{\text{ frameBuff}}=L\times H\times 2\text{\ octets}$$<p>Sur le microcontrôleur STM32F401 disposant de 64 Ko de RAM, un Frame-buffer complet en résolution 320 × 240 exigerait 320 × 240 × 2 = 153,6 Ko, ce qui dépasse les capacités physiques de la puce. On a donc deux stratégies fondamentales :</p>
@@ -702,7 +700,7 @@ $$\text{Taille}_{\text{ frameBuff}}=L\times H\times 2\text{\ octets}$$<p>Sur le 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -728,8 +726,7 @@ $$\text{Taille}_{\text{ frameBuff}}=L\times H\times 2\text{\ octets}$$<p>Sur le 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="pilote-de-la-puce-graphique">Pilote de la puce graphique<a class="anchor-link" href="#pilote-de-la-puce-graphique">¶</a></h2><p>Pour faciliter le changement d’écran, on définit une interface :</p>
 <div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">display_init</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">display_drawPixel</span><span class="p">(</span><span class="kt">int16_t</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">color</span><span class="p">);</span>
@@ -744,7 +741,7 @@ $$\text{Taille}_{\text{ frameBuff}}=L\times H\times 2\text{\ octets}$$<p>Sur le 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -770,8 +767,7 @@ $$\text{Taille}_{\text{ frameBuff}}=L\times H\times 2\text{\ octets}$$<p>Sur le 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="les-primitives-geometriques-2d">Les primitives géométriques 2D<a class="anchor-link" href="#les-primitives-geometriques-2d">¶</a></h2><h3 id="afficher-un-pixel">Afficher un pixel<a class="anchor-link" href="#afficher-un-pixel">¶</a></h3><p>La fonction <code>drawPixel(x, y, color)</code> est l'atome de toute l'architecture graphique. Toute primitive graphique doit vérifier que les coordonnées sont dans les limites de l’écran afin d’éviter des écritures hors zone mémoire.</p>
 <div class="highlight"><pre><span></span><span class="cp">#define SCREEN_WIDTH  320</span>
 <span class="cp">#define SCREEN_HEIGHT 240</span>
@@ -901,7 +897,7 @@ $$B(t)=(1-t)^{2}P_{0}+2t(1-t)P_{1}+t^{2}P_{2},\quad t\in [0,1]$$<p>Pour tracer c
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -927,8 +923,7 @@ $$B(t)=(1-t)^{2}P_{0}+2t(1-t)P_{1}+t^{2}P_{2},\quad t\in [0,1]$$<p>Pour tracer c
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="gestion-des-couleurs">Gestion des couleurs<a class="anchor-link" href="#gestion-des-couleurs">¶</a></h2><p>Sur les ecrans embarques comme (ST7789 ou ili9341), pour coder des couleurs on utilise souvent le format <strong>RGB565</strong> qui a 16 bits par pixel. L'œil humain étant plus sensible aux nuances de vert, la répartition s'effectue ainsi : 5 bits pour le Rouge, 6 bits pour le Vert, 5 bits pour le Bleu, soit $ 2^5 \times 2^6 \times 2^5 = 65536$ couleurs possibles.</p>
 <blockquote>
 <p>Pour effectuer des calculs de <strong>dégradés</strong> ou de <strong>fondu (Alpha Blending)</strong>, <strong>éclaircissement</strong> il est obligatoire de décompresser la couleur en canaux séparés, d'effectuer l'opération mathématique, puis de la recomprimer.</p>
@@ -1109,7 +1104,7 @@ $$x=x_{1}+\frac{(y-y_{1})\cdot (x_{2}-x_{1})}{y_{2}-y_{1}}$$<div class="highligh
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -1135,8 +1130,7 @@ $$x=x_{1}+\frac{(y-y_{1})\cdot (x_{2}-x_{1})}{y_{2}-y_{1}}$$<div class="highligh
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="ecrire-du-texte">Ecrire du texte<a class="anchor-link" href="#ecrire-du-texte">¶</a></h2><p>Un texte n'est qu'une succession de matrices binaires (glyphes). Nous concevons ici un moteur capable de lire une table de caractères stockée en mémoire Flash.</p>
 <h3 id="structure-dune-police-fixe-exemple-8x8">Structure d'une police fixe (Exemple 8x8)<a class="anchor-link" href="#structure-dune-police-fixe-exemple-8x8">¶</a></h3><p>Pour une police fixe de dimension 8 × 8, chaque caractère consomme exactement 8 octets. Un bit à <code>1</code> représente la présence de la couleur du texte, un bit à <code>0</code> représente le fond.</p>
 <div class="highlight"><pre><span></span><span class="c1">// Extrait d'une table ASCII stockée en FLASH</span>
@@ -1175,8 +1169,7 @@ $$x=x_{1}+\frac{(y-y_{1})\cdot (x_{2}-x_{1})}{y_{2}-y_{1}}$$<div class="highligh
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
@@ -1185,8 +1178,7 @@ $$x=x_{1}+\frac{(y-y_{1})\cdot (x_{2}-x_{1})}{y_{2}-y_{1}}$$<div class="highligh
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="affichage-dimages-bitmap">Affichage d'images bitmap<a class="anchor-link" href="#affichage-dimages-bitmap">¶</a></h2><p>Le rendu d'images précalculées (icônes, décors de jeux, logos d'interfaces) nécessite la manipulation de données matricielles ou de graphismes raster.</p>
 <p>Pour éviter la surcharge liée aux systèmes de fichiers complexes (ex: FATfs) et aux décodeurs de formats compressés (PNG/JPEG) gourmands en temps CPU et en RAM, les images sont stockées directement sous forme de tableaux de constantes en mémoire Flash. L'image brute est exportée sous la forme d'un tableau <code>const uint16_t</code> au format <strong>RGB565</strong> natif.</p>
 <div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span>
@@ -1231,7 +1223,7 @@ $$\text{Index}=y\times \text{Largeur}+x$$<div class="highlight"><pre><span></spa
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -1257,8 +1249,7 @@ $$\text{Index}=y\times \text{Largeur}+x$$<div class="highlight"><pre><span></spa
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="transformations-affines-2d-et-dynamique-des-polygones">Transformations affines 2D et dynamique des polygones<a class="anchor-link" href="#transformations-affines-2d-et-dynamique-des-polygones">¶</a></h2><p>Les transformations affines (translation, rotation, mise à l’échelle) sont appliquées aux sommets des polygones. On utilise les matrices de transformation homogènes pour combiner les opérations. Pour une animation fluide, on recalcule les sommets à chaque frame et on redessine le polygone. Afin d’éviter le scintillement, on peut utiliser un double buffering ou un effacement sélectif.</p>
 <p>Un polygone à $N$ sommets est défini par un ensemble de points locaux $P_i(x_i, y_i)$. Appliquer une translation affine équivaut à projeter chaque sommet à l'écran à l'aide d'un vecteur de translation $\vec{T}(t_x, t_y)$ [stem-calculative-problem-solving] :</p>
 $$x_{i}^{\prime }=x_{i}+t_{x}$$$$y_{i}^{\prime }=y_{i}+t_{y}$$<p>Sous forme matricielle utilisant les coordonnées homogènes, l'opération s'exprime par :</p>
@@ -1307,7 +1298,7 @@ $$\left[\begin{matrix}x_{i}^{\prime }\\ y_{i}^{\prime }\\ 1\end{matrix}\right]=\
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
@@ -1333,8 +1324,7 @@ $$\left[\begin{matrix}x_{i}^{\prime }\\ y_{i}^{\prime }\\ 1\end{matrix}\right]=\
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="affichage-en-temps-reel">Affichage en temps réel<a class="anchor-link" href="#affichage-en-temps-reel">¶</a></h2><p>L'affichage de données de capteurs en temps réel exige une optimisation stricte pour éviter l'effet de rafraîchissement visible (flickering).</p>
 <h3 id="loscilloscope-graphique-traceurs-de-courbes">L'Oscilloscope Graphique / Traceurs de courbes<a class="anchor-link" href="#loscilloscope-graphique-traceurs-de-courbes">¶</a></h3><p>Pour dessiner un signal dynamique (ex: signal d'un CAN/ADC), on utilise un buffer circulaire pour mémoriser les anciennes valeurs afin de pouvoir les effacer avant d'afficher les nouvelles. À chaque rafraîchissement, la colonne x courante efface l'ancienne valeur historique avant d'y inscrire la nouvelle.</p>
 <div class="highlight"><pre><span></span><span class="cp">#define OSC_WIDTH   256      </span><span class="c1">// Largeur de la fenêtre de l'oscilloscope (pixels)</span>
@@ -1422,7 +1412,7 @@ $$\left[\begin{matrix}x_{i}^{\prime }\\ y_{i}^{\prime }\\ 1\end{matrix}\right]=\
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
@@ -1448,8 +1438,7 @@ $$\left[\begin{matrix}x_{i}^{\prime }\\ y_{i}^{\prime }\\ 1\end{matrix}\right]=\
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="interfaces-graphiques-widgets">Interfaces Graphiques (widgets)<a class="anchor-link" href="#interfaces-graphiques-widgets">¶</a></h2><p>Création de jauges (barres de progression), de boutons (détection des zones cliquables si écran tactile ou entrée utilisateur).</p>
 <p>Jauge (barre de progression)
 Une jauge est un rectangle rempli proportionnellement à une valeur. Elle se dessine avec un fond et une barre colorée.</p>
@@ -1464,7 +1453,7 @@ Un bouton est défini par une zone rectangulaire. La détection d’un appui se 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
@@ -1490,8 +1479,7 @@ Un bouton est défini par une zone rectangulaire. La détection d’un appui se 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="simulations-physiques-et-scientifiques">Simulations Physiques et Scientifiques<a class="anchor-link" href="#simulations-physiques-et-scientifiques">¶</a></h2><h3 id="simulation-de-particules">Simulation de particules<a class="anchor-link" href="#simulation-de-particules">¶</a></h3><p>Un système de particules est composé de points ayant une position, une vitesse, éventuellement une masse. On applique des forces (gravité, frottement) et on intègre avec Euler. Les collisions avec les bords sont gérées par rebond.</p>
 <h3 id="resolution-numerique-de-lequation-de-la-chaleur-edp">Résolution numérique de l'Équation de la Chaleur (EDP)<a class="anchor-link" href="#resolution-numerique-de-lequation-de-la-chaleur-edp">¶</a></h3><p>Nous simulons la diffusion de la chaleur sur une plaque 2D discrétisée en une grille de pixels à l'aide de la méthode des différences finies.</p>
 <p>L'évolution thermique d'une plaque bidimensionnelle est régie par la loi de diffusion de Fourier :</p>
@@ -1861,7 +1849,7 @@ $$CFL=\frac{c\cdot \Delta t}{\Delta x}\le \frac{1}{\sqrt{2}}\approx 0.707$$<p>En
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
@@ -1887,8 +1875,7 @@ $$CFL=\frac{c\cdot \Delta t}{\Delta x}\le \frac{1}{\sqrt{2}}\approx 0.707$$<p>En
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="geometrie-fractale-systemes-dynamiques-et-chaos-deterministe">Géométrie Fractale, Systèmes Dynamiques et Chaos déterministe<a class="anchor-link" href="#geometrie-fractale-systemes-dynamiques-et-chaos-deterministe">¶</a></h2><p>L'étude des fractales en informatique embarquée bare-metal introduit les concepts d'autosimilitude, de géométrie non euclidienne et de calcul itératif intensif dans le plan complexe. Ce chapitre montre comment exploiter l'unité de calcul en virgule flottante (FPU simple précision) du processeur ARM Cortex-M4 pour générer des structures infiniment complexes à l'aide d'algorithmes déterministes optimisés.</p>
 <h3 id="lensemble-de-mandelbrot-et-de-julia-dans-le-plan-complexe">L'Ensemble de Mandelbrot et de Julia dans le Plan Complexe<a class="anchor-link" href="#lensemble-de-mandelbrot-et-de-julia-dans-le-plan-complexe">¶</a></h3><p>L'ensemble de Mandelbrot est défini comme l'ensemble des nombres complexes c = x + iy pour lesquels la suite récursive quadratique, définie par :</p>
 $$z_{n+1}=z_{n}^{2}+c\quad \text{avec}\quad z_{0}=0$$<p>ne tend pas vers l'infini lorsque le nombre d'itérations n tend vers l'infini. En pratique, le calcul mathématique démontre que si le module du nombre complexe dépasse la valeur critique de 2 $(\vert{}z_n\vert{} &gt; 2\)$, la suite diverge de manière exponentielle et s'échappe vers l'infini.</p>
@@ -2032,7 +2019,7 @@ $$z_{n+1}=(a+ib)^{2}+(x+ix)=(a^{2}-b^{2}+x)+i(2ab+y)$$<p>Le nombre d'itérations
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
@@ -2058,8 +2045,7 @@ $$z_{n+1}=(a+ib)^{2}+(x+ix)=(a^{2}-b^{2}+x)+i(2ab+y)$$<p>Le nombre d'itérations
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="jeux-video-interactifs-2d">Jeux vidéo interactifs 2D<a class="anchor-link" href="#jeux-video-interactifs-2d">¶</a></h2><p>Un jeu vidéo embarqué requiert une architecture prévisible appelée Boucle de Jeu synchrone (Game Loop), orchestrée par une base de temps matérielle, une interruption matérielle (généralement issue d'un Timer). Elle applique un paradigme strict dissociant la mise à jour de la physique des objets (<code>Update</code>) de l'actualisation géométrique de l'affichage (<code>Draw</code>).</p>
 <h3 id="le-jeu-du-serpent-snake">Le Jeu du Serpent (Snake)<a class="anchor-link" href="#le-jeu-du-serpent-snake">¶</a></h3><p>Ce cas d'étude enseigne la gestion des structures de données dynamiques sous forme statique (sans allocation dynamique <code>malloc</code> pour préserver la RAM) et les algorithmes de détection de collisions spatiales.</p>
 <div class="highlight"><pre><span></span><span class="cp">#define MAX_SNAKE_LENGTH 100</span>
@@ -2349,7 +2335,7 @@ $$z_{n+1}=(a+ib)^{2}+(x+ix)=(a^{2}-b^{2}+x)+i(2ab+y)$$<p>Le nombre d'itérations
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">

@@ -661,8 +661,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="estimation-dattitude-par-filtre-de-kalman-etendu-ekf">Estimation d'attitude par Filtre de Kalman Étendu (EKF)<a class="anchor-link" href="#estimation-dattitude-par-filtre-de-kalman-etendu-ekf">¶</a></h1>
 </div>
 </div>
@@ -672,8 +671,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="51-introduction">5.1 Introduction<a class="anchor-link" href="#51-introduction">¶</a></h2><p>Dans le chapitre précédent, le filtre complémentaire nous a montré comment fusionner un gyroscope et un accéléromètre pour estimer un angle. Sa simplicité en fait un outil idéal pour les microcontrôleurs aux ressources limitées.</p>
 <p>Cependant, le filtre complémentaire utilise un coefficient de pondération <strong>α fixe</strong>. Il accorde toujours la même confiance à chaque capteur, quelles que soient les conditions. En réalité, le bruit d’un accéléromètre explose lors des vibrations, et le biais d’un gyroscope dérive avec la température.</p>
 <p>Le <strong>Filtre de Kalman Étendu</strong> (<em>Extended Kalman Filter</em> — EKF) apporte une réponse élégante à ce problème : il calcule <strong>à chaque itération</strong> un gain de confiance optimal, appelé <strong>gain de Kalman</strong>. Ce gain s’adapte dynamiquement aux incertitudes du modèle et des capteurs.</p>
@@ -765,8 +763,7 @@ $$x = \begin{bmatrix} \delta\theta \\ \delta b \end{bmatrix} \quad \text{(dimens
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="57-reglage-des-matrices-de-bruit">5.7. Réglage des matrices de bruit<a class="anchor-link" href="#57-reglage-des-matrices-de-bruit">¶</a></h2><p>Le réglage est critique. Pour un MPU6050 typique :</p>
 <div class="highlight"><pre><span></span><span class="c1">// Bruit angulaire du gyroscope (rad/s)</span>
 <span class="cp">#define GYRO_NOISE  0.01f</span>
@@ -799,8 +796,7 @@ $$x = \begin{bmatrix} \delta\theta \\ \delta b \end{bmatrix} \quad \text{(dimens
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="58-implementation">5.8 Implémentation<a class="anchor-link" href="#58-implementation">¶</a></h2><p>Périphériques utilisés</p>
 <ul>
 <li>I2C1 : sur PB6 (SCL) et PB7 (SDA) pour lire le MPU6050.</li>
@@ -1184,7 +1180,7 @@ $$x = \begin{bmatrix} \delta\theta \\ \delta b \end{bmatrix} \quad \text{(dimens
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">

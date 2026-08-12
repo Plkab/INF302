@@ -658,8 +658,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="synchronisation-avec-les-semaphores">Synchronisation avec les Sémaphores<a class="anchor-link" href="#synchronisation-avec-les-semaphores">¶</a></h1>
 </div>
 </div>
@@ -669,8 +668,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Un Sémaphore sert à ordonnancer le temps (signalisation, passage de témoin), il orchestre la chronologie des tâches. Dans notre architecture, le sémaphore ne sert pas à bloquer l'accès à une variable, mais <em>à réveiller une tâche dès qu'un événement matériel se produit</em>. Par exemple, un thread producteur lit un capteur et un thread consommateur affiche les données uniquement quand elles sont prêtes.</p>
 </div>
 </div>
@@ -680,8 +678,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="les-semaphores-leger-dans-protothreads-pt-semh">Les Sémaphores léger dans Protothreads (<code>pt-sem.h</code>)<a class="anchor-link" href="#les-semaphores-leger-dans-protothreads-pt-semh">¶</a></h2><ul>
 <li><p>La structure <code>struct pt_sem</code> est juste un simple compteur atomique entier non signé géré par le noyau coopératif.</p>
 </li>
@@ -839,7 +836,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -870,7 +867,6 @@ YouTubeVideo('6sL9JrptMLA', width=800, height=450)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <iframe allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/6sL9JrptMLA" width="800"></iframe>
 </div>
@@ -883,8 +879,7 @@ YouTubeVideo('6sL9JrptMLA', width=800, height=450)</div>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="le-mutex">Le Mutex<a class="anchor-link" href="#le-mutex">¶</a></h1>
 </div>
 </div>
@@ -894,8 +889,7 @@ YouTubeVideo('6sL9JrptMLA', width=800, height=450)</div>
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="problematique-lacces-concurrent-aux-ressources-partagees">Problématique : l’accès concurrent aux ressources partagées<a class="anchor-link" href="#problematique-lacces-concurrent-aux-ressources-partagees">¶</a></h2><p>Dans un système multitâche coopératif basé sur les Protothreads, chaque tâche s’exécute jusqu’à ce qu’elle rencontre une macro d’attente (<code>PT_WAIT_UNTIL</code>, <code>PT_YIELD</code>, etc.) qui lui rend la main. Entre deux attentes, le code est <strong>atomique</strong> du point de vue de l’ordonnanceur : aucune autre tâche ne peut s’intercaler.</p>
 <p>Pourtant, un risque de conflit subsiste lorsque plusieurs tâches partagent une même ressource (périphérique matériel, buffer mémoire, variable globale) et que l’une d’elles <strong>cède volontairement le processeur</strong> au milieu d’une opération. Par exemple :</p>
 <ul>
