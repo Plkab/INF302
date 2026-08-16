@@ -63,7 +63,7 @@
                                 <a href="../protothreads/" class="nav-link">Introduction au multitâche coopératif avec les Protothreads</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../semaphoresPT/" class="nav-link">Synchronisation avec les Sémaphores</a>
+                                <a href="../semaphoresPT/" class="nav-link">Synchronisation avec les sémaphores</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../timerPT/" class="nav-link">La gestion précise et non‑bloquante du temps avec Protothreads</a>
@@ -72,7 +72,7 @@
                                 <a href="./" class="nav-link active" aria-current="page">Le Mutex</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../uart/uart.ipynb" class="nav-link">Communication série via UART</a>
+                                <a href="../../uart/uart/" class="nav-link">Communication avec d'autres dispositifs</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../adc/adc.ipynb" class="nav-link">Acquisition analogique avec ADC</a>
@@ -129,7 +129,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../pwm/pwm/" class="nav-link">
+                                <a rel="next" href="../../uart/uart/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -161,7 +161,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#implementation-dun-mutex-leger-pour-stm32f401" class="nav-link">Implémentation d’un mutex léger pour STM32F401</a>
+            <li class="nav-item" data-bs-level="2"><a href="#implementation-dun-mutex-leger" class="nav-link">Implémentation d’un mutex léger</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -620,7 +620,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="le-mutex">Le Mutex<a class="anchor-link" href="#le-mutex">¶</a></h1>
+<h1 id="le-mutex">Le Mutex<a class="anchor-link" href="#le-mutex">¶</a></h1><h4 id="paul-s-kabiduspaulkabidugmailcom"><a href="https://plkab.github.io/INF302/">Paul S. Kabidu</a>(spaulkabidu@gmail.com)<a class="anchor-link" href="#paul-s-kabiduspaulkabidugmailcom">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2bdbaa9e-917f-4c4e-b112-f39a0aaf7ed1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
 </div>
 </div>
 </div>
@@ -631,7 +641,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="problematique-lacces-concurrent-aux-ressources-partagees">Problématique : l’accès concurrent aux ressources partagées<a class="anchor-link" href="#problematique-lacces-concurrent-aux-ressources-partagees">¶</a></h2><p>Dans un système multitâche coopératif basé sur les Protothreads, chaque tâche s’exécute jusqu’à ce qu’elle rencontre une macro d’attente (<code>PT_WAIT_UNTIL</code>, <code>PT_YIELD</code>, etc.) qui lui rend la main. Entre deux attentes, le code est <strong>atomique</strong> du point de vue de l’ordonnanceur : aucune autre tâche ne peut s’intercaler.</p>
-<p>Pourtant, un risque de conflit subsiste lorsque plusieurs tâches partagent une même ressource (périphérique matériel, buffer mémoire, variable globale) et que l’une d’elles <strong>cède volontairement le processeur</strong> au milieu d’une opération. Par exemple :</p>
+<p>Pourtant, un risque de conflit subsiste lorsque plusieurs tâches partagent une même ressource (périphérique matériel, buffer mémoire, variable globale) et que l’une d’elles <strong>cède volontairement le processeur</strong> au milieu d’une opération.</p>
+<p>Par exemple :</p>
 <ul>
 <li>Tâche A commence une transaction I2C (envoi d’une commande) puis attend la fin de la transmission avec <code>PT_WAIT_UNTIL</code>.</li>
 <li>L’ordonnanceur passe à la Tâche B, qui tente d’utiliser le même bus I2C sans savoir qu’il est occupé.</li>
@@ -640,7 +651,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <p>Pour éviter cela, nous avons besoin d’un mécanisme de <strong>verrouillage</strong> : un mutex (mutual exclusion).</p>
 <h2 id="questce-quun-mutex">Qu’est‑ce qu’un mutex ?<a class="anchor-link" href="#questce-quun-mutex">¶</a></h2><p>Un mutex est un objet qui ne peut être possédé que par une seule tâche à la fois. Il permet de délimiter une <strong>section critique</strong> : une zone du code où l’accès à une ressource partagée doit être exclusif.</p>
 <p>Contrairement à un sémaphore (utilisé pour la signalisation), le mutex est conçu pour la <strong>protection de ressource</strong> et, dans les systèmes temps réel, il gère l’héritage de priorité. Dans notre contexte coopératif (pas de préemption), l’héritage de priorité n’est pas nécessaire, mais le verrouillage reste essentiel.</p>
-<h2 id="implementation-dun-mutex-leger-pour-stm32f401">Implémentation d’un mutex léger pour STM32F401<a class="anchor-link" href="#implementation-dun-mutex-leger-pour-stm32f401">¶</a></h2><p>Nous allons créer un mutex maison, sans dépendre de FreeRTOS, en utilisant une simple variable <code>volatile uint8_t</code> pour indiquer l’état du verrou. L’attente non‑bloquante est assurée par <code>PT_WAIT_UNTIL</code>.</p>
+<p>Voila le fichier <a href="pt_ista_stm32f4_v1.h" style="text-decoration: underline;" target="_self">pt_ista_stm32f4_v1.h</a> de notre version des Protothreads.</p>
+<h2 id="implementation-dun-mutex-leger">Implémentation d’un mutex léger<a class="anchor-link" href="#implementation-dun-mutex-leger">¶</a></h2><p>Nous allons créer un mutex maison en utilisant une simple variable <code>volatile uint8_t</code> pour indiquer l’état du verrou. L’attente non‑bloquante est assurée par <code>PT_WAIT_UNTIL</code>.</p>
 <div class="highlight"><pre><span></span><span class="cp">#ifndef PT_MUTEX_H</span>
 <span class="cp">#define PT_MUTEX_H</span>
 
@@ -676,7 +688,23 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li>L’accès à <code>locked</code> est atomique car il s’agit d’une lecture/écriture 8‑bits sur STM32 (aucune interruption ne peut se produire entre deux instructions sur une même variable de ce type, à condition de ne pas la modifier dans une ISR – si c’est le cas, il faut désactiver les interruptions autour de la section critique).</li>
 </ul>
 <h2 id="utilisation-concrete-protection-dun-bus-i2c">Utilisation concrète : protection d’un bus I2C<a class="anchor-link" href="#utilisation-concrete-protection-dun-bus-i2c">¶</a></h2><p>Imaginons deux tâches qui communiquent avec des capteurs sur le même bus I2C.</p>
-<div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"pt-mutex.h"</span>
+<div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"pt_ista_stm32f4_v1.h"</span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">pt_mutex_t</span><span class="w"> </span><span class="n">i2c_mutex</span><span class="p">;</span>
+
+<span class="n">PT_THREAD</span><span class="p">(</span><span class="n">task_temp</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="o">*</span><span class="n">pt</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">PT_BEGIN</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
+<span class="w">    </span><span class="n">PT_MUTEX_INIT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i2c_mutex</span><span class="p">);</span><span class="w">   </span><span class="c1">// ou dans main()</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">PT_MUTEX_LOCK</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i2c_mutex</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Section critique</span>
+<span class="w">        </span><span class="n">I2C_Start</span><span class="p">();</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">        </span><span class="n">PT_MUTEX_UNLOCK</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i2c_mutex</span><span class="p">);</span>
+<span class="w">        </span><span class="n">PT_YIELD_usec</span><span class="p">(</span><span class="mi">500000</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">PT_END</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
+<span class="p">}</span>
 
 <span class="k">static</span><span class="w"> </span><span class="n">pt_mutex_t</span><span class="w"> </span><span class="n">i2c_mutex</span><span class="p">;</span>
 

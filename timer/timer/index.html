@@ -63,7 +63,7 @@
                                 <a href="../../protothreads/protothreads/" class="nav-link">Introduction au multitâche coopératif avec les Protothreads</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../protothreads/semaphoresPT/" class="nav-link">Synchronisation avec les Sémaphores</a>
+                                <a href="../../protothreads/semaphoresPT/" class="nav-link">Synchronisation avec les sémaphores</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../protothreads/timerPT/" class="nav-link">La gestion précise et non‑bloquante du temps avec Protothreads</a>
@@ -72,7 +72,7 @@
                                 <a href="../../protothreads/mutexPT/" class="nav-link">Le Mutex</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../uart/uart.ipynb" class="nav-link">Communication série via UART</a>
+                                <a href="../../uart/uart/" class="nav-link">Communication avec d'autres dispositifs</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../adc/adc.ipynb" class="nav-link">Acquisition analogique avec ADC</a>
@@ -612,7 +612,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="comment-mesurer-et-generer-precisement-des-periodes-et-frequences-grace-aux-timers">Comment mesurer et générer précisément des périodes et fréquences grâce aux Timers ?<a class="anchor-link" href="#comment-mesurer-et-generer-precisement-des-periodes-et-frequences-grace-aux-timers">¶</a></h1>
+<h1 id="comment-mesurer-et-generer-precisement-des-periodes-et-frequences-grace-aux-timers">Comment mesurer et générer précisément des périodes et fréquences grâce aux Timers ?<a class="anchor-link" href="#comment-mesurer-et-generer-precisement-des-periodes-et-frequences-grace-aux-timers">¶</a></h1><h4 id="paul-s-kabiduspaulkabidugmailcom"><a href="https://plkab.github.io/INF302/">Paul S. Kabidu</a>(spaulkabidu@gmail.com)<a class="anchor-link" href="#paul-s-kabiduspaulkabidugmailcom">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4cde4e81-5feb-4509-97ca-ce665fbae5de">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
 </div>
 </div>
 </div>
@@ -637,15 +647,6 @@ $$T_{\text{période}} = \frac{(\text{Prescaler} + 1) \times (\text{ARR} + 1)}{F_
 </ul>
 <p>avec <code>x</code> représentant le numéro du Timer choisi (par exemple TIM2)</p>
 <p>Toutes les variables partagées entre le programme principal <code>main</code> et modifiées au sein d'une routine d'interruption (ISR) doivent impérativement être déclarées avec le qualificatif <code>volatile</code>.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8c07a179-1ec3-449d-b2c5-b2220a57be25">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
@@ -736,16 +737,10 @@ $$\frac{9999+1}{10\,000\text{ Hz}}=1,000000\text{ seconde}$$<div class="highligh
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
-
-<span class="c1"># Remplacez l'identifiant ci-dessous par celui de votre vidéo</span>
 <span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">'XBCwYPPZzio'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-1">from IPython.display import YouTubeVideo
-
-# Remplacez l'identifiant ci-dessous par celui de votre vidéo
-YouTubeVideo('XBCwYPPZzio', width=800, height=450)
-
-</div>
+YouTubeVideo('XBCwYPPZzio', width=800, height=450)</div>
 </div>
 </div>
 </div>
@@ -916,13 +911,9 @@ $$F_{tim}=\frac{16\,000\,000\ \mathrm{Hz}}{1599+1}=10\,000\ \mathrm{Hz}$$$$\text
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
-
-<span class="c1"># Remplacez l'identifiant ci-dessous par celui de votre vidéo</span>
 <span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">'GLnzqnRdpWw'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-2">from IPython.display import YouTubeVideo
-
-# Remplacez l'identifiant ci-dessous par celui de votre vidéo
 YouTubeVideo('GLnzqnRdpWw', width=800, height=450)</div>
 </div>
 </div>
@@ -1046,13 +1037,9 @@ YouTubeVideo('GLnzqnRdpWw', width=800, height=450)</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
-
-<span class="c1"># Remplacez l'identifiant ci-dessous par celui de votre vidéo</span>
 <span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">'l6ko95VhIbU'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-3">from IPython.display import YouTubeVideo
-
-# Remplacez l'identifiant ci-dessous par celui de votre vidéo
 YouTubeVideo('l6ko95VhIbU', width=800, height=450)</div>
 </div>
 </div>

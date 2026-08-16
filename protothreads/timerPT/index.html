@@ -63,7 +63,7 @@
                                 <a href="../protothreads/" class="nav-link">Introduction au multitâche coopératif avec les Protothreads</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../semaphoresPT/" class="nav-link">Synchronisation avec les Sémaphores</a>
+                                <a href="../semaphoresPT/" class="nav-link">Synchronisation avec les sémaphores</a>
                             </li>
                             <li class="nav-item">
                                 <a href="./" class="nav-link active" aria-current="page">La gestion précise et non‑bloquante du temps avec Protothreads</a>
@@ -72,7 +72,7 @@
                                 <a href="../mutexPT/" class="nav-link">Le Mutex</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../uart/uart.ipynb" class="nav-link">Communication série via UART</a>
+                                <a href="../../uart/uart/" class="nav-link">Communication avec d'autres dispositifs</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../adc/adc.ipynb" class="nav-link">Acquisition analogique avec ADC</a>
@@ -166,12 +166,7 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-bs-level="1"><a href="#include-pth" class="nav-link">include "pt.h"</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="1"><a href="#define-pt_interval_init-static-uint32_t-pt_interval_marker" class="nav-link">define PT_INTERVAL_INIT() static uint32_t pt_interval_marker</a>
+            <li class="nav-item" data-bs-level="1"><a href="#include-pt_ista_stm32f4_v1h" class="nav-link">include "pt_ista_stm32f4_v1.h"</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -620,7 +615,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="la-gestion-precise-et-nonbloquante-du-temps-avec-protothreads">La gestion précise et non‑bloquante du temps avec Protothreads<a class="anchor-link" href="#la-gestion-precise-et-nonbloquante-du-temps-avec-protothreads">¶</a></h1>
+<h1 id="la-gestion-precise-et-nonbloquante-du-temps-avec-protothreads">La gestion précise et non‑bloquante du temps avec Protothreads<a class="anchor-link" href="#la-gestion-precise-et-nonbloquante-du-temps-avec-protothreads">¶</a></h1><h4 id="paul-s-kabiduspaulkabidugmailcom"><a href="https://plkab.github.io/INF302/">Paul S. Kabidu</a>(spaulkabidu@gmail.com)<a class="anchor-link" href="#paul-s-kabiduspaulkabidugmailcom">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=912ddd05-8693-4a91-bd3a-9fa77ee03be7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
 </div>
 </div>
 </div>
@@ -630,19 +635,20 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Nous allons creer des macros pour rendre le code trop lisible, econome en RAM, preceise en la microseconde et facile a utiliser. Dans nos exemples précédents, nous utilisons <code>timestamp = ticks_ms; PT_WAIT_UNTIL(pt, (ticks_ms - timestamp) &gt;= 500);</code>. C'est très bien, mais en pratique, pour éviter de dupliquer ce code partout, on crée une macro ou une structure de minuteur dédiée aux protothreads.</p>
+<p>Nous allons creer des macros pour rendre le code trop lisible, econome en RAM, preceise en la microseconde et facile a utiliser. Dans nos exemples précédents, nous utilisons <code>timestamp = ticks_ms; PT_WAIT_UNTIL(pt, (ticks_ms - timestamp) &gt;= 500);</code>. C'est très bien, mais en pratique, pour éviter de dupliquer ce code partout, on crée une macro de minuteur dédiée aux protothreads.</p>
 <p>Pour éviter de créer manuellement des variables <code>timestamp</code> et d'alourdir le code avec des calculs de soustraction à chaque attente, nous allons utiliser généralement une structure de timer dédiée. Cela rend le code beaucoup plus lisible.</p>
-<p>Nous allons implémenter une méthode unique, robuste et extrêmement économe en ressources : Le chronomètre <code>SysTic</code>k 32 bits couplé aux macros à intervalle strict (Anti-Dérive).</p>
+<p>Nous allons implémenter une méthode extrêmement économe en ressources : Le chronomètre <code>SysTick</code> 32 bits couplé aux macros à intervalle strict (Anti-Dérive).</p>
+<p>Voila le fichier <a href="pt_ista_stm32f4_v1.h" style="text-decoration: underline;" target="_self">pt_ista_stm32f4_v1.h</a> de notre version des Protothreads.</p>
 <h3 id="le-chronometre-systick-32-bits">Le Chronomètre SysTick 32 bits<a class="anchor-link" href="#le-chronometre-systick-32-bits">¶</a></h3><p>Le SysTick est un compteur d'exceptions descendant de 24 bits propre au cœur ARM Cortex-M4. Cadencé à 16 MHz via l'oscillateur interne HSI, il met exactement 16 cycles pour consommer 1 microseconde.</p>
-<p>Nous le configurons en Bare-Metal pour déborder toutes les millisecondes (16 000 cycles) afin d'incrémenter une variable globale. La fonction <code>time_us_32()</code> combine cette variable avec la valeur résiduelle du registre matériel pour interpoler le temps exact en microsecondes.</p>
+<p>Nous le configurons pour déborder toutes les millisecondes (16 000 cycles) afin d'incrémenter une variable globale. La fonction <code>time_us_32(void)</code> combine cette variable avec la valeur résiduelle du registre matériel pour interpoler le temps exact en microsecondes. Cette fonction calcule le temps écoulé depuis le démarrage.</p>
 <div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span>
 
 <span class="c1">// Variable globale comptant les millisecondes (Autonomie : ~49 jours)</span>
 <span class="k">static</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">system_ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-<span class="cm">/**</span>
-<span class="cm"> * @brief Initialise le SysTick pour déborder toutes les 1 ms</span>
+<span class="cm">/*</span>
+<span class="cm"> * Initialise le SysTick pour déborder toutes les 1 ms</span>
 <span class="cm"> * Horloge HSI = 16 MHz -&gt; 16 000 000 / 1000 = 16 000 cycles pour 1 ms</span>
 <span class="cm"> */</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">SysTick_Time_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -655,15 +661,15 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="w">                    </span><span class="n">SysTick_CTRL_ENABLE_Msk</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="cm">/**</span>
-<span class="cm"> * @brief Interruption du SysTick (Exécutée de manière matérielle toutes les 1 ms)</span>
+<span class="cm">/*</span>
+<span class="cm"> * Interruption du SysTick (Exécutée de manière matérielle toutes les 1 ms)</span>
 <span class="cm"> */</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">SysTick_Handler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">system_ms</span><span class="o">++</span><span class="p">;</span><span class="w"> </span>
 <span class="p">}</span>
 
-<span class="cm">/**</span>
-<span class="cm"> * @brief Retourne le temps système actuel en microsecondes (32 bits)</span>
+<span class="cm">/*</span>
+<span class="cm"> * Retourne le temps système actuel en microsecondes (32 bits)</span>
 <span class="cm"> * Déborde et revient à zéro naturellement toutes les 71,5 minutes (2^32 µs).</span>
 <span class="cm"> */</span>
 <span class="kt">uint32_t</span><span class="w"> </span><span class="nf">time_us_32</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -683,10 +689,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">ms</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">partial_us</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-<h3 id="les-macros-temporelles-non-bloquantes-a-intervalle-strict">Les Macros Temporelles Non-Bloquantes à Intervalle Strict<a class="anchor-link" href="#les-macros-temporelles-non-bloquantes-a-intervalle-strict">¶</a></h3><p>Pour intégrer cette logique dans les Protothreads, nous exploitons deux spécificités du langage C :</p>
+<h3 id="les-macros-de-temporisation-non-bloquantes-a-intervalle-strict">Les Macros de temporisation non-bloquantes à intervalle strict<a class="anchor-link" href="#les-macros-de-temporisation-non-bloquantes-a-intervalle-strict">¶</a></h3><p>Pour intégrer cette logique dans les Protothreads, nous exploitons deux spécificités du langage C :</p>
 <ul>
 <li>La macro interne <code>__LINE__</code> : Elle renvoie le numéro de la ligne courante. Cela permet à nos macros de déclarer des variables statiques locales uniques de manière totalement masquée pour le développeur.</li>
 <li>Le cast (<code>int32_t</code>) : Indispensable pour gérer le débordement des 71,5 minutes du compteur sans jamais fausser les calculs mathématiques d'attente.</li>
+<li>même si le protothread a pris du retard (par exemple à cause d’une autre tâche plus longue), <strong>la prochaine échéance est calculée à partir de l’échéance précédente</strong>, ce qui garantit une périodicité parfaitement régulière (anti‑dérive).</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="cp">#ifndef PT_TIME_H</span>
 <span class="cp">#define PT_TIME_H</span>
@@ -708,15 +715,15 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="cp">    } while(0)</span>
 
 
-<span class="cm">/**</span>
-<span class="cm"> * @brief Initialise le marqueur pour un cadencement à intervalle strict.</span>
+<span class="cm">/*</span>
+<span class="cm"> * Initialise le marqueur pour un cadencement à intervalle strict.</span>
 <span class="cm"> * Doit impérativement être placée au début du protothread, avant la macro PT_BEGIN.</span>
 <span class="cm"> */</span>
 <span class="c1">// 2. Macros de cadencement strict (Anti-Dérive pour boucles infinies)</span>
 <span class="cp">#define PT_INTERVAL_INIT() static uint32_t pt_interval_marker</span>
 
-<span class="cm">/**</span>
-<span class="cm"> * @brief Force la tâche à s'exécuter à un rythme périodique fixe et absolu (Anti-Dérive)</span>
+<span class="cm">/*</span>
+<span class="cm"> * Force la tâche à s'exécuter à un rythme périodique fixe et absolu (Anti-Dérive)</span>
 <span class="cm"> * Réajuste dynamiquement le temps d'attente en soustrayant le temps pris par les calculs.</span>
 <span class="cm"> */</span>
 <span class="cp">#define PT_YIELD_INTERVAL(interval_time) \</span>
@@ -730,17 +737,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </pre></div>
 <p>Exemple : Appliquons cette méthode unique pour orchestrer deux tâches d'arrière-plan concurrentes.</p>
 <ul>
-<li>La tâche 1 (<code>task_led_fast</code>) s'exécute à un rythme strict de 5 ms (5 000 µs).</li>
-<li>La tâche 2 (<code>task_led_slow</code>) s'exécute à un rythme strict de 500 ms (500 000 µs).</li>
+<li>La tâche 1 (<code>task_led_fast</code>) s'exécute à un rythme strict de 5 ms (5 000 µs) en basculant PA5.</li>
+<li>La tâche 2 (<code>task_led_slow</code>) s'exécute à un rythme strict de 500 ms (500 000 µs) en basculant PA5.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="cm">/******************************************************************************</span>
-<span class="cm"> *  Application de Gestion du Temps à Intervalle Strict (Bare-Metal)</span>
-<span class="cm"> *  Cible : STM32F401CCU6 (Black Pill) - Horloge HSI 16 MHz</span>
-<span class="cm"> ******************************************************************************/</span>
-
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">"pt.h"</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">"pt_time.h"</span>
+<div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"pt_ista_stm32f4_v1.h"</span>
 
 <span class="c1">// Variable globale exigée par l'ordonnanceur BRL4</span>
 <span class="k">volatile</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pt_executed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -749,9 +750,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="n">pt_fast</span><span class="p">;</span>
 <span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="n">pt_slow</span><span class="p">;</span>
 
-<span class="cm">/* ============================================================</span>
-<span class="cm"> * CONFIGURATION DU MATÉRIEL (GPIO EN BARE-METAL)</span>
-<span class="cm"> * ============================================================ */</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">GPIO_Init_LEDs</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Activation de l'horloge du périphérique GPIOA sur le bus AHB1</span>
 <span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">AHB1ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_AHB1ENR_GPIOAEN</span><span class="p">;</span>
@@ -764,9 +762,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="w">    </span><span class="n">GPIOA</span><span class="o">-&gt;</span><span class="n">OSPEEDR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="p">((</span><span class="mi">2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">5</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">6</span><span class="o">*</span><span class="mi">2</span><span class="p">));</span>
 <span class="p">}</span>
 
-<span class="cm">/* ============================================================</span>
-<span class="cm"> * PROTOTHREAD 1 : Cadencement Périodique Strict (5 ms)</span>
-<span class="cm"> * ============================================================ */</span>
+<span class="c1">// PROTOTHREAD 1 : Cadencement Périodique Strict (5 ms)</span>
 <span class="k">static</span><span class="w"> </span><span class="n">PT_THREAD</span><span class="p">(</span><span class="n">task_led_fast</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="o">*</span><span class="n">pt</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">PT_INTERVAL_INIT</span><span class="p">();</span><span class="w"> </span><span class="c1">// Déclaration de la variable de synchronisation cachée</span>
 
@@ -787,9 +783,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="w">    </span><span class="n">PT_END</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="cm">/* ============================================================</span>
-<span class="cm"> * PROTOTHREAD 2 : Cadencement Périodique Lent (500 ms)</span>
-<span class="cm"> * ============================================================ */</span>
+<span class="c1">// PROTOTHREAD 2 : Cadencement Périodique Lent (500 ms)</span>
 <span class="k">static</span><span class="w"> </span><span class="n">PT_THREAD</span><span class="p">(</span><span class="n">task_led_slow</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="o">*</span><span class="n">pt</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">PT_INTERVAL_INIT</span><span class="p">();</span><span class="w"> </span><span class="c1">// Déclaration de la variable de synchronisation cachée</span>
 
@@ -808,9 +802,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="w">    </span><span class="n">PT_END</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="cm">/* ============================================================</span>
-<span class="cm"> * ORDONNANCEUR COOPÉRATIF (BOUCLE PRINCIPALE)</span>
-<span class="cm"> * ============================================================ */</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 1. Initialisation matérielle</span>
 <span class="w">    </span><span class="n">SysTick_Time_Init</span><span class="p">();</span><span class="w">      </span><span class="c1">// Active la base de temps unique à base de SysTick</span>
@@ -921,22 +912,26 @@ Image(filename='test2.png', width=800)</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ol>
-<li><code>PT_YIELD_usec()</code> fait une pause relative. Elle applique une pause à partir du moment précis où la macro est lue. Elle dit : « Arrête-toi ici, laisse tourner les autres tâches, et reviens me voir dans 500 ms. » C'est un comportement identique à un délai classique <code>Delay_ms()</code>, à la seule différence qu'il est non-bloquant pour le reste du microcontrôleur.</li>
+<li><code>PT_YIELD_usec(delay_time)</code> fait une pause relative en microseconde. Elle applique une pause à partir du moment précis où la macro est lue. Elle dit : « Arrête-toi ici, laisse tourner les autres tâches, et reviens me voir dans 500 ms. » C'est un comportement identique à un délai classique <code>Delay_ms()</code>, à la seule différence qu'il est non-bloquant pour le reste du microcontrôleur.</li>
 </ol>
 <blockquote>
-<p>Le comportement : Si une tâche doit effectuer une action puis attendre 500 ms, l'échéance est calculée de façon relative : <code>Echéance = Temps_Actuel + 500 ms</code>.</p>
-</blockquote>
-<blockquote>
-<p>Usage idéal : Les actions séquentielles simples où la précision rythmique globale n'a pas d'importance (ex: attendre 20 ms pour l'anti-rebond d'un bouton, espacer l'affichage de deux messages).</p>
+<ul>
+<li><p>Le comportement : Si une tâche doit effectuer une action puis attendre 500 ms, l'échéance est calculée de façon relative : <code>Echéance = Temps_Actuel + 500 ms</code>.</p>
+</li>
+<li><p>Usage idéal : Les actions séquentielles simples où la précision rythmique globale n'a pas d'importance (ex: attendre 20 ms pour l'anti-rebond d'un bouton, espacer l'affichage de deux messages).</p>
+</li>
+</ul>
 </blockquote>
 <ol start="2">
-<li><code>PT_YIELD_INTERVAL()</code> ne sert pas à faire une simple pause, mais à verrouiller la période globale d'une boucle infinie. On l'utilise exclusivement en fin de boucle <code>while(1)</code> pour s'assurer que la boucle entière se répète à un rythme strict, sans dérive.</li>
+<li><code>PT_YIELD_INTERVAL(interval_time)</code> ne sert pas à faire une simple pause, mais à verrouiller la période globale d'une boucle infinie. On l'utilise exclusivement en fin de boucle <code>while(1)</code> pour s'assurer que la boucle entière se répète à un rythme périodique strict, sans dérive.</li>
 </ol>
 <blockquote>
-<p>Cette macro applique un effet d'aspiration temporelle. Elle ne calcule pas l'échéance par rapport au temps présent, mais à partir d'un marqueur fixe (<code>pt_interval_marker</code>) représentant l'heure théorique parfaite à laquelle la tâche aurait dû s'exécuter.</p>
-</blockquote>
-<blockquote>
-<p>Le bénéfice : La dérive temporelle est mathématiquement nulle. La gigue (jitter) est éliminée d'un cycle à l'autre.</p>
+<ul>
+<li><p>Cette macro applique un effet d'aspiration temporelle. Elle ne calcule pas l'échéance par rapport au temps présent, mais à partir d'un marqueur fixe (<code>pt_interval_marker</code>) représentant l'heure théorique parfaite à laquelle la tâche aurait dû s'exécuter.</p>
+</li>
+<li><p>Le bénéfice : La dérive temporelle est mathématiquement nulle. La gigue (jitter) est éliminée d'un cycle à l'autre.</p>
+</li>
+</ul>
 </blockquote>
 </div>
 </div>
@@ -948,101 +943,13 @@ Image(filename='test2.png', width=800)</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="exemple-sequenceur-dihm-et-anti-rebond-de-bouton">Exemple : Séquenceur d'IHM et Anti-rebond de Bouton<a class="anchor-link" href="#exemple-sequenceur-dihm-et-anti-rebond-de-bouton">¶</a></h3><p>Cet exemple démontre comment enchaîner des actions de manière séquentielle et traiter les rebonds parasites d'un bouton mécanique (PC13) sans figer le CPU. L'utilisation de <code>PT_YIELD_usec</code> est ici parfaite car le décalage de quelques microsecondes induit par les fonctions n'altère en rien le comportement de l'interface.</p>
-<div class="highlight"><pre><span></span><span class="cm">/******************************************************************************</span>
-<span class="cm"> *  Application Multi-tâches Combinée (Bare-Metal 16 MHz HSI)</span>
-<span class="cm"> *  Description : Une tâche séquentielle d'anti-rebond (PA5/PC13)</span>
-<span class="cm"> ******************************************************************************/</span>
+<div class="highlight"><pre><span></span><span class="c1">// Une tâche séquentielle d'anti-rebond (PA5/PC13)</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">"pt.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"pt_ista_stm32f4_v1.h"</span>
 
-<span class="cm">/* ============================================================</span>
-<span class="cm"> * MACROS TEMPORELLES DES PROTOTHREADS (MÉTHODE UNIQUE 16 MHz)</span>
-<span class="cm"> * ============================================================ */</span>
-
-<span class="c1">// Variable globale exigée par l'ordonnanceur BRL4</span>
-<span class="k">volatile</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pt_executed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-
-<span class="c1">// Déclarations des prototypes internes</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">SysTick_Time_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
-<span class="kt">uint32_t</span><span class="w"> </span><span class="nf">time_us_32</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
-
-<span class="cm">/**</span>
-<span class="cm"> * @brief Macro d'attente relative (Non-bloquante)</span>
-<span class="cm"> * Utilise la ligne courante (__LINE__) pour isoler sa propre variable d'échéance.</span>
-<span class="cm"> */</span>
-<span class="cp">#define PT_YIELD_usec(delay_time) \</span>
-<span class="cp">    do { \</span>
-<span class="cp">        static uint32_t pt_time_target; \</span>
-<span class="cp">        pt_time_target = time_us_32() + (uint32_t)(delay_time); \</span>
-<span class="cp">        PT_YIELD_UNTIL(pt, ((int32_t)(time_us_32() - pt_time_target) &gt;= 0)); \</span>
-<span class="cp">    } while(0)</span>
-
-<span class="cm">/**</span>
-<span class="cm"> * @brief Initialise le marqueur pour un cadencement à intervalle strict.</span>
-<span class="cm"> */</span>
-<span class="cp">#define PT_INTERVAL_INIT() static uint32_t pt_interval_marker</span>
-
-<span class="cm">/**</span>
-<span class="cm"> * @brief Force la tâche à s'exécuter à un rythme périodique fixe et absolu (Anti-Dérive)</span>
-<span class="cm"> */</span>
-<span class="cp">#define PT_YIELD_INTERVAL(interval_time) \</span>
-<span class="cp">    do { \</span>
-<span class="cp">        PT_YIELD_UNTIL(pt, ((int32_t)(time_us_32() - pt_interval_marker) &gt;= 0)); \</span>
-<span class="cp">        pt_interval_marker = time_us_32() + (uint32_t)(interval_time); \</span>
-<span class="cp">        pt_executed = 1; \</span>
-<span class="cp">    } while(0)</span>
-
-<span class="cm">/* ============================================================</span>
-<span class="cm"> * CONTEXTES ET VARIABLES GLOBALES DU SYSTÈME</span>
-<span class="cm"> * ============================================================ */</span>
-
-<span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="n">pt_btn</span><span class="p">;</span>
-
-<span class="c1">// Horloge système logique</span>
-<span class="k">static</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">system_ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-
-<span class="cm">/* ============================================================</span>
-<span class="cm"> * PILOTE DE TEMPS MATÉRIEL (SYSTICK BARE-METAL 16 MHz)</span>
-<span class="cm"> * ============================================================ */</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">SysTick_Time_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 16 000 cycles de processeur = 1 ms à la fréquence par défaut de 16 MHz</span>
-<span class="w">    </span><span class="n">SysTick</span><span class="o">-&gt;</span><span class="n">LOAD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16000</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span>
-<span class="w">    </span><span class="n">SysTick</span><span class="o">-&gt;</span><span class="n">VAL</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">         </span>
-
-<span class="w">    </span><span class="c1">// Correction du nom de la macro de masquage ARM officielle : SysTick_CTRL_ENABLE_Msk</span>
-<span class="w">    </span><span class="n">SysTick</span><span class="o">-&gt;</span><span class="n">CTRL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SysTick_CTRL_CLKSOURCE_Msk</span><span class="w"> </span><span class="o">|</span><span class="w"> </span>
-<span class="w">                    </span><span class="n">SysTick_CTRL_TICKINT_Msk</span><span class="w">   </span><span class="o">|</span><span class="w"> </span>
-<span class="w">                    </span><span class="n">SysTick_CTRL_ENABLE_Msk</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">SysTick_Handler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">system_ms</span><span class="o">++</span><span class="p">;</span><span class="w"> </span>
-<span class="p">}</span>
-
-<span class="kt">uint32_t</span><span class="w"> </span><span class="nf">time_us_32</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="n">ticks</span><span class="p">,</span><span class="w"> </span><span class="n">ms_verify</span><span class="p">;</span>
-<span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">system_ms</span><span class="p">;</span>
-<span class="w">        </span><span class="n">ticks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SysTick</span><span class="o">-&gt;</span><span class="n">VAL</span><span class="p">;</span><span class="w"> </span><span class="c1">// Registre matériel descendant (15999 -&gt; 0)</span>
-<span class="w">        </span><span class="n">ms_verify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">system_ms</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">ms</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ms_verify</span><span class="p">);</span>
-
-<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">elapsed_ticks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16000</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ticks</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// À 16 MHz, 1 µs = 16 ticks de processeur. Division par 16 (décalage &gt;&gt; 4 possible)</span>
-<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">partial_us</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elapsed_ticks</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"> </span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">ms</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">partial_us</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="cm">/* ============================================================</span>
-<span class="cm"> * CONFIGURATION DES ENTRÉES/SORTIES (GPIO BARE-METAL)</span>
-<span class="cm"> * ============================================================ */</span>
-
+<span class="c1">// CONFIGURATION DES ENTRÉES/SORTIES </span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">GPIO_Init_Bouton</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Activation des horloges GPIOA et GPIOC</span>
 <span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">AHB1ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_AHB1ENR_GPIOCEN</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">RCC_AHB1ENR_GPIOAEN</span><span class="p">;</span>
@@ -1056,9 +963,7 @@ Image(filename='test2.png', width=800)</div>
 <span class="w">    </span><span class="n">GPIOA</span><span class="o">-&gt;</span><span class="n">OSPEEDR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">5</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// Vitesse rapide</span>
 <span class="p">}</span>
 
-<span class="cm">/* ============================================================</span>
-<span class="cm"> * PROTOTHREAD 1 : Interface Homme-Machine et Anti-rebond (Relative)</span>
-<span class="cm"> * ============================================================ */</span>
+<span class="c1">// PROTOTHREAD 1 : Interface Homme-Machine et Anti-rebond (Relative)</span>
 <span class="k">static</span><span class="w"> </span><span class="n">PT_THREAD</span><span class="p">(</span><span class="n">task_interface_bouton</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="o">*</span><span class="n">pt</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">PT_BEGIN</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
 
@@ -1086,13 +991,8 @@ Image(filename='test2.png', width=800)</div>
 <span class="w">    </span><span class="n">PT_END</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
 <span class="p">}</span>
 
-
-<span class="cm">/* ============================================================</span>
-<span class="cm"> * ORDONNANCEUR PRINCIPAL COOPÉRATIF</span>
-<span class="cm"> * ============================================================ */</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 1. Initialisations matérielles</span>
-<span class="w">    </span><span class="n">SysTick_Time_Init</span><span class="p">();</span><span class="w">       </span><span class="c1">// Base de temps calibrée pour 16 MHz</span>
 <span class="w">    </span><span class="n">GPIO_Init_Bouton</span><span class="p">();</span><span class="w">        </span><span class="c1">// Configure PA5 (Sortie) et PC13 (Entrée)</span>
 
 <span class="w">    </span><span class="c1">// 2. Initialisation des structures de contexte des Protothreads</span>

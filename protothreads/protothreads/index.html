@@ -63,7 +63,7 @@
                                 <a href="./" class="nav-link active" aria-current="page">Introduction au multitâche coopératif avec les Protothreads</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../semaphoresPT/" class="nav-link">Synchronisation avec les Sémaphores</a>
+                                <a href="../semaphoresPT/" class="nav-link">Synchronisation avec les sémaphores</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../timerPT/" class="nav-link">La gestion précise et non‑bloquante du temps avec Protothreads</a>
@@ -72,7 +72,7 @@
                                 <a href="../mutexPT/" class="nav-link">Le Mutex</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../uart/uart.ipynb" class="nav-link">Communication série via UART</a>
+                                <a href="../../uart/uart/" class="nav-link">Communication avec d'autres dispositifs</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../adc/adc.ipynb" class="nav-link">Acquisition analogique avec ADC</a>
@@ -616,7 +616,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="introduction-au-multitache-cooperatif-avec-les-protothreads">Introduction au multitâche coopératif avec les Protothreads<a class="anchor-link" href="#introduction-au-multitache-cooperatif-avec-les-protothreads">¶</a></h1>
+<h1 id="introduction-au-multitache-cooperatif-avec-les-protothreads">Introduction au multitâche coopératif avec les Protothreads<a class="anchor-link" href="#introduction-au-multitache-cooperatif-avec-les-protothreads">¶</a></h1><h4 id="paul-s-kabiduspaulkabidugmailcom"><a href="https://plkab.github.io/INF302/">Paul S. Kabidu</a>(spaulkabidu@gmail.com)<a class="anchor-link" href="#paul-s-kabiduspaulkabidugmailcom">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4c1bbf98-94a6-4f9a-a52a-ad90487ef4b9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
 </div>
 </div>
 </div>
@@ -641,6 +651,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><a href="#structure">La structure type d'un code Protothread</a></li>
 <li><a href="#coulisses">Les coulisses des macros : L'illusion du Multi-threading</a></li>
 <li><a href="#exemple1">Exemple 1 : Le Blink non-bloquant avec Protothreads</a></li>
+<li><a href="#exemple2">Exemple 2 : Trois LED clignotent à des fréquences différentes</a></li>
+<li><a href="#multiPT">Multi-threads avec anti-rebond et clignotement 1 kHz et LCD</a></li>
 </ul>
 </blockquote>
 </div>
@@ -1018,15 +1030,43 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d1a6137e-74aa-435a-92bb-16f022f0efeb">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=33795e55-d64b-4052-a7f6-9efadb202ab1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/watch?v=XLZDCTv7__c" width="800">
-</iframe>
-<p>La video</p>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">'XLZDCTv7__c'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-1">from IPython.display import YouTubeVideo
+YouTubeVideo('XLZDCTv7__c', width=800, height=500)</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<iframe allowfullscreen="" frameborder="0" height="500" src="https://www.youtube.com/embed/XLZDCTv7__c" width="800"></iframe>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1037,7 +1077,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="exemple-2-trois-led-clignotent-a-des-frequences-differentes">Exemple 2 : Trois LED clignotent à des fréquences différentes <a id="exemple2"></a><a class="anchor-link" href="#exemple-2-trois-led-clignotent-a-des-frequences-differentes">¶</a></h3><p>Chaque LED possède son propre Protothread indépendant, caractérisé par sa propre structure de contrôle (<code>struct pt</code>). Dans la boucle principale <code>while(1)</code>, le processeur appelle ces trois threads les uns après les autres à chaque cycle.</p>
-<p>Puisque les macros de pt.h n'utilisent aucune attente active (pas de boucle bloquante), chaque fonction s'exécute en quelques nanosecondes : elle vérifie si son délai est expiré, agit sur sa LED si nécessaire, puis rend immédiatement la main à la boucle principale pour que le thread suivant puisse s'exécuter.</p>
+<p>Puisque les macros de <code>pt.h</code> n'utilisent aucune attente active (pas de boucle bloquante), chaque fonction s'exécute en quelques nanosecondes : elle vérifie si son délai est expiré, agit sur sa LED si nécessaire, puis rend immédiatement la main à la boucle principale pour que le thread suivant puisse s'exécuter.</p>
 <p>Pour cet exemple, nous configurons trois broches du Port C en sorties (par exemple PC13, PC14, et PC15).</p>
 <ul>
 <li>LED 1 (PC13) : Clignote toutes les 200 ms (Fréquence rapide).</li>
@@ -1177,7 +1217,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -1188,13 +1228,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
-
-<span class="c1"># Remplacez l'identifiant ci-dessous par celui de votre vidéo</span>
 <span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">'5ntAif_VSRA'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-1">from IPython.display import YouTubeVideo
-
-# Remplacez l'identifiant ci-dessous par celui de votre vidéo
+<div class="clipboard-copy-txt" id="cell-2">from IPython.display import YouTubeVideo
 YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 </div>
 </div>
@@ -1218,7 +1254,7 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="exemple-proto"></a></p>
+<p><a id="exemple-multiPT"></a></p>
 <h3 id="multi-threads-avec-anti-rebond-et-clignotement-1-khz-et-lcd">Multi-threads avec anti-rebond et clignotement 1 kHz et LCD<a class="anchor-link" href="#multi-threads-avec-anti-rebond-et-clignotement-1-khz-et-lcd">¶</a></h3><p>Dans cet exemple :</p>
 <ul>
 <li><strong>Thread 1</strong> : Gère la lecture du bouton (PA0) avec un anti-rebond non bloquant par échantillonnage temporel de 20 ms. Si le bouton est validé, il change l'état d'activation de la LED rapide.</li>
@@ -1229,17 +1265,12 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <li><strong>Thread 6</strong> : Met à jour l’affichage LCD avec les deux compteurs sous la forme <code>Act:XX Auto:YY</code> sur la première ligne. Le rafraîchissement n’a lieu que lorsqu’un compteur change (grâce à un drapeau), ce qui évite de saturer l’écran.</li>
 </ul>
 <p>L’ensemble fonctionne grâce à une <strong>base de temps de 1 ms</strong> fournie par le SysTick, qui incrémente <code>ticks_ms</code> et lève un drapeau pour le thread 2. Les protothreads permettent d’écrire un code séquentiel tout en étant non‑bloquants : chaque thread peut attendre une condition (temps écoulé, appui stable, drapeau) sans figer le processeur. L’ordonnanceur coopératif les appelle tour à tour dans la boucle principale.</p>
-<p>Les points utiles clés :</p>
-<ul>
-<li><strong>Anti-rebond</strong> : échantillonnage temporel sans <code>Delay_Ms()</code> bloquant, utilisant <code>ticks_ms</code>.</li>
-<li><strong>Multitâche léger</strong> : plusieurs tâches s’exécutent « en parallèle » grâce aux protothreads.</li>
-<li><strong>Synchronisation</strong> : partage de variables <code>volatile</code> et utilisation de drapeaux pour communiquer entre threads.</li>
-<li><strong>Optimisation LCD</strong> : écriture seulement lors des changements, pour un affichage stable et réactif.</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * @file main.c</span>
-<span class="cm"> * @brief Projet multi‑threads avec protothreads : LEDs, LCD et deux compteurs.</span>
-<span class="cm"> * </span>
+<p>Les fichiers pour l'afficheur LCD et pour le temps sont disponible <a href="https://plkab.github.io/INF302/ihm/ihm/"><strong>ici</strong></a></p>
+<div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Projet multi‑threads avec protothreads : LEDs, LCD et deux compteurs.</span>
+<span class="cm"> * Auteur : Paul S. Kabidu ISTA/Goma</span>
+<span class="cm"> * Crée 16 Aout 2026</span>
+<span class="cm"> *</span>
 <span class="cm"> * Ce programme illustre le concept de multitâche coopératif sur un microcontrôleur</span>
 <span class="cm"> * STM32F4. Il utilise la bibliothèque « protothreads » d’Adam Dunkels pour créer</span>
 <span class="cm"> * plusieurs tâches (threads) qui s’exécutent en parallèle de manière non‑bloquante.</span>
@@ -1257,18 +1288,13 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="cm"> * L’ensemble est piloté par une base de temps de 1 ms fournie par le SysTick.</span>
 <span class="cm"> */</span>
 
-<span class="cm">/* ====================================================================</span>
-<span class="cm"> * INCLUSIONS</span>
-<span class="cm"> * ==================================================================== */</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span><span class="c1">   // Fichier d’en‑tête STM32 pour l’accès aux registres</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">"pt.h"</span><span class="c1">          // Bibliothèque des protothreads (Adam Dunkels)</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">"lcd.h"</span><span class="c1">         // Driver pour l’afficheur LCD (fonctions d’initialisation et d’affichage)</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">"delay.h"</span><span class="c1">       // Fonctions de délai (Delay_Init, Delay_Us, Delay_Ms) nécessaires au LCD</span>
 
-<span class="cm">/* ====================================================================</span>
-<span class="cm"> * DÉFINITIONS DES BROCHES (pour faciliter la maintenance)</span>
-<span class="cm"> * ==================================================================== */</span>
+<span class="c1">// DÉFINITIONS DES BROCHES (pour faciliter la maintenance)</span>
 
 <span class="cp">#define LED_RAPIDE_PIN   13   </span><span class="c1">// PC13 : LED commandée par le bouton PA0, clignote à 1 kHz</span>
 <span class="cp">#define LED_AUTO_PIN     14   </span><span class="c1">// PC14 : LED clignotant en permanence toutes les 500 ms</span>
@@ -1276,9 +1302,9 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="cp">#define BTN0_PIN         0    </span><span class="c1">// PA0 : bouton pour activer/désactiver la LED rapide</span>
 <span class="cp">#define BTN1_PIN         1    </span><span class="c1">// PA1 : bouton pour incrémenter le compteur_action</span>
 
-<span class="cm">/* ====================================================================</span>
+<span class="cm">/* </span>
 <span class="cm"> * VARIABLES GLOBALES PARTAGÉES (entre threads et interruption)</span>
-<span class="cm"> * ====================================================================</span>
+<span class="cm"> * </span>
 <span class="cm"> * Le mot‑clé « volatile » est obligatoire car ces variables sont modifiées</span>
 <span class="cm"> * à la fois dans l’interruption SysTick et dans les threads. Il empêche</span>
 <span class="cm"> * le compilateur d’optimiser les accès et garantit que chaque lecture</span>
@@ -1298,9 +1324,9 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="c1">// Drapeau pour rafraîchir l’affichage LCD (évite d’écrire sur le LCD à chaque tick)</span>
 <span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">flag_refresh_lcd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">         </span><span class="c1">// 1 = demande de mise à jour de l’écran</span>
 
-<span class="cm">/* ====================================================================</span>
+<span class="cm">/* </span>
 <span class="cm"> * STRUCTURES DE CONTRÔLE DES PROTOTHREADS</span>
-<span class="cm"> * ====================================================================</span>
+<span class="cm"> * </span>
 <span class="cm"> * Chaque thread a besoin d’une structure « struct pt » pour mémoriser</span>
 <span class="cm"> * son état (ligne d’exécution). On les déclare statiques car elles ne</span>
 <span class="cm"> * sont utilisées que dans ce fichier.</span>
@@ -1313,12 +1339,10 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="n">pt_compteur_auto</span><span class="p">;</span><span class="w"> </span><span class="c1">// Thread du compteur automatique</span>
 <span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="n">pt_lcd</span><span class="p">;</span><span class="w">           </span><span class="c1">// Thread de mise à jour du LCD</span>
 
-<span class="cm">/* ====================================================================</span>
-<span class="cm"> * FONCTIONS D’INITIALISATION MATÉRIELLE</span>
-<span class="cm"> * ==================================================================== */</span>
+<span class="c1">// FONCTIONS D’INITIALISATION MATÉRIELLE </span>
 
-<span class="cm">/**</span>
-<span class="cm"> * @brief Initialise les broches des LEDs et des boutons.</span>
+<span class="cm">/*</span>
+<span class="cm"> * Initialise les broches des LEDs et des boutons.</span>
 <span class="cm"> * </span>
 <span class="cm"> * On active les horloges des ports A et C.</span>
 <span class="cm"> * Les LEDs (PC13, PC14) sont configurées en sortie push‑pull.</span>
@@ -1333,7 +1357,7 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="w">    </span><span class="c1">// Activer les horloges des ports A et C</span>
 <span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">AHB1ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_AHB1ENR_GPIOAEN</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">RCC_AHB1ENR_GPIOCEN</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">// --- Configuration des LEDs en sortie ---</span>
+<span class="w">    </span><span class="c1">// Configuration des LEDs en sortie </span>
 <span class="w">    </span><span class="c1">// On efface les bits de configuration (MODER) pour PC13 et PC14,</span>
 <span class="w">    </span><span class="c1">// puis on les met à 01 (sortie générale)</span>
 <span class="w">    </span><span class="n">GPIOC</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">((</span><span class="mi">3U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">LED_RAPIDE_PIN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mi">3U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">LED_AUTO_PIN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">)));</span>
@@ -1342,7 +1366,7 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="w">    </span><span class="c1">// Éteindre les LEDs (mettre les broches à HIGH)</span>
 <span class="w">    </span><span class="n">GPIOC</span><span class="o">-&gt;</span><span class="n">BSRR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LED_RAPIDE_PIN</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LED_AUTO_PIN</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// --- Configuration des boutons en entrée avec pull‑up ---</span>
+<span class="w">    </span><span class="c1">// Configuration des boutons en entrée avec pull‑up </span>
 <span class="w">    </span><span class="c1">// PA0</span>
 <span class="w">    </span><span class="n">BTN_PORT</span><span class="o">-&gt;</span><span class="n">MODER</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">3U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">BTN0_PIN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span><span class="w">   </span><span class="c1">// mode 00 = entrée</span>
 <span class="w">    </span><span class="n">BTN_PORT</span><span class="o">-&gt;</span><span class="n">PUPDR</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="p">(</span><span class="mi">3U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">BTN0_PIN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span><span class="w">   </span><span class="c1">// efface les bits pull</span>
@@ -1353,8 +1377,8 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="w">    </span><span class="n">BTN_PORT</span><span class="o">-&gt;</span><span class="n">PUPDR</span><span class="w"> </span><span class="o">|=</span><span class="w">  </span><span class="p">(</span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">BTN1_PIN</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span>
 <span class="p">}</span>
 
-<span class="cm">/**</span>
-<span class="cm"> * @brief Configure le SysTick pour générer une interruption toutes les 1 ms.</span>
+<span class="cm">/*</span>
+<span class="cm"> * Configure le SysTick pour générer une interruption toutes les 1 ms.</span>
 <span class="cm"> * </span>
 <span class="cm"> * Le SysTick est un timer simple intégré au processeur ARM Cortex‑M.</span>
 <span class="cm"> * On lui donne la valeur de reload pour que le compteur parte de cette</span>
@@ -1367,8 +1391,8 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="w">    </span><span class="n">SysTick_Config</span><span class="p">(</span><span class="mi">16000000U</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span><span class="w">   </span><span class="c1">// 16 000 000 / 1000 = 16 000</span>
 <span class="p">}</span>
 
-<span class="cm">/**</span>
-<span class="cm"> * @brief Gestionnaire d’interruption du SysTick (appelé toutes les 1 ms).</span>
+<span class="cm">/*</span>
+<span class="cm"> * Gestionnaire d’interruption du SysTick (appelé toutes les 1 ms).</span>
 <span class="cm"> * </span>
 <span class="cm"> * C’est le cœur temporel du programme : on incrémente la base de temps</span>
 <span class="cm"> * et on lève un drapeau pour le thread de la LED rapide.</span>
@@ -1378,12 +1402,10 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="w">    </span><span class="n">flag_toggle_1khz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">     </span><span class="c1">// indique au thread LED rapide qu’une ms est passée</span>
 <span class="p">}</span>
 
-<span class="cm">/* ====================================================================</span>
-<span class="cm"> * FONCTIONS UTILITAIRES POUR LE LCD</span>
-<span class="cm"> * ==================================================================== */</span>
+<span class="c1">// FONCTIONS UTILITAIRES POUR LE LCD</span>
 
-<span class="cm">/**</span>
-<span class="cm"> * @brief Convertit un nombre entre 0 et 99 en deux caractères ASCII.</span>
+<span class="cm">/*</span>
+<span class="cm"> * Convertit un nombre entre 0 et 99 en deux caractères ASCII.</span>
 <span class="cm"> * </span>
 <span class="cm"> * Exemple : val = 5 -&gt; buf[0]='0', buf[1]='5' ; val = 42 -&gt; '4','2'.</span>
 <span class="cm"> * Cette fonction évite d’utiliser sprintf (trop lourd) pour afficher</span>
@@ -1394,8 +1416,8 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="w">    </span><span class="n">buf</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'0'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">val</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w">   </span><span class="c1">// unité</span>
 <span class="p">}</span>
 
-<span class="cm">/**</span>
-<span class="cm"> * @brief Affiche les deux compteurs sur la première ligne du LCD.</span>
+<span class="cm">/*</span>
+<span class="cm"> * Affiche les deux compteurs sur la première ligne du LCD.</span>
 <span class="cm"> * </span>
 <span class="cm"> * Format : "Act:XX Auto:YY" (16 caractères exactement).</span>
 <span class="cm"> * On utilise la conversion int_to_2digits pour chaque compteur.</span>
@@ -1415,9 +1437,9 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="w">    </span><span class="n">LCD_Print</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span><span class="w">         </span><span class="c1">// envoie la chaîne au LCD</span>
 <span class="p">}</span>
 
-<span class="cm">/* ====================================================================</span>
+<span class="cm">/* </span>
 <span class="cm"> * LES 6 PROTOTHREADS</span>
-<span class="cm"> * ====================================================================</span>
+<span class="cm"> *</span>
 <span class="cm"> * Un protothread est une fonction qui utilise les macros PT_BEGIN, PT_WAIT_UNTIL,</span>
 <span class="cm"> * et PT_END pour gérer son exécution. Chaque appel de la fonction reprend</span>
 <span class="cm"> * l’exécution là où elle s’était arrêtée (grâce à la structure pt).</span>
@@ -1425,11 +1447,10 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="cm"> * le temps processeur, sans utiliser de système d’exploitation.</span>
 <span class="cm"> */</span>
 
-<span class="c1">// --------------------------------------------------------------------</span>
+
 <span class="c1">// Thread 1 : Lecture du bouton PA0 avec anti‑rebond (active la LED rapide)</span>
-<span class="c1">// --------------------------------------------------------------------</span>
-<span class="cm">/**</span>
-<span class="cm"> * @brief Thread qui surveille le bouton PA0.</span>
+<span class="cm">/*</span>
+<span class="cm"> * Thread qui surveille le bouton PA0.</span>
 <span class="cm"> * </span>
 <span class="cm"> * Il attend que le bouton soit enfoncé (niveau LOW), puis attend 20 ms</span>
 <span class="cm"> * pour filtrer les rebonds, vérifie que le niveau est toujours LOW,</span>
@@ -1467,10 +1488,8 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="w">    </span><span class="n">PT_END</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span><span class="w">  </span><span class="c1">// fin du thread (jamais atteint car while(1))</span>
 <span class="p">}</span>
 
-<span class="c1">// --------------------------------------------------------------------</span>
 <span class="c1">// Thread 2 : Clignotement rapide de PC13 à 1 kHz (si activé)</span>
-<span class="c1">// --------------------------------------------------------------------</span>
-<span class="cm">/**</span>
+<span class="cm">/*</span>
 <span class="cm"> * @brief Thread qui gère la LED rapide (PC13).</span>
 <span class="cm"> * </span>
 <span class="cm"> * Si le mode est inactif (clignotement_rapide_actif = 0), il éteint la LED</span>
@@ -1499,11 +1518,10 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="w">    </span><span class="n">PT_END</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// --------------------------------------------------------------------</span>
+
 <span class="c1">// Thread 3 : Clignotement automatique de PC14 (période 500 ms)</span>
-<span class="c1">// --------------------------------------------------------------------</span>
-<span class="cm">/**</span>
-<span class="cm"> * @brief Thread qui fait clignoter PC14 en permanence, indépendamment des autres threads.</span>
+<span class="cm">/*</span>
+<span class="cm"> * Thread qui fait clignoter PC14 en permanence, indépendamment des autres threads.</span>
 <span class="cm"> * </span>
 <span class="cm"> * Il alterne les états ON (500 ms) et OFF (500 ms) en utilisant des délais</span>
 <span class="cm"> * calculés à partir de ticks_ms. Le clignotement est autonome et ne dépend</span>
@@ -1527,11 +1545,9 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="w">    </span><span class="n">PT_END</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// --------------------------------------------------------------------</span>
 <span class="c1">// Thread 4 : Lecture du bouton PA1 (incrémente compteur_action)</span>
-<span class="c1">// --------------------------------------------------------------------</span>
-<span class="cm">/**</span>
-<span class="cm"> * @brief Thread qui surveille PA1 et incrémente le compteur_action.</span>
+<span class="cm">/*</span>
+<span class="cm"> * Thread qui surveille PA1 et incrémente le compteur_action.</span>
 <span class="cm"> * </span>
 <span class="cm"> * Le principe est identique au thread bouton0 : anti‑rebond de 20 ms,</span>
 <span class="cm"> * validation de l’appui, puis incrémentation de compteur_action (modulo 100).</span>
@@ -1558,11 +1574,9 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="w">    </span><span class="n">PT_END</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// --------------------------------------------------------------------</span>
 <span class="c1">// Thread 5 : Compteur automatique (incrément toutes les 100 ms)</span>
-<span class="c1">// --------------------------------------------------------------------</span>
-<span class="cm">/**</span>
-<span class="cm"> * @brief Thread qui incrémente compteur_auto toutes les 100 ms.</span>
+<span class="cm">/*</span>
+<span class="cm"> * Thread qui incrémente compteur_auto toutes les 100 ms.</span>
 <span class="cm"> * </span>
 <span class="cm"> * Il utilise ticks_ms pour attendre 100 ms, puis incrémente compteur_auto</span>
 <span class="cm"> * de 0 à 100 (cyclique) et lève le drapeau pour le LCD.</span>
@@ -1582,11 +1596,9 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="w">    </span><span class="n">PT_END</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// --------------------------------------------------------------------</span>
 <span class="c1">// Thread 6 : Mise à jour du LCD (déclenché par flag_refresh_lcd)</span>
-<span class="c1">// --------------------------------------------------------------------</span>
-<span class="cm">/**</span>
-<span class="cm"> * @brief Thread qui rafraîchit l’affichage LCD quand nécessaire.</span>
+<span class="cm">/*</span>
+<span class="cm"> * Thread qui rafraîchit l’affichage LCD quand nécessaire.</span>
 <span class="cm"> * </span>
 <span class="cm"> * Il attend que flag_refresh_lcd soit à 1, puis appelle afficher_lcd().</span>
 <span class="cm"> * Cela évite d’écrire sur le LCD à chaque milliseconde, ce qui serait</span>
@@ -1604,12 +1616,9 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="w">    </span><span class="n">PT_END</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="cm">/* ====================================================================</span>
-<span class="cm"> * PROGRAMME PRINCIPAL</span>
-<span class="cm"> * ==================================================================== */</span>
 
-<span class="cm">/**</span>
-<span class="cm"> * @brief Fonction principale.</span>
+<span class="cm">/*</span>
+<span class="cm"> * Fonction principale.</span>
 <span class="cm"> * </span>
 <span class="cm"> * Après les initialisations matérielles et des structures des protothreads,</span>
 <span class="cm"> * on entre dans une boucle infinie qui appelle successivement chaque thread.</span>
@@ -1620,11 +1629,11 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="cm"> * et partagent le temps de manière équitable.</span>
 <span class="cm"> */</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// --- 1. Initialisations matérielles ---</span>
+<span class="w">    </span><span class="c1">// 1. Initialisations matérielles </span>
 <span class="w">    </span><span class="n">GPIO_Init</span><span class="p">();</span><span class="w">          </span><span class="c1">// configurer les broches</span>
 <span class="w">    </span><span class="n">SysTick_Init</span><span class="p">();</span><span class="w">       </span><span class="c1">// lancer le timer de 1 ms</span>
 
-<span class="w">    </span><span class="c1">// --- 2. Initialiser le LCD ---</span>
+<span class="w">    </span><span class="c1">// 2. Initialiser le LCD </span>
 <span class="w">    </span><span class="n">Delay_Init</span><span class="p">();</span><span class="w">         </span><span class="c1">// indispensable car le driver LCD utilise Delay_Us/Ms</span>
 <span class="w">    </span><span class="n">LCD_Init</span><span class="p">();</span><span class="w">           </span><span class="c1">// initialiser l’afficheur</span>
 
@@ -1634,7 +1643,7 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="w">    </span><span class="n">flag_refresh_lcd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// pour afficher immédiatement</span>
 <span class="w">    </span><span class="n">afficher_lcd</span><span class="p">();</span><span class="w">       </span><span class="c1">// premier affichage</span>
 
-<span class="w">    </span><span class="c1">// --- 3. Initialiser les structures de chaque protothread ---</span>
+<span class="w">    </span><span class="c1">// 3. Initialiser les structures de chaque protothread </span>
 <span class="w">    </span><span class="c1">// PT_INIT remet la structure à zéro, prête à démarrer le thread.</span>
 <span class="w">    </span><span class="n">PT_INIT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pt_bouton0</span><span class="p">);</span>
 <span class="w">    </span><span class="n">PT_INIT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pt_led_rapide</span><span class="p">);</span>
@@ -1643,7 +1652,7 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <span class="w">    </span><span class="n">PT_INIT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pt_compteur_auto</span><span class="p">);</span>
 <span class="w">    </span><span class="n">PT_INIT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pt_lcd</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// --- 4. Boucle principale : ordonnanceur coopératif ---</span>
+<span class="w">    </span><span class="c1">// 4. Boucle principale : ordonnanceur coopératif </span>
 <span class="w">    </span><span class="c1">// Chaque appel de fonction exécute le thread jusqu’à sa prochaine</span>
 <span class="w">    </span><span class="c1">// instruction d’attente, puis retourne immédiatement.</span>
 <span class="w">    </span><span class="c1">// L’ordre d’appel est cyclique, ce qui donne l’illusion de parallélisme.</span>
@@ -1670,7 +1679,7 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -1681,13 +1690,9 @@ YouTubeVideo('5ntAif_VSRA', width=800, height=450)</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
-
-<span class="c1"># Remplacez l'identifiant ci-dessous par celui de votre vidéo</span>
 <span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">'s9MK3P3TJyI'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-2">from IPython.display import YouTubeVideo
-
-# Remplacez l'identifiant ci-dessous par celui de votre vidéo
+<div class="clipboard-copy-txt" id="cell-3">from IPython.display import YouTubeVideo
 YouTubeVideo('s9MK3P3TJyI', width=800, height=450)</div>
 </div>
 </div>
@@ -1755,33 +1760,6 @@ YouTubeVideo('s9MK3P3TJyI', width=800, height=450)</div>
 </tbody>
 </table>
 <p><strong>En résumé :</strong> Si vous n'avez pas de contraintes de priorités absolues (temps réel dur) et que votre microcontrôleur est limité en RAM (ex: petits MSP430, Arduino ATmega, ou STM32 d'entrée de gamme), les <strong>Protothreads</strong> sont le choix parfait pour garder un code propre, séquentiel et performant.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=013a1e1f-e157-49b4-b0f1-862b3241320b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-3"></div>
-</div>
-</div>
 </div>
 </div>
 </div>

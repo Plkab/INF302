@@ -63,7 +63,7 @@
                                 <a href="../../protothreads/protothreads/" class="nav-link">Introduction au multitâche coopératif avec les Protothreads</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../protothreads/semaphoresPT/" class="nav-link">Synchronisation avec les Sémaphores</a>
+                                <a href="../../protothreads/semaphoresPT/" class="nav-link">Synchronisation avec les sémaphores</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../protothreads/timerPT/" class="nav-link">La gestion précise et non‑bloquante du temps avec Protothreads</a>
@@ -72,7 +72,7 @@
                                 <a href="../../protothreads/mutexPT/" class="nav-link">Le Mutex</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../uart/uart.ipynb" class="nav-link">Communication série via UART</a>
+                                <a href="../../uart/uart/" class="nav-link">Communication avec d'autres dispositifs</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../adc/adc.ipynb" class="nav-link">Acquisition analogique avec ADC</a>
@@ -608,7 +608,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="reactivite-rapide-avec-les-interruptions-materielles-et-determinisme-temporel">Réactivité rapide avec les interruptions matérielles et déterminisme temporel<a class="anchor-link" href="#reactivite-rapide-avec-les-interruptions-materielles-et-determinisme-temporel">¶</a></h1>
+<h1 id="reactivite-rapide-avec-les-interruptions-materielles-et-determinisme-temporel">Réactivité rapide avec les interruptions matérielles et déterminisme temporel<a class="anchor-link" href="#reactivite-rapide-avec-les-interruptions-materielles-et-determinisme-temporel">¶</a></h1><h6 id="paul-s-kabiduspaulkabidugmailcom"><a href="https://plkab.github.io/INF302/">Paul S. Kabidu</a>(spaulkabidu@gmail.com)<a class="anchor-link" href="#paul-s-kabiduspaulkabidugmailcom">¶</a></h6>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=57d9f4ec-88f1-4fad-b692-284fea3f45c3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
 </div>
 </div>
 </div>
@@ -908,15 +918,10 @@ Exemple : Si vous configurez <code>EXTI0</code> pour écouter <code>PA0</code>, 
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
-
-<span class="c1"># Remplacez l'identifiant ci-dessous par celui de votre vidéo</span>
 <span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">'BxU0e9iXK0g'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-1">from IPython.display import YouTubeVideo
-
-# Remplacez l'identifiant ci-dessous par celui de votre vidéo
-YouTubeVideo('BxU0e9iXK0g', width=800, height=450)
-</div>
+YouTubeVideo('BxU0e9iXK0g', width=800, height=450)</div>
 </div>
 </div>
 </div>
@@ -1044,15 +1049,6 @@ YouTubeVideo('BxU0e9iXK0g', width=800, height=450)
 <span class="p">}</span>
 </pre></div>
 <p>Dans ce genre de conditions, on ne peut plus utiliser la fonction bloquante de délais  (<code>__NOP()</code>), pour que notre programme ait une réactivité en temps réel. Nous allons utiliser un Timer matériel qui permet au processeur d'exécuter d'autres calculs pendant que le temps s'écoule et lui (Timer) fonctionne en arrière-plan du programme principal.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4a5381aa-222b-4228-8e64-b952438ca1df">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>

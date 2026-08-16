@@ -8,7 +8,7 @@
         <meta name="author" content="Ir Paul S. Kabidu">
         <link rel="canonical" href="https://Plkab.github.io/INF302/protothreads/semaphoresPT/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Synchronisation avec les Sémaphores - INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</title>
+        <title>Synchronisation avec les sémaphores - INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -63,7 +63,7 @@
                                 <a href="../protothreads/" class="nav-link">Introduction au multitâche coopératif avec les Protothreads</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">Synchronisation avec les Sémaphores</a>
+                                <a href="./" class="nav-link active" aria-current="page">Synchronisation avec les sémaphores</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../timerPT/" class="nav-link">La gestion précise et non‑bloquante du temps avec Protothreads</a>
@@ -72,7 +72,7 @@
                                 <a href="../mutexPT/" class="nav-link">Le Mutex</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../uart/uart.ipynb" class="nav-link">Communication série via UART</a>
+                                <a href="../../uart/uart/" class="nav-link">Communication avec d'autres dispositifs</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../adc/adc.ipynb" class="nav-link">Acquisition analogique avec ADC</a>
@@ -151,9 +151,9 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#synchronisation-avec-les-semaphores" class="nav-link">Synchronisation avec les Sémaphores</a>
+            <li class="nav-item" data-bs-level="1"><a href="#synchronisation-avec-les-semaphores" class="nav-link">Synchronisation avec les sémaphores</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#les-semaphores-leger-dans-protothreads" class="nav-link">Les Sémaphores léger dans Protothreads ()</a>
+            <li class="nav-item" data-bs-level="2"><a href="#la-communication-entre-threads-via-semaphores-binaires-leger-dans-protothreads" class="nav-link">La communication entre threads via sémaphores binaires léger dans Protothreads ()</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -604,7 +604,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="synchronisation-avec-les-semaphores">Synchronisation avec les Sémaphores<a class="anchor-link" href="#synchronisation-avec-les-semaphores">¶</a></h1>
+<h1 id="synchronisation-avec-les-semaphores">Synchronisation avec les sémaphores<a class="anchor-link" href="#synchronisation-avec-les-semaphores">¶</a></h1><h4 id="paul-s-kabiduspaulkabidugmailcom"><a href="https://plkab.github.io/INF302/">Paul S. Kabidu</a>(spaulkabidu@gmail.com)<a class="anchor-link" href="#paul-s-kabiduspaulkabidugmailcom">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=72b45c7f-70a5-4579-a168-c4e9feb7a9f0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
 </div>
 </div>
 </div>
@@ -614,7 +624,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Un Sémaphore sert à ordonnancer le temps (signalisation, passage de témoin), il orchestre la chronologie des tâches. Dans notre architecture, le sémaphore ne sert pas à bloquer l'accès à une variable, mais <em>à réveiller une tâche dès qu'un événement matériel se produit</em>. Par exemple, un thread producteur lit un capteur et un thread consommateur affiche les données uniquement quand elles sont prêtes.</p>
+<p>Un sémaphore sert à ordonnancer le temps (signalisation, passage de témoin), il orchestre la chronologie des tâches. Dans notre architecture, le sémaphore ne sert pas à bloquer l'accès à une variable, mais <em>à réveiller une tâche dès qu'un événement matériel se produit</em>. Par exemple, un thread producteur lit un capteur et un thread consommateur affiche les données uniquement quand elles sont prêtes.</p>
+<p>Voila le fichier <a href="pt_ista_stm32f4_v1.h" style="text-decoration: underline;" target="_self">pt_ista_stm32f4_v1.h</a> de notre version des Protothreads.</p>
 </div>
 </div>
 </div>
@@ -624,7 +635,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="les-semaphores-leger-dans-protothreads-pt-semh">Les Sémaphores léger dans Protothreads (<code>pt-sem.h</code>)<a class="anchor-link" href="#les-semaphores-leger-dans-protothreads-pt-semh">¶</a></h2><ul>
+<h2 id="la-communication-entre-threads-via-semaphores-binaires-leger-dans-protothreads-pt-semh">La communication entre threads via sémaphores binaires léger dans Protothreads (<code>pt-sem.h</code>)<a class="anchor-link" href="#la-communication-entre-threads-via-semaphores-binaires-leger-dans-protothreads-pt-semh">¶</a></h2><ul>
 <li><p>La structure <code>struct pt_sem</code> est juste un simple compteur atomique entier non signé géré par le noyau coopératif.</p>
 </li>
 <li><p><code>PT_SEM_INIT(pt, c)</code> : Cette macro initialise un sémaphore avec une valeur pour le compteur. En interne, les sémaphores utilisent un entier non signé (<code>unsigned int</code>) pour représenter le compteur ; par conséquent, l’argument « count » doit être un entier non signé. <code>pt</code> : un pointeur vers la structure <code>pt_sem</code> représentant le sémaphore. Utilisez ces sémaphores uniquement pour les signaux entre threads.</p>
@@ -646,20 +657,22 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="w">    </span><span class="n">PT_BEGIN</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
 <span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ticks_ms</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// Attends que 100 ms se soient écoulées (via une variable ticks_ms incrémentée par SysTick)</span>
 <span class="w">        </span><span class="n">PT_WAIT_UNTIL</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">ticks_ms</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">timestamp</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
 <span class="w">        </span><span class="c1">// Lancer la conversion ADC...</span>
-<span class="w">        </span><span class="n">PT_WAIT_UNTIL</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">SR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ADC_SR_EOC</span><span class="p">));</span>
+<span class="w">        </span><span class="n">PT_WAIT_UNTIL</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">SR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ADC_SR_EOC</span><span class="p">));</span><span class="w"> </span><span class="c1">// Déclenche une conversion ADC et attend la fin (ADC_SR_EOC)</span>
 <span class="w">        </span><span class="n">derniere_valeur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC1</span><span class="o">-&gt;</span><span class="n">DR</span><span class="p">;</span>
-<span class="w">        </span><span class="n">PT_SEM_SIGNAL</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sem_donnees</span><span class="p">);</span><span class="w">   </span><span class="c1">// signale qu'une donnée est disponible</span>
+<span class="w">        </span><span class="n">PT_SEM_SIGNAL</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sem_donnees</span><span class="p">);</span><span class="w">   </span><span class="c1">// signale qu'une donnée est disponible sur le sémaphore sem_donnees</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">PT_END</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
 <span class="p">}</span>
+
 
 <span class="c1">// Thread consommateur : affiche la donnée quand elle arrive</span>
 <span class="n">PT_THREAD</span><span class="p">(</span><span class="n">consommateur</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="o">*</span><span class="n">pt</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">PT_BEGIN</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
 <span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">PT_SEM_WAIT</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sem_donnees</span><span class="p">);</span><span class="w">    </span><span class="c1">// attend la donnée</span>
+<span class="w">        </span><span class="n">PT_SEM_WAIT</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sem_donnees</span><span class="p">);</span><span class="w">    </span><span class="c1">// attend la donnée // Attend le signal (PT_SEM_WAIT)</span>
 <span class="w">        </span><span class="c1">// Afficher derniere_valeur sur le LCD ou la transmettre</span>
 <span class="w">        </span><span class="n">afficher_valeur</span><span class="p">(</span><span class="n">derniere_valeur</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
@@ -668,14 +681,15 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="c1">// Dans main :</span>
 <span class="n">PT_SEM_INIT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sem_donnees</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">   </span><span class="c1">// initialement aucun signal</span>
+
+<span class="c1">// Le sémaphore est initialisé à 0, donc le consommateur bloque tant que le producteur n’a pas produit de donnée</span>
 </pre></div>
-<h3 id="exemple-de-la-signalisation-par-bouton-isr-semaphore-tache">Exemple de la Signalisation par Bouton (ISR -&gt; Sémaphore -&gt; Tâche)<a class="anchor-link" href="#exemple-de-la-signalisation-par-bouton-isr-semaphore-tache">¶</a></h3><p>Pour mieux visualiser le comportement non-bloquant et le réveil depuis l'arrière-plan, nous simulons l'interruption à l'aide d'un bouton-poussoir sur la broche PA0 (qui génère une interruption matérielle EXTI0).</p>
+<h3 id="exemple-de-la-signalisation-par-bouton-isr-semaphore-tache">Exemple de la signalisation par bouton (ISR -&gt; Sémaphore -&gt; Tâche)<a class="anchor-link" href="#exemple-de-la-signalisation-par-bouton-isr-semaphore-tache">¶</a></h3><p>Pour mieux visualiser le comportement non-bloquant et le réveil depuis l'arrière-plan, nous simulons l'interruption à l'aide d'un bouton-poussoir sur la broche PA0 (qui génère une interruption matérielle EXTI0). Le bouton sur PA0 génère une interruption EXTI0 qui incrémente le compteur du sémaphore ; la tâche <code>task_clignotement</code> attend ce sémaphore et, lorsqu’elle est réveillée, fait clignoter la LED sur PC13.</p>
 <div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">"pt.h"</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">"pt-sem.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"pt_ista_stm32f4_v1.h"</span>
 
-<span class="c1">// --- Contextes Protothread et Sémaphore ---</span>
+<span class="c1">// Contextes Protothread et Sémaphore</span>
 <span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="n">pt_tache_led</span><span class="p">;</span>
 <span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">pt_sem</span><span class="w"> </span><span class="n">sem_bouton</span><span class="p">;</span><span class="w"> </span><span class="c1">// Notre compteur entier léger</span>
 
@@ -684,21 +698,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="kt">void</span><span class="w"> </span><span class="nf">LED_PC13_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
 <span class="k">static</span><span class="w"> </span><span class="n">PT_THREAD</span><span class="p">(</span><span class="n">task_clignotement</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="o">*</span><span class="n">pt</span><span class="p">));</span>
 
-<span class="cm">/**</span>
-<span class="cm"> * @brief Routine d'interruption matérielle (ISR) du bouton sur PA0</span>
-<span class="cm"> */</span>
+<span class="c1">// Routine d'interruption matérielle (ISR) du bouton sur PA0</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">EXTI0_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">EXTI</span><span class="o">-&gt;</span><span class="n">PR</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">EXTI_PR_PR0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Vérifie si l'interruption vient bien de PA0</span>
 <span class="w">        </span><span class="n">EXTI</span><span class="o">-&gt;</span><span class="n">PR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EXTI_PR_PR0</span><span class="p">;</span><span class="w">   </span><span class="c1">// Acquitte l'interruption matérielle</span>
 
 <span class="w">        </span><span class="c1">// LE RÉVEIL : PT_SEM_SIGNAL() incrémente simplement le compteur (count++)</span>
-<span class="w">        </span><span class="n">sem_bouton</span><span class="p">.</span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w"> </span>
+<span class="w">        </span><span class="n">sem_bouton</span><span class="p">.</span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// effet est identique que d'appeler la fonction PT_SEM_SIGNAL() </span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="cm">/**</span>
-<span class="cm"> * @brief Tâche Protothread : Consommatrice de l'événement</span>
-<span class="cm"> */</span>
+<span class="c1">// Tâche Protothread : Consommatrice de l'événement</span>
 <span class="k">static</span><span class="w"> </span><span class="n">PT_THREAD</span><span class="p">(</span><span class="n">task_clignotement</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="o">*</span><span class="n">pt</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">PT_BEGIN</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
 
@@ -739,9 +749,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// ============================================================================</span>
-<span class="c1">// FONCTIONS DE CONFIGURATION MATÉRIELLE BRUTE (Pour mémoire)</span>
-<span class="c1">// ============================================================================</span>
 <span class="kt">void</span><span class="w"> </span><span class="n">Bouton_PA0_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">AHB1ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_AHB1ENR_GPIOAEN</span><span class="p">;</span><span class="w">  </span><span class="c1">// Horloge Port A</span>
 <span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">APB2ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_APB2ENR_SYSCFGEN</span><span class="p">;</span><span class="w"> </span><span class="c1">// Horloge Système de configuration</span>
@@ -814,6 +821,33 @@ YouTubeVideo('6sL9JrptMLA', width=800, height=450)</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <iframe allowfullscreen="" frameborder="0" height="450" src="https://www.youtube.com/embed/6sL9JrptMLA" width="800"></iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=5bb81496-6df3-4438-9d0f-0b428c6fbc5f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-2"></div>
 </div>
 </div>
 </div>

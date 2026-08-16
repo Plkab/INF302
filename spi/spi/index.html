@@ -63,7 +63,7 @@
                                 <a href="../../protothreads/protothreads/" class="nav-link">Introduction au multitâche coopératif avec les Protothreads</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../protothreads/semaphoresPT/" class="nav-link">Synchronisation avec les Sémaphores</a>
+                                <a href="../../protothreads/semaphoresPT/" class="nav-link">Synchronisation avec les sémaphores</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../protothreads/timerPT/" class="nav-link">La gestion précise et non‑bloquante du temps avec Protothreads</a>
@@ -72,7 +72,7 @@
                                 <a href="../../protothreads/mutexPT/" class="nav-link">Le Mutex</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../uart/uart.ipynb" class="nav-link">Communication série via UART</a>
+                                <a href="../../uart/uart/" class="nav-link">Communication avec d'autres dispositifs</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../adc/adc.ipynb" class="nav-link">Acquisition analogique avec ADC</a>
@@ -157,7 +157,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#configuration-du-spi" class="nav-link">Configuration du SPI</a>
+            <li class="nav-item" data-bs-level="2"><a href="#configuration-du-spi" class="nav-link">Configuration du SPI `</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -650,13 +650,58 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="communication-via-spi">Communication via SPI<a class="anchor-link" href="#communication-via-spi">¶</a></h1><h2 id="protocole">Protocole<a class="anchor-link" href="#protocole">¶</a></h2><p>Le bus SPI (<em>Serial Peripheral Interface</em>) est un bus synchrone qui utilise seulement 4 fils pour la communication :</p>
+<h1 id="communication-via-spi">Communication via SPI<a class="anchor-link" href="#communication-via-spi">¶</a></h1><h4 id="paul-s-kabiduspaulkabidugmailcom"><a href="https://plkab.github.io/INF302/">Paul S. Kabidu</a>(spaulkabidu@gmail.com)<a class="anchor-link" href="#paul-s-kabiduspaulkabidugmailcom">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a4c16ed8-1bac-4065-9fa0-4e60e55724f6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b2211da5-5a5c-4ccb-8852-dc7606150058">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<blockquote>
+<ul>
+<li><a href="#protocole">Protocole</a></li>
+<li><a href="#config">Configuration du bus SPI</a></li>
+<li><a href="#interface-dac">Interface SPI entre STM32F401 et DAC MCP4921</a></li>
+<li><a href="#generation-signal">Génèration d'un signal en rampe (dent de scie)</a></li>
+<li><a href="#spi-mcp4921-signaux">Génération des signaux : usage des Protothreads</a></li>
+</ul>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=891eb0d6-7d95-4b91-827b-7db0f07396b9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="protocole">Protocole <a id="protocole"></a><a class="anchor-link" href="#protocole">¶</a></h2><p>Le bus SPI (<em>Serial Peripheral Interface</em>) est un bus synchrone qui utilise seulement 4 fils pour la communication :</p>
 <ul>
 <li><code>SCLK</code> (<em>Serial Clock</em>) : horloge générée par le maître.</li>
 <li><code>MOSI</code> (<em>Master Out Slave In</em>) : données du maître vers l'esclave.</li>
 <li><code>MISO</code> (<em>Master In Slave Out</em>) : données de l'esclave vers le maître.</li>
 <li><code>CE</code> ou <code>SS</code> (<em>Chip Enable / Slave Select</em>) : permet de sélectionner l'esclave actif à l'état bas en général.</li>
 </ul>
+<center>
+<img alt="Cycle de vie d'un Protothread" src="comm-spi.jpeg" width="1200"/>
+<br/>
+<i>Cycle de vie d'un Protothread</i>
+</center>
+<p><a href="polarites.jpeg">Polarite</a></p>
+<img alt="Schéma FSM" src="polarites.jpeg" width="200"/>
 <p>Le maître et l'esclave possèdent chacun un registre à décalage de 8 bits. Lorsque le maître génère 8 impulsions d'horloge, les octets sont échangés simultanément entre les deux registres. La communication est full-duplex (émission et réception simultanées).</p>
 <p>Le maître et l’esclave doivent s’accorder sur la polarité (CPOL) et la phase (CPHA) de l’horloge.</p>
 <ul>
@@ -664,7 +709,16 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><code>CPHA</code> (<em>Clock Phase</em>) : définit sur quel front l'échantillonnage des données a lieu (0 = premier front, 1 = second front).
 Les combinaisons donnent 4 modes (0, 1, 2, 3). Par exemple, le mode 0 (CPOL=0, CPHA=0) lit les données sur le front montant et les change sur le front descendant.</li>
 </ul>
-<h2 id="configuration-du-spi">Configuration du SPI<a class="anchor-link" href="#configuration-du-spi">¶</a></h2><p>Nous allons configurer le STM32F401 comme maitre. Il integre 3 modules SPI (SPI1, SPI2, SPI3).</p>
+<p align="center">
+<img alt="Cycle de vie d'un Protothread" height="300" src="polarites.jpeg" width="1200"/><br/>
+<i>Cycle de vie d'un Protothread</i>
+</p>
+<center>
+<img alt="Cycle de vie d'un Protothread" src="polarites.jpeg" width="1200"/>
+<br/>
+<i>Cycle de vie d'un Protothread</i>
+</center>
+<h2 id="configuration-du-spi">Configuration du SPI <a id="config"></a>`<a class="anchor-link" href="#configuration-du-spi">¶</a></h2><p>Nous allons configurer le STM32F401 comme maitre. Il integre 3 modules SPI (SPI1, SPI2, SPI3).</p>
 <p>Nous utiliserons SPI1 avec les broches suivantes :</p>
 <ul>
 <li>PA5 → SCK</li>
@@ -696,7 +750,7 @@ Les combinaisons donnent 4 modes (0, 1, 2, 3). Par exemple, le mode 0 (CPOL=0, C
 <li>Pour faire une transmission, il faut attendre que le flag <code>TXE</code> (<em>Transmit Buffer Empty</em>) soit à 1 dans <code>SPI_SR</code>, puis abaisser le <code>SS</code> (actif à 0). Ensuite écrire l'octet dans <code>SPI_DR</code>, puis attende que le flag <code>BSY</code> (<em>Busy</em>) soit à 0 dans <code>SPI_SR</code>. Et enfin remontez le <code>SS</code>.</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">SPI1_Init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="cm">/* 1. Activation des horloges via CMSIS */</span>
+<span class="w">    </span><span class="c1">// 1. Activation des horloges via CMSIS </span>
 <span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">AHB1ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_AHB1ENR_GPIOAEN</span><span class="p">;</span><span class="w">  </span><span class="c1">// Active le port GPIOA</span>
 <span class="w">    </span><span class="n">RCC</span><span class="o">-&gt;</span><span class="n">APB2ENR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">RCC_APB2ENR_SPI1EN</span><span class="p">;</span><span class="w">  </span><span class="c1">// Active le périphérique SPI1</span>
 
@@ -716,7 +770,7 @@ Les combinaisons donnent 4 modes (0, 1, 2, 3). Par exemple, le mode 0 (CPOL=0, C
 <span class="w">    </span><span class="c1">// Mettre la broche CS (PA4) à l'état HAUT par défaut</span>
 <span class="w">    </span><span class="n">GPIOA</span><span class="o">-&gt;</span><span class="n">ODR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
 
-<span class="w">    </span><span class="cm">/* 3. Configuration du périphérique SPI1 via CMSIS léger */</span>
+<span class="w">    </span><span class="c1">// 3. Configuration du périphérique SPI1 via CMSIS léger </span>
 <span class="w">    </span><span class="n">SPI1</span><span class="o">-&gt;</span><span class="n">CR1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x0000</span><span class="p">;</span><span class="w"> </span><span class="c1">// Reset complet (Configure par défaut CPOL = 0, CPHA = 0)</span>
 
 <span class="w">    </span><span class="c1">// Configuration des paramètres essentiels du SPI Maître 16-bit</span>
@@ -751,7 +805,16 @@ Les combinaisons donnent 4 modes (0, 1, 2, 3). Par exemple, le mode 0 (CPOL=0, C
 <span class="w">    </span><span class="n">GPIOA</span><span class="o">-&gt;</span><span class="n">ODR</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
-<h2 id="interface-spi-entre-stm32f401-et-dac-mcp4921">Interface SPI entre STM32F401 et DAC MCP4921<a class="anchor-link" href="#interface-spi-entre-stm32f401-et-dac-mcp4921">¶</a></h2><p>Le MCP4921 est un convertisseur numérique-analogique (DAC) de 12 bits. Il permet de transformer une valeur numérique envoyée par un microcontrôleur en une tension analogique. Il est très utilisé dans les systèmes embarqués pour :</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=641d2820-39e8-4a8a-9ccc-267d9319623f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="interface-spi-entre-stm32f401-et-dac-mcp4921">Interface SPI entre STM32F401 et DAC MCP4921 <a id="interface-dac"></a><a class="anchor-link" href="#interface-spi-entre-stm32f401-et-dac-mcp4921">¶</a></h2><p>Le MCP4921 est un convertisseur numérique-analogique (DAC) de 12 bits. Il permet de transformer une valeur numérique envoyée par un microcontrôleur en une tension analogique. Il est très utilisé dans les systèmes embarqués pour :</p>
 <ul>
 <li>Génération de signaux sinusoïdaux, triangulaires ou carrés</li>
 <li>Synthèse sonore (DDS, FM, modulation)</li>
@@ -879,7 +942,7 @@ V_OUT = 3.3 × (2048 / 4096) = 1.65V</p>
 <span class="w">    </span><span class="n">SPI1_Transmit</span><span class="p">(</span><span class="n">frame</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
-<h3 id="generation-dun-signal-en-rampe-dent-de-scie">Génèration d'un signal en rampe (dent de scie)<a class="anchor-link" href="#generation-dun-signal-en-rampe-dent-de-scie">¶</a></h3><p>Le programme fait varier la valeur envoyée au DAC de 0 (0V en sortie) à 4095 ((V_{REF}) en sortie) de manière linéaire, puis redescend instantanément à 0 pour recommencer le cycle.</p>
+<h3 id="generation-dun-signal-en-rampe-dent-de-scie">Génèration d'un signal en rampe (dent de scie) <a id="generation-signal"></a>`<a class="anchor-link" href="#generation-dun-signal-en-rampe-dent-de-scie">¶</a></h3><p>Le programme fait varier la valeur envoyée au DAC de 0 (0V en sortie) à 4095 ((V_{REF}) en sortie) de manière linéaire, puis redescend instantanément à 0 pour recommencer le cycle.</p>
 <ul>
 <li>La sortie du DAC va monter de manière fluide étape par étape ((0 \rightarrow 1 \rightarrow 2 \rightarrow \dots \rightarrow 4095)).</li>
 <li>Dès que la valeur maximale est atteinte, le signal chute brutalement à 0V au cycle suivant, dessinant ainsi une dent de scie parfaite.</li>

@@ -8,7 +8,7 @@
         <meta name="author" content="Ir Paul S. Kabidu">
         <link rel="canonical" href="https://Plkab.github.io/INF302/7seg/7seg/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>7seg - INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</title>
+        <title>Pilotage d'un afficheur 7 segments - INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -63,7 +63,7 @@
                                 <a href="../../protothreads/protothreads/" class="nav-link">Introduction au multitâche coopératif avec les Protothreads</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../protothreads/semaphoresPT/" class="nav-link">Synchronisation avec les Sémaphores</a>
+                                <a href="../../protothreads/semaphoresPT/" class="nav-link">Synchronisation avec les sémaphores</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../protothreads/timerPT/" class="nav-link">La gestion précise et non‑bloquante du temps avec Protothreads</a>
@@ -72,7 +72,7 @@
                                 <a href="../../protothreads/mutexPT/" class="nav-link">Le Mutex</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../uart/uart.ipynb" class="nav-link">Communication série via UART</a>
+                                <a href="../../uart/uart/" class="nav-link">Communication avec d'autres dispositifs</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../adc/adc.ipynb" class="nav-link">Acquisition analogique avec ADC</a>
@@ -141,7 +141,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#pilotage-dun-afficheur-7-segments" class="nav-link">Pilotage d'un afficheur 7 segments</a>
+            <li class="nav-item" data-bs-level="1"><a href="#pilotage-dun-afficheur-7-segments" class="nav-link">Pilotage d'un afficheur 7 segments</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -590,7 +590,27 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="pilotage-dun-afficheur-7-segments">Pilotage d'un afficheur 7 segments<a class="anchor-link" href="#pilotage-dun-afficheur-7-segments">¶</a></h2><p>Pour obtenir un déclenchement précis sans bloquer le processeur, nous configurons Timer 0 pour générer une interruption environ toutes les 2 millisecondes.  À chaque interruption, le microcontrôleur change de chiffre (multiplexage dynamique), laissant la boucle principale while(1) totalement libre pour exécuter d'autres tâches. Une machine à états bascule d'un afficheur à l'autre à chaque interruption. Les 4 afficheurs sont ainsi rafraîchis en moins de 10 millisecondes (fréquence globale &gt; 100 Hz), ce qui est parfait pour tromper l'œil humain sans aucun scintillement.</p>
+<h1 id="pilotage-dun-afficheur-7-segments">Pilotage d'un afficheur 7 segments<a class="anchor-link" href="#pilotage-dun-afficheur-7-segments">¶</a></h1><h4 id="paul-s-kabiduspaulkabidugmailcom"><a href="https://plkab.github.io/INF302/">Paul S. Kabidu</a>(spaulkabidu@gmail.com)<a class="anchor-link" href="#paul-s-kabiduspaulkabidugmailcom">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ea5464f4-3c4b-499c-b538-653dbe1ae44a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d67813b7-095d-4a2e-8a19-c3543c1d5bd2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Pour obtenir un déclenchement précis sans bloquer le processeur, nous configurons Timer 0 pour générer une interruption environ toutes les 2 millisecondes.  À chaque interruption, le microcontrôleur change de chiffre (multiplexage dynamique), laissant la boucle principale while(1) totalement libre pour exécuter d'autres tâches. Une machine à états bascule d'un afficheur à l'autre à chaque interruption. Les 4 afficheurs sont ainsi rafraîchis en moins de 10 millisecondes (fréquence globale &gt; 100 Hz), ce qui est parfait pour tromper l'œil humain sans aucun scintillement.</p>
 <p>L'utilisation de l'opérateur modulo % remplace les soustractions complexes pour extraire les chiffres de manière plus propre.</p>
 <figure style="text-align: center;">
 <img alt="Afficheur 7 segments" height="300" src="7seg.jpg" style="display: block; margin: 0 auto;" width="500"/>
