@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <meta name="author" content="Ir Paul S. Kabidu, M.Eng">
+        <meta name="author" content="Ir Paul S. Kabidu">
         <link rel="canonical" href="https://Plkab.github.io/INF302/spi/spi/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>Communication via SPI - INF302/CST2232 – Programmation des processeurs et Conception des systèmes temps réel à base du microcontrôleur STM32F401</title>
@@ -165,11 +165,6 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="1"><a href="#test-mathjax" class="nav-link">Test MathJax</a>
-              <ul class="nav flex-column">
             <li class="nav-item" data-bs-level="2"><a href="#generateur-de-sinusoide-non-bloquant" class="nav-link">Générateur de Sinusoïde Non-Bloquant</a>
               <ul class="nav flex-column">
               </ul>
@@ -1143,8 +1138,6 @@ V_OUT = 3.3 × (2048 / 4096) = 1.65V</p>
 <li>La sortie du DAC va monter de manière fluide étape par étape ((0 \rightarrow 1 \rightarrow 2 \rightarrow 3 \rightarrow 4 \rightarrow 5)).</li>
 <li>Dès que la valeur maximale est atteinte, le signal chute brutalement à (0,\text{V}) au cycle suivant, dessinant ainsi une dent de scie parfaite.</li>
 </ul>
-<h1 id="test-mathjax">Test MathJax<a class="anchor-link" href="#test-mathjax">¶</a></h1><p>Formule inline : (E = mc^2)</p>
-<p>Formule display : [ \int_0^1 x^2 dx = \frac{1}{3} ]</p>
 <div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span>
 
@@ -2106,7 +2099,7 @@ YouTubeVideo('iYBqvTUBU_g', width=800, height=450)</div>
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../js/base.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
         <script src="../../javascripts/mathjax.js"></script>
         <script src="../../search/main.js"></script>
 

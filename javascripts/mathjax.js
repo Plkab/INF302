@@ -1,80 +1,20 @@
-// ============================================================
-// CONFIGURATION MATHJAX v3 – Version définitive
-// ============================================================
-
 window.MathJax = {
   tex: {
-    inlineMath: [
-      ['$', '$'],
-      ['\\(', '\\)']
-    ],
-    displayMath: [
-      ['$$', '$$'],
-      ['\\[', '\\]']
-    ],
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
     processEscapes: true,
     processEnvironments: true
   },
-  svg: {
-    fontCache: 'global'
-  },
   options: {
-    // On analyse tout le document sans restriction de classe
-    ignoreHtmlClass: '',
-    processHtmlClass: ''
+    // Configuration de ciblage pour le plugin mkdocs-jupyter
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process|rendered_html'
   }
 };
 
-// ============================================================
-// FONCTION DE RENDU (avec gestion d'erreur)
-// ============================================================
-
-function renderMath() {
+// Force le moteur de rendu graphique à s'exécuter une fois le DOM chargé
+document.addEventListener('DOMContentLoaded', function() {
   if (window.MathJax && MathJax.typesetPromise) {
-    MathJax.typesetPromise().catch(function(err) {
-      console.warn('MathJax: erreur de rendu –', err);
-    });
-  }
-}
-
-// ============================================================
-// DÉCLENCHEMENT AU CHARGEMENT INITIAL
-// ============================================================
-
-if (document.readyState === 'complete') {
-  renderMath();
-} else {
-  document.addEventListener('readystatechange', function() {
-    if (document.readyState === 'complete') {
-      renderMath();
-    }
-  });
-}
-
-// ============================================================
-// OBSERVATEUR DE MUTATIONS – pour les notebooks chargés dynamiquement
-// ============================================================
-
-const observer = new MutationObserver(function(mutations) {
-  for (let mutation of mutations) {
-    if (mutation.addedNodes.length > 0) {
-      renderMath();
-      break;
-    }
+    MathJax.typesetPromise();
   }
 });
-
-// Démarrer l'observation une fois le DOM prêt
-if (document.body) {
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
-} else {
-  document.addEventListener('DOMContentLoaded', function() {
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-  });
-}
