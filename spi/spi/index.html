@@ -1133,10 +1133,15 @@ V_OUT = 3.3 × (2048 / 4096) = 1.65V</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="generation-dun-signal-en-rampe-dent-de-scie">Génèration d'un signal en rampe (dent de scie) <a id="generation-signal"></a>`<a class="anchor-link" href="#generation-dun-signal-en-rampe-dent-de-scie">¶</a></h3><p>Le programme fait varier la valeur envoyée au DAC de 0 (0V en sortie) à 4095 ($V_{\text{REF}}$ en sortie) de manière linéaire, puis redescend instantanément à 0 pour recommencer le cycle.</p>
+<h3 id="generation-dun-signal-en-rampe-dent-de-scie">Génération d'un signal en rampe (dent de scie) <a id="generation-signal"></a><a class="anchor-link" href="#generation-dun-signal-en-rampe-dent-de-scie">¶</a></h3><p>Le programme fait varier la valeur envoyée au DAC de 0 ($0\\text{V}$ en sortie) à 4095 ($V_{\\text{REF}}$ en sortie) de manière linéaire, puis redescend instantanément à 0 pour recommencer le cycle.</p>
 <ul>
-<li>La sortie du DAC va monter de manière fluide étape par étape ($0 \rightarrow 1 \rightarrow 2 \rightarrow \dots \rightarrow 4095$).</li>
-<li>Dès que la valeur maximale est atteinte, le signal chute brutalement à 0V au cycle suivant, dessinant ainsi une dent de scie parfaite.</li>
+<li>La sortie du DAC va monter de manière fluide étape par étape ($0 \\rightarrow 1 \\rightarrow 2 \\rightarrow \\dots \\rightarrow 4095$).</li>
+<li>Dès que la valeur maximale est atteinte, le signal chute brutalement à $0\\text{V}$ au cycle suivant, dessinant ainsi une dent de scie parfaite.</li>
+</ul>
+<p>Le programme fait varier la valeur envoyée au DAC de 0 ((0,\text{V}) en sortie) à 4095 ((V_{\text{REF}}) en sortie) de manière linéaire, puis redescend instantanément à 0 pour recommencer le cycle.</p>
+<ul>
+<li>La sortie du DAC va monter de manière fluide étape par étape ((0 \rightarrow 1 \rightarrow 2 \rightarrow 3 \rightarrow 4 \rightarrow 5)).</li>
+<li>Dès que la valeur maximale est atteinte, le signal chute brutalement à (0,\text{V}) au cycle suivant, dessinant ainsi une dent de scie parfaite.</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"stm32f4xx.h"</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span>
