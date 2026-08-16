@@ -1,5 +1,5 @@
 // ============================================================
-// CONFIGURATION MATHJAX v3 - Version stable pour MkDocs + Jupyter
+// CONFIGURATION MATHJAX v3 – Version définitive
 // ============================================================
 
 window.MathJax = {
@@ -12,40 +12,69 @@ window.MathJax = {
       ['$$', '$$'],
       ['\\[', '\\]']
     ],
-    processEscapes: true,          // Permet d'échapper les $ avec \$
-    processEnvironments: true      // Active les environnements comme \begin{equation}
+    processEscapes: true,
+    processEnvironments: true
   },
   svg: {
-    fontCache: 'global'            // Optimise le cache des polices pour les pages longues
+    fontCache: 'global'
   },
   options: {
-    // 🔥 SUPPRESSION DES FILTRES : on analyse TOUT le document
-    // Cela garantit que le contenu des notebooks (.ipynb) est bien traité
+    // On analyse tout le document sans restriction de classe
     ignoreHtmlClass: '',
     processHtmlClass: ''
   }
 };
 
 // ============================================================
-// DÉCLENCHEMENT DU RENDU APRÈS CHARGEMENT COMPLET DE MATHJAX
+// FONCTION DE RENDU (avec gestion d'erreur)
+// ============================================================
+
+function renderMath() {
+  if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise().catch(function(err) {
+      console.warn('MathJax: erreur de rendu –', err);
+    });
+  }
+}
+
+// ============================================================
+// DÉCLENCHEMENT AU CHARGEMENT INITIAL
 // ============================================================
 
 if (document.readyState === 'complete') {
-  // Si la page est déjà chargée, on lance le rendu immédiatement
-  if (window.MathJax && MathJax.startup) {
-    MathJax.startup.promise.then(() => {
-      MathJax.typesetPromise();
-    });
-  }
+  renderMath();
 } else {
-  // Sinon, on attend que le DOM et MathJax soient prêts
-  document.addEventListener('readystatechange', () => {
+  document.addEventListener('readystatechange', function() {
     if (document.readyState === 'complete') {
-      if (window.MathJax && MathJax.startup) {
-        MathJax.startup.promise.then(() => {
-          MathJax.typesetPromise();
-        });
-      }
+      renderMath();
     }
+  });
+}
+
+// ============================================================
+// OBSERVATEUR DE MUTATIONS – pour les notebooks chargés dynamiquement
+// ============================================================
+
+const observer = new MutationObserver(function(mutations) {
+  for (let mutation of mutations) {
+    if (mutation.addedNodes.length > 0) {
+      renderMath();
+      break;
+    }
+  }
+});
+
+// Démarrer l'observation une fois le DOM prêt
+if (document.body) {
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+} else {
+  document.addEventListener('DOMContentLoaded', function() {
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
   });
 }
